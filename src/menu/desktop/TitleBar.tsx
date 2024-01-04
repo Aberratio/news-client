@@ -5,7 +5,7 @@ export const TitleBar = () => {
   return (
     <Wrapper>
       <Container>
-        <Typography variant="h2" isUppercase>
+        <Typography color="white" isUppercase variant="h2">
           Temat tygodnia!
         </Typography>
       </Container>

@@ -5,7 +5,7 @@ export const InfoBar = () => {
   return (
     <Wrapper>
       <Container>
-        <Typography variant="small">
+        <Typography color="white" variant="small">
           Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz
         </Typography>
       </Container>

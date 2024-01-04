@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
 
         color-scheme: light dark;
-        color: rgba(255, 255, 255, 0.87);
+        color: black;
         background-color: white;
 
         font-synthesis: none;
