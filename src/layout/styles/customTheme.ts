@@ -11,6 +11,7 @@ const LIGHT_GREY: string = "#e7e7e6";
 const DARK_GREY: string = "#262B34";
 const DISABLED: string =
   "internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3))";
+const GREEN = "#15a752";
 
 const PRIMARY_COLOR = "#f2f2f2;";
 const PRIMARY_OPPOSITE_COLOR: OppositeColor = WHITE;
@@ -50,8 +51,8 @@ export const customTheme: CustomTheme = {
       onHoverBackgroundOppositeColor: BLACK,
     },
     link: {
-      color: BLACK,
-      onHoverColor: WHITE,
+      color: SILVER,
+      onHoverColor: GREEN,
     },
   },
   modals: {

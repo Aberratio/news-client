@@ -48,15 +48,12 @@ module.exports = {
     ],
     "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": "error",
-
-    
-
     "import/order": [
       "error",
       {
         alphabetize: {
-            caseInsensitive: true,
-            order: "asc",
+          caseInsensitive: true,
+          order: "asc",
         },
         groups: [
           "builtin",
@@ -73,8 +70,6 @@ module.exports = {
         "newlines-between": "always",
       },
     ],
-
-
 
     "@typescript-eslint/no-use-before-define": "off",
     "import/prefer-default-export": "off",

@@ -4,6 +4,7 @@ import { OrganizationContextProvider } from "core/context/OrganizationContextPro
 
 import { GlobalStyle } from "./core/styles/global";
 import { ThemeProvider } from "./core/styles/ThemeProvider";
+import { MenuDesktop } from "menu/desktop/MenuDesktop";
 
 export const App = () => {
   return (
@@ -11,7 +12,7 @@ export const App = () => {
       <Container>
         <GlobalStyle />
         <OrganizationContextProvider>
-          <p>test</p>
+          <MenuDesktop />
         </OrganizationContextProvider>
       </Container>
     </ThemeProvider>
@@ -22,6 +23,5 @@ const Container = styled.div`
   display: grid;
   width: 100vw;
   height: 100vh;
-  grid-template-columns: 120px 1600px 1fr;
   overflow: hidden;
 `;

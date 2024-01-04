@@ -89,9 +89,9 @@ const StyledButton = styled(ButtonBase).attrs(
 
   ${({ theme, variant, disabled }) => styleVariants(theme, variant, disabled)}
   ${({ theme, size }) => sizeVariants(theme, size)}
-    ${({ width }) => width && widthVariants(width)} ${({ shape }) =>
+  ${({ width }) => width && widthVariants(width)} ${({ shape }) =>
     shape && shapeVariants(shape)}
-    ${({ elements }) => elements && elementsVariants(elements)};
+  ${({ elements }) => elements && elementsVariants(elements)};
   ${({ $hideBorder }) => $hideBorder && `border: none;`};
 `;
 
