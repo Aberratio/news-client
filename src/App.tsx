@@ -6,6 +6,8 @@ import { GlobalStyle } from "./core/styles/global";
 import { ThemeProvider } from "./core/styles/ThemeProvider";
 import { MenuDesktop } from "menu/desktop/MenuDesktop";
 import { NavigationDesktop } from "navigation/NavigationDesktop";
+import { PageContainer } from "page/PageContainer";
+import { BrowserRouter } from "react-router-dom";
 
 export const App = () => {
   return (
@@ -13,8 +15,11 @@ export const App = () => {
       <Container>
         <GlobalStyle />
         <OrganizationContextProvider>
-          <MenuDesktop />
-          <NavigationDesktop />
+          <BrowserRouter>
+            <MenuDesktop />
+            <NavigationDesktop />
+            <PageContainer />
+          </BrowserRouter>
         </OrganizationContextProvider>
       </Container>
     </ThemeProvider>
