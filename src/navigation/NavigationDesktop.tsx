@@ -3,7 +3,7 @@ import { MainMenu } from "./MainMenu";
 
 export const NavigationDesktop = () => {
   return (
-    <Wrapper>
+    <Wrapper data-test-id="navigation-desktop">
       <Container>
         <Navigation>
           <MainMenu />

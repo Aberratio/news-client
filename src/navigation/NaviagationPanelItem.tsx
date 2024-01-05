@@ -1,9 +1,16 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
+import { Categories } from "./MainMenu";
 
-export const NaviagationPanelItem = () => {
+interface NaviagationPanelItemProps {
+  category: Categories;
+}
+
+export const NaviagationPanelItem = ({
+  category,
+}: NaviagationPanelItemProps) => {
   return (
-    <Container>
+    <Container data-test-id="naviagation-panel-item">
       <div>
         <Link2>
           <Image></Image>

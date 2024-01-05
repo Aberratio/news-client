@@ -1,19 +1,33 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { NaviagationPanelItem } from "./NaviagationPanelItem";
+import { Categories } from "./MainMenu";
 
-export const SubMenu = () => {
+interface SubMenuProps {
+  categories: Categories[];
+}
+
+export const SubMenu = ({ categories }: SubMenuProps) => {
   return (
-    <Container>
+    <Container data-test-id="sub-menu">
       <CategoryContainer>
         <Link href="#">
           <Typography>Wiadomości</Typography>
+        </Link>
+        <Link href="#">
+          <Typography>Wiadomości2</Typography>
+        </Link>
+        <Link href="#">
+          <Typography>Wiadomości3</Typography>
+        </Link>
+        <Link href="#">
+          <Typography>Wiadomości4</Typography>
         </Link>
       </CategoryContainer>
       <Tab>
         <Panel>
           <Row>
-            <NaviagationPanelItem />
+            <NaviagationPanelItem category={categories[0]} />
           </Row>
         </Panel>
       </Tab>
@@ -27,7 +41,7 @@ const Container = styled.div`
   top: 100%;
   left: 0;
   background-color: #fff;
-  width: 100%;
+  width: 1050px;
   border: 1px solid #f2f2f2;
   -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -74,6 +88,4 @@ const Panel = styled.div`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 `;

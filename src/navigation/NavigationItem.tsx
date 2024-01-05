@@ -1,23 +1,40 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { SubMenu } from "./SubMenu";
+import { TabItem } from "./MainMenu";
 
-export const NavigationItem = () => {
+interface NavigationItemProps {
+  isActive: boolean;
+  tab: TabItem;
+  onClick: () => void;
+}
+
+export const NavigationItem = ({
+  isActive,
+  tab,
+  onClick,
+}: NavigationItemProps) => {
   return (
-    <Container>
+    <Container
+      data-test-id="navigation-item"
+      onClick={onClick}
+      $isActive={isActive}
+    >
       <Link href="#">
-        <Typography>Wiadomości</Typography>
-        <SubMenu />
+        <Typography>{tab.name}</Typography>
+        {isActive && <SubMenu categories={tab.categories} />}
       </Link>
     </Container>
   );
 };
 
-const Container = styled.li`
-  position: static;
+const Container = styled.li<{ $isActive: boolean }>`
+  position: relative;
   margin: 0;
   list-style-type: none;
   height: 100%;
+  cursor: pointer;
+  overflow: unset;
 
   &::before {
     content: "";
@@ -26,8 +43,8 @@ const Container = styled.li`
     width: calc(100% + 36px);
     height: 5px;
     bottom: 0;
-    left: -18px;
-    background-color: rgb(46, 104, 150);
+    background-color: ${({ $isActive }) =>
+      $isActive ? "rgb(46, 104, 150)" : "white"};
   }
 `;
 
