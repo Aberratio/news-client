@@ -40,7 +40,7 @@ const Container = styled.li<{ $isActive: boolean }>`
     content: "";
     display: block;
     position: absolute;
-    width: calc(100% + 36px);
+    width: calc(100% + 8px);
     height: 5px;
     bottom: 0;
     background-color: ${({ $isActive }) =>

@@ -21,7 +21,6 @@ export interface TypographyProps {
   children?: ReactNode;
   innerHtml?: any;
   isCapitalized?: boolean;
-  isCapitalizedFirst?: boolean;
   isUppercase?: boolean;
   position?: Position;
   wordBreak?: "normal" | "break-all" | "keep-all" | "break-word";
@@ -89,14 +88,6 @@ const StyledTypography = styled.p.withConfig({
       text-transform: capitalize;
     `};
 
-  ${({ isCapitalizedFirst }) =>
-    isCapitalizedFirst &&
-    css`
-      &:first-letter {
-        text-transform: capitalize;
-      }
-    `};
-
   ${({ isUppercase }) =>
     isUppercase &&
     css`
@@ -127,7 +118,6 @@ export const Typography = ({
   children,
   innerHtml,
   isCapitalized = false,
-  isCapitalizedFirst = false,
   wordBreak,
   wrap = false,
   variant = "body",
@@ -171,7 +161,6 @@ export const Typography = ({
       color={color}
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
       isCapitalized={isCapitalized}
-      isCapitalizedFirst={isCapitalizedFirst}
       title={title}
       typographyVariant={typographyVariant}
       wordBreak={wordBreak}

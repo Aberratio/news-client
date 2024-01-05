@@ -16,7 +16,7 @@ export const NaviagationPanelItem = ({
           <Image></Image>
         </Link2>
         <div>
-          <Typography>Title</Typography>
+          <Typography>{category.name}</Typography>
           <Typography>Author</Typography>
           <Typography>Date</Typography>
         </div>
