@@ -1,12 +1,14 @@
 import { InformationBar } from "information-bar/InformationBar";
 import styled from "styled-components";
+import { Wall } from "./Wall";
 
 export const MainContainer = () => {
   return (
-    <Wrapper>
+    <Wrapper data-test-id="main-container">
       <Container>
         <Row>
           <InformationBar />
+          <Wall />
         </Row>
       </Container>
     </Wrapper>
@@ -16,22 +18,17 @@ export const MainContainer = () => {
 const Wrapper = styled.div`
   display: block;
   padding-top: 70px;
+
   background-color: #fff;
 `;
 
 const Container = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
   width: 100%;
   max-width: 1080px;
+  margin: auto;
 `;
 
 const Row = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-  justify-content: center !important;
+  display: grid;
+  grid-template-columns: 300px 1fr;
 `;

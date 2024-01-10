@@ -4,7 +4,7 @@ import { Typography } from "layout/components/typography/Typography";
 
 export const VisitCounter = () => {
   return (
-    <WidgetSchema title="Licznik odwiedzin">
+    <WidgetSchema dataTestId="visit-counter" title="Licznik odwiedzin">
       <Container>
         <Typography>99999999</Typography>
       </Container>

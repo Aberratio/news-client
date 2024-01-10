@@ -14,7 +14,7 @@ interface CommentProps {
 
 export const Comment = ({ comment, iterator }: CommentProps) => {
   return (
-    <Container>
+    <Container data-test-id={`comment-${iterator}`}>
       <Counter>
         <Typography>{iterator}</Typography>
       </Counter>

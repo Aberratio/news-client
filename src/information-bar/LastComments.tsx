@@ -11,7 +11,7 @@ const comment: CommentItem = {
 
 export const LastComments = () => {
   return (
-    <WidgetSchema title="Ostatnie komentarze">
+    <WidgetSchema dataTestId="last-comments" title="Ostatnie komentarze">
       <List>
         <Comment comment={comment} iterator={1} />
         <Comment comment={comment} iterator={2} />

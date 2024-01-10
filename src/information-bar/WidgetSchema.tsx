@@ -2,13 +2,18 @@ import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
 interface WidgetSchemaProps {
+  dataTestId: string;
   title: string;
   children: any;
 }
 
-export const WidgetSchema = ({ title, children }: WidgetSchemaProps) => {
+export const WidgetSchema = ({
+  dataTestId,
+  title,
+  children,
+}: WidgetSchemaProps) => {
   return (
-    <Container data-test-id="first-site">
+    <Container data-test-id={dataTestId}>
       <Header>
         <Title>{title}</Title>
       </Header>

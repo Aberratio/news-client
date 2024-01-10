@@ -3,7 +3,7 @@ import { WidgetSchema } from "./WidgetSchema";
 
 export const FirstSite = () => {
   return (
-    <WidgetSchema title="W sprzedaży od 10.01.2024">
+    <WidgetSchema dataTestId="first-site" title="W sprzedaży od 10.01.2024">
       <Cover src="/images/first_site/1410.jpg" />
     </WidgetSchema>
   );

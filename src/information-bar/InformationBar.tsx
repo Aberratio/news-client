@@ -16,16 +16,9 @@ export const InformationBar = () => {
 };
 
 const Wrapper = styled.div`
-  position: relative;
   width: 100%;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-  flex: 0 0 33.333333%;
-  max-width: 33.333333%;
 `;
 
 const Container = styled.div`
   padding-bottom: 20px;
-  padding-left: 10px;
 `;
