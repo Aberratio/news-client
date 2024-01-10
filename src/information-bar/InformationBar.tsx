@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FirstSite } from "./FirstSite";
 import { VisitCounter } from "./VisitCounter";
+import { LastComments } from "./LastComments";
 
 export const InformationBar = () => {
   return (
@@ -8,6 +9,7 @@ export const InformationBar = () => {
       <Container>
         <FirstSite />
         <VisitCounter />
+        <LastComments />
       </Container>
     </Wrapper>
   );
@@ -24,18 +26,6 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  --font-label-size: 16px;
-  --placeholder-color: rgba(0, 0, 0, 0.309);
-  font-weight: 400;
-  line-height: 1.5;
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  color: #666;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   padding-bottom: 20px;
   padding-left: 10px;
 `;
