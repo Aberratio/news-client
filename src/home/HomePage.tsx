@@ -1,3 +1,4 @@
+import { MainContainer } from "./MainContainer";
 import { NewsBar } from "./NewsBar";
 import { PopularThemesBar } from "./PopularThemesBar";
 
@@ -6,6 +7,7 @@ export const HomePage = () => {
     <div>
       <PopularThemesBar />
       <NewsBar />
+      <MainContainer />
     </div>
   );
 };
