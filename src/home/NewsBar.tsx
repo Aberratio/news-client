@@ -1,13 +1,52 @@
 import styled from "styled-components";
+import {
+  NewsBarPublication,
+  NewsBarPublicationSize,
+} from "./NewsBarPublication";
+
+export interface Publication {
+  category: {
+    name: string;
+    id: number;
+  };
+  title: string;
+  id: number;
+}
+
+const publicationMock: Publication = {
+  category: {
+    name: "Aktualności",
+    id: 1,
+  },
+  title: "Sytuacja na rzece Barycz jest stabilna",
+  id: 595,
+};
 
 export const NewsBar = () => {
   return (
-    <Wrapper>
+    <Wrapper data-test-id="news-bar">
       <Container>
         <Row>
-          <BigPublicationContainer>
-            <BigPublicationContainerImageBackground></BigPublicationContainerImageBackground>
-          </BigPublicationContainer>
+          <NewsBarPublication
+            publication={publicationMock}
+            size={NewsBarPublicationSize.LARGE}
+          />
+          <SmallPublicationsContainer>
+            <NewsBarPublication
+              publication={publicationMock}
+              size={NewsBarPublicationSize.MEDIUM}
+            />
+            <SmallPublicationsContainerRow>
+              <NewsBarPublication
+                publication={publicationMock}
+                size={NewsBarPublicationSize.SMALL}
+              />
+              <NewsBarPublication
+                publication={publicationMock}
+                size={NewsBarPublicationSize.SMALL}
+              />
+            </SmallPublicationsContainerRow>
+          </SmallPublicationsContainer>
         </Row>
       </Container>
     </Wrapper>
@@ -20,38 +59,26 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  margin: auto;
+  padding: 0 15px;
   width: 100%;
   max-width: 1080px;
 `;
 
 const Row = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -1px;
-  margin-right: -1px;
-`;
-
-const BigPublicationContainer = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding-bottom: 2px;
-  padding-left: 1px;
-  padding-right: 1px;
-`;
-
-const BigPublicationContainerImageBackground = styled.div`
-  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   height: 440px;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
+`;
+
+const SmallPublicationsContainer = styled.div`
   position: relative;
-  background-image: url("/images/article/kościól.jpg");
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+`;
+
+const SmallPublicationsContainerRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;

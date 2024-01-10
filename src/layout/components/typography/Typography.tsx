@@ -25,7 +25,6 @@ export interface TypographyProps {
   position?: Position;
   wordBreak?: "normal" | "break-all" | "keep-all" | "break-word";
   wrap?: boolean;
-  title?: string;
   variant?: keyof typeof Variant;
 }
 
@@ -121,7 +120,6 @@ export const Typography = ({
   wordBreak,
   wrap = false,
   variant = "body",
-  title,
   ...rest
 }: TypographyProps): ReactElement => {
   const { customFonts } = useStyles();
@@ -161,7 +159,6 @@ export const Typography = ({
       color={color}
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
       isCapitalized={isCapitalized}
-      title={title}
       typographyVariant={typographyVariant}
       wordBreak={wordBreak}
       wrap={wrap}

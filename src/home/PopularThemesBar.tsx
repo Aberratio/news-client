@@ -21,7 +21,7 @@ export const PopularThemesBar = () => {
 
   return (
     <Container>
-      <Typography color="green" isUppercase>
+      <Typography color="#15a752" isUppercase>
         Popularne tematy:
       </Typography>
       <Slider>
@@ -40,13 +40,15 @@ export const PopularThemesBar = () => {
 };
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr;
   margin-right: auto;
   margin-left: auto;
   padding: 8px 16px;
   width: 100%;
   max-width: 1080px;
   gap: 16px;
+  text-wrap: nowrap;
 `;
 
 const Slider = styled.div`
