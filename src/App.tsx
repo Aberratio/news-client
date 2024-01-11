@@ -4,8 +4,8 @@ import { OrganizationContextProvider } from "core/context/OrganizationContextPro
 
 import { GlobalStyle } from "./core/styles/global";
 import { ThemeProvider } from "./core/styles/ThemeProvider";
-import { MenuDesktop } from "menu/desktop/MenuDesktop";
-import { NavigationDesktop } from "navigation/NavigationDesktop";
+import { MenuDesktop } from "layout/menu/desktop/MenuDesktop";
+import { NavigationDesktop } from "layout/navigation/NavigationDesktop";
 import { PageContainer } from "page/PageContainer";
 import { BrowserRouter } from "react-router-dom";
 import { Footer } from "footer/Footer";
