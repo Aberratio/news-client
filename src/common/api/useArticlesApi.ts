@@ -5,10 +5,10 @@ export const useArticlesApi = () => {
   const { getArticlesLast } = useBasicApi();
 
   const getLastArticlesDetails = async (
-    category?: number,
+    categoryId?: number,
   ): Promise<GetArticlesLastResponse[]> => {
     return await getArticlesLast({
-      category,
+      category: categoryId,
       limit: 10,
       page: 0,
     });

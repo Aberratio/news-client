@@ -5,7 +5,7 @@ export const Wall = () => {
   return (
     <Wrapper>
       <Container>
-        <CategoryBox />
+        <CategoryBox categoryId={1} />
       </Container>
     </Wrapper>
   );

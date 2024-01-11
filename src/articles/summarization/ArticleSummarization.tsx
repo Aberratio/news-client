@@ -56,13 +56,7 @@ const ItemBody = styled.div`
 `;
 
 const Container = styled.div`
-  position: relative;
   width: 100%;
-  min-height: 1px;
-  padding-left: 15px;
-  flex: 0 0 50%;
-  max-width: 50%;
-  padding-right: 25px;
 `;
 
 const ItemContainer = styled.div`

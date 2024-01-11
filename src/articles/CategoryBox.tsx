@@ -6,13 +6,17 @@ import { useLastArticles } from "./useLastArticles";
 import { ArticleSummarizationItem } from "./summarization/ArticleSummarizationItem";
 import { useEffect, useState } from "react";
 
-export const CategoryBox = () => {
+interface CategoryBoxProps {
+  categoryId: number;
+}
+
+export const CategoryBox = ({ categoryId }: CategoryBoxProps) => {
   const { articles, isLoading, loadArticles } = useLastArticles();
   const [test, setTest] = useState<boolean>();
 
   useEffect(() => {
-    loadArticles(1);
-  }, []);
+    loadArticles(categoryId);
+  }, [categoryId]);
 
   useEffect(() => {
     setTest(isLoading);
@@ -45,7 +49,11 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   padding-bottom: 20px;
+  gap: 16px;
+  margin: 16px 0;
 `;
 
 const Header = styled.div`
