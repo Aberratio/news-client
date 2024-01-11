@@ -139,10 +139,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
+  margin: auto;
+  padding: 0 16px;
   width: 100%;
   max-width: 1080px;
 `;

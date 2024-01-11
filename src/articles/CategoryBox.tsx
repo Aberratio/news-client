@@ -12,17 +12,12 @@ interface CategoryBoxProps {
 
 export const CategoryBox = ({ categoryId }: CategoryBoxProps) => {
   const { articles, isLoading, loadArticles } = useLastArticles();
-  const [test, setTest] = useState<boolean>();
 
   useEffect(() => {
     loadArticles(categoryId);
   }, [categoryId]);
 
-  useEffect(() => {
-    setTest(isLoading);
-  }, [isLoading]);
-
-  if (test) {
+  if (isLoading) {
     return <p>Loading....</p>;
   }
 

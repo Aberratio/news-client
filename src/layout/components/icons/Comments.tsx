@@ -1,19 +1,15 @@
 import { Icon, IconProps } from "./Icon";
 
-export const AllConversations: React.FC<IconProps> = ({
-  color,
-  direction,
-  size,
-}) => (
+export const Comments: React.FC<IconProps> = ({ color, direction, size }) => (
   <Icon
-    size={size || { width: "2rem", height: "2rem" }}
+    size={size || { width: "1.25rem", height: "1.25rem" }}
     viewBox="0 0 58 58"
     x="0px"
     y="0px"
     direction={direction}
     color={color}
   >
-    <title>all conversations</title>
+    <title>comments</title>
 
     <g>
       <path

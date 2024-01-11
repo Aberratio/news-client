@@ -10,73 +10,71 @@ interface ArticleSummarizationProps {
 export const ArticleSummarization = ({
   article,
 }: ArticleSummarizationProps) => {
+  const linkToArticle = `/publications?${article.id}`;
+
   return (
-    <Wrapper>
+    <Wrapper data-test-id={`article-summarization-${article.id}`}>
       <Container>
-        <ImageWrapper href="/publications/publication.php?ID_publication=594">
-          <Image src="/images/article/barycz.jpg" />
-        </ImageWrapper>
-        <ItemBody>
-          <TitleWrapper>
-            <Typography>{article.title}</Typography>
-          </TitleWrapper>
-          <MetadataWrapper>
-            <AuthorWrapper href="#">
-              <Typography>{article.author.name}</Typography>
-            </AuthorWrapper>
-            <Typography>- {article.createdOn.toString()}</Typography>
-          </MetadataWrapper>
-          <StatisticBar />
-        </ItemBody>
+        <Link href={linkToArticle}>
+          <Image src={`/${article.photo.path}`} />
+        </Link>
+        <div>
+          <Link href={linkToArticle}>
+            <Title>{article.title}</Title>
+          </Link>
+          <Metadata>
+            <Link href="#">
+              <Typography variant="small">{article.author.name}</Typography>
+            </Link>
+            <Typography variant="small">
+              - {article.createdOn.toString()}
+            </Typography>
+          </Metadata>
+          <StatisticBar
+            statistics={{ views: 99, comments: 0, dislikes: 2, likes: 8 }}
+          />
+        </div>
       </Container>
     </Wrapper>
   );
 };
-
-const AuthorWrapper = styled.a`
-  text-decoration: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  transition: all 0.3s;
-`;
-
-const MetadataWrapper = styled.div`
-  padding-bottom: 8px;
-`;
-
-const TitleWrapper = styled.a`
-  text-decoration: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  transition: all 0.3s;
-`;
-
-const ItemBody = styled.div`
-  padding-top: 16px;
-`;
 
 const Wrapper = styled.div`
   width: 100%;
 `;
 
 const Container = styled.div`
-  margin-bottom: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;
 
-const ImageWrapper = styled.a`
-  color: #007bff;
+const Link = styled.a`
   text-decoration: none;
   background-color: transparent;
+
   touch-action: manipulation;
   transition: all 0.3s;
-  display: block;
+  cursor: pointer;
+`;
+
+const Title = styled(Typography)`
+  text-align: left;
 `;
 
 const Image = styled.img`
-  vertical-align: middle;
-  border-style: none;
-  object-fit: cover;
-  object-position: 50% 50%;
   height: 180px;
   width: 100%;
+
+  vertical-align: middle;
+  border-style: none;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+`;
+
+const Metadata = styled.div`
+  display: flex;
+  gap: 4px;
+  padding: 16px 0 4px 0;
 `;

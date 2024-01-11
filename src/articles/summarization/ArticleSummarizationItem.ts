@@ -7,29 +7,21 @@ export interface ArticleSummarizationItem {
     description: string;
     path: string;
   };
+  statistics?: StatisticsItem;
   title: string;
   views: number;
-}
-
-export interface Comment {
-  comment: string;
-  commentedOn: Date;
-  id: number;
-  isVisible: boolean;
-  user?: any;
-}
-
-export interface Photo {
-  author: Author;
-  description: string;
-  id: number;
-  isMain: boolean;
-  path: string;
 }
 
 export interface Author {
   id: number;
   name: string;
+}
+
+export interface StatisticsItem {
+  comments: number;
+  dislikes: number;
+  likes: number;
+  views: number;
 }
 
 enum Category {

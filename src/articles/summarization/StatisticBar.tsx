@@ -1,48 +1,56 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
+import { StatisticsItem } from "./ArticleSummarizationItem";
+import { Thumb } from "layout/components/icons/Thumb";
+import { Comments } from "layout/components/icons/Comments";
+import { Eye } from "layout/components/icons/Eye";
 
-export const StatisticBar = () => {
+interface StatisticBarProps {
+  statistics: StatisticsItem;
+}
+
+export const StatisticBar = ({ statistics }: StatisticBarProps) => {
   return (
     <Container data-test-id="statistic-bar">
-      <StatisticItemWrapper>
-        <StatisticNumber>
-          <Typography variant="small">99</Typography>
-        </StatisticNumber>
-        <StatisticIcon>👁️</StatisticIcon>
-      </StatisticItemWrapper>
-      <StatisticItemWrapper>
-        <StatisticNumber>
-          <Typography variant="small">99</Typography>
-        </StatisticNumber>
-        <StatisticIcon>💬</StatisticIcon>
-      </StatisticItemWrapper>
-      <StatisticItemWrapper>
-        <StatisticNumber>
-          <Typography variant="small">99</Typography>
-        </StatisticNumber>
-        <StatisticIcon>👁️</StatisticIcon>
-      </StatisticItemWrapper>
-      <StatisticItemWrapper>
-        <StatisticNumber>
-          <Typography variant="small">99</Typography>
-        </StatisticNumber>
-        <StatisticIcon>👁️</StatisticIcon>
-      </StatisticItemWrapper>
+      <Item>
+        <Counter>
+          <Typography variant="small">{statistics.views}</Typography>
+        </Counter>
+        <Eye />
+      </Item>
+      <Item>
+        <Counter>
+          <Typography variant="small">{statistics.comments}</Typography>
+        </Counter>
+        <Comments />
+      </Item>
+      <Item>
+        <Counter>
+          <Typography variant="small">{statistics.likes}</Typography>
+        </Counter>
+        <ThumbDown />
+      </Item>
+      <Item>
+        <Counter>
+          <Typography variant="small">{statistics.dislikes}</Typography>
+        </Counter>
+        <Thumb direction="right" />
+      </Item>
     </Container>
   );
 };
 
-const StatisticIcon = styled.div`
-  padding: 0 0 0 8px;
+const ThumbDown = styled(Thumb)`
+  margin-bottom: 4px;
 `;
-const StatisticNumber = styled.div``;
+const Counter = styled.div``;
 
-const StatisticItemWrapper = styled.div`
-  padding: 0 20px 0 0;
-  padding-right: 12px;
+const Item = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  gap: 8px;
+  padding: 0 12px 0 0;
 `;
 
 const Container = styled.a`
