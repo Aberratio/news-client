@@ -8,6 +8,7 @@ import { MenuDesktop } from "menu/desktop/MenuDesktop";
 import { NavigationDesktop } from "navigation/NavigationDesktop";
 import { PageContainer } from "page/PageContainer";
 import { BrowserRouter } from "react-router-dom";
+import { Footer } from "footer/Footer";
 
 export const App = () => {
   return (
@@ -19,6 +20,7 @@ export const App = () => {
             <MenuDesktop />
             <NavigationDesktop />
             <PageContainer />
+            <Footer />
           </BrowserRouter>
         </OrganizationContextProvider>
       </Container>

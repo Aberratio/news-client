@@ -27,7 +27,7 @@ export const CategoryBox = ({ categoryId }: CategoryBoxProps) => {
   }
 
   return (
-    <Wrapper>
+    <Wrapper data-test-id={`category-box-${categoryId}`}>
       <Header>
         <Typography variant="h3">Aktualności</Typography>
         <SeeMore href="/publications/category.php?ID_category=1&ID_page=1">

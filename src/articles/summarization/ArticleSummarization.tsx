@@ -11,8 +11,8 @@ export const ArticleSummarization = ({
   article,
 }: ArticleSummarizationProps) => {
   return (
-    <Container>
-      <ItemContainer>
+    <Wrapper>
+      <Container>
         <ImageWrapper href="/publications/publication.php?ID_publication=594">
           <Image src="/images/article/barycz.jpg" />
         </ImageWrapper>
@@ -28,8 +28,8 @@ export const ArticleSummarization = ({
           </MetadataWrapper>
           <StatisticBar />
         </ItemBody>
-      </ItemContainer>
-    </Container>
+      </Container>
+    </Wrapper>
   );
 };
 
@@ -55,11 +55,11 @@ const ItemBody = styled.div`
   padding-top: 16px;
 `;
 
-const Container = styled.div`
+const Wrapper = styled.div`
   width: 100%;
 `;
 
-const ItemContainer = styled.div`
+const Container = styled.div`
   margin-bottom: 45px;
 `;
 

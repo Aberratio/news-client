@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StatisticBar = () => {
   return (
-    <StatisticsWrapper>
+    <Container data-test-id="statistic-bar">
       <StatisticItemWrapper>
         <StatisticNumber>
           <Typography variant="small">99</Typography>
@@ -28,7 +28,7 @@ export const StatisticBar = () => {
         </StatisticNumber>
         <StatisticIcon>👁️</StatisticIcon>
       </StatisticItemWrapper>
-    </StatisticsWrapper>
+    </Container>
   );
 };
 
@@ -45,7 +45,7 @@ const StatisticItemWrapper = styled.div`
   align-items: center;
 `;
 
-const StatisticsWrapper = styled.a`
+const Container = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-start;
