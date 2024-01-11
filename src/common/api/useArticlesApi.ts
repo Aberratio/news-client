@@ -5,7 +5,7 @@ export const useArticlesApi = () => {
   const { getArticlesLast } = useBasicApi();
 
   const getLastArticlesDetails = async (
-    category: number,
+    category?: number,
   ): Promise<GetArticlesLastResponse[]> => {
     return await getArticlesLast({
       category,

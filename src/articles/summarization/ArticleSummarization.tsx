@@ -24,7 +24,7 @@ export const ArticleSummarization = ({
             <AuthorWrapper href="#">
               <Typography>{article.author.name}</Typography>
             </AuthorWrapper>
-            <Typography>- {article.createdOn.toISOString()}</Typography>
+            <Typography>- {article.createdOn.toString()}</Typography>
           </MetadataWrapper>
           <StatisticBar />
         </ItemBody>

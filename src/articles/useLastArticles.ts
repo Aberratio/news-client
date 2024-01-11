@@ -1,31 +1,25 @@
 import { useArticlesApi } from "common/api/useArticlesApi";
-import { useQuery } from "common/hooks/useQuery";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArticleSummarizationItem } from "./summarization/ArticleSummarizationItem";
 import { GetArticlesLastResponse } from "common/api/responses/GetArticlesLastResponse";
 
 export const useLastArticles = () => {
   const { getLastArticlesDetails } = useArticlesApi();
   const [articles, setArticles] = useState<ArticleSummarizationItem[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const getLastArticlesQuery = useQuery({
-    deferFn: getLastArticlesDetails,
-    onResolve: (data) => {
+  const loadArticles = (category?: number) => {
+    getLastArticlesDetails(category).then((data) => {
+      console.log(data);
       setArticles(mapData(data));
-    },
-    onReject: (e) => {
-      console.warn(e);
-    },
-  });
-
-  useEffect(() => {
-    console.log("jestem!");
-    getLastArticlesQuery.run();
-  }, []);
+      setIsLoading(false);
+    });
+  };
 
   return {
     articles,
-    isLoading: getLastArticlesQuery.isLoading,
+    isLoading,
+    loadArticles,
   };
 };
 

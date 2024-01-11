@@ -4,11 +4,21 @@ import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { useLastArticles } from "./useLastArticles";
 import { ArticleSummarizationItem } from "./summarization/ArticleSummarizationItem";
+import { useEffect, useState } from "react";
 
 export const CategoryBox = () => {
-  const { articles, isLoading } = useLastArticles();
+  const { articles, isLoading, loadArticles } = useLastArticles();
+  const [test, setTest] = useState<boolean>();
 
-  if (isLoading) {
+  useEffect(() => {
+    loadArticles(1);
+  }, []);
+
+  useEffect(() => {
+    setTest(isLoading);
+  }, [isLoading]);
+
+  if (test) {
     return <p>Loading....</p>;
   }
 
