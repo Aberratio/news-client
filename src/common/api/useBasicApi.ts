@@ -1,25 +1,26 @@
 import { useHttp } from "common/hooks/useHttp";
 
-import { GetChatMessagesRequest } from "./requests/GetChatMessagesRequest";
+import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
 import { GetRunStatusRequest } from "./requests/GetRunStatusRequest";
 import { PostCreateChatRequest } from "./requests/PostCreateChatRequest";
 import { PostMessageRequest } from "./requests/PostMessageRequest";
 import { PostRunChatRequest } from "./requests/PostRunChatRequest";
-import { GetChatMessagesResponse } from "./responses/GetChatMessagesResponse";
+import { GetArticlesLastResponse } from "./responses/GetArticlesLastResponse";
 import { GetRunStatusResponse } from "./responses/GetRunStatusResponse";
 import { PostCreateChatResponse } from "./responses/PostCreateChatResponse";
 import { PostMessageResponse } from "./responses/PostMessageResponse";
 import { PostRunChatResponse } from "./responses/PostRunChatResponse";
 
-export const useCopilotApi = () => {
+export const useBasicApi = () => {
   const { get, post } = useHttp();
-  const apiUrl = "https://api.openai.com/v1";
+  const apiUrl = "http://localhost:3007/v1";
 
-  const getChatMessages = async (
-    request: GetChatMessagesRequest,
-  ): Promise<GetChatMessagesResponse> =>
-    get<GetChatMessagesRequest, GetChatMessagesResponse>(
-      `${apiUrl}/threads/${request.threadId}/messages`,
+  const getArticlesLast = async (
+    request: GetArticlesLastRequest,
+  ): Promise<GetArticlesLastResponse[]> =>
+    get<GetArticlesLastRequest, GetArticlesLastResponse[]>(
+      `${apiUrl}/articles/last`,
+      request,
     );
 
   const getRunStatus = async (
@@ -51,7 +52,7 @@ export const useCopilotApi = () => {
     );
 
   return {
-    getChatMessages,
+    getArticlesLast,
     getRunStatus,
     postCreateChat,
     postMessage,

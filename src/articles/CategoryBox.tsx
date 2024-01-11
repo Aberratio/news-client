@@ -2,8 +2,16 @@ import { ArticleSummarization } from "articles/summarization/ArticleSummarizatio
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
+import { useLastArticles } from "./useLastArticles";
+import { ArticleSummarizationItem } from "./summarization/ArticleSummarizationItem";
 
-export const Box = () => {
+export const CategoryBox = () => {
+  const { articles, isLoading } = useLastArticles();
+
+  if (isLoading) {
+    return <p>Loading....</p>;
+  }
+
   return (
     <Wrapper>
       <Header>
@@ -14,7 +22,9 @@ export const Box = () => {
         </SeeMore>
       </Header>
       <Container>
-        <ArticleSummarization />
+        {articles.map((article: ArticleSummarizationItem) => {
+          return <ArticleSummarization article={article} />;
+        })}
       </Container>
     </Wrapper>
   );

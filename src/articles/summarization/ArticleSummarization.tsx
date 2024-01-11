@@ -1,8 +1,15 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { StatisticBar } from "./StatisticBar";
+import { ArticleSummarizationItem } from "./ArticleSummarizationItem";
 
-export const ArticleSummarization = () => {
+interface ArticleSummarizationProps {
+  article: ArticleSummarizationItem;
+}
+
+export const ArticleSummarization = ({
+  article,
+}: ArticleSummarizationProps) => {
   return (
     <Container>
       <ItemContainer>
@@ -11,13 +18,13 @@ export const ArticleSummarization = () => {
         </ImageWrapper>
         <ItemBody>
           <TitleWrapper>
-            <Typography> Sytuacja na rzece Barycz jest stabilna</Typography>
+            <Typography>{article.title}</Typography>
           </TitleWrapper>
           <MetadataWrapper>
             <AuthorWrapper href="#">
-              <Typography>Agnieszka Kaczmarek</Typography>
+              <Typography>{article.author.name}</Typography>
             </AuthorWrapper>
-            <Typography>- 2024-01-04</Typography>
+            <Typography>- {article.createdOn.toISOString()}</Typography>
           </MetadataWrapper>
           <StatisticBar />
         </ItemBody>
@@ -31,15 +38,10 @@ const AuthorWrapper = styled.a`
   background-color: transparent;
   touch-action: manipulation;
   transition: all 0.3s;
-  color: #888;
-  font-family: Roboto-Bold;
-  font-size: 12px;
-  line-height: 1.7;
 `;
 
 const MetadataWrapper = styled.div`
   padding-bottom: 8px;
-  color: #888;
 `;
 
 const TitleWrapper = styled.a`
@@ -47,10 +49,6 @@ const TitleWrapper = styled.a`
   background-color: transparent;
   touch-action: manipulation;
   transition: all 0.3s;
-  color: #222;
-  font-family: Roboto-Regular;
-  font-size: 20px;
-  line-height: 1.25;
 `;
 
 const ItemBody = styled.div`

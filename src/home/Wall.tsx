@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { Box } from "./Box";
+import { CategoryBox } from "../articles/CategoryBox";
 
 export const Wall = () => {
   return (
     <Wrapper>
       <Container>
-        <Box />
+        <CategoryBox />
       </Container>
     </Wrapper>
   );
