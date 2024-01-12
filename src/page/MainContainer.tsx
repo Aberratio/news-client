@@ -1,14 +1,17 @@
-import { InformationBar } from "layout/information-bar/InformationBar";
+import { SideBar } from "layout/side-bar/SideBar";
 import styled from "styled-components";
-import { Wall } from "./Wall";
 
-export const MainContainer = () => {
+interface MainContainerProps {
+  children: any;
+}
+
+export const MainContainer = ({ children }: MainContainerProps) => {
   return (
     <Wrapper data-test-id="main-container">
       <Container>
         <Row>
-          <InformationBar />
-          <Wall />
+          <SideBar />
+          {children}
         </Row>
       </Container>
     </Wrapper>

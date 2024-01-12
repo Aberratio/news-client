@@ -3,7 +3,7 @@ import { FirstSite } from "./FirstSite";
 import { VisitCounter } from "./VisitCounter";
 import { LastComments } from "./LastComments";
 
-export const InformationBar = () => {
+export const SideBar = () => {
   return (
     <Wrapper data-test-id="information-bar">
       <Container>
