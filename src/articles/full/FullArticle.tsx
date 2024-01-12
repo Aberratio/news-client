@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 export const FullArticle = () => {
   const { article, isLoading, loadArticle } = useArticle();
-  const linkToArticle = `/publications?${article.id}`;
   const linkToCategory = `/publications?${article.id}`;
 
   const { id } = useParams();
@@ -26,7 +25,7 @@ export const FullArticle = () => {
         <Link href={linkToCategory}>
           <Typography>{article.category}</Typography>
         </Link>
-        <Typography variant="h1">{article.title}</Typography>
+        <Text variant="h1">{article.title}</Text>
         <MetadataBar
           authorName={article.author.name}
           createdOn={article.createdOn}
@@ -34,18 +33,16 @@ export const FullArticle = () => {
         <StatisticBar
           statistics={{ views: 99, comments: 0, dislikes: 2, likes: 8 }}
         />
+        <SliderContainer>
+          <Image src="/images/article/barycz.jpg" />
+        </SliderContainer>
+        <LeadContainer>
+          <Text>
+            <strong>{article.lead}</strong>
+          </Text>
+        </LeadContainer>
         <div>
-          <Link href={linkToArticle}>
-            <Title>{article.title}</Title>
-          </Link>
-          <Metadata>
-            <Link href="#">
-              <Typography variant="small">{article.author.name}</Typography>
-            </Link>
-            <Typography variant="small">
-              - {article.createdOn.toString()}
-            </Typography>
-          </Metadata>
+          <Body innerHtml={article.body} />
         </div>
       </Container>
     </Wrapper>
@@ -74,23 +71,35 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-const Title = styled(Typography)`
+const SliderContainer = styled.div`
+  position: relative;
+  display: block;
+`;
+
+const LeadContainer = styled.div`
+  margin: 0;
+  margin-top: 3rem !important;
+  padding-bottom: 15px;
+  color: #666;
+  font-family: Roboto-Regular;
+  font-size: 16px;
+  line-height: 1.8;
+`;
+
+const Text = styled(Typography)`
   text-align: left;
+  align-items: flex-start;
+`;
+const Body = styled(Text)`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Image = styled.img`
-  height: 180px;
-  width: 100%;
-
-  vertical-align: middle;
   border-style: none;
-
   object-fit: cover;
   object-position: 50% 50%;
-`;
-
-const Metadata = styled.div`
-  display: flex;
-  gap: 4px;
-  padding: 16px 0 4px 0;
+  height: 420px;
+  vertical-align: middle;
+  width: 100%;
 `;

@@ -1,29 +1,31 @@
 import { CustomFonts } from "../../core/styles/customization/CustomFonts";
 
-const FONT_FAMILY_PRIMARY = "Roboto";
+const FONT_FAMILY_PRIMARY = "Arial, sans-serif";
+const FONT_FAMILY_SECONDARY = "Roboto-Medium";
 const WEIGHT_100 = 100;
 const WEIGHT_200 = 200;
 const WEIGHT_300 = 300;
 const WEIGHT_400 = 400;
+const WEIGHT_500 = 500;
 
 export const customFonts: CustomFonts = {
   h1: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "64px",
-    lineHeight: "72px",
-    fontWeight: WEIGHT_400,
+    fontSize: "30px",
+    lineHeight: "1.3",
+    fontWeight: WEIGHT_500,
   },
   h1T: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "36px",
-    lineHeight: "48px",
-    fontWeight: WEIGHT_300,
+    fontSize: "28px",
+    lineHeight: "1.3",
+    fontWeight: WEIGHT_400,
   },
   h1M: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "24px",
-    lineHeight: "32px",
-    fontWeight: WEIGHT_200,
+    fontSize: "30px",
+    lineHeight: "1.3",
+    fontWeight: WEIGHT_300,
   },
   h2: {
     fontFamily: FONT_FAMILY_PRIMARY,
