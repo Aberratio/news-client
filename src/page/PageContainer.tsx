@@ -3,6 +3,7 @@ import { HomePage } from "../layout/home/HomePage";
 import { AboutPage } from "./AboutPage";
 import styled from "styled-components";
 import { FullArticlePage } from "./FullArticlePage";
+import { ContactPage } from "./ContactPage";
 
 export const PageContainer = () => {
   return (
@@ -10,6 +11,7 @@ export const PageContainer = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/article/:id" element={<FullArticlePage />} />
       </Routes>
     </Container>

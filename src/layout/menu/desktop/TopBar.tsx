@@ -1,16 +1,9 @@
 import { Button } from "layout/components/buttons/Button";
+import { LinkButton } from "layout/components/links/LinkButton";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
 export const TopBar = () => {
-  const openAboutUsPage = (): void => {
-    console.log("openAboutUsPage");
-  };
-
-  const openContactPage = (): void => {
-    console.log("openContactPage");
-  };
-
   const openLoginModal = (): void => {
     console.log("openContactPage");
   };
@@ -23,13 +16,13 @@ export const TopBar = () => {
     <Wrapper>
       <Container>
         <Part>
-          <Button variant="link" onClick={openAboutUsPage}>
+          <LinkButton to="/about">
             <Typography variant="small">O nas</Typography>
-          </Button>
+          </LinkButton>
 
-          <Button variant="link" onClick={openContactPage}>
+          <LinkButton to="/contact">
             <Typography variant="small">Kontakt</Typography>
-          </Button>
+          </LinkButton>
         </Part>
         <Part>
           <Button variant="link" onClick={openLoginModal}>
