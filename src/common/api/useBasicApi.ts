@@ -1,19 +1,26 @@
 import { useHttp } from "common/hooks/useHttp";
 
 import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
-import { GetRunStatusRequest } from "./requests/GetRunStatusRequest";
 import { PostCreateChatRequest } from "./requests/PostCreateChatRequest";
 import { PostMessageRequest } from "./requests/PostMessageRequest";
 import { PostRunChatRequest } from "./requests/PostRunChatRequest";
 import { GetArticlesLastResponse } from "./responses/GetArticlesLastResponse";
-import { GetRunStatusResponse } from "./responses/GetRunStatusResponse";
 import { PostCreateChatResponse } from "./responses/PostCreateChatResponse";
 import { PostMessageResponse } from "./responses/PostMessageResponse";
 import { PostRunChatResponse } from "./responses/PostRunChatResponse";
+import { GetArticleRequest } from "./requests/GetArticleRequest";
+import { GetArticleResponse } from "./responses/GetArticleResponse";
 
 export const useBasicApi = () => {
   const { get, post } = useHttp();
   const apiUrl = "http://localhost:3007/v1";
+
+  const getArticle = async (
+    request: GetArticleRequest,
+  ): Promise<GetArticleResponse> =>
+    get<GetArticleRequest, GetArticleResponse>(
+      `${apiUrl}/articles/${request.id}`,
+    );
 
   const getArticlesLast = async (
     request: GetArticlesLastRequest,
@@ -21,13 +28,6 @@ export const useBasicApi = () => {
     get<GetArticlesLastRequest, GetArticlesLastResponse[]>(
       `${apiUrl}/articles/last`,
       request,
-    );
-
-  const getRunStatus = async (
-    request: GetRunStatusRequest,
-  ): Promise<GetRunStatusResponse> =>
-    get<GetRunStatusRequest, GetRunStatusResponse>(
-      `${apiUrl}/threads/${request.threadId}/runs/${request.runId}`,
     );
 
   const postCreateChat = async (): Promise<PostCreateChatResponse> =>
@@ -52,8 +52,8 @@ export const useBasicApi = () => {
     );
 
   return {
+    getArticle,
     getArticlesLast,
-    getRunStatus,
     postCreateChat,
     postMessage,
     postRunChat,

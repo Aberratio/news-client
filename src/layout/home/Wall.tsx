@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CategoryBox } from "../../articles/CategoryBox";
+import { CategoryBox } from "../../articles/summarization/CategoryBox";
 
 export const Wall = () => {
   return (

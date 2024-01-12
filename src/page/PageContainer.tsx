@@ -10,7 +10,7 @@ export const PageContainer = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/article" element={<FullArticlePage />} />
+        <Route path="/article/:id" element={<FullArticlePage />} />
       </Routes>
     </Container>
   );

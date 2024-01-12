@@ -1,8 +1,9 @@
 import { GetArticlesLastResponse } from "common/api/responses/GetArticlesLastResponse";
 import { useBasicApi } from "common/api/useBasicApi";
+import { GetArticleResponse } from "./responses/GetArticleResponse";
 
 export const useArticlesApi = () => {
-  const { getArticlesLast } = useBasicApi();
+  const { getArticle, getArticlesLast } = useBasicApi();
 
   const getLastArticlesDetails = async (
     categoryId?: number,
@@ -14,7 +15,16 @@ export const useArticlesApi = () => {
     });
   };
 
+  const getArticleDetails = async (
+    articleId: number,
+  ): Promise<GetArticleResponse> => {
+    return await getArticle({
+      id: articleId,
+    });
+  };
+
   return {
+    getArticleDetails,
     getLastArticlesDetails,
   };
 };

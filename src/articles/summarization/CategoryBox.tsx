@@ -2,8 +2,8 @@ import { ArticleSummarization } from "articles/summarization/ArticleSummarizatio
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { useLastArticles } from "./useLastArticles";
-import { ArticleSummarizationItem } from "./summarization/ArticleSummarizationItem";
+import { useLastArticles } from "../useLastArticles";
+import { ArticleSummarizationItem } from "./ArticleSummarizationItem";
 import { useEffect } from "react";
 
 interface CategoryBoxProps {
