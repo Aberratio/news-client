@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { TopBar } from "../../../menu/desktop/TopBar";
-import { TitleBar } from "../../../menu/desktop/TitleBar";
+import { TopBar } from "./TopBar";
+import { TitleBar } from "./TitleBar";
 import { LogoBar } from "./LogoBar";
 import { InfoBar } from "./InfoBar";
 

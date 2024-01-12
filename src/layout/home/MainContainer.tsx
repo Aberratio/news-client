@@ -1,4 +1,4 @@
-import { InformationBar } from "information-bar/InformationBar";
+import { InformationBar } from "layout/information-bar/InformationBar";
 import styled from "styled-components";
 import { Wall } from "./Wall";
 

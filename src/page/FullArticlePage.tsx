@@ -1,3 +1,9 @@
+import { Breadcrumb } from "layout/breadcrumbs/Breadcrumb";
+
 export const FullArticlePage = () => {
-  return <div>Full Article Page</div>;
+  return (
+    <div>
+      <Breadcrumb />
+    </div>
+  );
 };

@@ -8,7 +8,7 @@ import { MenuDesktop } from "layout/menu/desktop/MenuDesktop";
 import { NavigationDesktop } from "layout/navigation/NavigationDesktop";
 import { PageContainer } from "page/PageContainer";
 import { BrowserRouter } from "react-router-dom";
-import { Footer } from "footer/Footer";
+import { Footer } from "layout/footer/Footer";
 
 export const App = () => {
   return (
