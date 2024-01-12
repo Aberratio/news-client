@@ -20,7 +20,7 @@ export const PopularThemesBar = () => {
   }, []);
 
   return (
-    <Container>
+    <Container data-test-id="popular-themes-bar">
       <Typography color="#15a752" isUppercase>
         Popularne tematy:
       </Typography>

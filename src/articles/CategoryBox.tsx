@@ -4,7 +4,7 @@ import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { useLastArticles } from "./useLastArticles";
 import { ArticleSummarizationItem } from "./summarization/ArticleSummarizationItem";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface CategoryBoxProps {
   categoryId: number;

@@ -5,7 +5,7 @@ import { Wall } from "./Wall";
 
 export const HomePage = () => {
   return (
-    <div>
+    <div data-test-id="home-page">
       <PopularThemesBar />
       <NewsBar />
       <MainContainer>

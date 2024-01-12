@@ -1,7 +1,8 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { StatisticBar } from "./StatisticBar";
+import { StatisticBar } from "../StatisticBar";
 import { ArticleSummarizationItem } from "./ArticleSummarizationItem";
+import { MetadataBar } from "articles/MetadataBar";
 
 interface ArticleSummarizationProps {
   article: ArticleSummarizationItem;
@@ -22,14 +23,10 @@ export const ArticleSummarization = ({
           <Link href={linkToArticle}>
             <Title>{article.title}</Title>
           </Link>
-          <Metadata>
-            <Link href="#">
-              <Typography variant="small">{article.author.name}</Typography>
-            </Link>
-            <Typography variant="small">
-              - {article.createdOn.toString()}
-            </Typography>
-          </Metadata>
+          <MetadataBar
+            authorName={article.author.name}
+            createdOn={article.createdOn}
+          />
           <StatisticBar
             statistics={{ views: 99, comments: 0, dislikes: 2, likes: 8 }}
           />
@@ -71,10 +68,4 @@ const Image = styled.img`
 
   object-fit: cover;
   object-position: 50% 50%;
-`;
-
-const Metadata = styled.div`
-  display: flex;
-  gap: 4px;
-  padding: 16px 0 4px 0;
 `;
