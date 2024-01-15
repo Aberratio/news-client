@@ -10,6 +10,8 @@ import { PostMessageResponse } from "./responses/PostMessageResponse";
 import { PostRunChatResponse } from "./responses/PostRunChatResponse";
 import { GetArticleRequest } from "./requests/GetArticleRequest";
 import { GetArticleResponse } from "./responses/GetArticleResponse";
+import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
+import { GetPopularTitlesRequest } from "./requests/GetPopularTitlesRequest";
 
 export const useBasicApi = () => {
   const { get, post } = useHttp();
@@ -27,6 +29,14 @@ export const useBasicApi = () => {
   ): Promise<GetArticlesLastResponse[]> =>
     get<GetArticlesLastRequest, GetArticlesLastResponse[]>(
       `${apiUrl}/articles/last`,
+      request,
+    );
+
+  const getPopularTitles = async (
+    request: GetPopularTitlesRequest,
+  ): Promise<GetPopularTitlesResponse[]> =>
+    get<GetPopularTitlesRequest, GetPopularTitlesResponse[]>(
+      `${apiUrl}/articles/popular`,
       request,
     );
 
@@ -54,6 +64,7 @@ export const useBasicApi = () => {
   return {
     getArticle,
     getArticlesLast,
+    getPopularTitles,
     postCreateChat,
     postMessage,
     postRunChat,

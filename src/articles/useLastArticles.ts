@@ -1,9 +1,6 @@
 import { useArticlesApi } from "common/api/useArticlesApi";
 import { useState } from "react";
-import {
-  ArticleSummarizationItem,
-  CategoryEnum,
-} from "./items/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "./items/ArticleSummarizationItem";
 import { GetArticlesLastResponse } from "common/api/responses/GetArticlesLastResponse";
 import {
   buildArticlePath,
@@ -12,6 +9,7 @@ import {
   buildPhotoPath,
 } from "common/builders/buildPath";
 import { formatDateToString } from "common/builders/buildDate";
+import { CategoryEnum } from "./items/CategoryItem";
 
 export const useLastArticles = () => {
   const { getLastArticlesDetails } = useArticlesApi();

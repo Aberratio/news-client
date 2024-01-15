@@ -29,7 +29,7 @@ export const NewsBarPublication = ({
   };
 
   return (
-    <PublicationContainer>
+    <Wrapper data-test-id="new-bar-publication">
       <ImageBackground>
         <ImageLink
           href={`publications/publication.php?ID_publication=${publication.id}`}
@@ -54,11 +54,11 @@ export const NewsBarPublication = ({
           </Description>
         </ImageLink>
       </ImageBackground>
-    </PublicationContainer>
+    </Wrapper>
   );
 };
 
-const PublicationContainer = styled.div`
+const Wrapper = styled.div`
   position: relative;
   width: 100%;
 `;

@@ -6,6 +6,9 @@ export const Wall = () => {
     <Wrapper>
       <Container>
         <CategoryBox categoryId={1} />
+        <CategoryBox categoryId={2} />
+        <CategoryBox categoryId={3} />
+        <CategoryBox categoryId={4} />
       </Container>
     </Wrapper>
   );

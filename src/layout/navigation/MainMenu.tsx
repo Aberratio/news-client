@@ -69,6 +69,7 @@ export const MainMenu = () => {
         return (
           <NavigationItem
             isActive={activeNavigationItemIndex === tab.id}
+            key={tab.id}
             tab={tab}
             onClick={() => setActiveNavigationItemIndex(tab.id)}
           />
