@@ -2,9 +2,13 @@ import { GetPopularTitlesResponse } from "common/api/responses/GetPopularTitlesR
 import { useArticlesApi } from "common/api/useArticlesApi";
 import { useState } from "react";
 
-interface TitleItem {}
+interface TitleItem {
+  articleId: number;
+  id: number;
+  title: string;
+}
 
-export const usePopularThemes = () => {
+export const usePopularTitles = () => {
   const { getPopularTitlesDetails } = useArticlesApi();
   const [titles, setTitles] = useState<TitleItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -24,6 +28,10 @@ export const usePopularThemes = () => {
 };
 
 const mapData = (data: GetPopularTitlesResponse[]): TitleItem[] =>
-  data.map((item: GetPopularTitlesResponse) => {
-    return item;
+  data.map((item: GetPopularTitlesResponse, index: number) => {
+    return {
+      articleId: item.id,
+      id: index,
+      title: item.title,
+    };
   });

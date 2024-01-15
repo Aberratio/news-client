@@ -1,37 +1,43 @@
 import { useState, useEffect } from "react";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
+import { usePopularTitles } from "./popular-titles/usePopularTitles";
 
-const themes = [
-  "Budżet powiatu przeszedł tylko jednym głosem",
-  "Udany Jarmark!",
-  "Sytuacja na rzece Barycz",
-];
-
-export const PopularThemesBar = () => {
-  const [currentThemeIndex, setCurrentThemeIndex] = useState(0);
+export const PopularTitlesBar = () => {
+  const { isLoading, titles, loadPopulatTitles } = usePopularTitles();
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentThemeIndex((prevIndex) => (prevIndex + 1) % themes.length);
-    }, 3000);
-
-    return () => clearInterval(intervalId);
+    loadPopulatTitles(3, 5);
   }, []);
 
+  useEffect(() => {
+    if (titles.length) {
+      const intervalId = setInterval(() => {
+        setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % titles.length);
+      }, 5000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [titles]);
+
+  if (isLoading) {
+    return <></>;
+  }
+
   return (
-    <Container data-test-id="popular-themes-bar">
+    <Container data-test-id="popular-titles-bar">
       <Typography color="#15a752" isUppercase>
         Popularne tematy:
       </Typography>
       <Slider>
-        {themes.map((theme, index) => (
+        {titles.map((item, index) => (
           <StyledTypography
-            key={index}
+            key={item.id}
             color="red"
-            isVisible={index === currentThemeIndex}
+            isVisible={index === currentTitleIndex}
           >
-            {theme}
+            {item.title}
           </StyledTypography>
         ))}
       </Slider>

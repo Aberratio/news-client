@@ -1,1 +1,4 @@
-export interface GetPopularTitlesResponse {}
+export interface GetPopularTitlesResponse {
+  id: number;
+  title: string;
+}
