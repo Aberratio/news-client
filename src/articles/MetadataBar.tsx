@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface MetadataBarProps {
   authorName: string;
-  createdOn: Date;
+  createdOn: string;
 }
 
 export const MetadataBar = ({ authorName, createdOn }: MetadataBarProps) => {
@@ -12,7 +12,7 @@ export const MetadataBar = ({ authorName, createdOn }: MetadataBarProps) => {
       <Link href="#">
         <Typography variant="small">{authorName}</Typography>
       </Link>
-      <Typography variant="small">- {createdOn.toString()}</Typography>
+      <Typography variant="small">- {createdOn}</Typography>
     </Container>
   );
 };

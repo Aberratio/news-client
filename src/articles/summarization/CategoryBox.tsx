@@ -3,7 +3,7 @@ import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { useLastArticles } from "../useLastArticles";
-import { ArticleSummarizationItem } from "./ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
 import { useEffect } from "react";
 
 interface CategoryBoxProps {

@@ -1,9 +1,9 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { StatisticsItem } from "./summarization/ArticleSummarizationItem";
 import { Thumb } from "layout/components/icons/Thumb";
 import { Comments } from "layout/components/icons/Comments";
 import { Eye } from "layout/components/icons/Eye";
+import { StatisticsItem } from "./items/StatisticsItem";
 
 interface StatisticBarProps {
   statistics: StatisticsItem;

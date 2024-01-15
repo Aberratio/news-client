@@ -23,16 +23,14 @@ export const FullArticle = () => {
     <Wrapper data-test-id={`full-article-${article.id}`}>
       <Container>
         <Link href={linkToCategory}>
-          <Typography>{article.category}</Typography>
+          <Typography>{article.category.name}</Typography>
         </Link>
         <Text variant="h1">{article.title}</Text>
         <MetadataBar
           authorName={article.author.name}
           createdOn={article.createdOn}
         />
-        <StatisticBar
-          statistics={{ views: 99, comments: 0, dislikes: 2, likes: 8 }}
-        />
+        <StatisticBar statistics={article.statistics} />
         <SliderContainer>
           <Image src="/images/article/barycz.jpg" />
         </SliderContainer>

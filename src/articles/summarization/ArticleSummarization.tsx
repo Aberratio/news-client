@@ -1,7 +1,7 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { StatisticBar } from "../StatisticBar";
-import { ArticleSummarizationItem } from "./ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
 import { MetadataBar } from "articles/MetadataBar";
 
 interface ArticleSummarizationProps {
@@ -11,25 +11,21 @@ interface ArticleSummarizationProps {
 export const ArticleSummarization = ({
   article,
 }: ArticleSummarizationProps) => {
-  const linkToArticle = `/publications?${article.id}`;
-
   return (
     <Wrapper data-test-id={`article-summarization-${article.id}`}>
       <Container>
-        <Link href={linkToArticle}>
+        <Link href={article.path}>
           <Image src={`/${article.photo.path}`} />
         </Link>
         <div>
-          <Link href={linkToArticle}>
+          <Link href={article.path}>
             <Title>{article.title}</Title>
           </Link>
           <MetadataBar
             authorName={article.author.name}
             createdOn={article.createdOn}
           />
-          <StatisticBar
-            statistics={{ views: 99, comments: 0, dislikes: 2, likes: 8 }}
-          />
+          <StatisticBar statistics={article.statistics} />
         </div>
       </Container>
     </Wrapper>
