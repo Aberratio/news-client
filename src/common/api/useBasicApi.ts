@@ -19,6 +19,8 @@ export const useBasicApi = () => {
   const { get, post } = useHttp();
   const apiUrl = "http://localhost:3007/v1";
 
+  // ===================================
+  // articles
   const getArticle = async (
     request: GetArticleRequest,
   ): Promise<GetArticleResponse> =>
@@ -42,6 +44,8 @@ export const useBasicApi = () => {
       request,
     );
 
+  // ===================================
+  // comments
   const getCommentsLast = async (
     request: GetCommentsLastRequest,
   ): Promise<GetCommentsLastResponse[]> =>
@@ -50,6 +54,13 @@ export const useBasicApi = () => {
       request,
     );
 
+  // ===================================
+  // admin
+  const getVisits = async (): Promise<number> =>
+    get<void, number>(`${apiUrl}/admin/visits`);
+
+  // ===================================
+  // to delete
   const postCreateChat = async (): Promise<PostCreateChatResponse> =>
     post<PostCreateChatRequest, PostCreateChatResponse>(`${apiUrl}/threads`);
 
@@ -79,6 +90,9 @@ export const useBasicApi = () => {
 
     // comments
     getCommentsLast,
+
+    // admin
+    getVisits,
 
     // to delete
     postCreateChat,
