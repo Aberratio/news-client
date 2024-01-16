@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { usePopularTitles } from "./popular-titles/usePopularTitles";
+import { usePopularTitles } from "./usePopularTitles";
 
 export const PopularTitlesBar = () => {
   const { isLoading, titles, loadPopulatTitles } = usePopularTitles();
-  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [currentTitleIndex, setCurrentTitleIndex] = useState<number>(0);
 
   useEffect(() => {
     loadPopulatTitles(3, 5);

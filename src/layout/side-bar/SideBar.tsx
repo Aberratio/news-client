@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FirstSite } from "./FirstSite";
 import { VisitCounter } from "./VisitCounter";
-import { LastComments } from "./LastComments";
+import { LastComments } from "./last-comments/LastComments";
 
 export const SideBar = () => {
   return (

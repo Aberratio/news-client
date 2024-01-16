@@ -1,6 +1,6 @@
 import { MainContainer } from "page/MainContainer";
 import { NewsBar } from "./NewsBar";
-import { PopularTitlesBar } from "./PopularTitlesBar";
+import { PopularTitlesBar } from "./popular-titles/PopularTitlesBar";
 import { Wall } from "./Wall";
 
 export const HomePage = () => {

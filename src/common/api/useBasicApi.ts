@@ -12,6 +12,8 @@ import { GetArticleRequest } from "./requests/GetArticleRequest";
 import { GetArticleResponse } from "./responses/GetArticleResponse";
 import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
 import { GetPopularTitlesRequest } from "./requests/GetPopularTitlesRequest";
+import { GetCommentsLastRequest } from "./requests/GetCommentsLastRequest";
+import { GetCommentsLastResponse } from "./responses/GetCommentsLastResponse";
 
 export const useBasicApi = () => {
   const { get, post } = useHttp();
@@ -40,6 +42,14 @@ export const useBasicApi = () => {
       request,
     );
 
+  const getCommentsLast = async (
+    request: GetCommentsLastRequest,
+  ): Promise<GetCommentsLastResponse[]> =>
+    get<GetCommentsLastRequest, GetCommentsLastResponse[]>(
+      `${apiUrl}/comments/last`,
+      request,
+    );
+
   const postCreateChat = async (): Promise<PostCreateChatResponse> =>
     post<PostCreateChatRequest, PostCreateChatResponse>(`${apiUrl}/threads`);
 
@@ -62,9 +72,15 @@ export const useBasicApi = () => {
     );
 
   return {
+    // articles
     getArticle,
     getArticlesLast,
     getPopularTitles,
+
+    // comments
+    getCommentsLast,
+
+    // to delete
     postCreateChat,
     postMessage,
     postRunChat,

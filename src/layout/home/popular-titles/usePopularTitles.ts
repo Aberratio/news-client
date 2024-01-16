@@ -1,12 +1,7 @@
 import { GetPopularTitlesResponse } from "common/api/responses/GetPopularTitlesResponse";
 import { useArticlesApi } from "common/api/useArticlesApi";
 import { useState } from "react";
-
-interface TitleItem {
-  articleId: number;
-  id: number;
-  title: string;
-}
+import { TitleItem } from "./TitleItem";
 
 export const usePopularTitles = () => {
   const { getPopularTitlesDetails } = useArticlesApi();

@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { Typography } from "layout/components/typography/Typography";
-
-export interface CommentItem {
-  author: string;
-  title: string;
-  comment: string;
-}
+import { CommentItem } from "./CommentItem";
+import { buildArticlePath } from "common/builders/buildPath";
 
 interface CommentProps {
   comment: CommentItem;
@@ -18,8 +14,8 @@ export const Comment = ({ comment, iterator }: CommentProps) => {
       <Counter>
         <Typography>{iterator}</Typography>
       </Counter>
-      <Link>
-        <Title>{comment.title}</Title>
+      <Link href={buildArticlePath(comment.articleId)}>
+        <Title>{comment.articleTitle}</Title>
       </Link>
       <Body wordBreak="break-word">
         <strong>{comment.author}: </strong>
@@ -64,6 +60,8 @@ const Link = styled.a`
   width: calc(100% - 48px);
   color: #17b978;
   text-align: left;
+
+  cursor: pointer;
 `;
 
 const Title = styled(Typography)`
