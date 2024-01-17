@@ -4,7 +4,7 @@ export const LogoBar = () => {
   return (
     <Wrapper>
       <Container>
-        <Link href="#">
+        <Link href="/">
           <Image src="/public/icons/logo.png" alt="logo" />
         </Link>
       </Container>
@@ -42,6 +42,7 @@ const Link = styled.a`
   touch-action: manipulation;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const Image = styled.img`

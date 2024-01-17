@@ -14,8 +14,8 @@ export const useVisitCounter = () => {
   };
 
   return {
-    visits,
     isLoading,
+    visits,
     loadVisits,
   };
 };

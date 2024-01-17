@@ -30,7 +30,7 @@ export const Breadcrumb = () => {
 
 const Wrapper = styled.div`
   margin: auto;
-  padding: 0 16px;
+  padding: 0;
   width: 100%;
   max-width: 1080px;
 `;
@@ -41,7 +41,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 8px 20px;
+  padding: 8px 0px;
   background-color: #fff;
 `;
 

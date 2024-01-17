@@ -1,7 +1,7 @@
 import { MainContainer } from "page/MainContainer";
-import { NewsBar } from "./NewsBar";
-import { PopularTitlesBar } from "./popular-titles/PopularTitlesBar";
-import { Wall } from "./Wall";
+import { NewsBar } from "../layout/home/NewsBar";
+import { PopularTitlesBar } from "../layout/home/popular-titles/PopularTitlesBar";
+import { Wall } from "../layout/home/Wall";
 
 export const HomePage = () => {
   return (
