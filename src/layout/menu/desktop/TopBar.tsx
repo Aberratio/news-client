@@ -1,17 +1,8 @@
-import { Button } from "layout/components/buttons/Button";
 import { LinkButton } from "layout/components/links/LinkButton";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
 export const TopBar = () => {
-  const openLoginModal = (): void => {
-    console.log("openContactPage");
-  };
-
-  const openRegistrationModal = (): void => {
-    console.log("openContactPage");
-  };
-
   return (
     <Wrapper>
       <Container>
@@ -19,18 +10,6 @@ export const TopBar = () => {
           <LinkButton to="/about">
             <Typography variant="small">O nas</Typography>
           </LinkButton>
-
-          <LinkButton to="/contact">
-            <Typography variant="small">Kontakt</Typography>
-          </LinkButton>
-        </Part>
-        <Part>
-          <Button variant="link" onClick={openLoginModal}>
-            <Typography variant="small">Zaloguj</Typography>
-          </Button>
-          <Button variant="link" onClick={openRegistrationModal}>
-            <Typography variant="small">Zarejestruj</Typography>
-          </Button>
         </Part>
       </Container>
     </Wrapper>
