@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 interface CategoryBoxHeaderProps {
   name: string;
-  showSeeMore: boolean;
+  showSeeMore?: boolean;
 }
 
 export const CategoryBoxHeader = ({
