@@ -1,8 +1,6 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { StatisticBar } from "../StatisticBar";
 import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
-import { MetadataBar } from "articles/MetadataBar";
 
 interface ArticleSummarizationProps {
   article: ArticleSummarizationItem;
@@ -21,11 +19,6 @@ export const ArticleSummarization = ({
           <Link href={article.path}>
             <Title>{article.title}</Title>
           </Link>
-          <MetadataBar
-            authorName={article.author.name}
-            createdOn={article.createdOn}
-          />
-          <StatisticBar statistics={article.statistics} />
         </div>
       </Container>
     </Wrapper>

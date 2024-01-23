@@ -12,7 +12,7 @@ export const AboutPage = () => {
       <MainContainer>
         <Container>
           <Section
-            header="Redaktor naszelna"
+            header="Redaktor naczelna"
             links={[
               {
                 href: "mailto:slawenta@glosmilicza.pl",
