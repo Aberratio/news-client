@@ -1,13 +1,24 @@
 import { CategoryBoxHeader } from "articles/summarization/CategoryBoxHeader";
-import { Breadcrumb } from "layout/breadcrumbs/Breadcrumb";
+import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
 import styled from "styled-components";
 import { MainContainer } from "./MainContainer";
 import { Typography } from "layout/components/typography/Typography";
 
 export const AboutPage = () => {
+  const breadcrumbs: BreadcrumbItem[] = [
+    {
+      name: "Strona Główna",
+      path: "/",
+    },
+    {
+      name: "O nas",
+      path: "about",
+    },
+  ];
+
   return (
     <div>
-      <Breadcrumb />
+      <Breadcrumb breadcrumbs={breadcrumbs} />
       <CategoryBoxHeader name="Skład redakcji" />
       <MainContainer>
         <Container>

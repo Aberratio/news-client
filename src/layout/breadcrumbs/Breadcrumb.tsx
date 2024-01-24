@@ -2,25 +2,36 @@ import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
-export const Breadcrumb = () => {
+export interface BreadcrumbItem {
+  name: string;
+  icon?: string;
+  path: string;
+}
+
+interface BreadcrumbProps {
+  breadcrumbs: BreadcrumbItem[];
+}
+
+export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
+  const length = breadcrumbs.length - 1;
+
   return (
     <Wrapper>
       <Container>
         <Row>
-          <Home href="#">
-            <Typography variant="small">Strona Główna</Typography>
-          </Home>
-          <Arrow direction="right" />
-          <MiddlePath href="#">
-            <Typography variant="small">Wiadomości</Typography>
-          </MiddlePath>
-          <Arrow direction="right" />
-          <MiddlePath href="#">
-            <Typography variant="small">Aktualności</Typography>
-          </MiddlePath>
-          <Arrow direction="right" />
+          {breadcrumbs.slice(0, length).map((item) => {
+            return (
+              <>
+                <Path href={item.path}>
+                  <Typography variant="small">{item.name}</Typography>
+                </Path>
+                <Arrow direction="right" />
+              </>
+            );
+          })}
+
           <Current>
-            <Typography variant="small">Sytuacja</Typography>
+            <Typography variant="small">{breadcrumbs[length]?.name}</Typography>
           </Current>
         </Row>
       </Container>
@@ -53,24 +64,17 @@ const Row = styled.div`
   margin-bottom: 6px;
 `;
 
-const Home = styled.a`
-  text-decoration: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  float: left;
-  display: flex;
-`;
-
 const Current = styled.span`
   float: left;
   display: flex;
   color: rgb(184, 0, 0);
 `;
 
-const MiddlePath = styled.a`
+const Path = styled.a`
   text-decoration: none;
   background-color: transparent;
   touch-action: manipulation;
   float: left;
   display: flex;
+  cursor: pointer;
 `;
