@@ -16,7 +16,9 @@ export const Wall = () => {
     <Wrapper>
       <Container>
         {categories.map((category) => {
-          return <ArticleSummarizationBox category={category} />;
+          return (
+            <ArticleSummarizationBox category={category} key={category.id} />
+          );
         })}
       </Container>
     </Wrapper>

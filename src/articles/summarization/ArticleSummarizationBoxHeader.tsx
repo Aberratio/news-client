@@ -1,23 +1,27 @@
+import { CategoryItem } from "articles/items/CategoryItem";
+import { buildCategoryPath } from "common/builders/buildPath";
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
 interface ArticleSummarizationBoxHeaderProps {
-  name: string;
+  category: CategoryItem;
   showSeeMore?: boolean;
 }
 
 export const ArticleSummarizationBoxHeader = ({
-  name,
+  category,
   showSeeMore = false,
 }: ArticleSummarizationBoxHeaderProps) => {
+  if (!category) return null;
+
   return (
     <Wrapper>
       <Typography variant="h2" isCapitalized>
-        {name}
+        {category.name}
       </Typography>
       {showSeeMore && (
-        <SeeMore href="/publications/category.php?ID_category=1&ID_page=1">
+        <SeeMore href={buildCategoryPath(category.id)}>
           <Typography color="black">Zobacz wszystkie</Typography>
           <Arrow direction="right" />
         </SeeMore>

@@ -18,7 +18,7 @@ export const ArticleSummarizationBox = ({
   const { articles, isLoading, loadArticles } = useLastArticles();
 
   useEffect(() => {
-    loadArticles(category.id);
+    category?.id && loadArticles(category.id);
   }, [category]);
 
   if (isLoading) {
@@ -29,13 +29,13 @@ export const ArticleSummarizationBox = ({
     <Wrapper data-test-id={`article-summarizatoin-box-${category.id}`}>
       {showSeeMore && (
         <ArticleSummarizationBoxHeader
-          name={category.name}
+          category={category}
           showSeeMore={showSeeMore}
         />
       )}
       <Container $showSeeMore={showSeeMore}>
         {articles.map((article: ArticleSummarizationItem) => {
-          return <ArticleSummarization article={article} />;
+          return <ArticleSummarization article={article} key={article.id} />;
         })}
       </Container>
     </Wrapper>

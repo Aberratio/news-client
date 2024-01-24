@@ -5,11 +5,10 @@ import { StatisticBar } from "articles/StatisticBar";
 import { MetadataBar } from "articles/MetadataBar";
 import { useArticle } from "articles/useArticle";
 import { useEffect } from "react";
+import { buildCategoryPath } from "common/builders/buildPath";
 
 export const FullArticle = () => {
   const { article, isLoading, loadArticle } = useArticle();
-  const linkToCategory = `/publications?${article.id}`;
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export const FullArticle = () => {
   return (
     <Wrapper data-test-id={`full-article-${article.id}`}>
       <Container>
-        <Link href={linkToCategory}>
+        <Link href={buildCategoryPath(article.category.id)}>
           <Typography>{article.category.name}</Typography>
         </Link>
         <Text variant="h1">{article.title}</Text>
@@ -30,7 +29,7 @@ export const FullArticle = () => {
           authorName={article.author.name}
           createdOn={article.createdOn}
         />
-        <StatisticBar statistics={article.statistics} />
+        {/* <StatisticBar statistics={article.statistics} /> */}
         <SliderContainer>
           <Image src="/images/article/barycz.jpg" />
         </SliderContainer>
