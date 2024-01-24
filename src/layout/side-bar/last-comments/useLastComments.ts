@@ -22,12 +22,16 @@ export const useLastComments = () => {
   };
 };
 
+const cutComment = (comment: string) => {
+  return comment.length > 100 ? comment.substring(0, 100) + "..." : comment;
+};
+
 const mapData = (data: GetCommentsLastResponse[]): CommentItem[] =>
   data.map((item: GetCommentsLastResponse) => {
     return {
       articleId: item.articleId,
       articleTitle: item.articleTitle,
       author: item.user,
-      comment: item.comment,
+      comment: cutComment(item.comment),
     } as CommentItem;
   });
