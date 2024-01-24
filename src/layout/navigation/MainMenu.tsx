@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 import { NavigationItem } from "./NavigationItem";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useOutsideClick } from "common/hooks/useOutsideClick";
 
 export interface Categories {
   id: number;
@@ -62,9 +63,12 @@ const mockedTabs: TabItem[] = [
 export const MainMenu = () => {
   const [activeNavigationItemIndex, setActiveNavigationItemIndex] =
     useState<number>(0);
+  const mainMenuRef = useRef(null);
+
+  useOutsideClick([mainMenuRef], () => setActiveNavigationItemIndex(0));
 
   return (
-    <Container data-test-id="main-menu">
+    <Container data-test-id="main-menu" ref={mainMenuRef}>
       {mockedTabs.map((tab) => {
         return (
           <NavigationItem

@@ -40,6 +40,7 @@ const Container = styled.div`
   background-color: #fff;
   border: 1px solid #f2f2f2;
   -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
   display: flex;
 `;
 
