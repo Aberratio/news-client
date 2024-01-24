@@ -29,5 +29,4 @@ export const LastComments = () => {
 const List = styled.ul`
   margin: 0;
   list-style-type: none;
-  padding-top: 35px;
 `;

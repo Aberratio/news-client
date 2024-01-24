@@ -39,7 +39,6 @@ const Wrapper = styled.div`
 
   span {
     color: #15a752;
-    font-size: 140%;
     margin-left: 8px;
     margin-right: 2px;
   }
@@ -66,4 +65,13 @@ const SeeMore = styled.a`
   padding-left: 10px;
   white-space: nowrap;
   color: #999;
+  cursor: pointer;
+
+  &:hover {
+    p,
+    svg {
+      color: #15a752 !important;
+      fill: #15a752 !important;
+    }
+  }
 `;

@@ -31,19 +31,10 @@ const Header = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 50px;
-  border: 1px solid #e6e6e6;
   padding: 0 18px;
   position: relative;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 5px;
-    height: calc(100% + 2px);
-    top: -1px;
-    left: -1px;
-  }
+  background-color: #222;
+  color: white;
 `;
 
 const Title = styled(Typography)`
