@@ -6,7 +6,7 @@ import { Wall } from "../layout/home/Wall";
 export const HomePage = () => {
   return (
     <div data-test-id="home-page">
-      <PopularTitlesBar />
+      {/* <PopularTitlesBar /> */}
       <NewsBar />
       <MainContainer>
         <Wall />
