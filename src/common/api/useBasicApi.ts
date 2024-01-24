@@ -14,6 +14,7 @@ import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
 import { GetPopularTitlesRequest } from "./requests/GetPopularTitlesRequest";
 import { GetCommentsLastRequest } from "./requests/GetCommentsLastRequest";
 import { GetCommentsLastResponse } from "./responses/GetCommentsLastResponse";
+import { GetTabsResponse } from "./responses/GetArticleResponse copy";
 
 export const useBasicApi = () => {
   const { get, post } = useHttp();
@@ -43,6 +44,11 @@ export const useBasicApi = () => {
       `${apiUrl}/articles/popular`,
       request,
     );
+
+  // ===================================
+  // categories
+  const getTabs = async (): Promise<GetTabsResponse[]> =>
+    get<void, GetTabsResponse[]>(`${apiUrl}/categories/tabs`);
 
   // ===================================
   // comments
@@ -87,6 +93,9 @@ export const useBasicApi = () => {
     getArticle,
     getArticlesLast,
     getPopularTitles,
+
+    // categories
+    getTabs,
 
     // comments
     getCommentsLast,

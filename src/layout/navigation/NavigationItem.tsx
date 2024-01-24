@@ -1,7 +1,7 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { SubMenu } from "./SubMenu";
-import { TabItem } from "./MainMenu";
+import { TabItem } from "./useCategories";
 
 interface NavigationItemProps {
   isActive: boolean;

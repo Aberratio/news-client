@@ -1,11 +1,11 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { Categories } from "./MainMenu";
 import { useState } from "react";
 import { buildCategoryPath } from "common/builders/buildPath";
+import { CategoryItem } from "./useCategories";
 
 interface SubMenuProps {
-  categories: Categories[];
+  categories: CategoryItem[];
 }
 
 export const SubMenu = ({ categories }: SubMenuProps) => {
