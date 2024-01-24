@@ -1,7 +1,7 @@
 import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
 import { MainContainer } from "./MainContainer";
-import { CategoryBox } from "articles/summarization/CategoryBox";
-import { CategoryBoxHeader } from "articles/summarization/CategoryBoxHeader";
+import { ArticleSummarizationBox } from "articles/summarization/ArticleSummarizationBox";
+import { ArticleSummarizationBoxHeader } from "articles/summarization/ArticleSummarizationBoxHeader";
 
 export const CategoryPage = () => {
   const breadcrumbs: BreadcrumbItem[] = [
@@ -18,9 +18,9 @@ export const CategoryPage = () => {
   return (
     <div>
       <Breadcrumb breadcrumbs={breadcrumbs} />
-      <CategoryBoxHeader name="Aktualności" />
+      <ArticleSummarizationBoxHeader name="Aktualności" />
       <MainContainer>
-        <CategoryBox categoryId={1} showHeader={false} />
+        <ArticleSummarizationBox categoryId={1} showSeeMore={false} />
       </MainContainer>
     </div>
   );

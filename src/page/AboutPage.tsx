@@ -1,4 +1,4 @@
-import { CategoryBoxHeader } from "articles/summarization/CategoryBoxHeader";
+import { ArticleSummarizationBoxHeader } from "articles/summarization/ArticleSummarizationBoxHeader";
 import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
 import styled from "styled-components";
 import { MainContainer } from "./MainContainer";
@@ -19,7 +19,7 @@ export const AboutPage = () => {
   return (
     <div>
       <Breadcrumb breadcrumbs={breadcrumbs} />
-      <CategoryBoxHeader name="Skład redakcji" />
+      <ArticleSummarizationBoxHeader name="Skład redakcji" />
       <MainContainer>
         <Container>
           <Section

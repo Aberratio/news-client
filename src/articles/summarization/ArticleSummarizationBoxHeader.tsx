@@ -2,21 +2,24 @@ import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
-interface CategoryBoxHeaderProps {
+interface ArticleSummarizationBoxHeaderProps {
   name: string;
   showSeeMore?: boolean;
 }
 
-export const CategoryBoxHeader = ({
+export const ArticleSummarizationBoxHeader = ({
   name,
   showSeeMore = false,
-}: CategoryBoxHeaderProps) => {
+}: ArticleSummarizationBoxHeaderProps) => {
   return (
     <Wrapper>
-      <Typography variant="h3">{name}</Typography>
+      <Typography variant="h2">
+        <span>{name.at(0)}</span>
+        {name.slice(1)}
+      </Typography>
       {showSeeMore && (
         <SeeMore href="/publications/category.php?ID_category=1&ID_page=1">
-          <Typography>Zobacz wszystkie</Typography>
+          <Typography color="black">Zobacz wszystkie</Typography>
           <Arrow direction="right" />
         </SeeMore>
       )}
@@ -31,14 +34,21 @@ const Wrapper = styled.div`
   padding: 0 18px;
   position: relative;
   justify-content: space-between;
-  max-width: 1080px;
+  max-width: min(90%, 1030px);
   margin: auto;
+
+  span {
+    color: #15a752;
+    font-size: 140%;
+    margin-left: 8px;
+    margin-right: 2px;
+  }
 
   &::before {
     content: "";
     display: block;
     position: absolute;
-    width: 5px;
+    width: 6px;
     height: calc(100% + 2px);
     top: -1px;
     left: -1px;
@@ -48,6 +58,7 @@ const Wrapper = styled.div`
 
 const SeeMore = styled.a`
   display: flex;
+  align-items: center;
   text-decoration: none;
   background-color: transparent;
   touch-action: manipulation;

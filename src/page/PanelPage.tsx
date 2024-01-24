@@ -1,4 +1,4 @@
-import { CategoryBoxHeader } from "articles/summarization/CategoryBoxHeader";
+import { ArticleSummarizationBoxHeader } from "articles/summarization/ArticleSummarizationBoxHeader";
 import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
 
 export const PanelPage = () => {
@@ -16,7 +16,7 @@ export const PanelPage = () => {
   return (
     <div>
       <Breadcrumb breadcrumbs={breadcrumbs} />
-      <CategoryBoxHeader name="Panel administratora" />
+      <ArticleSummarizationBoxHeader name="Panel administratora" />
     </div>
   );
 };

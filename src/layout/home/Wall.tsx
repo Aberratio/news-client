@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { CategoryBox } from "../../articles/summarization/CategoryBox";
+import { ArticleSummarizationBox } from "../../articles/summarization/ArticleSummarizationBox";
 
 export const Wall = () => {
   return (
     <Wrapper>
       <Container>
-        <CategoryBox categoryId={1} />
-        <CategoryBox categoryId={2} />
-        <CategoryBox categoryId={3} />
-        <CategoryBox categoryId={4} />
+        <ArticleSummarizationBox categoryId={1} />
+        <ArticleSummarizationBox categoryId={2} />
+        <ArticleSummarizationBox categoryId={3} />
+        <ArticleSummarizationBox categoryId={4} />
       </Container>
     </Wrapper>
   );

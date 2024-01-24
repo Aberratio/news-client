@@ -20,7 +20,7 @@ export const MainContainer = ({ children }: MainContainerProps) => {
 
 const Wrapper = styled.div`
   display: block;
-  padding-top: 70px;
+  padding-top: 42px;
 
   background-color: #fff;
 `;

@@ -2,6 +2,7 @@ import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { SubMenu } from "./SubMenu";
 import { TabItem } from "./useCategories";
+import { buildCategoryPath } from "common/builders/buildPath";
 
 interface NavigationItemProps {
   isActive: boolean;
@@ -14,15 +15,21 @@ export const NavigationItem = ({
   tab,
   onClick,
 }: NavigationItemProps) => {
+  if (!tab.categories) return null;
+
+  const hasSubmenu = tab.categories.length > 1;
+
   return (
     <Container
       data-test-id="navigation-item"
       onClick={onClick}
       $isActive={isActive}
     >
-      <Link href="#">
+      <Link
+        href={`${hasSubmenu ? "#" : buildCategoryPath(tab.categories[0].id)}`}
+      >
         <Typography>{tab.name}</Typography>
-        {isActive && <SubMenu categories={tab.categories} />}
+        {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
       </Link>
     </Container>
   );

@@ -3,17 +3,17 @@ import styled from "styled-components";
 import { useLastArticles } from "../useLastArticles";
 import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
 import { useEffect } from "react";
-import { CategoryBoxHeader } from "./CategoryBoxHeader";
+import { ArticleSummarizationBoxHeader } from "./ArticleSummarizationBoxHeader";
 
-interface CategoryBoxProps {
+interface ArticleSummarizationBoxProps {
   categoryId: number;
-  showHeader: boolean;
+  showSeeMore?: boolean;
 }
 
-export const CategoryBox = ({
+export const ArticleSummarizationBox = ({
   categoryId,
-  showHeader = true,
-}: CategoryBoxProps) => {
+  showSeeMore = true,
+}: ArticleSummarizationBoxProps) => {
   const { articles, isLoading, loadArticles } = useLastArticles();
 
   useEffect(() => {
@@ -25,9 +25,14 @@ export const CategoryBox = ({
   }
 
   return (
-    <Wrapper data-test-id={`category-box-${categoryId}`}>
-      {showHeader && <CategoryBoxHeader name="Aktualności" />}
-      <Container $showHeader={showHeader}>
+    <Wrapper data-test-id={`article-summarizatoin-box-${categoryId}`}>
+      {showSeeMore && (
+        <ArticleSummarizationBoxHeader
+          name="Aktualności"
+          showSeeMore={showSeeMore}
+        />
+      )}
+      <Container $showSeeMore={showSeeMore}>
         {articles.map((article: ArticleSummarizationItem) => {
           return <ArticleSummarization article={article} />;
         })}
@@ -40,10 +45,10 @@ const Wrapper = styled.div`
   padding-bottom: 25px;
 `;
 
-const Container = styled.div<{ $showHeader: boolean }>`
+const Container = styled.div<{ $showSeeMore: boolean }>`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-bottom: 20px;
   gap: 16px;
-  margin: ${({ $showHeader }) => ($showHeader ? "16px" : "0")};
+  margin: 16px;
 `;
