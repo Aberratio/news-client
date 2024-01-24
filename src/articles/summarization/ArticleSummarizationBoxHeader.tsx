@@ -13,9 +13,8 @@ export const ArticleSummarizationBoxHeader = ({
 }: ArticleSummarizationBoxHeaderProps) => {
   return (
     <Wrapper>
-      <Typography variant="h2">
-        <span>{name.at(0)}</span>
-        {name.slice(1)}
+      <Typography variant="h2" isCapitalized>
+        {name}
       </Typography>
       {showSeeMore && (
         <SeeMore href="/publications/category.php?ID_category=1&ID_page=1">
@@ -36,12 +35,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   max-width: min(90%, 1030px);
   margin: auto;
-
-  span {
-    color: #15a752;
-    margin-left: 8px;
-    margin-right: 2px;
-  }
 
   &::before {
     content: "";

@@ -4,31 +4,32 @@ import { useLastArticles } from "../useLastArticles";
 import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
 import { useEffect } from "react";
 import { ArticleSummarizationBoxHeader } from "./ArticleSummarizationBoxHeader";
+import { CategoryItem } from "articles/items/CategoryItem";
 
 interface ArticleSummarizationBoxProps {
-  categoryId: number;
+  category: CategoryItem;
   showSeeMore?: boolean;
 }
 
 export const ArticleSummarizationBox = ({
-  categoryId,
+  category,
   showSeeMore = true,
 }: ArticleSummarizationBoxProps) => {
   const { articles, isLoading, loadArticles } = useLastArticles();
 
   useEffect(() => {
-    loadArticles(categoryId);
-  }, [categoryId]);
+    loadArticles(category.id);
+  }, [category]);
 
   if (isLoading) {
     return <p>Loading....</p>;
   }
 
   return (
-    <Wrapper data-test-id={`article-summarizatoin-box-${categoryId}`}>
+    <Wrapper data-test-id={`article-summarizatoin-box-${category.id}`}>
       {showSeeMore && (
         <ArticleSummarizationBoxHeader
-          name="Aktualności"
+          name={category.name}
           showSeeMore={showSeeMore}
         />
       )}
@@ -50,5 +51,6 @@ const Container = styled.div<{ $showSeeMore: boolean }>`
   grid-template-columns: repeat(2, 1fr);
   padding-bottom: 20px;
   gap: 16px;
-  margin: 16px;
+  margin: 0 16px;
+  ${({ $showSeeMore }) => $showSeeMore && "margin-top: 16px;"}
 `;

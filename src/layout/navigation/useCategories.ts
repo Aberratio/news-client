@@ -1,20 +1,33 @@
 import { useState } from "react";
 import { useCategoriesApi } from "common/api/useCategoriesApi";
 import { GetTabsResponse } from "common/api/responses/GetArticleResponse copy";
+import { CategoryItem } from "articles/items/CategoryItem";
 
 export const useCategories = () => {
   const { getTabsDetails } = useCategoriesApi();
-  const [tabs, setArticle] = useState<TabItem[]>([]);
+  const [tabs, setTabs] = useState<TabItem[]>([]);
+  const [categories, setCategories] = useState<CategoryItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadTabs = () => {
     getTabsDetails().then((data) => {
-      setArticle(mapData(data));
+      setTabs(mapData(data));
+      setCategories(
+        data.flatMap((tab) => {
+          return tab.categories.map((category) => {
+            return {
+              id: category.id,
+              name: category.name,
+            };
+          });
+        }),
+      );
       setIsLoading(false);
     });
   };
 
   return {
+    categories,
     isLoading,
     tabs,
     loadTabs,
@@ -24,11 +37,6 @@ export const useCategories = () => {
 export interface TabItem {
   id: number;
   categories: CategoryItem[];
-  name: string;
-}
-
-export interface CategoryItem {
-  id: number;
   name: string;
 }
 

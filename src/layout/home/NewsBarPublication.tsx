@@ -35,13 +35,6 @@ export const NewsBarPublication = ({
           href={`publications/publication.php?ID_publication=${publication.id}`}
         >
           <Description>
-            <Category
-              href={`/publications/category.php?ID_category=${publication.category.id}&ID_page=1`}
-            >
-              <Typography color="white" variant="small">
-                {publication.category.name}
-              </Typography>
-            </Category>
             <Title>
               <TitleLink
                 href={`publications/publication.php?ID_publication=${publication.id}`}

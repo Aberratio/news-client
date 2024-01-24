@@ -40,7 +40,7 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
 };
 
 const Wrapper = styled.div`
-  margin: auto;
+  margin: 12px auto;
   padding: 0;
   width: 100%;
   max-width: 1080px;

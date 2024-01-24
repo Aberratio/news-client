@@ -1,7 +1,6 @@
 export interface CategoryItem {
   id: number;
   name: string;
-  path: string;
 }
 
 export enum CategoryEnum {

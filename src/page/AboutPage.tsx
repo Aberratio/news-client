@@ -100,7 +100,7 @@ export const AboutPage = () => {
 
 const Container = styled.div`
   text-align: justify;
-  margin: auto;
+  margin: 0 auto;
   max-width: 800px;
 `;
 
