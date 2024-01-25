@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Publication } from "./NewsBar";
 import { Typography } from "layout/components/typography/Typography";
+import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 
 export enum NewsBarPublicationSize {
   SMALL,
@@ -9,12 +9,12 @@ export enum NewsBarPublicationSize {
 }
 
 interface NewsBarPublicationProps {
-  publication: Publication;
+  article: ArticleSummarizationItem;
   size: NewsBarPublicationSize;
 }
 
 export const NewsBarPublication = ({
-  publication,
+  article,
   size,
 }: NewsBarPublicationProps) => {
   const titleType = () => {
@@ -31,16 +31,12 @@ export const NewsBarPublication = ({
   return (
     <Wrapper data-test-id="new-bar-publication">
       <ImageBackground>
-        <ImageLink
-          href={`publications/publication.php?ID_publication=${publication.id}`}
-        >
+        <ImageLink href={`article/${article.id}`}>
           <Description>
             <Title>
-              <TitleLink
-                href={`publications/publication.php?ID_publication=${publication.id}`}
-              >
+              <TitleLink href={`article/${article.id}`}>
                 <Typography color="white" variant={titleType()}>
-                  {publication.title}
+                  {article.title}
                 </Typography>
               </TitleLink>
             </Title>

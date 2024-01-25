@@ -33,9 +33,7 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
           })}
 
           <Current>
-            <Typography variant="small" isCapitalized>
-              {breadcrumbs[length]?.name}
-            </Typography>
+            <Typography variant="small">{breadcrumbs[length]?.name}</Typography>
           </Current>
         </Row>
       </Container>

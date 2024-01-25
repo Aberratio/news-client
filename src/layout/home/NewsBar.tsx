@@ -3,46 +3,40 @@ import {
   NewsBarPublication,
   NewsBarPublicationSize,
 } from "./NewsBarPublication";
-
-export interface Publication {
-  category: {
-    name: string;
-    id: number;
-  };
-  title: string;
-  id: number;
-}
-
-const publicationMock: Publication = {
-  category: {
-    name: "Aktualności",
-    id: 1,
-  },
-  title: "Sytuacja na rzece Barycz jest stabilna",
-  id: 595,
-};
+import { useLastArticles } from "articles/useLastArticles";
+import { useEffect } from "react";
 
 export const NewsBar = () => {
+  const { articles, isLoading, loadArticles } = useLastArticles();
+
+  useEffect(() => {
+    loadArticles(undefined, 4);
+  }, []);
+
+  if (isLoading) {
+    return <p>Loading....</p>;
+  }
+
   return (
     <Wrapper data-test-id="news-bar">
       <Container>
         <Row>
           <NewsBarPublication
-            publication={publicationMock}
+            article={articles[0]}
             size={NewsBarPublicationSize.LARGE}
           />
           <SmallPublicationsContainer>
             <NewsBarPublication
-              publication={publicationMock}
+              article={articles[1]}
               size={NewsBarPublicationSize.MEDIUM}
             />
             <SmallPublicationsContainerRow>
               <NewsBarPublication
-                publication={publicationMock}
+                article={articles[2]}
                 size={NewsBarPublicationSize.SMALL}
               />
               <NewsBarPublication
-                publication={publicationMock}
+                article={articles[2]}
                 size={NewsBarPublicationSize.SMALL}
               />
             </SmallPublicationsContainerRow>
