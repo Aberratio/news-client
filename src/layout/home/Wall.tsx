@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ArticleSummarizationBox } from "../../articles/summarization/ArticleSummarizationBox";
+import { ArticlesOverview } from "../../articles/summarization/ArticlesOverview";
 import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 
 export const Wall = () => {
@@ -11,9 +11,7 @@ export const Wall = () => {
     <Wrapper>
       <Container>
         {categories.map((category) => {
-          return (
-            <ArticleSummarizationBox category={category} key={category.id} />
-          );
+          return <ArticlesOverview category={category} key={category.id} />;
         })}
       </Container>
     </Wrapper>

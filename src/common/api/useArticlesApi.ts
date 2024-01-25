@@ -16,11 +16,13 @@ export const useArticlesApi = () => {
 
   const getLastArticlesDetails = async (
     categoryId?: number,
+    limit?: number,
+    page?: number,
   ): Promise<GetArticlesLastResponse[]> => {
     return await getArticlesLast({
       category: categoryId,
-      limit: 10,
-      page: 0,
+      limit: limit ?? 10,
+      page: page ?? 0,
     });
   };
 

@@ -1,7 +1,7 @@
 import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
 import { MainContainer } from "./MainContainer";
-import { ArticleSummarizationBox } from "articles/summarization/ArticleSummarizationBox";
-import { ArticleSummarizationBoxHeader } from "articles/summarization/ArticleSummarizationBoxHeader";
+import { ArticlesOverview } from "articles/summarization/ArticlesOverview";
+import { ArticlesOverviewHeader } from "articles/summarization/ArticlesOverviewHeader";
 import { useParams } from "react-router-dom";
 import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 import { useEffect, useState } from "react";
@@ -47,9 +47,9 @@ export const CategoryPage = () => {
   return (
     <div>
       <Breadcrumb breadcrumbs={createBreadcrumbFromCategory(category)} />
-      <ArticleSummarizationBoxHeader category={category} />
+      <ArticlesOverviewHeader category={category} />
       <MainContainer>
-        <ArticleSummarizationBox category={category} showSeeMore={false} />
+        <ArticlesOverview category={category} showSeeMore={false} />
       </MainContainer>
     </div>
   );

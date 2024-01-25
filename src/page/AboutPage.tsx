@@ -2,7 +2,7 @@ import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
 import styled from "styled-components";
 import { MainContainer } from "./MainContainer";
 import { Typography } from "layout/components/typography/Typography";
-import { BoxHeader } from "articles/summarization/BoxHeader";
+import { BoxHeader } from "layout/section-header/BoxHeader";
 
 export const AboutPage = () => {
   const breadcrumbs: BreadcrumbItem[] = [

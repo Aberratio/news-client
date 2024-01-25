@@ -1,5 +1,5 @@
-import { ArticleSummarizationBoxHeader } from "articles/summarization/ArticleSummarizationBoxHeader";
 import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
+import { BoxHeader } from "layout/section-header/BoxHeader";
 
 export const PanelPage = () => {
   const breadcrumbs: BreadcrumbItem[] = [
@@ -16,7 +16,7 @@ export const PanelPage = () => {
   return (
     <div>
       <Breadcrumb breadcrumbs={breadcrumbs} />
-      <ArticleSummarizationBoxHeader name="Panel administratora" />
+      <BoxHeader name="Panel administratora" />
     </div>
   );
 };

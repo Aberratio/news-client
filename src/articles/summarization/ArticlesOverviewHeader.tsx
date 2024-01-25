@@ -3,17 +3,17 @@ import { buildCategoryPath } from "common/builders/buildPath";
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { BoxHeader } from "./BoxHeader";
+import { BoxHeader } from "../../layout/section-header/BoxHeader";
 
-interface ArticleSummarizationBoxHeaderProps {
+interface ArticlesOverviewHeaderProps {
   category: CategoryItem;
   showSeeMore?: boolean;
 }
 
-export const ArticleSummarizationBoxHeader = ({
+export const ArticlesOverviewHeader = ({
   category,
   showSeeMore = false,
-}: ArticleSummarizationBoxHeaderProps) => {
+}: ArticlesOverviewHeaderProps) => {
   if (!category) return null;
 
   return (

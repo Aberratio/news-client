@@ -3,22 +3,24 @@ import styled from "styled-components";
 import { useLastArticles } from "../useLastArticles";
 import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
 import { useEffect } from "react";
-import { ArticleSummarizationBoxHeader } from "./ArticleSummarizationBoxHeader";
 import { CategoryItem } from "types/CategoryItem";
+import { ArticlesOverviewHeader } from "./ArticlesOverviewHeader";
 
-interface ArticleSummarizationBoxProps {
+interface ArticlesOverviewProps {
   category: CategoryItem;
+  page?: number;
   showSeeMore?: boolean;
 }
 
-export const ArticleSummarizationBox = ({
+export const ArticlesOverview = ({
   category,
+  page = 0,
   showSeeMore = true,
-}: ArticleSummarizationBoxProps) => {
+}: ArticlesOverviewProps) => {
   const { articles, isLoading, loadArticles } = useLastArticles();
 
   useEffect(() => {
-    category?.id && loadArticles(category.id);
+    category?.id && loadArticles(category.id, 20, page);
   }, [category]);
 
   if (isLoading) {
@@ -28,10 +30,7 @@ export const ArticleSummarizationBox = ({
   return (
     <Wrapper data-test-id={`article-summarizatoin-box-${category.id}`}>
       {showSeeMore && (
-        <ArticleSummarizationBoxHeader
-          category={category}
-          showSeeMore={showSeeMore}
-        />
+        <ArticlesOverviewHeader category={category} showSeeMore={showSeeMore} />
       )}
       <Container $showSeeMore={showSeeMore}>
         {articles.map((article: ArticleSummarizationItem) => {

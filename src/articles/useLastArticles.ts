@@ -16,8 +16,8 @@ export const useLastArticles = () => {
   const [articles, setArticles] = useState<ArticleSummarizationItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const loadArticles = (categoryId?: number) => {
-    getLastArticlesDetails(categoryId).then((data) => {
+  const loadArticles = (categoryId?: number, limit?: number, page?: number) => {
+    getLastArticlesDetails(categoryId, limit, page).then((data) => {
       setArticles(mapData(data));
       setIsLoading(false);
     });
