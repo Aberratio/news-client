@@ -24,7 +24,7 @@ export const FullArticlePage = () => {
     },
     {
       name: article.category.name,
-      path: `/category${article.category.path}`,
+      path: article.category.path,
     },
     {
       name: article.title,

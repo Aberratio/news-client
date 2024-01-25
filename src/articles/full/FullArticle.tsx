@@ -40,8 +40,6 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
   padding-bottom: 30px;
 `;
 

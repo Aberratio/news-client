@@ -34,4 +34,5 @@ const Container = styled.div`
 const Row = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
+  gap: 16px;
 `;

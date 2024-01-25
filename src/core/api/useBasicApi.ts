@@ -48,9 +48,7 @@ export const useBasicApi = () => {
   // ===================================
   // categories
   const getTabs = async (): Promise<GetTabsResponse[]> =>
-    get<void, GetTabsResponse[]>(`${apiUrl}/categories/tabs`, undefined, {
-      cacheTimeoutMs: 1000 * 60 * 60 * 24,
-    });
+    get<void, GetTabsResponse[]>(`${apiUrl}/categories/tabs`);
 
   // ===================================
   // comments

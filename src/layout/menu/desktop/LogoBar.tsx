@@ -36,17 +36,19 @@ const Container = styled.div`
 `;
 
 const Link = styled.a`
+  display: flex;
+  justify-content: center;
+
   color: #007bff;
   text-decoration: none;
   background-color: transparent;
+
   touch-action: manipulation;
-  display: flex;
-  justify-content: center;
   cursor: pointer;
 `;
 
 const Image = styled.img`
   vertical-align: middle;
   border-style: none;
-  width: 100%;
+  width: 90%;
 `;
