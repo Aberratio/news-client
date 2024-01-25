@@ -1,5 +1,5 @@
-import { GetArticlesLastResponse } from "common/api/responses/GetArticlesLastResponse";
-import { useBasicApi } from "common/api/useBasicApi";
+import { GetArticlesLastResponse } from "core/api/responses/GetArticlesLastResponse";
+import { useBasicApi } from "core/api/useBasicApi";
 import { GetArticleResponse } from "./responses/GetArticleResponse";
 import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
 

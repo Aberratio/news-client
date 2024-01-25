@@ -1,5 +1,5 @@
-import { GetPopularTitlesResponse } from "common/api/responses/GetPopularTitlesResponse";
-import { useArticlesApi } from "common/api/useArticlesApi";
+import { GetPopularTitlesResponse } from "core/api/responses/GetPopularTitlesResponse";
+import { useArticlesApi } from "core/api/useArticlesApi";
 import { useState } from "react";
 import { TitleItem } from "./TitleItem";
 

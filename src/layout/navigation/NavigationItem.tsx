@@ -1,7 +1,7 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { SubMenu } from "./SubMenu";
-import { buildCategoryPath } from "common/builders/buildPath";
+import { buildCategoryPath } from "core/builders/buildPath";
 import { useState } from "react";
 import { TabItem } from "types/TabItem";
 

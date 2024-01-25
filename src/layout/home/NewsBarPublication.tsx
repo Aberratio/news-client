@@ -96,24 +96,6 @@ const Description = styled.div`
   height: 100%;
 `;
 
-const Category = styled.a`
-  display: block;
-  padding: 3px 5px;
-  z-index: 3;
-
-  border: 1px solid #fff;
-  background-color: transparent;
-
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: all 0.3s;
-
-  &:hover {
-    border-color: #15a752;
-    background-color: #15a752;
-  }
-`;
-
 const Title = styled.div`
   margin: 12px 0;
   z-index: 3;

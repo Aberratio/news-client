@@ -1,7 +1,7 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { MetadataBar } from "articles/MetadataBar";
-import { buildCategoryPath } from "common/builders/buildPath";
+import { buildCategoryPath } from "core/builders/buildPath";
 import { FullArticleItem } from "types/FullArticleItem";
 
 interface FullArticleProps {
@@ -20,7 +20,6 @@ export const FullArticle = ({ article }: FullArticleProps) => {
           authorName={article.author.name}
           createdOn={article.createdOn}
         />
-        {/* <StatisticBar statistics={article.statistics} /> */}
         <SliderContainer>
           <Image src="/images/article/barycz.jpg" />
         </SliderContainer>

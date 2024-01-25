@@ -1,4 +1,4 @@
-import { useAdminApi } from "common/api/useAdminApi";
+import { useAdminApi } from "core/api/useAdminApi";
 import { useState } from "react";
 
 export const useVisitCounter = () => {

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useCategoriesApi } from "common/api/useCategoriesApi";
-import { GetTabsResponse } from "common/api/responses/GetTabsResponse";
+import { useCategoriesApi } from "core/api/useCategoriesApi";
+import { GetTabsResponse } from "core/api/responses/GetTabsResponse";
 import { TabItem } from "types/TabItem";
-import { buildCategoryPath, buildTabPath } from "common/builders/buildPath";
+import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 
 export const useCategories = () => {
   const { getTabsDetails } = useCategoriesApi();

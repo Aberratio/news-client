@@ -1,4 +1,4 @@
-import { useBasicApi } from "common/api/useBasicApi";
+import { useBasicApi } from "core/api/useBasicApi";
 import { GetCommentsLastResponse } from "./responses/GetCommentsLastResponse";
 
 export const useCommentsApi = () => {

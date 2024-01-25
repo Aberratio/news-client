@@ -1,15 +1,15 @@
-import { useArticlesApi } from "common/api/useArticlesApi";
+import { useArticlesApi } from "core/api/useArticlesApi";
 import { useState } from "react";
 import { ArticleSummarizationItem } from "../types/ArticleSummarizationItem";
-import { GetArticlesLastResponse } from "common/api/responses/GetArticlesLastResponse";
+import { GetArticlesLastResponse } from "core/api/responses/GetArticlesLastResponse";
 import {
   buildArticlePath,
   buildAuthorPath,
   buildCategoryPath,
   buildPhotoPath,
   buildTabPath,
-} from "common/builders/buildPath";
-import { formatDateToString } from "common/builders/buildDate";
+} from "core/builders/buildPath";
+import { formatDateToString } from "core/builders/buildDate";
 
 export const useLastArticles = () => {
   const { getLastArticlesDetails } = useArticlesApi();

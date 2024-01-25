@@ -1,5 +1,5 @@
-import { GetCommentsLastResponse } from "common/api/responses/GetCommentsLastResponse";
-import { useCommentsApi } from "common/api/useCommentsApi";
+import { GetCommentsLastResponse } from "core/api/responses/GetCommentsLastResponse";
+import { useCommentsApi } from "core/api/useCommentsApi";
 import { useState } from "react";
 import { CommentItem } from "./CommentItem";
 

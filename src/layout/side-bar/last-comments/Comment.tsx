@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Typography } from "layout/components/typography/Typography";
 import { CommentItem } from "./CommentItem";
-import { buildArticlePath } from "common/builders/buildPath";
+import { buildArticlePath } from "core/builders/buildPath";
 
 interface CommentProps {
   comment: CommentItem;

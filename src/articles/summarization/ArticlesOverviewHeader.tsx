@@ -1,5 +1,5 @@
 import { CategoryItem } from "types/CategoryItem";
-import { buildCategoryPath } from "common/builders/buildPath";
+import { buildCategoryPath } from "core/builders/buildPath";
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";

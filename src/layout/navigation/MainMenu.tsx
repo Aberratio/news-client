@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { NavigationItem } from "./NavigationItem";
 import { useRef, useState } from "react";
-import { useOutsideClick } from "common/hooks/useOutsideClick";
+import { useOutsideClick } from "core/hooks/useOutsideClick";
 import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 
 export const MainMenu = () => {

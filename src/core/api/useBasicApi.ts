@@ -1,4 +1,4 @@
-import { useHttp } from "common/hooks/useHttp";
+import { useHttp } from "core/hooks/useHttp";
 
 import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
 import { PostCreateChatRequest } from "./requests/PostCreateChatRequest";
