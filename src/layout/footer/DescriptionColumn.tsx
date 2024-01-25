@@ -5,7 +5,7 @@ export const DescriptionColumn = () => {
   return (
     <Container>
       <LogoWrapper href="/">
-        <Logo />
+        <Logo src="/public/icons/logo_footer.png" />
       </LogoWrapper>
       <Description>
         <StyledTypography color="white" wordBreak="break-word">
@@ -52,8 +52,7 @@ const LogoWrapper = styled.a`
 `;
 
 const Logo = styled.img`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  height: 95px;
+  vertical-align: middle;
+  border-style: none;
+  width: 95%;
 `;

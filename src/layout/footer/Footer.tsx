@@ -10,7 +10,7 @@ export const Footer = () => {
         <Container>
           <Row>
             <DescriptionColumn />
-            <InfoColumn {...secondColumnMock} />
+            {/* <InfoColumn {...secondColumnMock} /> */}
             <InfoColumn {...thirdColumnMock} />
           </Row>
         </Container>

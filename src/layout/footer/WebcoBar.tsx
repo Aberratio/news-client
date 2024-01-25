@@ -37,6 +37,6 @@ const Container = styled.div`
 
 const Link = styled.a`
   margin: 0 8px;
-  color: green;
+  color: #15a752;
   cursor: pointer;
 `;

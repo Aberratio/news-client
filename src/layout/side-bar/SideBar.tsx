@@ -9,7 +9,7 @@ export const SideBar = () => {
       <Container>
         <FirstSite />
         <VisitCounter />
-        <LastComments />
+        {/* <LastComments /> */}
       </Container>
     </Wrapper>
   );

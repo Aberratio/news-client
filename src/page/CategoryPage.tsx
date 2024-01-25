@@ -31,10 +31,10 @@ export const CategoryPage = () => {
         name: "Strona Główna",
         path: "/",
       },
-      {
-        name: category.tabName,
-        path: `/tab/${category.tabId}`,
-      },
+      // {
+      //   name: category.tabName,
+      //   path: `/tab/${category.tabId}`,
+      // },
       {
         name: category.name,
         path: `/category/${category.id}`,
