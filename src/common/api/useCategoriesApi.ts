@@ -1,5 +1,5 @@
 import { useBasicApi } from "common/api/useBasicApi";
-import { GetTabsResponse } from "./responses/GetArticleResponse copy";
+import { GetTabsResponse } from "./responses/GetTabsResponse";
 
 export const useCategoriesApi = () => {
   const { getTabs } = useBasicApi();

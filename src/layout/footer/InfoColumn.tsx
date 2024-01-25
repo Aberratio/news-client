@@ -62,7 +62,7 @@ export const InfoColumn = ({ header, elements }: InfoColumnProps) => {
 
 const Container = styled.div`
   width: 100%;
-  padding 16px;
+  padding: 16px;
 `;
 
 const Header = styled.div`

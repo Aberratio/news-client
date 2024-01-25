@@ -9,7 +9,6 @@ import {
   buildArticlePath,
   buildPhotoPath,
 } from "common/builders/buildPath";
-import { CategoryEnum } from "../types/CategoryItem";
 
 export const useArticle = () => {
   const { getArticleDetails } = useArticlesApi();
@@ -42,7 +41,7 @@ const mapData = (data: GetArticleResponse): FullArticleItem => {
     body: data.body,
     category: {
       id: data.category,
-      name: CategoryEnum[data.category],
+      name: data.categoryName,
       path: buildCategoryPath(data.category),
     },
     createdOn: formatDateToString(data.createdOn),

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useCategoriesApi } from "common/api/useCategoriesApi";
-import { GetTabsResponse } from "common/api/responses/GetArticleResponse copy";
+import { GetTabsResponse } from "common/api/responses/GetTabsResponse";
 import { TabItem } from "types/TabItem";
+import { buildCategoryPath, buildTabPath } from "common/builders/buildPath";
 
 export const useCategories = () => {
   const { getTabsDetails } = useCategoriesApi();
@@ -23,7 +24,7 @@ export const useCategories = () => {
 };
 
 const mapData = (data: GetTabsResponse[]): TabItem[] => {
-  return data.map((tab) => {
+  return data.map((tab: GetTabsResponse) => {
     return {
       id: tab.tabId,
       name: tab.name,
@@ -31,6 +32,10 @@ const mapData = (data: GetTabsResponse[]): TabItem[] => {
         return {
           id: category.id,
           name: category.name,
+          path: buildCategoryPath(category.id),
+          tabId: tab.tabId,
+          tabName: tab.name,
+          tabPath: buildTabPath(tab.tabId),
         };
       }),
     };

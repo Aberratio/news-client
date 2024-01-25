@@ -9,7 +9,6 @@ import {
   buildPhotoPath,
 } from "common/builders/buildPath";
 import { formatDateToString } from "common/builders/buildDate";
-import { CategoryEnum } from "../types/CategoryItem";
 
 export const useLastArticles = () => {
   const { getLastArticlesDetails } = useArticlesApi();
@@ -39,9 +38,12 @@ const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
         path: buildAuthorPath(item.author.id),
       },
       category: {
-        id: item.category,
-        name: CategoryEnum[item.category],
-        path: buildCategoryPath(item.category),
+        id: item.category.id,
+        name: item.category.name,
+        path: buildCategoryPath(item.category.id),
+        tabId: item.category.tabId,
+        tabName: "",
+        tabPath: "",
       },
       createdOn: formatDateToString(item.createdOn),
       id: item.id,

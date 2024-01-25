@@ -1,6 +1,3 @@
-// import { useContext } from "react";
-// import { AuthContext } from "../../core/auth/AuthContext";
-// import { useConfiguration } from "../../core/config/useConfiguration";
 import { useCache } from "./useCache";
 import { buildUrl } from "../builders/buildUrl";
 
@@ -9,9 +6,6 @@ interface RequestOptions extends RequestInit {
 }
 
 export const useHttp = () => {
-  const accessToken = "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";
-  //   const { accessToken } = useContext(AuthContext);
-  // const configuration = useConfiguration();
   const { getRequest } = useCache();
 
   const authorizedFetch = async <TResponse>(
@@ -23,9 +17,7 @@ export const useHttp = () => {
       credentials: "same-origin" as RequestCredentials,
       headers: {
         ...requestOptions.headers,
-        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json;charset=UTF-8",
-        "OpenAI-Beta": "assistants=v1",
       },
     })
       .then((response: Response) => {
@@ -65,7 +57,11 @@ export const useHttp = () => {
 
     return getRequest(
       () =>
-        authorizedFetch(fullUrl, { method: "GET", signal: options?.signal }),
+        authorizedFetch(fullUrl, {
+          method: "GET",
+          signal: options?.signal,
+          cache: "force-cache",
+        }),
       fullUrl,
       options.cacheTimeoutMs,
     );

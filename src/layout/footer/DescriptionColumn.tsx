@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const DescriptionColumn = () => {
   return (
     <Container>
-      <LogoWrapper href="#">
+      <LogoWrapper href="/">
         <Logo />
       </LogoWrapper>
       <Description>

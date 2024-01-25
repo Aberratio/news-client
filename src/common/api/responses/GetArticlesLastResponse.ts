@@ -31,13 +31,8 @@ export interface Author {
   id: number;
   name: string;
 }
-
-enum Category {
-  Other,
-  News,
-  Mixed,
-  Culture,
-  Figures,
-  Sport,
-  Local,
+export interface Category {
+  id: number;
+  name: string;
+  tabId: number;
 }
