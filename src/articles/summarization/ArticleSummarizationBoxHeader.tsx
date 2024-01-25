@@ -3,6 +3,7 @@ import { buildCategoryPath } from "common/builders/buildPath";
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
+import { BoxHeader } from "./BoxHeader";
 
 interface ArticleSummarizationBoxHeaderProps {
   category: CategoryItem;
@@ -16,41 +17,16 @@ export const ArticleSummarizationBoxHeader = ({
   if (!category) return null;
 
   return (
-    <Wrapper>
-      <Typography variant="h2" isCapitalized>
-        {category.name}
-      </Typography>
+    <BoxHeader name={category.name}>
       {showSeeMore && (
         <SeeMore href={buildCategoryPath(category.id)}>
           <Typography color="black">Zobacz wszystkie</Typography>
           <Arrow direction="right" />
         </SeeMore>
       )}
-    </Wrapper>
+    </BoxHeader>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 50px;
-  padding: 0 18px;
-  position: relative;
-  justify-content: space-between;
-  max-width: min(90%, 1030px);
-  margin: auto;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 6px;
-    height: calc(100% + 2px);
-    top: -1px;
-    left: -1px;
-    background-color: #15a752;
-  }
-`;
 
 const SeeMore = styled.a`
   display: flex;

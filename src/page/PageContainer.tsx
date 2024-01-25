@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { FullArticlePage } from "./FullArticlePage";
 import { CategoryPage } from "./CategoryPage";
 import { PanelPage } from "./PanelPage";
+import { RulesPage } from "./RulesPage";
 
 export const PageContainer = () => {
   return (
@@ -15,6 +16,7 @@ export const PageContainer = () => {
         <Route path="/article/:id" element={<FullArticlePage />} />
         <Route path="/category/:id" element={<CategoryPage />} />
         <Route path="/panel" element={<PanelPage />} />
+        <Route path="/rules" element={<RulesPage />} />
       </Routes>
     </Container>
   );

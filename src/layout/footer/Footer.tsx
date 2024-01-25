@@ -48,7 +48,7 @@ const secondColumnMock = {
       content: [
         {
           text: "Regulamin",
-          link: "#",
+          link: "/rules",
         },
       ],
     },
