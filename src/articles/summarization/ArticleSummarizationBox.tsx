@@ -1,10 +1,10 @@
 import { ArticleSummarization } from "articles/summarization/ArticleSummarization";
 import styled from "styled-components";
 import { useLastArticles } from "../useLastArticles";
-import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
 import { useEffect } from "react";
 import { ArticleSummarizationBoxHeader } from "./ArticleSummarizationBoxHeader";
-import { CategoryItem } from "articles/items/CategoryItem";
+import { CategoryItem } from "types/CategoryItem";
 
 interface ArticleSummarizationBoxProps {
   category: CategoryItem;

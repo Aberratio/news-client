@@ -14,7 +14,7 @@ export const FullArticlePage = () => {
     },
     {
       name: "Aktualności",
-      path: "c/ategory",
+      path: "/category",
     },
     {
       name: "Artykuł",

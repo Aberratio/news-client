@@ -1,6 +1,6 @@
 import { useArticlesApi } from "common/api/useArticlesApi";
 import { useState } from "react";
-import { ArticleSummarizationItem } from "./items/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../types/ArticleSummarizationItem";
 import { GetArticlesLastResponse } from "common/api/responses/GetArticlesLastResponse";
 import {
   buildArticlePath,
@@ -9,7 +9,7 @@ import {
   buildPhotoPath,
 } from "common/builders/buildPath";
 import { formatDateToString } from "common/builders/buildDate";
-import { CategoryEnum } from "./items/CategoryItem";
+import { CategoryEnum } from "../types/CategoryItem";
 
 export const useLastArticles = () => {
   const { getLastArticlesDetails } = useArticlesApi();

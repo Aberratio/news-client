@@ -1,16 +1,11 @@
 import styled from "styled-components";
 import { ArticleSummarizationBox } from "../../articles/summarization/ArticleSummarizationBox";
-import { useCategories } from "layout/navigation/useCategories";
-import { useEffect } from "react";
+import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 
 export const Wall = () => {
-  const { isLoading, categories, loadTabs } = useCategories();
+  const { isReady, categories } = useOrganizationInfo();
 
-  useEffect(() => {
-    loadTabs();
-  }, []);
-
-  if (isLoading) return null;
+  if (!isReady) return null;
 
   return (
     <Wrapper>

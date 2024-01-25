@@ -1,4 +1,4 @@
-import { CategoryItem } from "articles/items/CategoryItem";
+import { CategoryItem } from "types/CategoryItem";
 import { buildCategoryPath } from "common/builders/buildPath";
 import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";

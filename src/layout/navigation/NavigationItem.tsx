@@ -1,9 +1,9 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { SubMenu } from "./SubMenu";
-import { TabItem } from "./useCategories";
 import { buildCategoryPath } from "common/builders/buildPath";
 import { useState } from "react";
+import { TabItem } from "types/TabItem";
 
 interface NavigationItemProps {
   isActive: boolean;

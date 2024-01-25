@@ -1,7 +1,7 @@
 import { useArticlesApi } from "common/api/useArticlesApi";
 import { useState } from "react";
 import { GetArticleResponse } from "common/api/responses/GetArticleResponse";
-import { FullArticleItem } from "./items/FullArticleItem";
+import { FullArticleItem } from "../types/FullArticleItem";
 import { formatDateToString } from "common/builders/buildDate";
 import {
   buildAuthorPath,
@@ -9,7 +9,7 @@ import {
   buildArticlePath,
   buildPhotoPath,
 } from "common/builders/buildPath";
-import { CategoryEnum } from "./items/CategoryItem";
+import { CategoryEnum } from "../types/CategoryItem";
 
 export const useArticle = () => {
   const { getArticleDetails } = useArticlesApi();

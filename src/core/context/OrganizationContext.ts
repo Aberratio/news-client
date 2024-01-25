@@ -1,15 +1,12 @@
 import { createContext } from "react";
-
-export interface Assistant {
-  assistant_id: string;
-}
+import { TabItem } from "types/TabItem";
 
 interface OrganizationContextProps {
-  assistant: Assistant;
-  setAssistant: (assistant: Assistant) => void;
+  isReady: boolean;
+  tabs: TabItem[];
 }
 
 export const OrganizationContext = createContext<OrganizationContextProps>({
-  assistant: {} as Assistant,
-  setAssistant: () => {},
+  isReady: false,
+  tabs: [],
 });

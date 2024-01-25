@@ -2,7 +2,7 @@ import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 import { useState } from "react";
 import { buildCategoryPath } from "common/builders/buildPath";
-import { CategoryItem } from "articles/items/CategoryItem";
+import { CategoryItem } from "types/CategoryItem";
 
 interface SubMenuProps {
   categories: CategoryItem[];

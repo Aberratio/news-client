@@ -1,6 +1,6 @@
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { ArticleSummarizationItem } from "../items/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
 
 interface ArticleSummarizationProps {
   article: ArticleSummarizationItem;
@@ -42,6 +42,10 @@ const Link = styled.a`
   touch-action: manipulation;
   transition: all 0.3s;
   cursor: pointer;
+
+  &:hover {
+    color: #17b978;
+  }
 `;
 
 const Title = styled(Typography)`

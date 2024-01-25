@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { ReactNode, useEffect, useState } from "react";
 
-import { Assistant, OrganizationContext } from "./OrganizationContext";
+import { OrganizationContext } from "./OrganizationContext";
+import { TabItem } from "types/TabItem";
+import { useCategories } from "layout/navigation/useCategories";
 
 interface OrganizationContextProviderProps {
   children: ReactNode;
@@ -10,24 +12,27 @@ interface OrganizationContextProviderProps {
 export const OrganizationContextProvider: React.FC<
   OrganizationContextProviderProps
 > = ({ children }) => {
-  const [assistant, setAssistant] = useState<Assistant>({
-    assistant_id: "asst_smJu7GczcrlALNksrdDWmOHF",
-  });
-
+  const [tabs, setTabs] = useState<TabItem[]>([]);
   const [isReady, setIsReady] = useState<boolean>(false);
 
+  const { tabs: tabsFromApi, loadTabs, isLoading } = useCategories();
+
   useEffect(() => {
-    setIsReady(true);
+    console.log("OrganizationContextProvider");
+    loadTabs();
   }, []);
+
+  useEffect(() => {
+    setTabs(tabsFromApi);
+  }, [tabsFromApi]);
+
+  useEffect(() => {
+    !isLoading && setIsReady(true);
+  }, [isLoading]);
 
   if (isReady) {
     return (
-      <OrganizationContext.Provider
-        value={{
-          assistant,
-          setAssistant,
-        }}
-      >
+      <OrganizationContext.Provider value={{ isReady, tabs }}>
         {children}
       </OrganizationContext.Provider>
     );
