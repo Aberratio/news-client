@@ -34,12 +34,9 @@ interface Author {
   name: string;
 }
 
-enum Category {
-  Other,
-  News,
-  Mixed,
-  Culture,
-  Figures,
-  Sport,
-  Local,
+interface Category {
+  id: number;
+  name: string;
+  tabId: number;
+  tabName: string;
 }

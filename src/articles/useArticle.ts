@@ -8,6 +8,7 @@ import {
   buildCategoryPath,
   buildArticlePath,
   buildPhotoPath,
+  buildTabPath,
 } from "common/builders/buildPath";
 
 export const useArticle = () => {
@@ -40,9 +41,12 @@ const mapData = (data: GetArticleResponse): FullArticleItem => {
     },
     body: data.body,
     category: {
-      id: data.category,
-      name: data.categoryName,
-      path: buildCategoryPath(data.category),
+      id: data.category.id,
+      name: data.category.name,
+      path: buildCategoryPath(data.category.id),
+      tabId: data.category.tabId,
+      tabName: data.category.tabName,
+      tabPath: buildTabPath(data.category.tabId),
     },
     createdOn: formatDateToString(data.createdOn),
     id: data.id,

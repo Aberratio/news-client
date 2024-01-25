@@ -7,6 +7,7 @@ import {
   buildAuthorPath,
   buildCategoryPath,
   buildPhotoPath,
+  buildTabPath,
 } from "common/builders/buildPath";
 import { formatDateToString } from "common/builders/buildDate";
 
@@ -42,8 +43,8 @@ const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
         name: item.category.name,
         path: buildCategoryPath(item.category.id),
         tabId: item.category.tabId,
-        tabName: "",
-        tabPath: "",
+        tabName: item.category.tabName,
+        tabPath: buildTabPath(item.category.tabId),
       },
       createdOn: formatDateToString(item.createdOn),
       id: item.id,

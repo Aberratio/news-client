@@ -35,4 +35,5 @@ export interface Category {
   id: number;
   name: string;
   tabId: number;
+  tabName: string;
 }

@@ -1,23 +1,14 @@
-import { useParams } from "react-router-dom";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
-import { StatisticBar } from "articles/StatisticBar";
 import { MetadataBar } from "articles/MetadataBar";
-import { useArticle } from "articles/useArticle";
-import { useEffect } from "react";
 import { buildCategoryPath } from "common/builders/buildPath";
+import { FullArticleItem } from "types/FullArticleItem";
 
-export const FullArticle = () => {
-  const { article, isLoading, loadArticle } = useArticle();
-  const { id } = useParams();
+interface FullArticleProps {
+  article: FullArticleItem;
+}
 
-  useEffect(() => {
-    id && loadArticle(Number(id));
-  }, [id]);
-
-  if (isLoading) {
-    return <p>Loading....</p>;
-  }
+export const FullArticle = ({ article }: FullArticleProps) => {
   return (
     <Wrapper data-test-id={`full-article-${article.id}`}>
       <Container>
