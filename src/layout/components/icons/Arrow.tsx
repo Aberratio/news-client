@@ -2,7 +2,7 @@ import { Icon, IconProps } from "./Icon";
 
 export const Arrow: React.FC<IconProps> = ({ color, direction, size }) => (
   <Icon
-    size={size || { width: "1rem", height: "1rem" }}
+    size={size ?? { width: "1rem", height: "1rem" }}
     viewBox="0 0 20 20"
     x="0px"
     y="0px"
@@ -16,3 +16,4 @@ export const Arrow: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
+

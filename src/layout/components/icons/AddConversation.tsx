@@ -6,7 +6,7 @@ export const AddConversation: React.FC<IconProps> = ({
   size,
 }) => (
   <Icon
-    size={size || { width: "1.5rem", height: "1.5rem" }}
+    size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 32 32"
     x="0px"
     y="0px"
@@ -23,3 +23,4 @@ export const AddConversation: React.FC<IconProps> = ({
     <rect style={{ fill: "none" }} width="32" height="32" />
   </Icon>
 );
+

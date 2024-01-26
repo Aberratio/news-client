@@ -17,7 +17,7 @@ export const useLastArticles = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadArticles = (categoryId?: number, limit?: number, page?: number) => {
-    getLastArticlesDetails(categoryId, limit, page).then((data) => {
+    void getLastArticlesDetails(categoryId, limit, page).then((data) => {
       setArticles(mapData(data));
       setIsLoading(false);
     });
@@ -57,7 +57,7 @@ const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
         comments: 0,
         dislikes: 0,
         likes: 0,
-        views: item.views || 0,
+        views: item.views ?? 0,
       },
       title: item.title,
     };

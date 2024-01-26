@@ -10,7 +10,7 @@ export const useCategories = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadTabs = () => {
-    getTabsDetails().then((data) => {
+    void getTabsDetails().then((data) => {
       setTabs(mapData(data));
       setIsLoading(false);
     });

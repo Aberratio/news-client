@@ -19,7 +19,7 @@ export const useArticle = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadArticle = (articleId: number) => {
-    getArticleDetails(articleId).then((data) => {
+    void getArticleDetails(articleId).then((data) => {
       setArticle(mapData(data));
       setIsLoading(false);
     });
@@ -61,10 +61,10 @@ const mapData = (data: GetArticleResponse): FullArticleItem => {
       };
     }),
     statistics: {
-      comments: data.comments?.length || 0,
+      comments: data.comments?.length ?? 0,
       dislikes: 0,
       likes: 0,
-      views: data.views || 0,
+      views: data.views ?? 0,
     },
     title: data.title,
   };

@@ -9,7 +9,7 @@ export const usePopularTitles = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadPopulatTitles = (amount: number, from: number) => {
-    getPopularTitlesDetails(amount, from).then((data) => {
+    void getPopularTitlesDetails(amount, from).then((data) => {
       setTitles(mapData(data));
       setIsLoading(false);
     });

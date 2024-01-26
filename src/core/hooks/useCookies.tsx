@@ -16,11 +16,11 @@ export const useCookies = () => {
     const name = `${cookieName}=`;
     const cookieList = document.cookie.split(";");
     for (let cookie of cookieList) {
-      while (cookie.charAt(0) === " ") {
+      while (cookie.startsWith(" ")) {
         cookie = cookie.substring(1);
       }
 
-      if (cookie.indexOf(name) === 0) {
+      if (cookie.startsWith(name)) {
         return window.atob(cookie.substring(name.length, cookie.length));
       }
     }
@@ -31,6 +31,7 @@ export const useCookies = () => {
     const strCookie = getRawCookie(cookieName);
 
     if (strCookie !== "undefined" && strCookie !== null) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return JSON.parse(strCookie);
     }
 
@@ -39,6 +40,7 @@ export const useCookies = () => {
 
   const getCookie = (cookieName: string, cookieFormat?: "json" | "raw") => {
     if (cookieFormat === "json") {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return getJson(cookieName);
     }
 

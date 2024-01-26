@@ -4,12 +4,12 @@ import {
 } from "../../core/styles/customization/CustomTheme";
 
 const WHITE: OppositeColor = "white";
-const BLUE: string = "#5069A7";
+const BLUE = "#5069A7";
 const BLACK: OppositeColor = "black";
-const SILVER: string = "#ccc";
-const LIGHT_GREY: string = "#e7e7e6";
-const DARK_GREY: string = "#262B34";
-const DISABLED: string =
+const SILVER = "#ccc";
+const LIGHT_GREY = "#e7e7e6";
+const DARK_GREY = "#262B34";
+const DISABLED =
   "internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3))";
 const GREEN = "#15a752";
 

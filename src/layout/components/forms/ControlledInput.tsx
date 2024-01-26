@@ -54,6 +54,7 @@ export const ControlledInput = ({
           selectInput={selectInput}
           step={step}
           type={type}
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           value={value}
           onBlur={onBlur}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {

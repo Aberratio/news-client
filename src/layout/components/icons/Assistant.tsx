@@ -2,7 +2,7 @@ import { Icon, IconProps } from "./Icon";
 
 export const Assistant: React.FC<IconProps> = ({ color, direction, size }) => (
   <Icon
-    size={size || { width: "2rem", height: "2rem" }}
+    size={size ?? { width: "2rem", height: "2rem" }}
     viewBox="0 0 24 24"
     x="0px"
     y="0px"
@@ -17,3 +17,4 @@ export const Assistant: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
+

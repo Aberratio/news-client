@@ -13,6 +13,7 @@ const eachRecursive = <TRequest>(
         key2 = `${objName}.${key}` as Extract<keyof TRequest, string>;
       }
 
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       const param = `${key2}=${obj[key]}`;
 
       url += (url.indexOf("?") !== -1 ? "&" : "?") + param;

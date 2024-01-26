@@ -78,9 +78,9 @@ const StyledButton = styled(ButtonBase).attrs(
     elements,
     $hideBorder,
     shape,
-    size: size || "small",
+    size: size ?? "small",
     tabIndex,
-    variant: variant || "primary",
+    variant: variant ?? "primary",
     width,
   }),
 )<ButtonProps>`
@@ -352,3 +352,4 @@ const elementsVariants = (variant = "manyInRow") =>
       justify-content: center;
     `,
   })[variant];
+

@@ -1,7 +1,7 @@
-export type ExpireTime = {
+export interface ExpireTime {
   unit: ExpireTimeUnit;
   value: number;
-};
+}
 
 export enum ExpireTimeUnit {
   Minute,

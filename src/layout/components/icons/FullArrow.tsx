@@ -2,7 +2,7 @@ import { Icon, IconProps } from "./Icon";
 
 export const FullArrow: React.FC<IconProps> = ({ color, direction, size }) => (
   <Icon
-    size={size || { width: "1.5rem", height: "1.5rem" }}
+    size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 30 31"
     x="0px"
     y="0px"
@@ -15,3 +15,4 @@ export const FullArrow: React.FC<IconProps> = ({ color, direction, size }) => (
     <path d="M15 0.5C6.71221 0.5 0 7.21279 0 15.5015C0 23.7887 6.71221 30.5 15 30.5C23.2872 30.5 30 23.7837 30 15.5015C30.005 7.21279 23.2872 0.5 15 0.5ZM15 29.0926C7.49648 29.0926 1.40889 23.0091 1.40889 15.5015C1.40889 7.99795 7.49648 1.91035 15 1.91035C22.5091 1.91035 28.5911 7.99795 28.5911 15.5015C28.5911 23.0091 22.5091 29.0926 15 29.0926Z" />
   </Icon>
 );
+

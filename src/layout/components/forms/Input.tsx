@@ -94,7 +94,7 @@ export const Input = ({
         tabIndex={tabIndex}
         type={type}
         value={value}
-        onBlur={onBlur || labelControl}
+        onBlur={onBlur ?? labelControl}
         onChange={onChange}
         onFocus={labelControl}
       />

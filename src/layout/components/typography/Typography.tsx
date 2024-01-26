@@ -6,7 +6,7 @@ import { CustomFonts } from "../../../core/styles/customization/CustomFonts";
 import { useActiveViewportSize } from "../../responsivenes/useActiveViewportSize";
 import { useStyles } from "../../styles/useStyles";
 
-const Variant: { [key: string]: string } = {
+const Variant: Record<string, string> = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
@@ -71,7 +71,7 @@ const StyledTypography = styled.p.withConfig({
   ${({ position }) =>
     position &&
     css`
-      justify-content: ${position.justifyContent || "center"};
+      justify-content: ${position.justifyContent ?? "center"};
     `};
 
   ${({ color }) =>
@@ -156,6 +156,7 @@ export const Typography = ({
     <StyledTypography
       aria-label={ariaLabel}
       color={color}
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
       isCapitalized={isCapitalized}
       typographyVariant={typographyVariant}

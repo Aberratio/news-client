@@ -7,7 +7,7 @@ export const useVisitCounter = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadVisits = () => {
-    getVisitsDetails().then((data) => {
+    void getVisitsDetails().then((data) => {
       setVisits(data);
       setIsLoading(false);
     });

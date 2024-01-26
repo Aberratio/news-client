@@ -2,7 +2,7 @@ import { Icon, IconProps } from "./Icon";
 
 export const Save: React.FC<IconProps> = ({ color, direction, size }) => (
   <Icon
-    size={size || { width: "1.5rem", height: "1.5rem" }}
+    size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 486 486"
     x="0px"
     y="0px"
@@ -37,3 +37,4 @@ export const Save: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
+

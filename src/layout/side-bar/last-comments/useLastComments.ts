@@ -9,7 +9,7 @@ export const useLastComments = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadLastComments = (limit: number) => {
-    getCommentsLastDetails(limit).then((data) => {
+    void getCommentsLastDetails(limit).then((data) => {
       setComments(mapData(data));
       setIsLoading(false);
     });

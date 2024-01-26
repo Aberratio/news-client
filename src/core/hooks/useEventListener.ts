@@ -16,6 +16,7 @@ export const useEventListener = ({
   const savedListener = useRef(listener);
 
   const handleEventListener = useCallback((event: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     savedListener.current?.(event);
   }, []);
 

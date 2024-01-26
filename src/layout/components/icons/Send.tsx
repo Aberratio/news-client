@@ -2,7 +2,7 @@ import { Icon, IconProps } from "./Icon";
 
 export const Send: React.FC<IconProps> = ({ color, size }) => (
   <Icon
-    size={size || { width: "1.5rem", height: "1.5rem" }}
+    size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 17 17"
     color={color}
   >
@@ -36,3 +36,4 @@ export const Send: React.FC<IconProps> = ({ color, size }) => (
     </g>
   </Icon>
 );
+
