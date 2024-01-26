@@ -2,6 +2,12 @@ export interface CustomTheme {
   general: {
     borderRadius: string;
     errorMessageColor: string;
+    primaryColor: string;
+    primaryOppositeColor: OppositeColor;
+    secondaryColor: string;
+    secondaryOppositeColor: OppositeColor;
+    tertiaryColor: string;
+    tertiaryOppositeColor: OppositeColor;
   };
   buttons: {
     primary: {

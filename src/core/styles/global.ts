@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
 import "@fontsource/roboto";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -78,3 +78,4 @@ export const GlobalStyle = createGlobalStyle`
       all: unset;
     }
 `;
+

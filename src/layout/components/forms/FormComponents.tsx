@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const InputGroup = styled.div`
   ${({ theme }) => `
   width: 100%;
@@ -70,3 +69,4 @@ export const ElementContainer = styled.div`
     }
   `}
 `;
+

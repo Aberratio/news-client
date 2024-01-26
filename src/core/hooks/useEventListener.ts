@@ -29,6 +29,6 @@ export const useEventListener = ({
     }
 
     return () => window.removeEventListener(eventName, handleEventListener);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eventName, updateValue]);
 };
+

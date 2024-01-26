@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-syntax */
 import {
   ExpireTime,
   ExpireTimeUnit,
@@ -107,3 +106,4 @@ export const configCookies = {
 const utoa = (str: string) => {
   return Buffer.from(str, "utf8").toString("base64");
 };
+

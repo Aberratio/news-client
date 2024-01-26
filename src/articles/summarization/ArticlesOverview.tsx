@@ -1,9 +1,9 @@
 import { ArticleSummarization } from "articles/summarization/ArticleSummarization";
-import styled from "styled-components";
-import { useLastArticles } from "../useLastArticles";
-import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
 import { useEffect } from "react";
+import styled from "styled-components";
 import { CategoryItem } from "types/CategoryItem";
+import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
+import { useLastArticles } from "../useLastArticles";
 import { ArticlesOverviewHeader } from "./ArticlesOverviewHeader";
 
 interface ArticlesOverviewProps {

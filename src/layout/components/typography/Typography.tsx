@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import { ReactNode, ReactElement } from "react";
 import styled, { css } from "styled-components";
 import { space, typography, textAlign } from "styled-system";
@@ -168,3 +167,4 @@ export const Typography = ({
     </StyledTypography>
   );
 };
+

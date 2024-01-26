@@ -45,7 +45,6 @@ export const Button: React.FC<ButtonProps> = ({
       aria-label={ariaLabel}
       disabled={disabled}
       elements={elements}
-      $hideBorder={$hideBorder}
       ref={innerRef}
       shape={shape}
       size={size}
@@ -55,6 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
       width={width}
       onClick={onClick}
       onKeyDown={onKeyDown}
+      $hideBorder={$hideBorder}
     >
       {iconPosition && iconPosition === "left" && Icon}
       {children}
@@ -88,9 +88,9 @@ const StyledButton = styled(ButtonBase).attrs(
   justify-content: center;
 
   ${({ theme, variant, disabled }) => styleVariants(theme, variant, disabled)}
-  ${({ theme, size }) => sizeVariants(theme, size)}
-  ${({ width }) => width && widthVariants(width)} ${({ shape }) =>
-    shape && shapeVariants(shape)}
+  ${({ theme, size }) => sizeVariants(theme, size)};
+  ${({ width }) => width && widthVariants(width)};
+  ${({ shape }) => shape && shapeVariants(shape)};
   ${({ elements }) => elements && elementsVariants(elements)};
   ${({ $hideBorder }) => $hideBorder && `border: none;`};
 `;

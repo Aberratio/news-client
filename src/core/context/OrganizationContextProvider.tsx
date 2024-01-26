@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import React, { ReactNode, useEffect, useState } from "react";
 
 import { OrganizationContext } from "./OrganizationContext";
@@ -39,3 +38,4 @@ export const OrganizationContextProvider: React.FC<
   }
   return null;
 };
+

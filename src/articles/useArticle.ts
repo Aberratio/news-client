@@ -1,15 +1,15 @@
-import { useArticlesApi } from "core/api/useArticlesApi";
-import { useState } from "react";
 import { GetArticleResponse } from "core/api/responses/GetArticleResponse";
-import { FullArticleItem } from "../types/FullArticleItem";
+import { useArticlesApi } from "core/api/useArticlesApi";
 import { formatDateToString } from "core/builders/buildDate";
 import {
+  buildArticlePath,
   buildAuthorPath,
   buildCategoryPath,
-  buildArticlePath,
   buildPhotoPath,
   buildTabPath,
 } from "core/builders/buildPath";
+import { useState } from "react";
+import { FullArticleItem } from "../types/FullArticleItem";
 
 export const useArticle = () => {
   const { getArticleDetails } = useArticlesApi();

@@ -1,7 +1,7 @@
-import { Typography } from "layout/components/typography/Typography";
-import styled from "styled-components";
 import { MetadataBar } from "articles/MetadataBar";
 import { buildCategoryPath } from "core/builders/buildPath";
+import { Typography } from "layout/components/typography/Typography";
+import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 
 interface FullArticleProps {

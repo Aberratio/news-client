@@ -13,14 +13,25 @@ const DISABLED: string =
   "internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3))";
 const GREEN = "#15a752";
 
-const PRIMARY_COLOR = "#f2f2f2;";
+const PRIMARY_COLOR = "rgb(46,104,150)";
 const PRIMARY_OPPOSITE_COLOR: OppositeColor = WHITE;
+const SECONDARY_COLOR = "#15a752";
+const SECONDARY_OPPOSITE_COLOR: OppositeColor = WHITE;
+const TERTIARY_COLOR = "rgb(184,0,0)";
+const TERTIARY_OPPOSITE_COLOR: OppositeColor = WHITE;
+
 const SPECIAL_ACCENT_COLOR = SILVER;
 
 export const customTheme: CustomTheme = {
   general: {
     borderRadius: "0px",
     errorMessageColor: "red",
+    primaryColor: PRIMARY_COLOR,
+    primaryOppositeColor: PRIMARY_OPPOSITE_COLOR,
+    secondaryColor: SECONDARY_COLOR,
+    secondaryOppositeColor: SECONDARY_OPPOSITE_COLOR,
+    tertiaryColor: TERTIARY_COLOR,
+    tertiaryOppositeColor: TERTIARY_OPPOSITE_COLOR,
   },
   buttons: {
     primary: {
@@ -67,3 +78,4 @@ export const customTheme: CustomTheme = {
     },
   },
 };
+

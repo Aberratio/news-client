@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import { ChangeEvent, RefObject } from "react";
 import { Control, Controller } from "react-hook-form";
 
@@ -59,7 +58,6 @@ export const ControlledInput = ({
           onBlur={onBlur}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             onFieldChange(e);
-            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
             onChange && onChange(e);
           }}
         />
@@ -67,3 +65,4 @@ export const ControlledInput = ({
     />
   );
 };
+

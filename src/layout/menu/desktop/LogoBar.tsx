@@ -13,33 +13,36 @@ export const LogoBar = () => {
 };
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${({ theme }) => `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  width: 100%;
-  max-width: 1080px;
-  height: 100px;
+    width: 100%;
+    max-width: 1080px;
+    height: 100px;
 
-  margin: auto;
-  padding: 25px 0 10px 0;
+    margin: auto;
+    padding: ${theme.spaces.lg} 0 ${theme.spaces.sm} 0;
+  `}
 `;
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => `
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  width: 100%;
-  height: 100%;
-  padding-bottom: 15px;
+    width: 100%;
+    height: 100%;
+    padding-bottom: ${theme.spaces.md};
+  `}
 `;
 
 const Link = styled.a`
   display: flex;
   justify-content: center;
 
-  color: #007bff;
   text-decoration: none;
   background-color: transparent;
 

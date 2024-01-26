@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-restricted-syntax */
 const eachRecursive = <TRequest>(
   url: string,
   obj: TRequest,
@@ -30,3 +28,4 @@ export const buildUrl = <TRequest>(
 ): string => {
   return eachRecursive(url, parameters);
 };
+

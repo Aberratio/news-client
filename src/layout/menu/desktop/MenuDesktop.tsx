@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { TopBar } from "./TopBar";
-import { TitleBar } from "./TitleBar";
+
 import { LogoBar } from "./LogoBar";
-import { InfoBar } from "./InfoBar";
+import { SubTitleBar } from "./SubTitleBar";
+import { TitleBar } from "./TitleBar";
 
 export const MenuDesktop = () => {
   return (
@@ -11,7 +12,7 @@ export const MenuDesktop = () => {
         <TopBar />
         <TitleBar />
         <LogoBar />
-        <InfoBar />
+        <SubTitleBar />
       </Container>
     </Header>
   );

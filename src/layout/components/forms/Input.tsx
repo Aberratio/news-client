@@ -1,5 +1,3 @@
-/* eslint-disable react/require-default-props */
-
 import {
   ReactElement,
   ForwardedRef,
@@ -160,3 +158,4 @@ const StyledInput = styled.input<FormElementStylesProps>(
         } !important;
     `,
 );
+
