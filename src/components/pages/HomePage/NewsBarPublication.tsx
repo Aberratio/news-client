@@ -34,11 +34,9 @@ export const NewsBarPublication = ({
         <ImageLink href={`article/${article.id}`}>
           <Description>
             <Title>
-              <TitleLink href={`article/${article.id}`}>
-                <Typography color="white" variant={titleType()}>
-                  {article.title}
-                </Typography>
-              </TitleLink>
+              <Typography color="white" variant={titleType()}>
+                {article.title}
+              </Typography>
             </Title>
           </Description>
         </ImageLink>
@@ -102,6 +100,7 @@ const Title = styled.div`
 `;
 
 const TitleLink = styled.a`
+  position: relative;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

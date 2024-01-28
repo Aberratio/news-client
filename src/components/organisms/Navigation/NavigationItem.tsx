@@ -24,7 +24,7 @@ export const NavigationItem = ({
 
   return (
     <Container
-      data-test-id="navigation-item"
+      data-testid="navigation-item"
       onClick={onClick}
       $isActive={isActive}
       onMouseEnter={() => {

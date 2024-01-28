@@ -18,13 +18,15 @@ export const SubMenu = ({ categories }: SubMenuProps) => {
       <CategoryContainer>
         {categories.map((category) => {
           return (
-            <Link
-              href={`${buildCategoryPath(category.id)}`}
-              onClick={() => setActiveCategoryId(category.id)}
-              $isActive={activeCategoryId === category.id}
-            >
-              <Typography isCapitalized>{category.name}</Typography>
-            </Link>
+            <Typography key={category.id} isCapitalized>
+              <Link
+                href={`${buildCategoryPath(category.id)}`}
+                $isActive={activeCategoryId === category.id}
+                onClick={() => setActiveCategoryId(category.id)}
+              >
+                {category.name}
+              </Link>
+            </Typography>
           );
         })}
       </CategoryContainer>
@@ -58,10 +60,9 @@ const CategoryContainer = styled.div`
 `;
 
 const Link = styled.a<{ $isActive: boolean }>`
+  display: flex;
+  width: 100%;
   opacity: 1;
-  font-family: Roboto-Medium;
-  font-size: 14px;
-  line-height: 1.8;
   border-radius: 0;
   padding: 8px 20px 8px 33px;
   color: ${({ $isActive }) => ($isActive ? "#fff" : "#000")};

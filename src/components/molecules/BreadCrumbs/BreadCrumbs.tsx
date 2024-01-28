@@ -1,6 +1,7 @@
 import { Arrow } from "components/molecules/Icons/Arrow";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
+import { Fragment } from "react";
 
 export interface BreadCrumbsItem {
   name: string;
@@ -20,14 +21,14 @@ const BreadCrumbs = ({ breadcrumbs }: BreadCrumbsProps) => {
         <Row>
           {breadcrumbs.slice(0, length).map((item) => {
             return (
-              <>
+              <Fragment key={item.name}>
                 <Path href={item.path}>
                   <Typography variant="small" isCapitalized>
                     {item.name}
                   </Typography>
                 </Path>
                 <Arrow direction="right" />
-              </>
+              </Fragment>
             );
           })}
 
