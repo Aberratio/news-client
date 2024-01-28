@@ -2,17 +2,16 @@ import { Arrow } from "layout/components/icons/Arrow";
 import { Typography } from "layout/components/typography/Typography";
 import styled from "styled-components";
 
-export interface BreadcrumbItem {
+export interface BreadCrumbsItem {
   name: string;
-  icon?: string;
   path: string;
 }
 
-interface BreadcrumbProps {
-  breadcrumbs: BreadcrumbItem[];
+interface BreadCrumbsProps {
+  breadcrumbs: BreadCrumbsItem[];
 }
 
-export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
+const BreadCrumbs = ({ breadcrumbs }: BreadCrumbsProps) => {
   const length = breadcrumbs.length - 1;
 
   return (
@@ -40,6 +39,8 @@ export const Breadcrumb = ({ breadcrumbs }: BreadcrumbProps) => {
     </Wrapper>
   );
 };
+
+export default BreadCrumbs;
 
 const Wrapper = styled.div`
   margin: 12px auto;

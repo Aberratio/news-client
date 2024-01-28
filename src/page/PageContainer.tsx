@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage } from "./HomePage";
-import { AboutPage } from "./AboutPage";
 import styled from "styled-components";
-import { FullArticlePage } from "./FullArticlePage";
-import { CategoryPage } from "./CategoryPage";
-import { PanelPage } from "./PanelPage";
-import { RulesPage } from "./RulesPage";
+import { PanelPage } from "../components/pages/PanelPage/PanelPage";
+import { AboutPage } from "components/pages/AboutPage/AboutPage";
+import { CategoryPage } from "components/pages/CategoryPage/CategoryPage";
+import { FullArticlePage } from "components/pages/FullArticlePage/FullArticlePage";
+import { HomePage } from "components/pages/HomePage/HomePage";
+import { RulesPage } from "components/pages/RulesPage/RulesPage";
 
 export const PageContainer = () => {
   return (

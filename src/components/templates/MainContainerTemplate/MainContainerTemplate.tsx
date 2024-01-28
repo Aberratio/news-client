@@ -1,11 +1,13 @@
 import { SideBar } from "layout/side-bar/SideBar";
 import styled from "styled-components";
 
-interface MainContainerProps {
-  children: any;
+interface MainContainerTemplateProps {
+  children: React.ReactNode;
 }
 
-export const MainContainer = ({ children }: MainContainerProps) => {
+export const MainContainerTemplate = ({
+  children,
+}: MainContainerTemplateProps) => {
   return (
     <Wrapper data-test-id="main-container">
       <Container>

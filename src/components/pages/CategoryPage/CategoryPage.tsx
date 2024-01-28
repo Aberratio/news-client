@@ -1,11 +1,10 @@
-import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
-import { MainContainer } from "./MainContainer";
 import { ArticlesOverview } from "articles/summarization/ArticlesOverview";
-import { ArticlesOverviewHeader } from "articles/summarization/ArticlesOverviewHeader";
 import { useParams } from "react-router-dom";
 import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 import { useEffect, useState } from "react";
 import { CategoryItem } from "types/CategoryItem";
+import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
+import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 export const CategoryPage = () => {
   const { id } = useParams();
@@ -25,7 +24,7 @@ export const CategoryPage = () => {
 
   const createBreadcrumbFromCategory = (
     category: CategoryItem,
-  ): BreadcrumbItem[] => {
+  ): BreadCrumbsItem[] => {
     return [
       {
         name: "Strona Główna",
@@ -45,12 +44,11 @@ export const CategoryPage = () => {
   if (!category) return null;
 
   return (
-    <div>
-      <Breadcrumb breadcrumbs={createBreadcrumbFromCategory(category)} />
-      <ArticlesOverviewHeader category={category} />
-      <MainContainer>
-        <ArticlesOverview category={category} showSeeMore={false} />
-      </MainContainer>
-    </div>
+    <SimplePageTemplate
+      breadcrumbs={createBreadcrumbFromCategory(category)}
+      name={category.name}
+    >
+      <ArticlesOverview category={category} showSeeMore={false} />
+    </SimplePageTemplate>
   );
 };

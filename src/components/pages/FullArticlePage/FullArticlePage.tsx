@@ -1,9 +1,9 @@
-import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
-import { MainContainer } from "./MainContainer";
+import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import { FullArticle } from "articles/full/FullArticle";
 import { useParams } from "react-router-dom";
 import { useArticle } from "articles/useArticle";
 import { useEffect } from "react";
+import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 export const FullArticlePage = () => {
   const { article, isLoading, loadArticle } = useArticle();
@@ -17,7 +17,7 @@ export const FullArticlePage = () => {
     return <p>Loading....</p>;
   }
 
-  const breadcrumbs: BreadcrumbItem[] = [
+  const breadcrumbs: BreadCrumbsItem[] = [
     {
       name: "Strona Główna",
       path: "/",
@@ -33,11 +33,8 @@ export const FullArticlePage = () => {
   ];
 
   return (
-    <div>
-      <Breadcrumb breadcrumbs={breadcrumbs} />
-      <MainContainer>
-        <FullArticle article={article} />
-      </MainContainer>
-    </div>
+    <SimplePageTemplate breadcrumbs={breadcrumbs} name={article.title}>
+      <FullArticle article={article} />
+    </SimplePageTemplate>
   );
 };

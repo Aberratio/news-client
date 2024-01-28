@@ -1,8 +1,7 @@
-import { Breadcrumb, BreadcrumbItem } from "layout/breadcrumbs/Breadcrumb";
+import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import styled from "styled-components";
-import { MainContainer } from "./MainContainer";
 import { Typography } from "layout/components/typography/Typography";
-import { BoxHeader } from "layout/section-header/BoxHeader";
+import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 const sections = [
   {
@@ -22,7 +21,7 @@ const sections = [
 ];
 
 export const RulesPage = () => {
-  const breadcrumbs: BreadcrumbItem[] = [
+  const breadcrumbs: BreadCrumbsItem[] = [
     {
       name: "Strona Główna",
       path: "/",
@@ -34,22 +33,18 @@ export const RulesPage = () => {
   ];
 
   return (
-    <div>
-      <Breadcrumb breadcrumbs={breadcrumbs} />
-      <BoxHeader name="Regulamin" />
-      <MainContainer>
-        <Container>
-          {sections.map((section) => {
-            return (
-              <div>
-                <StyledTitle variant="h3">{section.title}</StyledTitle>
-                <StyledContent>{section.body}</StyledContent>
-              </div>
-            );
-          })}
-        </Container>
-      </MainContainer>
-    </div>
+    <SimplePageTemplate breadcrumbs={breadcrumbs} name="Regulamin">
+      <Container>
+        {sections.map((section) => {
+          return (
+            <div>
+              <StyledTitle variant="h3">{section.title}</StyledTitle>
+              <StyledContent>{section.body}</StyledContent>
+            </div>
+          );
+        })}
+      </Container>
+    </SimplePageTemplate>
   );
 };
 

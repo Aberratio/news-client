@@ -1,13 +1,7 @@
 import { useHttp } from "core/hooks/useHttp";
 
 import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
-import { PostCreateChatRequest } from "./requests/PostCreateChatRequest";
-import { PostMessageRequest } from "./requests/PostMessageRequest";
-import { PostRunChatRequest } from "./requests/PostRunChatRequest";
 import { GetArticlesLastResponse } from "./responses/GetArticlesLastResponse";
-import { PostCreateChatResponse } from "./responses/PostCreateChatResponse";
-import { PostMessageResponse } from "./responses/PostMessageResponse";
-import { PostRunChatResponse } from "./responses/PostRunChatResponse";
 import { GetArticleRequest } from "./requests/GetArticleRequest";
 import { GetArticleResponse } from "./responses/GetArticleResponse";
 import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
@@ -15,6 +9,7 @@ import { GetPopularTitlesRequest } from "./requests/GetPopularTitlesRequest";
 import { GetCommentsLastRequest } from "./requests/GetCommentsLastRequest";
 import { GetCommentsLastResponse } from "./responses/GetCommentsLastResponse";
 import { GetTabsResponse } from "./responses/GetTabsResponse";
+import { PostVisitsRequest } from "./requests/PostVisitsRequest";
 
 export const useBasicApi = () => {
   const { get, post } = useHttp();
@@ -65,28 +60,11 @@ export const useBasicApi = () => {
   const getVisits = async (): Promise<number> =>
     get<void, number>(`${apiUrl}/admin/visits`);
 
-  // ===================================
-  // to delete
-  const postCreateChat = async (): Promise<PostCreateChatResponse> =>
-    post<PostCreateChatRequest, PostCreateChatResponse>(`${apiUrl}/threads`);
+  const postVisits = async (request: PostVisitsRequest): Promise<number> =>
+    post<PostVisitsRequest, number>(`${apiUrl}/admin/visits`, request);
 
-  const postMessage = async (
-    request: PostMessageRequest,
-    threadId: string,
-  ): Promise<PostMessageResponse> =>
-    post<PostMessageRequest, PostMessageResponse>(
-      `${apiUrl}/threads/${threadId}/messages`,
-      request,
-    );
-
-  const postRunChat = async (
-    request: PostRunChatRequest,
-    threadId: string,
-  ): Promise<PostRunChatResponse> =>
-    post<PostRunChatRequest, PostRunChatResponse>(
-      `${apiUrl}/threads/${threadId}/runs`,
-      request,
-    );
+  const postViews = async (request: PostVisitsRequest): Promise<number> =>
+    post<PostVisitsRequest, number>(`${apiUrl}/admin/views`, request);
 
   return {
     // articles
@@ -102,10 +80,7 @@ export const useBasicApi = () => {
 
     // admin
     getVisits,
-
-    // to delete
-    postCreateChat,
-    postMessage,
-    postRunChat,
+    postViews,
+    postVisits,
   };
 };
