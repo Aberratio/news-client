@@ -1,3 +1,5 @@
+"use client";
+
 import { SideBar } from "components/organisms/SideBar/SideBar";
 import styled from "styled-components";
 

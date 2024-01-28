@@ -1,3 +1,5 @@
+tsconfig.json
+
 # Logs
 logs
 *.log
@@ -22,3 +24,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.cjs

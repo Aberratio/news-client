@@ -1,5 +1,5 @@
-import { customFonts } from "layout/styles/customFonts";
-import { customTheme } from "layout/styles/customTheme";
+import { customFonts } from "core/styles/customization/customFonts";
+import { lightTheme } from "core/styles/customization/lightTheme";
 import { breakpoints } from "./breakpoints";
 import { colors } from "./colors";
 import { shadows } from "./shadows";
@@ -11,7 +11,7 @@ export interface Theme {
   breakpoints: typeof breakpoints;
   colors: typeof colors;
   customFonts: typeof customFonts;
-  customTheme: typeof customTheme;
+  customTheme: typeof lightTheme;
   shadows: typeof shadows;
   spaces: typeof spaces;
   tools: typeof tools;
@@ -22,7 +22,7 @@ export const theme: Theme = {
   breakpoints,
   colors,
   customFonts,
-  customTheme,
+  customTheme: lightTheme,
   shadows,
   spaces,
   tools,

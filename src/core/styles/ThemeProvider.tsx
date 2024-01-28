@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
 import { theme } from "./theme";
-import { useStyles } from "../../layout/styles/useStyles";
+import { useStyles } from "./customization/useStyles";
 
 interface ThemeProviderProps {
   children: ReactNode;

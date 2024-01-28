@@ -1,3 +1,5 @@
+"use client";
+
 import { Arrow } from "components/molecules/Icons/Arrow";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";

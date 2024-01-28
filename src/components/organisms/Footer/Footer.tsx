@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 import { WebcoBar } from "./WebcoBar";
 import { DescriptionColumn } from "./DescriptionColumn";

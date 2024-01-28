@@ -1,5 +1,5 @@
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
-import { NewsBar } from "../../pages/HomePage/NewsBar";
+import { NewsBar } from "../../organisms/NewsBar/NewsBar";
 
 interface HomePageTemplateProps {
   children: React.ReactNode;

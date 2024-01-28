@@ -1,5 +1,6 @@
-vite.config.ts
 tsconfig.json
+styled.d.ts
+next-env.d.ts
 
 # Logs
 logs

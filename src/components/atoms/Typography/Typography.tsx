@@ -2,9 +2,9 @@ import { ReactNode, ReactElement } from "react";
 import styled, { css } from "styled-components";
 import { space, typography, textAlign } from "styled-system";
 
-import { CustomFonts } from "../../../core/styles/customization/CustomFonts";
+import { CustomFonts } from "../../../core/styles/types/CustomFonts";
 import { useActiveViewportSize } from "../../../layout/responsivenes/useActiveViewportSize";
-import { useStyles } from "../../../layout/styles/useStyles";
+import { useStyles } from "../../../core/styles/customization/useStyles";
 
 const Variant: Record<string, string> = {
   h1: "h1",
@@ -156,7 +156,7 @@ export const Typography = ({
     <StyledTypography
       aria-label={ariaLabel}
       color={color}
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+       
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
       isCapitalized={isCapitalized}
       typographyVariant={typographyVariant}

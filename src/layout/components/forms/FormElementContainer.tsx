@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import { ElementContainer } from "./FormComponents";
 import { Label } from "./Label";
-import { useStyles } from "../../styles/useStyles";
+import { useStyles } from "../../../core/styles/customization/useStyles";
 import { Typography } from "../../../components/atoms/Typography/Typography";
 
 interface FormElementProps {

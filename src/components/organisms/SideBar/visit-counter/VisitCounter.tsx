@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 import { WidgetSchema } from "../WidgetSchema";
 import { Typography } from "components/atoms/Typography/Typography";

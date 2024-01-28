@@ -1,8 +1,8 @@
-import React, { ReactNode, useEffect, useState } from "react";
+"use client";
 
+import React, { ReactNode, useEffect, useState } from "react";
 import { OrganizationContext } from "./OrganizationContext";
 import { TabItem } from "types/TabItem";
-import { useCategories } from "components/organisms/Navigation/useCategories";
 
 interface OrganizationContextProviderProps {
   children: ReactNode;
@@ -14,20 +14,21 @@ export const OrganizationContextProvider: React.FC<
   const [tabs, setTabs] = useState<TabItem[]>([]);
   const [isReady, setIsReady] = useState<boolean>(false);
 
-  const { tabs: tabsFromApi, loadTabs, isLoading } = useCategories();
-
   useEffect(() => {
-    console.log("OrganizationContextProvider");
-    loadTabs();
+    const fetchData = async () => {
+      try {
+        await fetchTabs().then((tabs) => {
+          setTabs(tabs);
+        });
+      } catch (error) {
+        // Handle error
+      } finally {
+        setIsReady(true);
+      }
+    };
+
+    fetchData();
   }, []);
-
-  useEffect(() => {
-    setTabs(tabsFromApi);
-  }, [tabsFromApi]);
-
-  useEffect(() => {
-    !isLoading && setIsReady(true);
-  }, [isLoading]);
 
   if (isReady) {
     return (
@@ -37,4 +38,15 @@ export const OrganizationContextProvider: React.FC<
     );
   }
   return null;
+};
+
+const fetchTabs = async (): Promise<TabItem[]> => {
+  ("use server");
+  const response = await fetch("http://localhost:3007/v1/categories/tabs", {
+    cache: "force-cache",
+  });
+
+  const tabs = await response.json();
+
+  return tabs;
 };
