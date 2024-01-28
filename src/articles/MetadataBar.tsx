@@ -1,4 +1,4 @@
-import { Typography } from "layout/components/typography/Typography";
+import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 
 interface MetadataBarProps {

@@ -1,6 +1,6 @@
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import styled from "styled-components";
-import { Typography } from "layout/components/typography/Typography";
+import { Typography } from "components/atoms/Typography/Typography";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 const sections = [

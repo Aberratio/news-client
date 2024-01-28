@@ -1,4 +1,4 @@
-import { SideBar } from "layout/side-bar/SideBar";
+import { SideBar } from "components/organisms/SideBar/SideBar";
 import styled from "styled-components";
 
 interface MainContainerTemplateProps {

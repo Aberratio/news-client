@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 
 import { OrganizationContext } from "./OrganizationContext";
 import { TabItem } from "types/TabItem";
-import { useCategories } from "layout/navigation/useCategories";
+import { useCategories } from "components/organisms/Navigation/useCategories";
 
 interface OrganizationContextProviderProps {
   children: ReactNode;

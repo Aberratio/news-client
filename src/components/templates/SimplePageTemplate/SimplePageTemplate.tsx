@@ -1,6 +1,6 @@
-import { BoxHeader } from "layout/section-header/BoxHeader";
+import { BoxHeader } from "components/molecules/BoxHeader/BoxHeader";
 import { useEffect } from "react";
-import { useVisitCounter } from "layout/side-bar/visit-counter/useVisitCounter";
+import { useVisitCounter } from "components/organisms/SideBar/visit-counter/useVisitCounter";
 import BreadCrumbs from "components/molecules/BreadCrumbs";
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";

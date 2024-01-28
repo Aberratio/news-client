@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import { OrganizationContextProvider } from "core/context/OrganizationContextProvider";
 
-import { Footer } from "layout/footer/Footer";
-import { MenuDesktop } from "layout/menu/desktop/MenuDesktop";
-import { NavigationDesktop } from "layout/navigation/NavigationDesktop";
+import Footer from "components/organisms/Footer";
+import { MenuDesktop } from "components/organisms/Menu/desktop/MenuDesktop";
+import { NavigationDesktop } from "components/organisms/Navigation/NavigationDesktop";
 import { PageContainer } from "page/PageContainer";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./core/styles/ThemeProvider";

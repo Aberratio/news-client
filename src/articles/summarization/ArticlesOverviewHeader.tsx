@@ -1,9 +1,9 @@
 import { CategoryItem } from "types/CategoryItem";
 import { buildCategoryPath } from "core/builders/buildPath";
-import { Arrow } from "layout/components/icons/Arrow";
-import { Typography } from "layout/components/typography/Typography";
+import { Arrow } from "components/molecules/Icons/Arrow";
+import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
-import { BoxHeader } from "../../layout/section-header/BoxHeader";
+import { BoxHeader } from "../../components/molecules/BoxHeader/BoxHeader";
 
 interface ArticlesOverviewHeaderProps {
   category: CategoryItem;

@@ -1,9 +1,9 @@
-import { Comments } from "layout/components/icons/Comments";
-import { Eye } from "layout/components/icons/Eye";
-import { Thumb } from "layout/components/icons/Thumb";
-import { Typography } from "layout/components/typography/Typography";
+import { Comments } from "components/molecules/Icons/Comments";
+import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 import { StatisticsItem } from "../types/StatisticsItem";
+import { Eye } from "components/molecules/Icons/Eye";
+import { Thumb } from "components/molecules/Icons/Thumb";
 
 interface StatisticBarProps {
   statistics: StatisticsItem;

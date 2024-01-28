@@ -1,5 +1,5 @@
-import { Arrow } from "layout/components/icons/Arrow";
-import { Typography } from "layout/components/typography/Typography";
+import { Arrow } from "components/molecules/Icons/Arrow";
+import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 
 export interface BreadCrumbsItem {
