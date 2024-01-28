@@ -3,12 +3,15 @@ import { buildCategoryPath } from "core/builders/buildPath";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
+import Image from "next/image";
 
 interface FullArticleProps {
   article: FullArticleItem;
 }
 
 export const FullArticle = ({ article }: FullArticleProps) => {
+  console.log(article);
+
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
@@ -21,7 +24,12 @@ export const FullArticle = ({ article }: FullArticleProps) => {
           createdOn={article.createdOn}
         />
         <SliderContainer>
-          <Image src="/images/article/barycz.jpg" />
+          <StyledImage
+            src={article.photos[0].path}
+            fill
+            objectFit="contain"
+            alt={article.photos[0].description ?? "zdjęcie artykułu"}
+          />
         </SliderContainer>
         <LeadContainer>
           <Text>
@@ -59,6 +67,8 @@ const Link = styled.a`
 const SliderContainer = styled.div`
   position: relative;
   display: block;
+  height: 420px;
+  width: 100%;
 `;
 
 const LeadContainer = styled.div`
@@ -80,11 +90,9 @@ const Body = styled(Text)`
   flex-direction: column;
 `;
 
-const Image = styled.img`
+const StyledImage = styled(Image)`
   border-style: none;
   object-fit: cover;
   object-position: 50% 50%;
-  height: 420px;
   vertical-align: middle;
-  width: 100%;
 `;

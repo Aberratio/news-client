@@ -1,6 +1,7 @@
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
+import Image from "next/image";
 
 interface ArticleSummarizationProps {
   article: ArticleSummarizationItem;
@@ -13,7 +14,11 @@ export const ArticleSummarization = ({
     <Wrapper data-testid={`article-summarization-${article.id}`}>
       <Container>
         <Link href={article.path}>
-          <Image src={`/${article.photo.path}`} />
+          <StyledImage
+            src={article.photo.path}
+            fill
+            alt={article.photo.description ?? "zdjęcie artykułu"}
+          />
         </Link>
         <div>
           <Link href={article.path}>
@@ -36,6 +41,11 @@ const Container = styled.div`
 `;
 
 const Link = styled.a`
+  position: relative;
+
+  height: 180px;
+  width: 100%;
+
   text-decoration: none;
   background-color: transparent;
 
@@ -52,10 +62,7 @@ const Title = styled(Typography)`
   text-align: left;
 `;
 
-const Image = styled.img`
-  height: 180px;
-  width: 100%;
-
+const StyledImage = styled(Image)`
   vertical-align: middle;
   border-style: none;
 
