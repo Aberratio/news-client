@@ -16,4 +16,3 @@ export const Arrow: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
-

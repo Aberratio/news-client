@@ -168,4 +168,3 @@ export const Typography = ({
     </StyledTypography>
   );
 };
-

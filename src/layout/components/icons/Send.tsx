@@ -36,4 +36,3 @@ export const Send: React.FC<IconProps> = ({ color, size }) => (
     </g>
   </Icon>
 );
-

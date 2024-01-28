@@ -32,4 +32,3 @@ export const useEventListener = ({
     return () => window.removeEventListener(eventName, handleEventListener);
   }, [eventName, updateValue]);
 };
-

@@ -15,4 +15,3 @@ export const zIndices: Record<ZIndices, number> = {
   modal: 10010,
   modalCloseButton: 10011,
 };
-

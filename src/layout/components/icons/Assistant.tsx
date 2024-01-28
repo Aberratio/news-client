@@ -17,4 +17,3 @@ export const Assistant: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
-

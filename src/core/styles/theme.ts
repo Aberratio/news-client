@@ -28,4 +28,3 @@ export const theme: Theme = {
   tools,
   zIndices,
 };
-

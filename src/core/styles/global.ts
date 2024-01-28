@@ -78,4 +78,3 @@ export const GlobalStyle = createGlobalStyle`
       all: unset;
     }
 `;
-

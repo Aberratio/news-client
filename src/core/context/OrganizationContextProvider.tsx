@@ -38,4 +38,3 @@ export const OrganizationContextProvider: React.FC<
   }
   return null;
 };
-

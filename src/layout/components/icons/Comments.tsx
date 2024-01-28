@@ -38,4 +38,3 @@ export const Comments: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
-

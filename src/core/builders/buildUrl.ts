@@ -29,4 +29,3 @@ export const buildUrl = <TRequest>(
 ): string => {
   return eachRecursive(url, parameters);
 };
-

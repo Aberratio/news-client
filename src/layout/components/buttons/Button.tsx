@@ -352,4 +352,3 @@ const elementsVariants = (variant = "manyInRow") =>
       justify-content: center;
     `,
   })[variant];
-

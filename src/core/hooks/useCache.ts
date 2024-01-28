@@ -26,4 +26,3 @@ const cachedRequests: Record<
     timeoutId: number;
   }
 > = {};
-

@@ -23,4 +23,3 @@ export const AddConversation: React.FC<IconProps> = ({
     <rect style={{ fill: "none" }} width="32" height="32" />
   </Icon>
 );
-

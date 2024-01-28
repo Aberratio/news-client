@@ -37,4 +37,3 @@ export const Save: React.FC<IconProps> = ({ color, direction, size }) => (
     </g>
   </Icon>
 );
-
