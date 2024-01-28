@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ArticlesOverview } from "../../organisms/Article/summarization/ArticlesOverview";
-import { useOrganizationInfo } from "core/context/useOrganizationInfo";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 
 export const Wall = () => {
   const { isReady, categories } = useOrganizationInfo();

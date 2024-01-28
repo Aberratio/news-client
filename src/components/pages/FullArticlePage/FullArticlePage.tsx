@@ -33,7 +33,7 @@ export const FullArticlePage = () => {
   ];
 
   return (
-    <SimplePageTemplate breadcrumbs={breadcrumbs} name={article.title}>
+    <SimplePageTemplate breadcrumbs={breadcrumbs}>
       <FullArticle article={article} />
     </SimplePageTemplate>
   );

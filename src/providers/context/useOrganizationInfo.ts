@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 
 import { OrganizationContext } from "./OrganizationContext";
 import { CategoryItem } from "types/CategoryItem";
+import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 
 export const useOrganizationInfo = () => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
@@ -14,6 +15,10 @@ export const useOrganizationInfo = () => {
           return {
             id: category.id,
             name: category.name,
+            path: buildCategoryPath(category.id),
+            tabId: category.tabId,
+            tabName: category.tabName,
+            tabPath: buildTabPath(category.tabId),
           };
         });
       }),

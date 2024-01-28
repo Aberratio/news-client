@@ -1,6 +1,6 @@
 import { ArticlesOverview } from "components/organisms/Article/summarization/ArticlesOverview";
 import { useParams } from "react-router-dom";
-import { useOrganizationInfo } from "core/context/useOrganizationInfo";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import { useEffect, useState } from "react";
 import { CategoryItem } from "types/CategoryItem";
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";

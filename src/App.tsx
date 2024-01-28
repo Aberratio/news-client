@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { OrganizationContextProvider } from "core/context/OrganizationContextProvider";
+import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
 
 import Footer from "components/organisms/Footer";
 import { MenuDesktop } from "components/organisms/Menu/desktop/MenuDesktop";
@@ -15,14 +15,14 @@ export const App = () => {
     <ThemeProvider>
       <Container>
         <GlobalStyle />
-        <OrganizationContextProvider>
-          <BrowserRouter>
+        <BrowserRouter>
+          <OrganizationContextProvider>
             <MenuDesktop />
             <NavigationDesktop />
             <PageContainer />
             <Footer />
-          </BrowserRouter>
-        </OrganizationContextProvider>
+          </OrganizationContextProvider>
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );

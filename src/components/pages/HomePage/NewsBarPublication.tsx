@@ -99,23 +99,23 @@ const Title = styled.div`
   z-index: 3;
 `;
 
-const TitleLink = styled.a`
-  position: relative;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+// const TitleLink = styled.a`
+//   position: relative;
+//   display: -webkit-box;
+//   -webkit-line-clamp: 2;
+//   -webkit-box-orient: vertical;
 
-  text-decoration: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  transition: all 0.3s;
-  max-width: 100%;
+//   text-decoration: none;
+//   background-color: transparent;
+//   touch-action: manipulation;
+//   transition: all 0.3s;
+//   max-width: 100%;
 
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
+//   white-space: normal;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
 
-  &:hover p {
-    color: #15a752 !important;
-  }
-`;
+//   &:hover p {
+//     color: #15a752 !important;
+//   }
+// `;

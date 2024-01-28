@@ -41,21 +41,21 @@ const Row = styled.div`
   gap: 32px;
 `;
 
-const secondColumnMock = {
-  header: "Ważne informacje",
-  elements: [
-    {
-      id: 1,
-      type: ElementType.Link,
-      content: [
-        {
-          text: "Regulamin",
-          link: "/rules",
-        },
-      ],
-    },
-  ],
-};
+// const secondColumnMock = {
+//   header: "Ważne informacje",
+//   elements: [
+//     {
+//       id: 1,
+//       type: ElementType.Link,
+//       content: [
+//         {
+//           text: "Regulamin",
+//           link: "/rules",
+//         },
+//       ],
+//     },
+//   ],
+// };
 
 const thirdColumnMock = {
   header: "Redakcja Głosu Milicza",

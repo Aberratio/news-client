@@ -7,7 +7,7 @@ import { MainContainerTemplate } from "components/templates/MainContainerTemplat
 
 interface SimplePageTemplateProps {
   breadcrumbs: BreadCrumbsItem[];
-  name: string;
+  name?: string;
   children: React.ReactNode;
 }
 
@@ -25,7 +25,7 @@ export const SimplePageTemplate = ({
   return (
     <div>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
-      <BoxHeader name={name} />
+      {name && <BoxHeader name={name} />}
       <MainContainerTemplate>{children}</MainContainerTemplate>
     </div>
   );

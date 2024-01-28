@@ -1,7 +1,7 @@
 import { CustomFonts } from "../../core/styles/customization/CustomFonts";
 
 const FONT_FAMILY_PRIMARY = "Arial, sans-serif";
-const FONT_FAMILY_SECONDARY = "Roboto-Medium";
+// const FONT_FAMILY_SECONDARY = "Roboto-Medium";
 const WEIGHT_100 = 100;
 const WEIGHT_200 = 200;
 const WEIGHT_300 = 300;
