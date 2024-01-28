@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
+ 
 import { useCache } from "./useCache";
 import { buildUrl } from "../builders/buildUrl";
 

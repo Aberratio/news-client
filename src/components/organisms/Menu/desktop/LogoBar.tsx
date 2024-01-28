@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const LogoBar = () => {
   return (
     <Wrapper>
       <Container>
         <Link href="/">
-          <Image src="/public/icons/logo.png" alt="logo" />
+          <StyledImage
+            src="/icons/logo.png"
+            alt="logo"
+            width={1500}
+            height={150}
+          />
         </Link>
       </Container>
     </Wrapper>
@@ -50,7 +56,7 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-const Image = styled.img`
+const StyledImage = styled(Image)`
   vertical-align: middle;
   border-style: none;
   width: 90%;

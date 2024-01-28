@@ -1,11 +1,12 @@
 import { Typography } from "components/atoms/Typography/Typography";
+import Image from "next/image";
 import styled from "styled-components";
 
 export const DescriptionColumn = () => {
   return (
     <Container>
       <LogoWrapper href="/">
-        <Logo src="/public/icons/logo_footer.png" />
+        <Logo src="/icons/logo_footer.png" alt="logo" width={300} height={30} />
       </LogoWrapper>
       <Description>
         <StyledTypography color="white" wordBreak="break-word">
@@ -51,7 +52,7 @@ const LogoWrapper = styled.a`
   height: 95px;
 `;
 
-const Logo = styled.img`
+const Logo = styled(Image)`
   vertical-align: middle;
   border-style: none;
   width: 95%;

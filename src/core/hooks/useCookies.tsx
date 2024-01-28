@@ -31,7 +31,7 @@ export const useCookies = () => {
     const strCookie = getRawCookie(cookieName);
 
     if (strCookie !== "undefined" && strCookie !== null) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+       
       return JSON.parse(strCookie);
     }
 
@@ -40,7 +40,7 @@ export const useCookies = () => {
 
   const getCookie = (cookieName: string, cookieFormat?: "json" | "raw") => {
     if (cookieFormat === "json") {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+       
       return getJson(cookieName);
     }
 
