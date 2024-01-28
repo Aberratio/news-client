@@ -28,7 +28,7 @@ export const ArticlesOverview = ({
   }
 
   return (
-    <Wrapper data-test-id={`article-summarizatoin-box-${category.id}`}>
+    <Wrapper data-testid={`article-summarizatoin-box-${category.id}`}>
       {showSeeMore && (
         <ArticlesOverviewHeader category={category} showSeeMore={showSeeMore} />
       )}

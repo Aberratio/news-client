@@ -9,7 +9,7 @@ export const MainContainerTemplate = ({
   children,
 }: MainContainerTemplateProps) => {
   return (
-    <Wrapper data-test-id="main-container">
+    <Wrapper data-testid="main-container">
       <Container>
         <Row>
           <SideBar />

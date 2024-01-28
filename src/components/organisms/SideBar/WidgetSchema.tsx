@@ -13,7 +13,7 @@ export const WidgetSchema = ({
   children,
 }: WidgetSchemaProps) => {
   return (
-    <Container data-test-id={dataTestId}>
+    <Container data-testid={dataTestId}>
       <Header>
         <Title>{title}</Title>
       </Header>

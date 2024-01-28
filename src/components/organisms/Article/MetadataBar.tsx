@@ -8,7 +8,7 @@ interface MetadataBarProps {
 
 export const MetadataBar = ({ authorName, createdOn }: MetadataBarProps) => {
   return (
-    <Container data-test-id={`metadata-bar`}>
+    <Container data-testid={`metadata-bar`}>
       <Link href="#">
         <Typography variant="small">{authorName}</Typography>
       </Link>

@@ -26,7 +26,7 @@ export const PopularTitlesBar = () => {
   }
 
   return (
-    <Container data-test-id="popular-titles-bar">
+    <Container data-testid="popular-titles-bar">
       <Typography color="#15a752" isUppercase>
         Popularne tematy:
       </Typography>

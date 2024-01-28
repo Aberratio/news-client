@@ -18,7 +18,7 @@ export const NewsBar = () => {
   }
 
   return (
-    <Wrapper data-test-id="news-bar">
+    <Wrapper data-testid="news-bar">
       <Container>
         <Row>
           <NewsBarPublication

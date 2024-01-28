@@ -7,7 +7,7 @@ interface HomePageTemplateProps {
 
 export const HomePageTemplate = ({ children }: HomePageTemplateProps) => {
   return (
-    <div data-test-id="home-page">
+    <div data-testid="home-page">
       <NewsBar />
       <MainContainerTemplate>{children}</MainContainerTemplate>
     </div>

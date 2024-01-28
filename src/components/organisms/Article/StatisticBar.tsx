@@ -11,7 +11,7 @@ interface StatisticBarProps {
 
 export const StatisticBar = ({ statistics }: StatisticBarProps) => {
   return (
-    <Container data-test-id="statistic-bar">
+    <Container data-testid="statistic-bar">
       <Item>
         <Counter>
           <Typography variant="small">{statistics.views}</Typography>

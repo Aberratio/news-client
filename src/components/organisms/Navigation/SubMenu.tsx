@@ -14,7 +14,7 @@ export const SubMenu = ({ categories }: SubMenuProps) => {
   );
 
   return (
-    <Container data-test-id="sub-menu">
+    <Container data-testid="sub-menu">
       <CategoryContainer>
         {categories.map((category) => {
           return (

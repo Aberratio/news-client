@@ -10,7 +10,7 @@ export const ArticleSummarization = ({
   article,
 }: ArticleSummarizationProps) => {
   return (
-    <Wrapper data-test-id={`article-summarization-${article.id}`}>
+    <Wrapper data-testid={`article-summarization-${article.id}`}>
       <Container>
         <Link href={article.path}>
           <Image src={`/${article.photo.path}`} />

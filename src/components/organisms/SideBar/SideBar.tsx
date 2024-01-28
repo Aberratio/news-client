@@ -5,7 +5,7 @@ import { LastComments } from "./last-comments/LastComments";
 
 export const SideBar = () => {
   return (
-    <Wrapper data-test-id="information-bar">
+    <Wrapper data-testid="information-bar">
       <Container>
         <FirstSite />
         <VisitCounter />

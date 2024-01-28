@@ -16,7 +16,7 @@ export const MainMenu = () => {
   if (!isReady) return null;
 
   return (
-    <Container data-test-id="main-menu" ref={mainMenuRef}>
+    <Container data-testid="main-menu" ref={mainMenuRef}>
       {tabs.map((tab) => {
         return (
           <NavigationItem

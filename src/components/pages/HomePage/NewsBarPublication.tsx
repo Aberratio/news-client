@@ -29,7 +29,7 @@ export const NewsBarPublication = ({
   };
 
   return (
-    <Wrapper data-test-id="new-bar-publication">
+    <Wrapper data-testid="new-bar-publication">
       <ImageBackground>
         <ImageLink href={`article/${article.id}`}>
           <Description>

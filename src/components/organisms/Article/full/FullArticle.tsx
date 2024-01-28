@@ -10,7 +10,7 @@ interface FullArticleProps {
 
 export const FullArticle = ({ article }: FullArticleProps) => {
   return (
-    <Wrapper data-test-id={`full-article-${article.id}`}>
+    <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
         <Link href={buildCategoryPath(article.category.id)}>
           <Typography>{article.category.name}</Typography>
