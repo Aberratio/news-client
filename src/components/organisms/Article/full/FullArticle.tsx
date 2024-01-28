@@ -1,4 +1,4 @@
-import { MetadataBar } from "articles/MetadataBar";
+import { MetadataBar } from "components/organisms/Article/MetadataBar";
 import { buildCategoryPath } from "core/builders/buildPath";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";

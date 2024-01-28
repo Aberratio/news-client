@@ -1,6 +1,6 @@
 import { useArticlesApi } from "core/api/useArticlesApi";
 import { useState } from "react";
-import { ArticleSummarizationItem } from "../types/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../../../types/ArticleSummarizationItem";
 import { GetArticlesLastResponse } from "core/api/responses/GetArticlesLastResponse";
 import {
   buildArticlePath,

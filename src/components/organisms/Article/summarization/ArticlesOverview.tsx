@@ -1,8 +1,8 @@
-import { ArticleSummarization } from "articles/summarization/ArticleSummarization";
+import { ArticleSummarization } from "components/organisms/Article/summarization/ArticleSummarization";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { CategoryItem } from "types/CategoryItem";
-import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
 import { useLastArticles } from "../useLastArticles";
 import { ArticlesOverviewHeader } from "./ArticlesOverviewHeader";
 

@@ -1,4 +1,4 @@
-import { ArticlesOverview } from "articles/summarization/ArticlesOverview";
+import { ArticlesOverview } from "components/organisms/Article/summarization/ArticlesOverview";
 import { useParams } from "react-router-dom";
 import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 import { useEffect, useState } from "react";

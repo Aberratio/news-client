@@ -1,7 +1,7 @@
 import { Comments } from "components/molecules/Icons/Comments";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
-import { StatisticsItem } from "../types/StatisticsItem";
+import { StatisticsItem } from "../../../types/StatisticsItem";
 import { Eye } from "components/molecules/Icons/Eye";
 import { Thumb } from "components/molecules/Icons/Thumb";
 

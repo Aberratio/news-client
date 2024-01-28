@@ -3,7 +3,7 @@ import {
   NewsBarPublication,
   NewsBarPublicationSize,
 } from "./NewsBarPublication";
-import { useLastArticles } from "articles/useLastArticles";
+import { useLastArticles } from "components/organisms/Article/useLastArticles";
 import { useEffect } from "react";
 
 export const NewsBar = () => {

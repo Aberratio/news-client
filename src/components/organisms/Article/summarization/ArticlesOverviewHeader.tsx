@@ -3,7 +3,7 @@ import { buildCategoryPath } from "core/builders/buildPath";
 import { Arrow } from "components/molecules/Icons/Arrow";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
-import { BoxHeader } from "../../components/molecules/BoxHeader/BoxHeader";
+import { BoxHeader } from "../../../molecules/BoxHeader/BoxHeader";
 
 interface ArticlesOverviewHeaderProps {
   category: CategoryItem;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ArticlesOverview } from "../../../articles/summarization/ArticlesOverview";
+import { ArticlesOverview } from "../../organisms/Article/summarization/ArticlesOverview";
 import { useOrganizationInfo } from "core/context/useOrganizationInfo";
 
 export const Wall = () => {

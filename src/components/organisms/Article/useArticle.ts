@@ -9,7 +9,7 @@ import {
   buildTabPath,
 } from "core/builders/buildPath";
 import { useState } from "react";
-import { FullArticleItem } from "../types/FullArticleItem";
+import { FullArticleItem } from "../../../types/FullArticleItem";
 
 export const useArticle = () => {
   const { getArticleDetails } = useArticlesApi();

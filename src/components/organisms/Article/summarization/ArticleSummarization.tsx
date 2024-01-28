@@ -1,6 +1,6 @@
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
-import { ArticleSummarizationItem } from "../../types/ArticleSummarizationItem";
+import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
 
 interface ArticleSummarizationProps {
   article: ArticleSummarizationItem;

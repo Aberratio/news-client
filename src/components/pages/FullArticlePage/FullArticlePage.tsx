@@ -1,7 +1,7 @@
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
-import { FullArticle } from "articles/full/FullArticle";
+import { FullArticle } from "components/organisms/Article/full/FullArticle";
 import { useParams } from "react-router-dom";
-import { useArticle } from "articles/useArticle";
+import { useArticle } from "components/organisms/Article/useArticle";
 import { useEffect } from "react";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
