@@ -1,3 +1,5 @@
+"use client";
+
 import { MetadataBar } from "components/organisms/Article/MetadataBar";
 import { buildCategoryPath } from "core/builders/buildPath";
 import { Typography } from "components/atoms/Typography/Typography";
@@ -10,8 +12,6 @@ interface FullArticleProps {
 }
 
 export const FullArticle = ({ article }: FullArticleProps) => {
-  console.log(article);
-
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
