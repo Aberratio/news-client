@@ -1,13 +1,16 @@
 "use client";
 
+import { BoxHeader } from "components/molecules/BoxHeader/BoxHeader";
 import { SideBar } from "components/organisms/SideBar/SideBar";
 import styled from "styled-components";
 
 interface MainContainerTemplateProps {
+  name?: string;
   children: React.ReactNode;
 }
 
 export const MainContainerTemplate = ({
+  name,
   children,
 }: MainContainerTemplateProps) => {
   return (
@@ -15,7 +18,10 @@ export const MainContainerTemplate = ({
       <Container>
         <Row>
           <SideBar />
-          {children}
+          <RightContainer>
+            {name && <BoxHeader name={name} />}
+            {children}
+          </RightContainer>
         </Row>
       </Container>
     </Wrapper>
@@ -24,7 +30,7 @@ export const MainContainerTemplate = ({
 
 const Wrapper = styled.div`
   display: block;
-  padding-top: 42px;
+  padding-top: 24px;
 
   background-color: #fff;
 `;
@@ -38,5 +44,11 @@ const Container = styled.div`
 const Row = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
+  gap: 16px;
+`;
+
+const RightContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 `;

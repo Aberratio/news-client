@@ -17,8 +17,7 @@ export const SimplePageTemplate = ({
   return (
     <div>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
-      {name && <BoxHeader name={name} />}
-      <MainContainerTemplate>{children}</MainContainerTemplate>
+      <MainContainerTemplate name={name}>{children}</MainContainerTemplate>
     </div>
   );
 };

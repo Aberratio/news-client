@@ -1,10 +1,11 @@
 import { Typography } from "components/atoms/Typography/Typography";
+import React from "react";
 import styled from "styled-components";
 
 interface WidgetSchemaProps {
   dataTestId: string;
   title: string;
-  children: any;
+  children: React.ReactNode;
 }
 
 export const WidgetSchema = ({

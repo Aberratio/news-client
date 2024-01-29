@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import { ArticlesOverview } from "../Article/summarization/ArticlesOverview";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
+import { Suspense } from "react";
 
 export const Wall = () => {
   const { categories } = useOrganizationInfo();
@@ -11,7 +12,11 @@ export const Wall = () => {
     <Wrapper>
       <Container>
         {categories.map((category) => {
-          return <ArticlesOverview category={category} key={category.id} />;
+          return (
+            <Suspense>
+              <ArticlesOverview category={category} key={category.id} />
+            </Suspense>
+          );
         })}
       </Container>
     </Wrapper>
