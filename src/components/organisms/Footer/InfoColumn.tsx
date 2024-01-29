@@ -19,12 +19,17 @@ export enum ElementType {
   BoldedText,
 }
 
-interface InfoColumnProps {
+export interface InfoColumnItem {
   header: string;
   elements: ElementItem[];
 }
 
-export const InfoColumn = ({ header, elements }: InfoColumnProps) => {
+interface InfoColumnProps {
+  items: InfoColumnItem;
+}
+
+export const InfoColumn = ({ items }: InfoColumnProps) => {
+  const { header, elements } = items;
   const renderListElement = (element: ElementItem) => (
     <ListElement key={element.id}>
       {element.content.map((content) => {

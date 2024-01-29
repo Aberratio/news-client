@@ -4,6 +4,7 @@ import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import styled from "styled-components";
 import { Typography } from "components/atoms/Typography/Typography";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
+import { rulesPagePath } from "core/builders/buildPath";
 
 const sections = [
   {
@@ -30,7 +31,7 @@ const RulesPage = () => {
     },
     {
       name: "Regulamin",
-      path: "/rules",
+      path: rulesPagePath,
     },
   ];
 

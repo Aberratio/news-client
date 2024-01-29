@@ -17,3 +17,6 @@ export const buildTabPath = (tabId: number) => {
 export const buildPhotoPath = (photoPath: string) => {
   return `${photoPath}`;
 };
+
+export const aboutPagePath = `/about`;
+export const rulesPagePath = `/rules`;

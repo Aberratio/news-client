@@ -4,7 +4,6 @@ import StyledComponentsRegistry from "../lib/register";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
-import "./globals.css";
 import Footer from "components/organisms/Footer";
 import { MenuDesktop } from "components/organisms/Menu/desktop/MenuDesktop";
 import { NavigationDesktop } from "components/organisms/Navigation/NavigationDesktop";

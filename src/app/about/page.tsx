@@ -1,6 +1,7 @@
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 import { SectionContainer } from "components/organisms/SectionContainer/SectionContainer";
+import { aboutPagePath } from "core/builders/buildPath";
 
 const AboutPage = () => {
   const breadcrumbs: BreadCrumbsItem[] = [
@@ -10,7 +11,7 @@ const AboutPage = () => {
     },
     {
       name: "O nas",
-      path: "/about",
+      path: aboutPagePath,
     },
   ];
 

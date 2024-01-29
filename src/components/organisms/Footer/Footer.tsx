@@ -1,22 +1,12 @@
-"use client";
-
-import styled from "styled-components";
 import { WebcoBar } from "./WebcoBar";
-import { DescriptionColumn } from "./DescriptionColumn";
-import { ElementType, InfoColumn } from "./InfoColumn";
+import { ElementType } from "./InfoColumn";
+import { rulesPagePath } from "core/builders/buildPath";
+import FooterWrapper from "./FooterWrapper";
 
 const Footer = () => {
   return (
     <footer>
-      <Wrapper>
-        <Container>
-          <Row>
-            <DescriptionColumn />
-            {/* <InfoColumn {...secondColumnMock} /> */}
-            <InfoColumn {...thirdColumnMock} />
-          </Row>
-        </Container>
-      </Wrapper>
+      <FooterWrapper columns={[secondColumnMock, thirdColumnMock]} />
       <WebcoBar />
     </footer>
   );
@@ -24,40 +14,21 @@ const Footer = () => {
 
 export default Footer;
 
-const Wrapper = styled.div`
-  padding-top: 40px;
-  padding-bottom: 25px;
-  background-color: #222;
-`;
-
-const Container = styled.div`
-  margin: auto;
-  padding: 0 16px;
-  width: 100%;
-  max-width: 1080px;
-`;
-
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-`;
-
-// const secondColumnMock = {
-//   header: "Ważne informacje",
-//   elements: [
-//     {
-//       id: 1,
-//       type: ElementType.Link,
-//       content: [
-//         {
-//           text: "Regulamin",
-//           link: "/rules",
-//         },
-//       ],
-//     },
-//   ],
-// };
+const secondColumnMock = {
+  header: "Ważne informacje",
+  elements: [
+    {
+      id: 1,
+      type: ElementType.Link,
+      content: [
+        {
+          text: "Regulamin",
+          link: rulesPagePath,
+        },
+      ],
+    },
+  ],
+};
 
 const thirdColumnMock = {
   header: "Redakcja Głosu Milicza",

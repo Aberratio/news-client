@@ -1,5 +1,6 @@
 import { LinkButton } from "components/atoms/LinkButton/LinkButton";
 import { Typography } from "components/atoms/Typography/Typography";
+import { aboutPagePath } from "core/builders/buildPath";
 import styled from "styled-components";
 
 export const TopBar = () => {
@@ -7,7 +8,7 @@ export const TopBar = () => {
     <Wrapper>
       <Container>
         <Part>
-          <LinkButton to="/about">
+          <LinkButton to={aboutPagePath}>
             <Typography variant="small">O nas</Typography>
           </LinkButton>
         </Part>
