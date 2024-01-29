@@ -1,5 +1,8 @@
+"use client";
+
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
+import { ElementType } from "./Footer";
 
 export interface LinkItem {
   bolded?: string;
@@ -11,12 +14,6 @@ export interface ElementItem {
   id: number;
   type: ElementType;
   content: LinkItem[];
-}
-
-export enum ElementType {
-  Link,
-  Text,
-  BoldedText,
 }
 
 export interface InfoColumnItem {
@@ -36,9 +33,9 @@ export const InfoColumn = ({ items }: InfoColumnProps) => {
         switch (element.type) {
           case ElementType.Link:
             return (
-              <Link key={content.text} href={content.link}>
+              <StyledLink key={content.text} href={content.link}>
                 <Typography>{content.text}</Typography>
-              </Link>
+              </StyledLink>
             );
           case ElementType.Text:
             return <Typography key={content.text}>{content.text}</Typography>;
@@ -89,7 +86,7 @@ const ListElement = styled.li`
   border: none;
 `;
 
-const Link = styled.a`
+const StyledLink = styled.a`
   padding: 8px 0;
 
   text-decoration: none;

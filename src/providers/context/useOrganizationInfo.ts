@@ -6,7 +6,7 @@ import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 
 export const useOrganizationInfo = () => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
-  const { isReady, tabs } = useContext(OrganizationContext);
+  const { tabs } = useContext(OrganizationContext);
 
   useEffect(() => {
     setCategories(
@@ -21,12 +21,11 @@ export const useOrganizationInfo = () => {
             tabPath: buildTabPath(category.tabId),
           };
         });
-      }),
+      })
     );
   }, [tabs]);
 
   return {
-    isReady,
     categories,
     tabs,
   };

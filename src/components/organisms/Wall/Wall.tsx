@@ -5,9 +5,7 @@ import { ArticlesOverview } from "../Article/summarization/ArticlesOverview";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 
 export const Wall = () => {
-  const { isReady, categories } = useOrganizationInfo();
-
-  if (!isReady) return null;
+  const { categories } = useOrganizationInfo();
 
   return (
     <Wrapper>

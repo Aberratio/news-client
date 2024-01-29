@@ -1,3 +1,5 @@
+"use client";
+
 import { Typography } from "components/atoms/Typography/Typography";
 import Image from "next/image";
 import styled from "styled-components";

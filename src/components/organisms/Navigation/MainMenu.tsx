@@ -9,11 +9,9 @@ export const MainMenu = () => {
   const [activeNavigationItemIndex, setActiveNavigationItemIndex] =
     useState<number>(0);
   const mainMenuRef = useRef(null);
-  const { isReady, tabs } = useOrganizationInfo();
+  const { tabs } = useOrganizationInfo();
 
   useOutsideClick([mainMenuRef], () => setActiveNavigationItemIndex(0));
-
-  if (!isReady) return null;
 
   return (
     <Container data-testid="main-menu" ref={mainMenuRef}>

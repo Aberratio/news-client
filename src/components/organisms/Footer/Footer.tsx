@@ -1,7 +1,12 @@
 import { WebcoBar } from "./WebcoBar";
-import { ElementType } from "./InfoColumn";
 import { rulesPagePath } from "core/builders/buildPath";
 import FooterWrapper from "./FooterWrapper";
+
+export enum ElementType {
+  Link,
+  Text,
+  BoldedText,
+}
 
 const Footer = () => {
   return (

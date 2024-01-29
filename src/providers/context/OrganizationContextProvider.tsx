@@ -5,48 +5,28 @@ import { OrganizationContext } from "./OrganizationContext";
 import { TabItem } from "types/TabItem";
 
 interface OrganizationContextProviderProps {
+  tabs: TabItem[];
   children: ReactNode;
 }
 
 export const OrganizationContextProvider: React.FC<
   OrganizationContextProviderProps
-> = ({ children }) => {
-  const [tabs, setTabs] = useState<TabItem[]>([]);
+> = ({ tabs, children }) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetchTabs().then((tabs) => {
-          setTabs(tabs);
-        });
-      } catch (error) {
-        // Handle error
-      } finally {
-        setIsReady(true);
-      }
-    };
-
-    fetchData();
-  }, []);
+    if (tabs.length > 0) {
+      console.log(tabs);
+      setIsReady(true);
+    }
+  }, [tabs]);
 
   if (isReady) {
     return (
-      <OrganizationContext.Provider value={{ isReady, tabs }}>
+      <OrganizationContext.Provider value={{ tabs }}>
         {children}
       </OrganizationContext.Provider>
     );
   }
   return null;
-};
-
-const fetchTabs = async (): Promise<TabItem[]> => {
-  ("use server");
-  const response = await fetch("http://localhost:3007/v1/categories/tabs", {
-    cache: "force-cache",
-  });
-
-  const tabs = await response.json();
-
-  return tabs;
 };
