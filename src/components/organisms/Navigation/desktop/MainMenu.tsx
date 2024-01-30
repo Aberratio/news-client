@@ -18,10 +18,12 @@ export const MainMenu = () => {
       {tabs.map((tab) => {
         return (
           <NavigationItem
-            isActive={activeNavigationItemIndex === tab.id}
-            key={tab.id}
+            isActive={activeNavigationItemIndex === tab.tabId}
+            key={tab.tabId}
             tab={tab}
-            onClick={() => setActiveNavigationItemIndex(tab.id)}
+            onClick={() => {
+              setActiveNavigationItemIndex(tab.tabId);
+            }}
           />
         );
       })}

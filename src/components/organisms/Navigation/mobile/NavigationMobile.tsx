@@ -31,8 +31,8 @@ export const NavigationMobile = () => {
           <NavigationMenu data-testid="navigation-mobile-menu">
             {tabs.map((tab) => {
               return (
-                <NavigtionItem key={tab.id}>
-                  <Link href={buildTabPath(tab.id)}>
+                <NavigtionItem key={tab.tabId}>
+                  <Link href={buildTabPath(tab.tabId)}>
                     <Typography color="white">{tab.name}</Typography>
                   </Link>
                 </NavigtionItem>

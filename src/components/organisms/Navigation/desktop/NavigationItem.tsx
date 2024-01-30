@@ -1,6 +1,6 @@
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
-import { buildCategoryPath } from "core/builders/buildPath";
+import { buildTabPath } from "core/builders/buildPath";
 import { useState } from "react";
 import { TabItem } from "types/TabItem";
 import { SubMenu } from "./SubMenu";
@@ -25,7 +25,10 @@ export const NavigationItem = ({
   return (
     <Container
       data-testid="navigation-item"
-      onClick={onClick}
+      onClick={(e) => {
+        hasSubmenu && e.preventDefault();
+        onClick();
+      }}
       $isActive={isActive}
       onMouseEnter={() => {
         setIsActive(true);
@@ -34,9 +37,7 @@ export const NavigationItem = ({
         setIsActive(false);
       }}
     >
-      <Link
-        href={`${hasSubmenu ? "#" : buildCategoryPath(tab.categories[0].id)}`}
-      >
+      <Link href={buildTabPath(tab.tabId)}>
         <Typography>{tab.name}</Typography>
         {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
       </Link>
