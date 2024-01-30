@@ -1,32 +1,46 @@
+ 
 "use cleint";
 
-import { Hamburger } from "components/molecules/Icons/Hamburger";
 import Image from "next/image";
 import Link from "next/link";
 import { styled } from "styled-components";
+import { HamburgerButton } from "./HamburgerButton";
 
-export const MenuMobile = () => {
+interface MenuMobileProps {
+  isOpen: boolean;
+  handleClick: () => void;
+}
+
+export const MenuMobile = ({ isOpen, handleClick }: MenuMobileProps) => {
   return (
-    <Wrapper data-testid="menu-mobile">
-      <LogoMobile>
-        <Link href="/">
-          <Logo
-            src="/icons/logo_footer.png"
-            alt="logo"
-            width={300}
-            height={30}
-          />
-        </Link>
-      </LogoMobile>
-      <HamburgerWrapper>
-        <Hamburger size={{ width: "2rem", height: "2rem" }} />
-      </HamburgerWrapper>
-    </Wrapper>
+    <>
+      <Wrapper data-testid="menu-mobile">
+        <LogoMobile>
+          <Link href="/">
+            <Logo
+              src="/icons/logo_mobile.png"
+              alt="logo"
+              width={300}
+              height={40}
+            />
+          </Link>
+        </LogoMobile>
+        <HamburgerWrapper>
+          <HamburgerButton isOpen={isOpen} handleClick={handleClick} />
+        </HamburgerWrapper>
+      </Wrapper>
+      {/* <AnimatePresence>
+        {isMenuOpen && (
+          <NavigationMobile isOpen={isMenuOpen} handleClick={handleClick} />
+        )}
+      </AnimatePresence> */}
+    </>
   );
 };
 
-const HamburgerWrapper = styled.div`
+const HamburgerWrapper = styled.nav`
   cursor: pointer;
+  z-index: 200000;
 `;
 
 const Wrapper = styled.div`

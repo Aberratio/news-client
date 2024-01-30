@@ -22,7 +22,7 @@ export const ArticleSummarization = ({
         </Link>
         <div>
           <Link href={article.path}>
-            <Title>{article.title}</Title>
+            <Title wrap>{article.title}</Title>
           </Link>
         </div>
       </Container>

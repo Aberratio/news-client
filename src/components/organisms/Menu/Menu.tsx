@@ -11,9 +11,6 @@ const Menu = () => {
       <HideForMobiles>
         <MenuDesktop />
       </HideForMobiles>
-      <ShowOnlyForMobiles>
-        <MenuMobile />
-      </ShowOnlyForMobiles>
     </>
   );
 };

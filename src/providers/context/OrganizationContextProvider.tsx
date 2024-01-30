@@ -12,6 +12,8 @@ interface OrganizationContextProviderProps {
 export const OrganizationContextProvider: React.FC<
   OrganizationContextProviderProps
 > = ({ tabs, children }) => {
+  const [isMobileNavigationOpen, setIsMobileNavigationOpen] =
+    useState<boolean>(false);
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,7 +25,9 @@ export const OrganizationContextProvider: React.FC<
 
   if (isReady) {
     return (
-      <OrganizationContext.Provider value={{ tabs }}>
+      <OrganizationContext.Provider
+        value={{ isMobileNavigationOpen, tabs, setIsMobileNavigationOpen }}
+      >
         {children}
       </OrganizationContext.Provider>
     );

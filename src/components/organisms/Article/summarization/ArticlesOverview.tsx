@@ -47,9 +47,13 @@ const Wrapper = styled.div`
 
 const Container = styled.div<{ $showSeeMore: boolean }>`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   padding-bottom: 20px;
   gap: 16px;
   margin: 0 16px;
   ${({ $showSeeMore }) => $showSeeMore && "margin-top: 16px;"}
+
+  @media screen and (min-width: 420px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
