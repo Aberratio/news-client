@@ -5,10 +5,10 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 import Footer from "components/organisms/Footer";
-import { MenuDesktop } from "components/organisms/Menu/desktop/MenuDesktop";
-import { NavigationDesktop } from "components/organisms/Navigation/NavigationDesktop";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
 import { TabItem } from "types/TabItem";
+import Menu from "components/organisms/Menu";
+import Navigation from "components/organisms/Navigation";
 
 const roboto = Roboto({
   weight: "400",
@@ -33,8 +33,8 @@ const RootLayout = async ({
         <OrganizationContextProvider tabs={tabs}>
           <StyledComponentsRegistry>
             <GlobalThemeWrapper>
-              <MenuDesktop />
-              <NavigationDesktop />
+              <Menu />
+              <Navigation />
               {children}
               <Footer />
             </GlobalThemeWrapper>

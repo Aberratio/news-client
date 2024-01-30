@@ -1,3 +1,5 @@
+"use cleint";
+
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 

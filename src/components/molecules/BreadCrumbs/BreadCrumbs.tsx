@@ -18,7 +18,7 @@ const BreadCrumbs = ({ breadcrumbs }: BreadCrumbsProps) => {
   const length = breadcrumbs.length - 1;
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="breadcrumbs">
       <Container>
         <Row>
           {breadcrumbs.slice(0, length).map((item) => {
@@ -50,6 +50,7 @@ const Wrapper = styled.div`
   padding: 0;
   width: 100%;
   max-width: 1080px;
+  margin-left: 12px;
 `;
 
 const Container = styled.div`
@@ -64,6 +65,7 @@ const Container = styled.div`
 
 const Row = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding-right: 30px;
   margin-top: 6px;

@@ -1,3 +1,5 @@
+"use cleint";
+
 import { LinkButton } from "components/atoms/LinkButton/LinkButton";
 import { Typography } from "components/atoms/Typography/Typography";
 import { aboutPagePath } from "core/builders/buildPath";

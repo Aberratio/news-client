@@ -44,7 +44,7 @@ const Description = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  padding: 16px;
+  max-width: 400px;
 `;
 
 const LogoWrapper = styled.a`

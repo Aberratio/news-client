@@ -53,12 +53,16 @@ const Wrapper = styled.div`
 const ImageBackground = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 440px;
 
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("/images/article/kościól.jpg");
+
+  @media screen and (min-width: 768px) {
+    height: 100%;
+  }
 `;
 
 const ImageLink = styled.a`

@@ -64,7 +64,7 @@ export const InfoColumn = ({ items }: InfoColumnProps) => {
 
 const Container = styled.div`
   width: 100%;
-  padding: 16px;
+  max-width: 400px;
 `;
 
 const Header = styled.div`

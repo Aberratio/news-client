@@ -46,9 +46,8 @@ export const FullArticle = ({ article }: FullArticleProps) => {
 
 const Wrapper = styled.div`
   position: relative;
-  width: 100%;
   min-height: 1px;
-  padding-bottom: 30px;
+  padding: 0 12px 30px 12px;
 `;
 
 const Container = styled.div`

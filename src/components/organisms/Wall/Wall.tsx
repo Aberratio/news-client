@@ -28,6 +28,9 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  padding-left: 20px;
   padding-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 20px;
+  }
 `;

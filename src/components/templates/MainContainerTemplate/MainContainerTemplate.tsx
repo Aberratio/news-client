@@ -2,6 +2,7 @@
 
 import { BoxHeader } from "components/molecules/BoxHeader/BoxHeader";
 import { SideBar } from "components/organisms/SideBar/SideBar";
+import MediaQuery from "react-responsive";
 import styled from "styled-components";
 
 interface MainContainerTemplateProps {
@@ -17,7 +18,9 @@ export const MainContainerTemplate = ({
     <Wrapper data-testid="main-container">
       <Container>
         <Row>
-          <SideBar />
+          <MediaQuery minWidth={768}>
+            <SideBar />
+          </MediaQuery>
           <RightContainer>
             {name && <BoxHeader name={name} />}
             {children}
@@ -42,13 +45,24 @@ const Container = styled.div`
 `;
 
 const Row = styled.div`
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 16px;
+  display: flex;
+  padding: 0;
+
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 16px;
+    padding: 0 12px;
+  }
+
+  @media screen and (min-width: 1074px) {
+    padding: 0;
+  }
 `;
 
 const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: flex-start;
 `;

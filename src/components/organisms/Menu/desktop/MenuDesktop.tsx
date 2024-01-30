@@ -1,4 +1,5 @@
 "use client";
+
 import styled from "styled-components";
 import { TopBar } from "./TopBar";
 
@@ -8,7 +9,7 @@ import { TitleBar } from "./TitleBar";
 
 export const MenuDesktop = () => {
   return (
-    <Header>
+    <Header data-testid="menu-desktop">
       <Container>
         <TopBar />
         <TitleBar />
