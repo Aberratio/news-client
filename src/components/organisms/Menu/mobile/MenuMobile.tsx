@@ -1,4 +1,3 @@
- 
 "use cleint";
 
 import Image from "next/image";
@@ -41,19 +40,24 @@ export const MenuMobile = ({ isOpen, handleClick }: MenuMobileProps) => {
 const HamburgerWrapper = styled.nav`
   cursor: pointer;
   z-index: 200000;
+  padding-right: 8px;
 `;
 
 const Wrapper = styled.div`
-  align-items: center;
-  height: 65px;
-  background-color: #fff;
-  padding: 10px 25px;
-  -webkit-box-shadow: 0 3px 8px 0px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 3px 8px 0px rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+
+  height: 65px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 3px 8px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 8px 0px rgba(0, 0, 0, 0.05);
+  z-index: 100;
 `;
 
 const LogoMobile = styled.div`

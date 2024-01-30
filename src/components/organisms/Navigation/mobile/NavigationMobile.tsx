@@ -47,7 +47,11 @@ export const NavigationMobile = () => {
 
 const Container = styled.div<{ $isOpen: boolean }>`
   ${({ $isOpen }) => `
-  display: block;
+    display: block;
+    background-color: #17b978;
+    z-index: 200;
+    cursor: pointer;
+
   ${
     $isOpen &&
     `
@@ -56,14 +60,10 @@ const Container = styled.div<{ $isOpen: boolean }>`
       left: 0;
       right: 0;
       bottom: 0;
-      
       width: 100dvw;
       height: 100dvh;
       `
-  }  
-  background-color: #17b978;
-  z-index: 200;
-  cursor: pointer;
+  }
   `}
 `;
 
@@ -77,13 +77,14 @@ const TopBar = styled.div`
 const NavigationMenu = styled.ul`
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin-top: 100px;
+  margin: 100px 50px 0 50px;
   background-color: #17b978;
 `;
 
 const NavigtionItem = styled.li`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   align-content: center;
 
@@ -96,5 +97,4 @@ const NavigtionItem = styled.li`
 
   background-color: #17b978;
   border-bottom: 1px solid #ccc;
-  padding-left: 3rem;
 `;
