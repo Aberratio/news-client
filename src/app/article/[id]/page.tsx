@@ -16,6 +16,7 @@ import { fetchArticle } from "./actions";
 interface ArticlePageProps {
   params: { id: string };
 }
+
 const ArticlePage = async ({ params }: ArticlePageProps) => {
   const article = mapData(await fetchArticle(Number(params.id)));
 

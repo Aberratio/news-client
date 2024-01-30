@@ -7,22 +7,19 @@ import { CategoryItem } from "types/CategoryItem";
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
-interface CategoryPageProps {
+interface TabPageProps {
   params: { id: string };
 }
 
-const CategoryPage = ({ params }: CategoryPageProps) => {
+const TabPage = ({ params }: TabPageProps) => {
   const { categories } = useOrganizationInfo();
-  const [category, setCategory] = useState<CategoryItem>();
+  const [tabCategories, setTabCategories] = useState<CategoryItem[]>([]);
 
   useEffect(() => {
     if (categories) {
-      const category = categories.find(
-        (category) => category.id === Number(params.id)
+      setTabCategories(
+        categories.filter((category) => category.tabId === Number(params.id))
       );
-      if (category) {
-        setCategory(category);
-      }
     }
   }, [categories]);
 
@@ -38,23 +35,26 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
         name: category.tabName,
         path: `/tab/${category.tabId}`,
       },
-      {
-        name: category.name,
-        path: `/category/${category.id}`,
-      },
     ];
   };
 
-  if (!category) return null;
+  if (!tabCategories.length) return null;
 
   return (
     <SimplePageTemplate
-      breadcrumbs={createBreadcrumbFromCategory(category)}
-      name={category.name}
+      breadcrumbs={createBreadcrumbFromCategory(tabCategories[0])}
     >
-      <ArticlesOverview category={category} showSeeMore={false} />
+      {tabCategories.map((category) => {
+        return (
+          <ArticlesOverview
+            key={category.id}
+            category={category}
+            showSeeMore={true}
+          />
+        );
+      })}
     </SimplePageTemplate>
   );
 };
 
-export default CategoryPage;
+export default TabPage;

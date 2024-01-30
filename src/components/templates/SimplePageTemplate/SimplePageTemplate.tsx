@@ -1,4 +1,3 @@
-import { BoxHeader } from "components/molecules/BoxHeader/BoxHeader";
 import BreadCrumbs from "components/molecules/BreadCrumbs";
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";

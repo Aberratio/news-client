@@ -27,7 +27,7 @@ export const FullArticle = ({ article }: FullArticleProps) => {
           <StyledImage
             src={article.photos[0].path}
             fill
-            objectFit="contain"
+            objectFit="cover"
             alt={article.photos[0].description ?? "zdjęcie artykułu"}
           />
         </SliderContainer>
