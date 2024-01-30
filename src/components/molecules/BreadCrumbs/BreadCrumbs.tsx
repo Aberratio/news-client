@@ -52,7 +52,10 @@ const Wrapper = styled.div`
   max-width: 1080px;
   margin-left: 12px;
   margin-top: 65px;
+
   @media screen and (min-width: 768px) {
+    margin: auto;
+    padding-left: 12px;
     margin-top: 0;
   }
 `;
