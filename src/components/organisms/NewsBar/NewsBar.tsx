@@ -16,7 +16,7 @@ export const NewsBar = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return null;
   }
 
   return (

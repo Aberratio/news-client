@@ -2,7 +2,7 @@
 
 import { ArticlesOverview } from "components/organisms/Article/summarization/ArticlesOverview";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { CategoryItem } from "types/CategoryItem";
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
@@ -46,11 +46,9 @@ const TabPage = ({ params }: TabPageProps) => {
     >
       {tabCategories.map((category) => {
         return (
-          <ArticlesOverview
-            key={category.id}
-            category={category}
-            showSeeMore={true}
-          />
+          <Suspense key={category.id}>
+            <ArticlesOverview category={category} showSeeMore={true} />
+          </Suspense>
         );
       })}
     </SimplePageTemplate>

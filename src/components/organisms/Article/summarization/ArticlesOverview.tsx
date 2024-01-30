@@ -24,7 +24,7 @@ export const ArticlesOverview = ({
   }, [category]);
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return null;
   }
 
   return (
