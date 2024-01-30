@@ -6,6 +6,9 @@ import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import Image from "next/image";
+import { Slideshow } from "./Slideshow ";
+import { Example } from "./Example";
+import { Slider } from "./Slider";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -23,14 +26,7 @@ export const FullArticle = ({ article }: FullArticleProps) => {
           authorName={article.author.name}
           createdOn={article.createdOn}
         />
-        <SliderContainer>
-          <StyledImage
-            src={article.photos[0].path}
-            fill
-            objectFit="cover"
-            alt={article.photos[0].description ?? "zdjęcie artykułu"}
-          />
-        </SliderContainer>
+        <Slider images={article.photos} />
         <LeadContainer>
           <Text>
             <strong>{article.lead}</strong>

@@ -60,6 +60,7 @@ const Link = styled.a`
 
 const Title = styled(Typography)`
   text-align: left;
+  white-space: pre-wrap;
 `;
 
 const StyledImage = styled(Image)`
