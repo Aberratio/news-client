@@ -10,7 +10,7 @@ export const HamburgerButton = ({
   handleClick,
 }: HamburgerButtonProps) => {
   return (
-    <Container onClick={handleClick}>
+    <Container data-testid="hamburger-button" onClick={handleClick}>
       <LineTop $isOpen={isOpen} />
       <LineMiddle $isOpen={isOpen} />
       <LineBottom $isOpen={isOpen} />

@@ -18,7 +18,7 @@ export const NavigationMobile = () => {
   };
 
   return (
-    <Container $isOpen={isMenuOpen}>
+    <Container $isOpen={isMenuOpen} data-testid="navigation-mobile">
       <MenuMobile isOpen={isMenuOpen} handleClick={handleClick} />
 
       {isMenuOpen && (
