@@ -52,7 +52,6 @@ const Link = styled.a`
   touch-action: manipulation;
   transition: all 0.3s;
   cursor: pointer;
-
   &:hover {
     color: #17b978;
   }

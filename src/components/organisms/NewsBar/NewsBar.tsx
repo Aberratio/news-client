@@ -19,6 +19,8 @@ export const NewsBar = () => {
     return null;
   }
 
+  console.log(articles);
+
   return (
     <Wrapper data-testid="news-bar">
       <Container>
@@ -38,7 +40,7 @@ export const NewsBar = () => {
                 size={NewsBarPublicationSize.SMALL}
               />
               <NewsBarPublication
-                article={articles[2]}
+                article={articles[3]}
                 size={NewsBarPublicationSize.SMALL}
               />
             </SmallPublicationsContainerRow>

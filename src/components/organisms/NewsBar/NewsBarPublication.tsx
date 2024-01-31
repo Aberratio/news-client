@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Typography } from "components/atoms/Typography/Typography";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
+import Image from "next/image";
 
 export enum NewsBarPublicationSize {
   SMALL,
@@ -30,17 +31,21 @@ export const NewsBarPublication = ({
 
   return (
     <Wrapper data-testid="new-bar-publication">
-      <ImageBackground>
-        <ImageLink href={`article/${article.id}`}>
-          <Description>
-            <Title>
-              <Typography color="white" variant={titleType()}>
-                {article.title}
-              </Typography>
-            </Title>
-          </Description>
-        </ImageLink>
-      </ImageBackground>
+      <ImageLink href={`article/${article.id}`}>
+        <Description $size={size}>
+          <Title>
+            <Typography color="white" variant={titleType()}>
+              {article.title}
+            </Typography>
+          </Title>
+        </Description>
+      </ImageLink>
+      <ImageBackground
+        src={article.photo.path}
+        fill
+        objectFit="cover"
+        alt={article.photo.description}
+      ></ImageBackground>
     </Wrapper>
   );
 };
@@ -48,21 +53,16 @@ export const NewsBarPublication = ({
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-`;
-
-const ImageBackground = styled.div`
-  position: relative;
-  width: 100%;
-  height: 440px;
-
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("/images/article/kościól.jpg");
 
   @media screen and (min-width: 768px) {
     height: 100%;
   }
+`;
+
+const ImageBackground = styled(Image)`
+  position: relative;
+  width: 100%;
+  height: 440px;
 `;
 
 const ImageLink = styled.a`
@@ -75,51 +75,40 @@ const ImageLink = styled.a`
   z-index: 2;
   cursor: pointer;
 
-  opacity: 0.5;
+  background: rgba(0, 0, 0, 0.5);
   background: -webkit-linear-gradient(
     bottom,
-    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.8),
     rgba(0, 0, 0, 0)
   );
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.5);
-  }
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  background: linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
 
-const Description = styled.div`
+const Description = styled.div<{ $size: NewsBarPublicationSize }>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
 
-  padding: 0 24px;
+  padding: 0
+    ${({ $size }) => ($size === NewsBarPublicationSize.SMALL ? "8px" : "24px")};
   width: 100%;
   height: 100%;
 `;
 
 const Title = styled.div`
   margin: 12px 0;
-  z-index: 3;
+  z-index: 300;
+  cursor: pointer;
+  color: white !important;
+
+  p {
+    text-align: left !important;
+  }
+
+  &:hover p {
+    color: #17b978 !important;
+  }
 `;
-
-// const TitleLink = styled.a`
-//   position: relative;
-//   display: -webkit-box;
-//   -webkit-line-clamp: 2;
-//   -webkit-box-orient: vertical;
-
-//   text-decoration: none;
-//   background-color: transparent;
-//   touch-action: manipulation;
-//   transition: all 0.3s;
-//   max-width: 100%;
-
-//   white-space: normal;
-//   overflow: hidden;
-//   text-overflow: ellipsis;
-
-//   &:hover p {
-//     color: #15a752 !important;
-//   }
-// `;

@@ -1,6 +1,6 @@
 import { CustomFonts } from "../types/CustomFonts";
 
-const FONT_FAMILY_PRIMARY = "Arial, sans-serif";
+const FONT_FAMILY_PRIMARY = "'Cabin', sans-serif";
 // const FONT_FAMILY_SECONDARY = "Roboto-Medium";
 const WEIGHT_100 = 100;
 const WEIGHT_200 = 200;

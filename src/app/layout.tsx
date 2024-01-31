@@ -2,7 +2,7 @@ import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
 import StyledComponentsRegistry from "../lib/register";
 
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Cabin } from "next/font/google";
 
 import Footer from "components/organisms/Footer";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
@@ -10,7 +10,7 @@ import { TabItem } from "types/TabItem";
 import Menu from "components/organisms/Menu";
 import Navigation from "components/organisms/Navigation";
 
-const roboto = Roboto({
+const cabin = Cabin({
   weight: "400",
   subsets: ["latin"],
 });
@@ -29,7 +29,7 @@ const RootLayout = async ({
 
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={cabin.className}>
         <OrganizationContextProvider tabs={tabs}>
           <StyledComponentsRegistry>
             <GlobalThemeWrapper>
