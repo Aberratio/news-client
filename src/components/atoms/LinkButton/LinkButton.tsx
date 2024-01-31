@@ -12,7 +12,7 @@ interface LinkProps {
 export const LinkButton = ({ to, children }: LinkProps) => {
   return (
     // <Link href={to}>{children}</Link>
-    <StyledLink href={to} $isDisabled={false}>
+    <StyledLink href={to} $isDisabled={false} data-testid="link-button">
       {children}
     </StyledLink>
   );

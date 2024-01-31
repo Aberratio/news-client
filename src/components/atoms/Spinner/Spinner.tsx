@@ -1,7 +1,7 @@
 "use client";
 import { styled } from "styled-components";
 
-const Spinner = () => <Loader />;
+const Spinner = () => <Loader data-testid="spinner" />;
 
 export default Spinner;
 

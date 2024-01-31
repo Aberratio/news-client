@@ -28,11 +28,6 @@ export const MenuMobile = ({ isOpen, handleClick }: MenuMobileProps) => {
           <HamburgerButton isOpen={isOpen} handleClick={handleClick} />
         </HamburgerWrapper>
       </Wrapper>
-      {/* <AnimatePresence>
-        {isMenuOpen && (
-          <NavigationMobile isOpen={isMenuOpen} handleClick={handleClick} />
-        )}
-      </AnimatePresence> */}
     </>
   );
 };

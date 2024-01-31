@@ -9,7 +9,7 @@ export const Wall = () => {
   const { categories } = useOrganizationInfo();
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="wall">
       <Container>
         {categories.map((category) => {
           return (

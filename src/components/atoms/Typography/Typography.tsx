@@ -156,7 +156,7 @@ export const Typography = ({
     <StyledTypography
       aria-label={ariaLabel}
       color={color}
-       
+      data-testid="typography"
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
       isCapitalized={isCapitalized}
       typographyVariant={typographyVariant}

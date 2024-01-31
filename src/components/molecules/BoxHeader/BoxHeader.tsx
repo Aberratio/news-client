@@ -10,7 +10,7 @@ interface BoxHeaderProps {
 
 export const BoxHeader = ({ name, children }: BoxHeaderProps) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="header">
       <Typography variant="h2" isCapitalized>
         {name}
       </Typography>

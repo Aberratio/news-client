@@ -6,8 +6,6 @@ import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import Image from "next/image";
-import { Slideshow } from "./Slideshow ";
-import { Example } from "./Example";
 import { Slider } from "./Slider";
 
 interface FullArticleProps {
@@ -57,13 +55,6 @@ const Link = styled.a`
   touch-action: manipulation;
   transition: all 0.3s;
   cursor: pointer;
-`;
-
-const SliderContainer = styled.div`
-  position: relative;
-  display: block;
-  height: 420px;
-  width: 100%;
 `;
 
 const LeadContainer = styled.div`
