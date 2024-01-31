@@ -65,4 +65,5 @@ const RightContainer = styled.div`
   flex-direction: column;
   gap: 16px;
   align-items: flex-start;
+  width: 100%;
 `;

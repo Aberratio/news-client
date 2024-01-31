@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Typography } from "components/atoms/Typography/Typography";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 import Image from "next/image";
+import { useActiveViewportSize } from "layout/responsivenes/useActiveViewportSize";
 
 export enum NewsBarPublicationSize {
   SMALL,
@@ -18,7 +19,12 @@ export const NewsBarPublication = ({
   article,
   size,
 }: NewsBarPublicationProps) => {
+  const { mobileXL } = useActiveViewportSize();
+
   const titleType = () => {
+    if (!mobileXL) {
+      return "h2";
+    }
     switch (size) {
       case NewsBarPublicationSize.LARGE:
         return "h3";
@@ -32,7 +38,7 @@ export const NewsBarPublication = ({
   return (
     <Wrapper data-testid="new-bar-publication">
       <ImageLink href={`article/${article.id}`}>
-        <Description $size={size}>
+        <Description $size={mobileXL ? size : NewsBarPublicationSize.LARGE}>
           <Title>
             <Typography color="white" variant={titleType()}>
               {article.title}
@@ -53,6 +59,7 @@ export const NewsBarPublication = ({
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
+  height: 440px;
 
   @media screen and (min-width: 768px) {
     height: 100%;

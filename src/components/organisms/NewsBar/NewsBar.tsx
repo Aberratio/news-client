@@ -54,6 +54,11 @@ export const NewsBar = () => {
 const Wrapper = styled.div`
   display: block;
   background-color: #fff;
+  margin-top: 65px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0px;
+  }
 `;
 
 const Container = styled.div`

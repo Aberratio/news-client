@@ -61,4 +61,8 @@ const Link = styled.a`
 
 const StyledTypography = styled(Typography)`
   // color: #17b978;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 1074px) {
+  }
 `;
