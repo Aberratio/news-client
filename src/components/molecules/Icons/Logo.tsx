@@ -1,6 +1,6 @@
-import { IconProps } from "../../atoms/Icon/Icon";
+import { IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Logo: React.FC<IconProps> = ({ size }) => (
+export const Logo = ({ size }: IconCustomizationProps) => (
   <img
     src="/icons/logo.png"
     width={size?.width ?? "80px"}

@@ -4,7 +4,6 @@ import { MetadataBar } from "components/organisms/Article/MetadataBar";
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
-import Image from "next/image";
 import { Slider } from "./Slider";
 
 interface FullArticleProps {
@@ -49,11 +48,4 @@ const LeadContainer = styled.div`
   margin-top: 3rem !important;
   padding-bottom: 42px;
   color: #666;
-`;
-
-const StyledImage = styled(Image)`
-  border-style: none;
-  object-fit: cover;
-  object-position: 50% 50%;
-  vertical-align: middle;
 `;

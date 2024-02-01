@@ -22,7 +22,7 @@ const ScrollToTopButton = () => {
     });
   };
   return (
-    <div className="top-to-btm">
+    <div data-testid="scroll-to-top">
       {showTopBtn && (
         <Wrapper onClick={goToTop}>
           <Arrow

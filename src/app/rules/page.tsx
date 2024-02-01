@@ -117,7 +117,7 @@ interface RulesItem {
   components: RulesComponent[];
 }
 
-export const isListItem = (item: RulesComponent): item is ListItem =>
+const isListItem = (item: RulesComponent): item is ListItem =>
   typeof item === "object" && "elements" in item;
 
 const rules: RulesItem[] = [

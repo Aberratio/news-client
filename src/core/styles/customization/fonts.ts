@@ -8,7 +8,7 @@ const WEIGHT_300 = 300;
 const WEIGHT_400 = 400;
 const WEIGHT_500 = 500;
 
-export const customFonts: CustomFonts = {
+export const fonts: CustomFonts = {
   h1: {
     fontFamily: FONT_FAMILY_PRIMARY,
     fontSize: "30px",

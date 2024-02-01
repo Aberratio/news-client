@@ -26,7 +26,7 @@ export const useCategories = () => {
 const mapData = (data: GetTabsResponse[]): TabItem[] => {
   return data.map((tab: GetTabsResponse) => {
     return {
-      id: tab.tabId,
+      tabId: tab.tabId,
       name: tab.name,
       categories: tab.categories.map((category) => {
         return {
