@@ -9,6 +9,7 @@ import { OrganizationContextProvider } from "providers/context/OrganizationConte
 import { TabItem } from "types/TabItem";
 import Menu from "components/organisms/Menu";
 import Navigation from "components/organisms/Navigation";
+import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
 
 const cabin = Cabin({
   weight: "400",
@@ -37,6 +38,7 @@ const RootLayout = async ({
               <Navigation />
               {children}
               <Footer />
+              <ScrollToTopButton />
             </GlobalThemeWrapper>
           </StyledComponentsRegistry>
         </OrganizationContextProvider>

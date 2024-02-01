@@ -42,7 +42,7 @@ export const Icon = ({
       $fillStroke={fillStroke}
       $size={size}
       $transparentPath={transparentPath}
-      $viewBox={viewBox}
+      viewBox={viewBox}
     >
       <title>{title}</title>
       {children}
