@@ -45,7 +45,6 @@ const Counter = styled.div`
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-family: Roboto-Bold;
   font-size: 16px;
   line-height: 1.5;
   width: 30px;

@@ -60,16 +60,14 @@ const Link = styled.a`
 const LeadContainer = styled.div`
   margin: 0;
   margin-top: 3rem !important;
-  padding-bottom: 15px;
+  padding-bottom: 42px;
   color: #666;
-  font-family: Roboto-Regular;
-  font-size: 16px;
-  line-height: 1.8;
 `;
 
 const Text = styled(Typography)`
   text-align: left;
   align-items: flex-start;
+  line-height: 1.5;
 `;
 const Body = styled(Text)`
   display: flex;

@@ -7,7 +7,7 @@ export const useArticlesApi = () => {
   const { getArticle, getArticlesLast, getPopularTitles } = useBasicApi();
 
   const getArticleDetails = async (
-    articleId: number,
+    articleId: number
   ): Promise<GetArticleResponse> => {
     return await getArticle({
       id: articleId,
@@ -17,7 +17,7 @@ export const useArticlesApi = () => {
   const getLastArticlesDetails = async (
     categoryId?: number,
     limit?: number,
-    page?: number,
+    page?: number
   ): Promise<GetArticlesLastResponse[]> => {
     return await getArticlesLast({
       category: categoryId,
@@ -28,7 +28,7 @@ export const useArticlesApi = () => {
 
   const getPopularTitlesDetails = async (
     amount: number,
-    from: number,
+    from: number
   ): Promise<GetPopularTitlesResponse[]> => {
     return await getPopularTitles({
       amount,

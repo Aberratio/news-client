@@ -5,17 +5,15 @@ import styled from "styled-components";
 
 export const WebcoBar = () => {
   return (
-    <footer>
-      <Wrapper>
-        <Container>
-          <Typography>Copyright © 2021-2024</Typography>
-          <Link href="https:webcodesign.pl" target="_blank">
-            <Typography> webco.design </Typography>
-          </Link>
-          <Typography>☕ All rights reserved.</Typography>
-        </Container>
-      </Wrapper>
-    </footer>
+    <Wrapper>
+      <Container>
+        <Typography>Copyright © 2021-2024</Typography>
+        <Link href="https:webcodesign.pl" target="_blank">
+          <Typography> webco.design </Typography>
+        </Link>
+        <Typography>☕ All rights reserved.</Typography>
+      </Container>
+    </Wrapper>
   );
 };
 

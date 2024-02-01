@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Cabin', sans-serif;
         line-height: 1.5;
         font-weight: 400;
 
@@ -43,7 +43,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      line-height: 1;
+      line-height: 1.5;
     }
 
     html {

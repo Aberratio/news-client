@@ -5,6 +5,7 @@ import Image from "next/image";
 import { PhotoItem } from "types/PhotoItem";
 import { useState } from "react";
 import { Typography } from "components/atoms/Typography/Typography";
+import { Arrow } from "components/molecules/Icons/Arrow";
 
 interface SliderProps {
   images: PhotoItem[];
@@ -13,6 +14,7 @@ interface SliderProps {
 export const Slider = ({ images }: SliderProps) => {
   const [image, setImage] = useState<PhotoItem>(images[0]);
   const [index, setIndex] = useState<number>(0);
+  const isSlideable = images.length > 1;
 
   const nextItem = () => {
     if (index < images.length - 1) {
@@ -43,12 +45,16 @@ export const Slider = ({ images }: SliderProps) => {
           objectFit="cover"
           alt={image.description ?? "zdjęcie artykułu"}
         />
-        <SliderArrow className="prev" onClick={prevItem}>
-          {"<"}
-        </SliderArrow>
-        <SliderArrow className="next" $isRight onClick={nextItem}>
-          {">"}
-        </SliderArrow>
+        {isSlideable && (
+          <>
+            <SliderArrow className="prev" onClick={prevItem}>
+              <Arrow color="white" />
+            </SliderArrow>
+            <SliderArrow className="next" $isRight onClick={nextItem}>
+              <Arrow color="white" direction="right" />
+            </SliderArrow>
+          </>
+        )}
       </SliderContainer>
       {image.description.trim() !== "" && (
         <Description>
@@ -93,7 +99,7 @@ const SliderArrow = styled.div<{ $isRight?: boolean }>`
   font-weight: bold;
   font-size: 20px;
   -webkit-user-select: none;
-  ${$isRight && `right: 0;`}
+  ${$isRight && `right: 0`};
   border-radius: 3px 0 0 3px;
   background-color: rgba(0, 0, 0, 0.8);
   text-decoration: none;

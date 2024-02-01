@@ -18,26 +18,26 @@ export const useBasicApi = () => {
   // ===================================
   // articles
   const getArticle = async (
-    request: GetArticleRequest,
+    request: GetArticleRequest
   ): Promise<GetArticleResponse> =>
     get<GetArticleRequest, GetArticleResponse>(
-      `${apiUrl}/articles/${request.id}`,
+      `${apiUrl}/articles/${request.id}`
     );
 
   const getArticlesLast = async (
-    request: GetArticlesLastRequest,
+    request: GetArticlesLastRequest
   ): Promise<GetArticlesLastResponse[]> =>
     get<GetArticlesLastRequest, GetArticlesLastResponse[]>(
       `${apiUrl}/articles/last`,
-      request,
+      request
     );
 
   const getPopularTitles = async (
-    request: GetPopularTitlesRequest,
+    request: GetPopularTitlesRequest
   ): Promise<GetPopularTitlesResponse[]> =>
     get<GetPopularTitlesRequest, GetPopularTitlesResponse[]>(
       `${apiUrl}/articles/popular`,
-      request,
+      request
     );
 
   // ===================================
@@ -48,11 +48,11 @@ export const useBasicApi = () => {
   // ===================================
   // comments
   const getCommentsLast = async (
-    request: GetCommentsLastRequest,
+    request: GetCommentsLastRequest
   ): Promise<GetCommentsLastResponse[]> =>
     get<GetCommentsLastRequest, GetCommentsLastResponse[]>(
       `${apiUrl}/comments/last`,
-      request,
+      request
     );
 
   // ===================================
