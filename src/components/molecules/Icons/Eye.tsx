@@ -1,16 +1,13 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Eye: React.FC<IconProps> = ({ color, direction, size }) => (
+export const Eye = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1.25rem", height: "1.25rem" }}
     viewBox="0 0 511.999 511.999"
-    x="0px"
-    y="0px"
     direction={direction}
     color={color}
+    title="eye"
   >
-    <title>eye</title>
-
     <g>
       <g>
         <path

@@ -1,16 +1,13 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Star: React.FC<IconProps> = ({ color, direction, size }) => (
+export const Star = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 36.09 36.09"
-    x="0px"
-    y="0px"
     direction={direction}
     color={color}
+    title="star"
   >
-    <title>star</title>
-
     <g>
       <path
         d="M36.042,13.909c-0.123-0.377-0.456-0.646-0.85-0.688l-11.549-1.172L18.96,1.43c-0.16-0.36-0.519-0.596-0.915-0.596

@@ -1,16 +1,17 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const FullArrow: React.FC<IconProps> = ({ color, direction, size }) => (
+export const FullArrow = ({
+  color,
+  direction,
+  size,
+}: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 30 31"
-    x="0px"
-    y="0px"
     direction={direction}
     color={color}
+    title="arrow"
   >
-    <title>arrow</title>
-
     <path d="M20.3824 14.8584L13.6049 9.93711C13.3561 9.75693 13.0268 9.72676 12.7564 9.86826C12.4807 10.0077 12.3114 10.2884 12.3114 10.5963V20.4438C12.3114 20.75 12.4807 21.031 12.7564 21.1754C12.8733 21.2334 13.0008 21.2589 13.1279 21.2589C13.2923 21.2589 13.4616 21.2059 13.6049 21.101L20.3821 16.1797C20.5995 16.0209 20.7214 15.7821 20.7214 15.5223C20.7217 15.2562 20.5948 15.0175 20.3824 14.8584Z" />
     <path d="M15 0.5C6.71221 0.5 0 7.21279 0 15.5015C0 23.7887 6.71221 30.5 15 30.5C23.2872 30.5 30 23.7837 30 15.5015C30.005 7.21279 23.2872 0.5 15 0.5ZM15 29.0926C7.49648 29.0926 1.40889 23.0091 1.40889 15.5015C1.40889 7.99795 7.49648 1.91035 15 1.91035C22.5091 1.91035 28.5911 7.99795 28.5911 15.5015C28.5911 23.0091 22.5091 29.0926 15 29.0926Z" />
   </Icon>

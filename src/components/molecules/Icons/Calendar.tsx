@@ -1,8 +1,11 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Calendar: React.FC<IconProps> = ({ size }) => (
-  <Icon size={size ?? { width: "30px", height: "31px" }} viewBox="0 0 30 31">
-    <title>calendar</title>
+export const Calendar = ({ size }: IconCustomizationProps) => (
+  <Icon
+    size={size ?? { width: "30px", height: "31px" }}
+    viewBox="0 0 30 31"
+    title="calendar"
+  >
     <path d="M9.23062 21.2691H4.61548V25.8849H9.23062V21.2691Z" />
     <path d="M16.154 21.2691H11.5386V25.8849H16.154V21.2691Z" />
     <path d="M5.76912 7.42314C6.40691 7.42314 6.92312 6.90693 6.92312 6.26914V1.654C6.92312 1.01621 6.40691 0.5 5.76912 0.5C5.13132 0.5 4.61511 1.01621 4.61511 1.654V6.26914C4.61541 6.90693 5.13162 7.42314 5.76912 7.42314Z" />

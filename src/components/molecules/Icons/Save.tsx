@@ -1,16 +1,13 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Save: React.FC<IconProps> = ({ color, direction, size }) => (
+export const Save = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 486 486"
-    x="0px"
-    y="0px"
     direction={direction}
     color={color}
+    title="save"
   >
-    <title>save</title>
-
     <g>
       <g>
         <path

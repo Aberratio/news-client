@@ -1,13 +1,12 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Edit: React.FC<IconProps> = ({ color, direction, size }) => (
+export const Edit = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 348.882 348.882"
-    x="0px"
-    y="0px"
     direction={direction}
     color={color}
+    title="edit"
   >
     <title>edit</title>
 

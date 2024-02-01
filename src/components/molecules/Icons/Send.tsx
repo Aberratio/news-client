@@ -1,13 +1,12 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Send: React.FC<IconProps> = ({ color, size }) => (
+export const Send = ({ color, size }: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1.5rem", height: "1.5rem" }}
     viewBox="0 0 17 17"
     color={color}
+    title="send"
   >
-    <title>send</title>
-
     <g
       id="Symbols"
       stroke="none"

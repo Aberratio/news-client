@@ -1,15 +1,13 @@
-import { Icon, IconProps } from "../../atoms/Icon/Icon";
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
-export const Thumb: React.FC<IconProps> = ({ color, direction, size }) => (
+export const Thumb = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     color={color}
     direction={direction}
     size={size ?? { width: "1rem", height: "1rem" }}
     viewBox="0 0 512 512"
-    x="0px"
-    y="0px"
+    title="thumb"
   >
-    <title>thumb</title>
     <g>
       <g>
         <g>
