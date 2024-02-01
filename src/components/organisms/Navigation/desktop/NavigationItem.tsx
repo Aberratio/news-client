@@ -25,10 +25,7 @@ export const NavigationItem = ({
   return (
     <Container
       data-testid="navigation-item"
-      onClick={(e) => {
-        hasSubmenu && e.preventDefault();
-        onClick();
-      }}
+      onClick={onClick}
       $isActive={isActive}
       onMouseEnter={() => {
         setIsActive(true);

@@ -5,27 +5,21 @@ import { Variant } from "./types/Variant";
 
 export const useTypographyVariant = () => {
   const { customFonts } = useStyles();
-  const { desktopS, tabletS } = useActiveViewportSize();
+  const { desktopS } = useActiveViewportSize();
 
   const getVariantScaledByViewportSize = (variant: keyof typeof Variant) => {
     if (!desktopS) {
-      if (tabletS) {
-        if (variant === "h1") {
-          return "h1T";
-        }
-      } else {
-        switch (variant) {
-          case "h1":
-            return "h1M";
-          case "h2":
-            return "h2M";
-          case "h3":
-            return "h3M";
-          case "body":
-            return "bodyM";
-          default:
-            return "smallM";
-        }
+      switch (variant) {
+        case "h1":
+          return "h1M";
+        case "h2":
+          return "h2M";
+        case "h3":
+          return "h3M";
+        case "body":
+          return "bodyM";
+        default:
+          return "smallM";
       }
     }
 

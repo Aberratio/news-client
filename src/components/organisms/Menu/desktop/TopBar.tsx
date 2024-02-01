@@ -11,7 +11,9 @@ export const TopBar = () => {
       <Container>
         <Part>
           <LinkButton to={aboutPagePath}>
-            <Typography variant="small">O nas</Typography>
+            <Typography variant="small" justifyContent="center">
+              O nas
+            </Typography>
           </LinkButton>
         </Part>
       </Container>
