@@ -65,12 +65,12 @@ const Link = styled.a<{ $isActive: boolean }>`
   opacity: 1;
   border-radius: 0;
   padding: 8px 20px 8px 33px;
-  color: ${({ $isActive }) => ($isActive ? "#fff" : "#000")};
+  color: ${({ $isActive }) => ($isActive ? "#fff" : "#000")} !important;
   background-color: ${({ $isActive }) =>
     $isActive ? "rgb(46, 104, 150)" : "white"};
 
   &:hover {
     background-color: rgb(46, 104, 150);
-    color: #fff;
+    color: #fff !important;
   }
 `;

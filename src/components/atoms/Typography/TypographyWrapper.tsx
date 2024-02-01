@@ -76,4 +76,12 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
     css`
       white-space: wrap;
     `};
+
+  ${({ theme }) => css`
+    a {
+      color: ${theme.customTheme.general.primaryColor};
+      text-decoration: none;
+      cursor: pointer;
+    }
+  `};
 `;

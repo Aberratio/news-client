@@ -39,6 +39,7 @@ const SeeMore = styled.a`
   white-space: nowrap;
   color: #999;
   cursor: pointer;
+  gap: 12px;
 
   &:hover {
     p,
