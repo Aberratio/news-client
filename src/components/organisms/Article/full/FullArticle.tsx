@@ -1,7 +1,6 @@
 "use client";
 
 import { MetadataBar } from "components/organisms/Article/MetadataBar";
-import { buildCategoryPath } from "core/builders/buildPath";
 import { Typography } from "components/atoms/Typography/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
@@ -16,9 +15,6 @@ export const FullArticle = ({ article }: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
-        <Link href={buildCategoryPath(article.category.id)}>
-          <Typography>{article.category.name}</Typography>
-        </Link>
         <Text variant="h1">{article.title}</Text>
         <MetadataBar
           authorName={article.author.name}
@@ -48,15 +44,6 @@ const Container = styled.div`
   padding-bottom: 70px;
 `;
 
-const Link = styled.a`
-  text-decoration: none;
-  background-color: transparent;
-
-  touch-action: manipulation;
-  transition: all 0.3s;
-  cursor: pointer;
-`;
-
 const LeadContainer = styled.div`
   margin: 0;
   margin-top: 3rem !important;
@@ -67,8 +54,8 @@ const LeadContainer = styled.div`
 const Text = styled(Typography)`
   text-align: left;
   align-items: flex-start;
-  line-height: 1.5;
 `;
+
 const Body = styled(Text)`
   display: flex;
   flex-direction: column;

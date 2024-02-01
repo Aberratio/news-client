@@ -1,12 +1,12 @@
 import { ReactNode, ReactElement } from "react";
-import styled, { css } from "styled-components";
-import { space, typography, textAlign } from "styled-system";
+import { FlexboxProps, SpaceProps, TextAlignProps } from "styled-system";
 
-import { CustomFonts } from "../../../core/styles/types/CustomFonts";
-import { useActiveViewportSize } from "../../../layout/responsivenes/useActiveViewportSize";
-import { useStyles } from "../../../core/styles/customization/useStyles";
+import { TypographyWrapper } from "./TypographyWrapper";
+import { useTypographyVariant } from "./useTypographyVariant";
 
-const Variant: Record<string, string> = {
+export type WordBreakProps = "normal" | "break-all" | "keep-all" | "break-word";
+
+export const Variant: Record<string, string> = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
@@ -17,154 +17,49 @@ const Variant: Record<string, string> = {
 export interface TypographyProps {
   ariaLabel?: string;
   color?: string;
-  children?: ReactNode;
   innerHtml?: any;
   isCapitalized?: boolean;
   isUppercase?: boolean;
-  position?: Position;
-  wordBreak?: "normal" | "break-all" | "keep-all" | "break-word";
+  textAlign?: TextAlignProps;
+  wordBreak?: WordBreakProps;
   wrap?: boolean;
   variant?: keyof typeof Variant;
+  children?: ReactNode;
+  space?: SpaceProps;
+  flexbox?: FlexboxProps;
 }
-
-export interface Position {
-  justifyContent?: string;
-}
-
-interface StyledTypographyProps extends TypographyProps {
-  typographyVariant: {
-    fontFamily: string;
-    fontSize?: string;
-    lineHeight?: string;
-    fontWeight?: number;
-  };
-}
-
-const StyledTypography = styled.p.withConfig({
-  shouldForwardProp: (prop) =>
-    ![
-      "color",
-      "isCapitalized",
-      "isCapitalizedFirst",
-      "isUppercase",
-      "typographyVariant",
-      "position",
-      "wordBreak",
-      "wrap",
-    ].includes(prop),
-})<StyledTypographyProps>`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  vertical-align: middle;
-  text-align: center;
-
-  strong {
-    font-weight: 700;
-  }
-
-  ${space};
-  ${textAlign};
-  ${typography};
-
-  ${({ position }) =>
-    position &&
-    css`
-      justify-content: ${position.justifyContent ?? "center"};
-    `};
-
-  ${({ color }) =>
-    color &&
-    css`
-      color: ${color};
-    `};
-
-  ${({ isCapitalized }) =>
-    isCapitalized &&
-    css`
-      text-transform: capitalize;
-    `};
-
-  ${({ isUppercase }) =>
-    isUppercase &&
-    css`
-      text-transform: uppercase;
-    `};
-
-  ${({ typographyVariant }) => typographyVariant}
-
-  ${({ wordBreak }) =>
-    wordBreak &&
-    css`
-      word-break: ${wordBreak};
-      white-space: pre-line;
-    `};
-
-  ${({ wrap }) =>
-    wrap &&
-    css`
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    `};
-`;
 
 export const Typography = ({
   ariaLabel,
   color,
-  children,
+  flexbox,
   innerHtml,
   isCapitalized = false,
+  isUppercase = false,
+  space,
+  textAlign,
   wordBreak,
   wrap = false,
   variant = "body",
-  ...rest
+  children,
 }: TypographyProps): ReactElement => {
-  const { customFonts } = useStyles();
-  const { desktopS, tabletS } = useActiveViewportSize();
-
-  const getVariantScaledByViewportSize = () => {
-    if (!desktopS) {
-      if (tabletS) {
-        if (variant === "h1") {
-          return "h1T";
-        }
-      } else {
-        switch (variant) {
-          case "h1":
-            return "h1M";
-          case "h2":
-            return "h2M";
-          case "h3":
-            return "h3M";
-          case "body":
-            return "bodyM";
-          default:
-            return "smallM";
-        }
-      }
-    }
-
-    return variant;
-  };
-
-  const typographyVariant =
-    customFonts[getVariantScaledByViewportSize() as keyof CustomFonts];
+  const { getTypographyVariant } = useTypographyVariant();
 
   return (
-    <StyledTypography
+    <TypographyWrapper
       aria-label={ariaLabel}
-      color={color}
-      data-testid="typography"
+      $color={color}
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
-      isCapitalized={isCapitalized}
-      typographyVariant={typographyVariant}
-      wordBreak={wordBreak}
-      wrap={wrap}
-      {...rest}
+      flexbox={flexbox}
+      $isCapitalized={isCapitalized}
+      $isUppercase={isUppercase}
+      space={space}
+      textAlign={textAlign}
+      $typographyVariant={getTypographyVariant(variant)}
+      $wordBreak={wordBreak}
+      $wrap={wrap}
     >
       {children}
-    </StyledTypography>
+    </TypographyWrapper>
   );
 };

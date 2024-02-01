@@ -53,9 +53,9 @@ export const customFonts: CustomFonts = {
   },
   body: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "18px",
+    fontSize: "19px",
     lineHeight: "1.5",
-    fontWeight: WEIGHT_400,
+    fontWeight: WEIGHT_200,
   },
   bodyM: {
     fontFamily: FONT_FAMILY_PRIMARY,
