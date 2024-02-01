@@ -22,7 +22,7 @@ export const ArticleSummarization = ({
         </Link>
         <div>
           <Link href={article.path}>
-            <Title wrap>{article.title}</Title>
+            <Typography wrap>{article.title}</Typography>
           </Link>
         </div>
       </Container>
@@ -55,11 +55,6 @@ const Link = styled.a`
   &:hover {
     color: #17b978;
   }
-`;
-
-const Title = styled(Typography)`
-  text-align: left;
-  white-space: pre-wrap;
 `;
 
 const StyledImage = styled(Image)`

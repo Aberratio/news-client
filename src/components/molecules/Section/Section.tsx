@@ -2,6 +2,7 @@
 
 import styled from "styled-components";
 import Typography from "components/atoms/Typography";
+import { useStyles } from "core/styles/customization/useStyles";
 
 interface SectionProps {
   header: string;
@@ -13,16 +14,20 @@ interface SectionProps {
 }
 
 export const Section = ({ header, links }: SectionProps) => {
+  const { customTheme } = useStyles();
+
   return (
     <SectionContainer>
-      <Header variant="h3">{header}</Header>
+      <Typography color={customTheme.general.primaryColor} variant="h3">
+        {header}
+      </Typography>
       <LinkBox>
         {links.map((link) => {
           return (
-            <StyledTypography>
+            <Typography key={link.name}>
               <strong>{link.name}</strong>
               <Link href={`${link.href}`}>{link.link}</Link>
-            </StyledTypography>
+            </Typography>
           );
         })}
       </LinkBox>
@@ -49,20 +54,8 @@ const LinkBox = styled.div`
   width: 100%;
 `;
 
-const Header = styled(Typography)`
-  color: #17b978;
-`;
-
 const Link = styled.a`
   margin-left: 4px;
   color: #0056b3;
   cursor: pointer;
-`;
-
-const StyledTypography = styled(Typography)`
-  // color: #17b978;
-  display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 1074px) {
-  }
 `;

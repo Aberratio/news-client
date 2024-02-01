@@ -16,7 +16,7 @@ export const WidgetSchema = ({
   return (
     <Container data-testid={dataTestId}>
       <Header>
-        <Title>{title}</Title>
+        <Typography>{title}</Typography>
       </Header>
       <Body>{children}</Body>
     </Container>
@@ -36,11 +36,6 @@ const Header = styled.div`
   position: relative;
   background-color: #222;
   color: white;
-`;
-
-const Title = styled(Typography)`
-  margin: 0;
-  padding-right: 25px;
 `;
 
 const Body = styled.div`

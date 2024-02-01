@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Typography from "components/atoms/Typography";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 import { rulesPagePath } from "core/builders/buildPath";
+import { useStyles } from "core/styles/customization/useStyles";
 
 const sections = [
   {
@@ -24,6 +25,8 @@ const sections = [
 ];
 
 const RulesPage = () => {
+  const { customTheme } = useStyles();
+
   const breadcrumbs: BreadCrumbsItem[] = [
     {
       name: "Strona Główna",
@@ -41,8 +44,15 @@ const RulesPage = () => {
         {sections.map((section) => {
           return (
             <div>
-              <StyledTitle variant="h3">{section.title}</StyledTitle>
-              <StyledContent>{section.body}</StyledContent>
+              <Typography
+                variant="h3"
+                color={customTheme.general.secondaryColor}
+                marginTop={30}
+                marginBottom={10}
+              >
+                {section.title}
+              </Typography>
+              <Typography>{section.body}</Typography>
             </div>
           );
         })}
@@ -58,15 +68,4 @@ const Container = styled.div`
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
-`;
-
-const StyledTitle = styled(Typography)`
-  display: block;
-  color: #17b978;
-  margin-top: 30px;
-  margin-bottom: 10px;
-`;
-
-const StyledContent = styled(Typography)`
-  text-align: left;
 `;

@@ -15,12 +15,12 @@ export const Comment = ({ comment, iterator }: CommentProps) => {
         <Typography>{iterator}</Typography>
       </Counter>
       <Link href={buildArticlePath(comment.articleId)}>
-        <Title>{comment.articleTitle}</Title>
+        <Typography>{comment.articleTitle}</Typography>
       </Link>
-      <Body wordBreak="break-word">
+      <Typography wordBreak="break-word">
         <strong>{comment.author}: </strong>
         <i>{comment.comment}</i>
-      </Body>
+      </Typography>
     </Container>
   );
 };
@@ -61,15 +61,4 @@ const Link = styled.a`
   text-align: left;
 
   cursor: pointer;
-`;
-
-const Title = styled(Typography)`
-  display: block;
-  text-align: left;
-`;
-
-const Body = styled(Typography)`
-  display: block;
-  text-align: left;
-  margin-top: 12px;
 `;

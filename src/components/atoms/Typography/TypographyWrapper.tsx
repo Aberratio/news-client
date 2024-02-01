@@ -8,15 +8,15 @@ import {
   textAlign,
 } from "styled-system";
 import { Font } from "core/styles/types/CustomFonts";
-import { WordBreakProps } from "./Typography";
+import { WordBreakProps } from "./types/WordBreakProps";
 
-interface TypographyWrapperProps {
+interface TypographyWrapperProps
+  extends FlexboxProps,
+    SpaceProps,
+    TextAlignProps {
   $color?: string;
-  flexbox?: FlexboxProps;
   $isCapitalized?: boolean;
   $isUppercase?: boolean;
-  space?: SpaceProps;
-  textAlign?: TextAlignProps;
   $typographyVariant: Font;
   $wordBreak?: WordBreakProps;
   $wrap?: boolean;
@@ -26,7 +26,7 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
+  align-items: flex-start;
 
   vertical-align: middle;
   text-align: left;

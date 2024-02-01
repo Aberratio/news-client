@@ -15,19 +15,19 @@ export const FullArticle = ({ article }: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
-        <Text variant="h1">{article.title}</Text>
+        <Typography variant="h1">{article.title}</Typography>
         <MetadataBar
           authorName={article.author.name}
           createdOn={article.createdOn}
         />
         <Slider images={article.photos} />
         <LeadContainer>
-          <Text>
+          <Typography>
             <strong>{article.lead}</strong>
-          </Text>
+          </Typography>
         </LeadContainer>
         <div>
-          <Body innerHtml={article.body} />
+          <Typography innerHtml={article.body} />
         </div>
       </Container>
     </Wrapper>
@@ -49,16 +49,6 @@ const LeadContainer = styled.div`
   margin-top: 3rem !important;
   padding-bottom: 42px;
   color: #666;
-`;
-
-const Text = styled(Typography)`
-  text-align: left;
-  align-items: flex-start;
-`;
-
-const Body = styled(Text)`
-  display: flex;
-  flex-direction: column;
 `;
 
 const StyledImage = styled(Image)`
