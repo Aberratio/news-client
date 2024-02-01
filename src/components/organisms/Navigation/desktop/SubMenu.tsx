@@ -1,4 +1,4 @@
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { useState } from "react";
 import { buildCategoryPath } from "core/builders/buildPath";
@@ -10,7 +10,7 @@ interface SubMenuProps {
 
 export const SubMenu = ({ categories }: SubMenuProps) => {
   const [activeCategoryId, setActiveCategoryId] = useState<number>(
-    categories[0].id,
+    categories[0].id
   );
 
   return (

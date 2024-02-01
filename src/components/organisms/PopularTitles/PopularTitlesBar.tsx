@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { usePopularTitles } from "./usePopularTitles";
 

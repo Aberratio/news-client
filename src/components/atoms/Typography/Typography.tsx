@@ -29,7 +29,7 @@ export interface TypographyProps {
   flexbox?: FlexboxProps;
 }
 
-export const Typography = ({
+const Typography = ({
   ariaLabel,
   color,
   flexbox,
@@ -63,3 +63,5 @@ export const Typography = ({
     </TypographyWrapper>
   );
 };
+
+export default Typography;

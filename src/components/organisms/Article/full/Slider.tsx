@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import { PhotoItem } from "types/PhotoItem";
 import { useState } from "react";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import { Arrow } from "components/molecules/Icons/Arrow";
 
 interface SliderProps {

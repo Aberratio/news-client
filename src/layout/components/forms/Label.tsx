@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styled from "styled-components";
 
-import { Typography } from "../../../components/atoms/Typography/Typography";
+import Typography from "../../../components/atoms/Typography";
 
 interface LabelProps {
   inputName?: string;

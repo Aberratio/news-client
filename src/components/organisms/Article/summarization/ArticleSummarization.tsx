@@ -1,4 +1,4 @@
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
 import Image from "next/image";

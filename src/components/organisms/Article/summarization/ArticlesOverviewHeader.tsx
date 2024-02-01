@@ -1,7 +1,7 @@
 import { CategoryItem } from "types/CategoryItem";
 import { buildCategoryPath } from "core/builders/buildPath";
 import { Arrow } from "components/molecules/Icons/Arrow";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { BoxHeader } from "../../../molecules/BoxHeader/BoxHeader";
 

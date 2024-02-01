@@ -1,7 +1,7 @@
 "use client";
 
 import { MetadataBar } from "components/organisms/Article/MetadataBar";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import Image from "next/image";

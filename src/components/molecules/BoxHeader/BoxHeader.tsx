@@ -1,6 +1,6 @@
 "use client";
 
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 
 interface BoxHeaderProps {

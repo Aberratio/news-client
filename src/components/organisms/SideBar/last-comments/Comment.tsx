@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import { CommentItem } from "./CommentItem";
 import { buildArticlePath } from "core/builders/buildPath";
 

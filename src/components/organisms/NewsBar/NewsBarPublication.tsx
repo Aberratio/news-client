@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 import Image from "next/image";
 import { useActiveViewportSize } from "layout/responsivenes/useActiveViewportSize";

@@ -1,4 +1,4 @@
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import React from "react";
 import styled from "styled-components";
 

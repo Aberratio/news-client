@@ -1,7 +1,7 @@
 "use client";
 
 import { LinkButton } from "components/atoms/LinkButton/LinkButton";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import { MenuMobile } from "components/organisms/Menu/mobile/MenuMobile";
 import { aboutPagePath, buildTabPath } from "core/builders/buildPath";
 import Link from "next/link";

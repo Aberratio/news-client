@@ -1,5 +1,5 @@
 import { Comments } from "components/molecules/Icons/Comments";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { StatisticsItem } from "../../../types/StatisticsItem";
 import { Eye } from "components/molecules/Icons/Eye";

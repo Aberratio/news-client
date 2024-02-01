@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { ElementContainer } from "./FormComponents";
 import { Label } from "./Label";
 import { useStyles } from "../../../core/styles/customization/useStyles";
-import { Typography } from "../../../components/atoms/Typography/Typography";
+import Typography from "../../../components/atoms/Typography";
 
 interface FormElementProps {
   error?: ReactNode | string;

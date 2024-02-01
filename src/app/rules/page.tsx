@@ -2,7 +2,7 @@
 
 import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import styled from "styled-components";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 import { rulesPagePath } from "core/builders/buildPath";
 

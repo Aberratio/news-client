@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { WidgetSchema } from "../WidgetSchema";
-import { Typography } from "components/atoms/Typography/Typography";
+import Typography from "components/atoms/Typography";
 import { useVisitCounter } from "./useVisitCounter";
 import { useEffect } from "react";
 
