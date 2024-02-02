@@ -6,7 +6,7 @@ export const fetchArticle = async (
   articleId: number
 ): Promise<GetArticleResponse> => {
   const response = await fetch(
-    `http://localhost:3007/v1/articles/${articleId}`,
+    `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/${articleId}`,
     {
       cache: "force-cache",
     }

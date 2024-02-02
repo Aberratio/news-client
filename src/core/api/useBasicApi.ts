@@ -13,7 +13,7 @@ import { PostVisitsRequest } from "./requests/PostVisitsRequest";
 
 export const useBasicApi = () => {
   const { get, post } = useHttp();
-  const apiUrl = "http://localhost:3007/v1";
+  const apiUrl = process.env.NEXT_PUBLIC_BASIC_URL;
 
   // ===================================
   // articles

@@ -51,9 +51,12 @@ export default RootLayout;
 
 const fetchTabs = async (): Promise<TabItem[]> => {
   ("use server");
-  const response = await fetch("http://localhost:3007/v1/categories/tabs", {
-    cache: "force-cache",
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASIC_URL}/categories/tabs`,
+    {
+      cache: "force-cache",
+    }
+  );
 
   const tabs = await response.json();
 
