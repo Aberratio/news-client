@@ -47,7 +47,7 @@ const TabPage = ({ params }: TabPageProps) => {
       {tabCategories.map((category) => {
         return (
           <Suspense key={category.id}>
-            <ArticlesOverview category={category} showSeeMore={true} />
+            <ArticlesOverview category={category} />
           </Suspense>
         );
       })}

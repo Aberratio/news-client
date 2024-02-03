@@ -1,10 +1,10 @@
-import { Wall } from "components/organisms/Wall/Wall";
+import { ArticlesOverview } from "components/organisms/Article/summarization/ArticlesOverview";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
 
 const HomePage = () => {
   return (
     <HomePageTemplate>
-      <Wall />
+      <ArticlesOverview amount={60} />
     </HomePageTemplate>
   );
 };

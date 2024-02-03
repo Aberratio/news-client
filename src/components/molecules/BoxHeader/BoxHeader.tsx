@@ -5,16 +5,14 @@ import styled from "styled-components";
 
 interface BoxHeaderProps {
   name: string;
-  children?: React.ReactNode;
 }
 
-export const BoxHeader = ({ name, children }: BoxHeaderProps) => {
+export const BoxHeader = ({ name }: BoxHeaderProps) => {
   return (
     <Wrapper data-testid="header">
       <Typography variant="h2" isCapitalized>
         {name}
       </Typography>
-      {children}
     </Wrapper>
   );
 };

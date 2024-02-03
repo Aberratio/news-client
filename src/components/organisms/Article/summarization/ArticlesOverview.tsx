@@ -1,38 +1,40 @@
+"use client";
+
 import { ArticleSummarization } from "components/organisms/Article/summarization/ArticleSummarization";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { CategoryItem } from "types/CategoryItem";
 import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
 import { useLastArticles } from "../useLastArticles";
-import { ArticlesOverviewHeader } from "./ArticlesOverviewHeader";
 
 interface ArticlesOverviewProps {
-  category: CategoryItem;
+  amount?: number;
+  category?: CategoryItem;
   page?: number;
-  showSeeMore?: boolean;
 }
 
 export const ArticlesOverview = ({
+  amount = 20,
   category,
   page = 0,
-  showSeeMore = true,
 }: ArticlesOverviewProps) => {
   const { articles, isLoading, loadArticles } = useLastArticles();
 
   useEffect(() => {
-    category?.id && loadArticles(category.id, 20, page);
-  }, [category]);
+    loadArticles(category?.id ?? undefined, amount, page);
+  }, []);
 
   if (isLoading) {
     return null;
   }
 
   return (
-    <Wrapper data-testid={`article-summarizatoin-box-${category.id}`}>
-      {showSeeMore && (
-        <ArticlesOverviewHeader category={category} showSeeMore={showSeeMore} />
-      )}
-      <Container $showSeeMore={showSeeMore}>
+    <Wrapper
+      data-testid={`article-summarizatoin-box-${
+        category ? category.id : "all"
+      }`}
+    >
+      <Container>
         {articles.map((article: ArticleSummarizationItem) => {
           return <ArticleSummarization article={article} key={article.id} />;
         })}
@@ -45,12 +47,11 @@ const Wrapper = styled.div`
   padding-bottom: 25px;
 `;
 
-const Container = styled.div<{ $showSeeMore: boolean }>`
+const Container = styled.div`
   display: grid;
   padding-bottom: 20px;
   gap: 16px;
   margin: 0 16px;
-  ${({ $showSeeMore }) => $showSeeMore && "margin-top: 16px;"}
 
   @media screen and (min-width: 420px) {
     display: grid;

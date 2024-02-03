@@ -52,7 +52,7 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
       breadcrumbs={createBreadcrumbFromCategory(category)}
       name={category.name}
     >
-      <ArticlesOverview category={category} showSeeMore={false} />
+      <ArticlesOverview category={category} />
     </SimplePageTemplate>
   );
 };
