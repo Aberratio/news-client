@@ -2,83 +2,74 @@ import styled from "styled-components";
 import Typography from "components/atoms/Typography";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 import Image from "next/image";
-import { useActiveViewportSize } from "layout/responsivenes/useActiveViewportSize";
-
-export enum NewsBarPublicationSize {
-  SMALL,
-  MEDIUM,
-  LARGE,
-}
+import { Button } from "components/atoms/Button/Button";
 
 interface NewsBarPublicationProps {
   article: ArticleSummarizationItem;
-  size: NewsBarPublicationSize;
 }
 
-export const NewsBarPublication = ({
-  article,
-  size,
-}: NewsBarPublicationProps) => {
-  const { mobileXL } = useActiveViewportSize();
-
-  const titleType = () => {
-    if (!mobileXL) {
-      return "h2";
-    }
-    switch (size) {
-      case NewsBarPublicationSize.LARGE:
-        return "h3";
-      case NewsBarPublicationSize.MEDIUM:
-        return "body";
-      default:
-        return "small";
-    }
-  };
-
+export const NewsBarPublication = ({ article }: NewsBarPublicationProps) => {
   return (
     <Wrapper data-testid="new-bar-publication">
-      <ImageLink href={`article/${article.id}`}>
-        <Description $size={mobileXL ? size : NewsBarPublicationSize.LARGE}>
-          <Title>
-            <Typography color="white" variant={titleType()}>
-              {article.title}
+      <Container>
+        <Part>
+          <ImageLink href={`article/${article.id}`}></ImageLink>
+          <ImageBackground
+            src={article.photo.path}
+            fill
+            objectFit="cover"
+            alt={article.photo.description}
+          ></ImageBackground>
+        </Part>
+        <Part>
+          <Description>
+            <Title>
+              <Typography color="white" variant="h2">
+                {article.title}
+              </Typography>
+            </Title>
+            <Typography color="white" marginBottom={30}>
+              Premier Donald Tusk ogłosił, że tegoroczne wybory samorządowe
+              odbędą się w niedzielę 7 kwietnia. Ewentualna druga tura wyborów
+              na włodarzy odbędzie się dwa tygodnie później, 21 kwietnia.
+              Publicznie chęć startu w wyborach na burmistrza gminy Milicz
+              potwierdziło na razie dwóch kandydatów – obecny burmistrz Piotr...
             </Typography>
-          </Title>
-        </Description>
-      </ImageLink>
-      <ImageBackground
-        src={article.photo.path}
-        fill
-        objectFit="cover"
-        alt={article.photo.description}
-      ></ImageBackground>
+            <Button>Więcej</Button>
+          </Description>
+        </Part>
+      </Container>
     </Wrapper>
   );
 };
 
+const Part = styled.div`
+  height: 500px;
+`;
+
 const Wrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 440px;
 
   @media screen and (min-width: 768px) {
     height: 100%;
   }
 `;
 
+const Container = styled.div`
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 600px 1fr;
+`;
+
 const ImageBackground = styled(Image)`
-  position: relative;
   width: 100%;
-  height: 440px;
+  height: 100%;
+  max-height: 540px;
+  max-width: 600px;
+  border-radius: 12px;
 `;
 
 const ImageLink = styled.a`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
   z-index: 2;
   cursor: pointer;
 
@@ -93,15 +84,13 @@ const ImageLink = styled.a`
   background: linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
 
-const Description = styled.div<{ $size: NewsBarPublicationSize }>`
+const Description = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-start;
-
-  padding: 0
-    ${({ $size }) => ($size === NewsBarPublicationSize.SMALL ? "8px" : "24px")};
-  width: 100%;
+  color: white;
+  padding: 12px;
   height: 100%;
 `;
 

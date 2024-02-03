@@ -35,7 +35,7 @@ export const NavigationItem = ({
       }}
     >
       <Link href={buildTabPath(tab.tabId)}>
-        <Typography>{tab.name}</Typography>
+        <Typography color="white">{tab.name}</Typography>
         {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
       </Link>
     </Container>
@@ -50,21 +50,9 @@ const Container = styled.li<{ $isActive: boolean }>`
   cursor: pointer;
   overflow: unset;
 
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    width: calc(100% + 8px);
-    margin-left: -4px;
-    height: 5px;
-    bottom: 0;
-    background-color: ${({ $isActive }) =>
-      $isActive ? "rgb(46, 104, 150)" : "white"};
-  }
-
   &:hover {
-    &::before {
-      background-color: rgb(46, 104, 150);
+    p {
+      color: rgb(46, 104, 150);
     }
   }
 `;

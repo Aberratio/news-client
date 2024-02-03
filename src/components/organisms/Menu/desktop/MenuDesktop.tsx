@@ -12,9 +12,9 @@ export const MenuDesktop = () => {
     <Header data-testid="menu-desktop">
       <Container>
         <TopBar />
-        <TitleBar />
-        <LogoBar />
-        <SubTitleBar />
+        {/* <TitleBar /> */}
+        {/* <LogoBar /> */}
+        {/* <SubTitleBar /> */}
       </Container>
     </Header>
   );

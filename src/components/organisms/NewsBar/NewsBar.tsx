@@ -1,10 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import {
-  NewsBarPublication,
-  NewsBarPublicationSize,
-} from "./NewsBarPublication";
+import { NewsBarPublication } from "./NewsBarPublication";
 import { useLastArticles } from "components/organisms/Article/useLastArticles";
 import { useEffect } from "react";
 
@@ -24,28 +21,7 @@ export const NewsBar = () => {
   return (
     <Wrapper data-testid="news-bar">
       <Container>
-        <Row>
-          <NewsBarPublication
-            article={articles[0]}
-            size={NewsBarPublicationSize.LARGE}
-          />
-          <SmallPublicationsContainer>
-            <NewsBarPublication
-              article={articles[1]}
-              size={NewsBarPublicationSize.MEDIUM}
-            />
-            <SmallPublicationsContainerRow>
-              <NewsBarPublication
-                article={articles[2]}
-                size={NewsBarPublicationSize.SMALL}
-              />
-              <NewsBarPublication
-                article={articles[3]}
-                size={NewsBarPublicationSize.SMALL}
-              />
-            </SmallPublicationsContainerRow>
-          </SmallPublicationsContainer>
-        </Row>
+        <NewsBarPublication article={articles[0]} />
       </Container>
     </Wrapper>
   );
@@ -53,11 +29,12 @@ export const NewsBar = () => {
 
 const Wrapper = styled.div`
   display: block;
-  background-color: #fff;
+  background-color: #222;
   margin-top: 65px;
+  border-radius: 12px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 0px;
+    margin-top: 20px;
   }
 `;
 
@@ -65,38 +42,4 @@ const Container = styled.div`
   margin: auto;
   width: 100%;
   max-width: 1080px;
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -1px;
-  margin-right: -1px;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 440px;
-  }
-`;
-
-const SmallPublicationsContainer = styled.div`
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-  }
-`;
-
-const SmallPublicationsContainerRow = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
 `;

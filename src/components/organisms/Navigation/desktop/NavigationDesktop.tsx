@@ -26,7 +26,7 @@ const Container = styled.div`
   width: 100%;
   height: 55px;
   z-index: 2000;
-  background-color: #fff;
+  background-color: #222;
   border-bottom: 1px solid rgb(46, 104, 150);
   transform: translateY(0%);
   overflow: unset;
