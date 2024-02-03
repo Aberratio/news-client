@@ -2,10 +2,10 @@
 
 import { ArticleSummarization } from "components/organisms/Article/summarization/ArticleSummarization";
 import { useEffect } from "react";
-import styled from "styled-components";
 import { CategoryItem } from "types/CategoryItem";
 import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
 import { useLastArticles } from "../useLastArticles";
+import OverviewGrid from "components/molecules/OverviewGrid";
 
 interface ArticlesOverviewProps {
   amount?: number;
@@ -29,39 +29,14 @@ export const ArticlesOverview = ({
   }
 
   return (
-    <Wrapper
-      data-testid={`article-summarizatoin-box-${
-        category ? category.id : "all"
+    <OverviewGrid
+      dataTestId={`article-summarizatoin-box-${
+        category ? category.id : "latest"
       }`}
     >
-      <Container>
-        {articles.map((article: ArticleSummarizationItem) => {
-          return <ArticleSummarization article={article} key={article.id} />;
-        })}
-      </Container>
-    </Wrapper>
+      {articles.map((article: ArticleSummarizationItem) => {
+        return <ArticleSummarization article={article} key={article.id} />;
+      })}
+    </OverviewGrid>
   );
 };
-
-const Wrapper = styled.div`
-  padding-bottom: 25px;
-`;
-
-const Container = styled.div`
-  ${({ theme }) => `
-    display: grid;
-    padding-bottom: 20px;
-    gap: 24px;
-    margin: 0 16px;
-
-    @media screen and (min-width: 420px) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and (min-width: ${theme.breakpoints.tabletS}) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-  `}
-`;

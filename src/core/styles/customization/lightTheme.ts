@@ -1,27 +1,31 @@
 import { OppositeColor, CustomTheme } from "../types/CustomTheme";
 
+//  GM color
+const BLUE = "rgb(46,104,150)";
+const GREEN = "#15a752";
+const RED = "rgb(184,0,0)";
+
 const WHITE: OppositeColor = "white";
-const BLUE = "#5069A7";
 const BLACK: OppositeColor = "black";
+
 const SILVER = "#ccc";
 const LIGHT_GREY = "#e7e7e6";
 const DARK_GREY = "#262B34";
 const DISABLED =
   "internal-light-dark(rgba(239, 239, 239, 0.3), rgba(59, 59, 59, 0.3))";
-const GREEN = "#15a752";
 
-const PRIMARY_COLOR = "rgb(46,104,150)";
+const PRIMARY_COLOR = BLUE;
 const PRIMARY_OPPOSITE_COLOR: OppositeColor = WHITE;
-const SECONDARY_COLOR = "#15a752";
+const SECONDARY_COLOR = GREEN;
 const SECONDARY_OPPOSITE_COLOR: OppositeColor = WHITE;
-const TERTIARY_COLOR = "rgb(184,0,0)";
+const TERTIARY_COLOR = RED;
 const TERTIARY_OPPOSITE_COLOR: OppositeColor = WHITE;
 
 const SPECIAL_ACCENT_COLOR = SILVER;
 
 export const lightTheme: CustomTheme = {
   general: {
-    borderRadius: "0px",
+    borderRadius: "8px",
     errorMessageColor: "red",
     primaryColor: PRIMARY_COLOR,
     primaryOppositeColor: PRIMARY_OPPOSITE_COLOR,
@@ -34,11 +38,11 @@ export const lightTheme: CustomTheme = {
     primary: {
       backgroundColor: WHITE,
       backgroundOppositeColor: BLACK,
-      borderColor: BLUE,
+      borderColor: BLACK,
       disabledBackgroundColor: DISABLED,
       disabledBackgroundOppositeColor: DARK_GREY,
-      onHoverBackgroundColor: BLUE,
-      onHoverBackgroundOppositeColor: WHITE,
+      onHoverBackgroundColor: PRIMARY_COLOR,
+      onHoverBackgroundOppositeColor: PRIMARY_OPPOSITE_COLOR,
     },
     secondary: {
       backgroundColor: PRIMARY_COLOR,
