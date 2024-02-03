@@ -26,7 +26,7 @@ export const NewsBar = () => {
     <Wrapper data-testid="news-bar">
       <Container>
         <LargeInfoCard
-          buttonText="Więcej"
+          buttonText="Wyświetl artykuł"
           description="Premier Donald Tusk ogłosił, że tegoroczne wybory samorządowe odbędą się w niedzielę 7 kwietnia. Ewentualna druga tura wyborów na włodarzy odbędzie się dwa tygodnie później, 21 kwietnia. Publicznie chęć startu w wyborach na burmistrza gminy Milicz potwierdziło na razie dwóch kandydatów – obecny burmistrz Piotr..."
           link={`article/${article.id}`}
           title={article.title}
@@ -42,9 +42,10 @@ export const NewsBar = () => {
 
 const Wrapper = styled.div`
   display: block;
-  background-color: #222;
   margin-top: 65px;
   border-radius: 12px;
+
+  background-color: #222;
 
   @media screen and (min-width: 768px) {
     margin-top: 20px;

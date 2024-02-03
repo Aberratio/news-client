@@ -7,8 +7,6 @@ interface ButtonProps {
   ariaLabel?: string;
   disabled?: boolean;
   elements?: ButtonElements;
-  Icon?: ReactNode;
-  iconPosition?: "left" | "right";
   innerRef?: RefObject<HTMLButtonElement>;
   shape?: ButtonShape;
   size?: ButtonSize;
@@ -22,12 +20,10 @@ interface ButtonProps {
   children?: ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   ariaLabel = "button",
   disabled = false,
   elements,
-  Icon,
-  iconPosition,
   innerRef,
   shape,
   size,
@@ -56,12 +52,12 @@ export const Button: React.FC<ButtonProps> = ({
       onKeyDown={onKeyDown}
       $hideBorder={$hideBorder}
     >
-      {iconPosition && iconPosition === "left" && Icon}
       {children}
-      {iconPosition && iconPosition === "right" && Icon}
     </StyledButton>
   );
 };
+
+export default Button;
 
 const StyledButton = styled(ButtonBase).attrs(
   ({
@@ -82,7 +78,7 @@ const StyledButton = styled(ButtonBase).attrs(
     tabIndex,
     variant: variant ?? "primary",
     width,
-  }),
+  })
 )<ButtonProps>`
   display: flex;
   justify-content: center;
@@ -122,36 +118,12 @@ const styleVariants = (theme: any, variant = "primary", disabled = false) =>
       };
       border: 1px solid ${theme.buttons.primary.borderColor};
 
-      svg {
-        color: ${
-          disabled
-            ? theme.buttons.primary.disabledBackgroundOppositeColor
-            : theme.buttons.primary.backgroundOppositeColor
-        };
-        fill: ${
-          disabled
-            ? theme.buttons.primary.disabledBackgroundOppositeColor
-            : theme.buttons.primary.backgroundOppositeColor
-        };
-        path: ${
-          disabled
-            ? theme.buttons.primary.disabledBackgroundOppositeColor
-            : theme.buttons.primary.backgroundOppositeColor
-        };
-      }
-
       ${
         !disabled &&
         `
         &:hover {
           background: ${theme.buttons.primary.onHoverBackgroundColor};
           color: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-
-          svg {
-            color: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-            fill: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-            path: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-          }
 
           p {
             color: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
@@ -161,12 +133,6 @@ const styleVariants = (theme: any, variant = "primary", disabled = false) =>
         &:focus {
           background: ${theme.buttons.primary.onHoverBackgroundColor};
           color: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-
-          svg {
-            color: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-            fill: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-            path: ${theme.buttons.primary.onHoverBackgroundOppositeColor};
-          }
         }
       `
       }
@@ -183,40 +149,16 @@ const styleVariants = (theme: any, variant = "primary", disabled = false) =>
           ? theme.buttons.secondary.disabledBackgroundColor
           : theme.buttons.secondary.borderColor};
 
-      svg {
-        color: ${disabled
-          ? theme.buttons.secondary.disabledBackgroundOppositeColor
-          : theme.buttons.secondary.backgroundOppositeColor};
-        fill: ${disabled
-          ? theme.buttons.secondary.disabledBackgroundOppositeColor
-          : theme.buttons.secondary.backgroundOppositeColor};
-        path: ${disabled
-          ? theme.buttons.secondary.disabledBackgroundOppositeColor
-          : theme.buttons.secondary.backgroundOppositeColor};
-      }
-
       ${!disabled &&
       css`
         &:hover {
           background: ${theme.buttons.secondary.onHoverBackgroundColor};
           color: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-
-          svg {
-            color: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-            fill: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-            path: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-          }
         }
 
         &:focus {
           background: ${theme.buttons.secondary.onHoverBackgroundColor};
           color: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-
-          svg {
-            color: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-            fill: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-            path: ${theme.buttons.secondary.onHoverBackgroundOppositeColor};
-          }
         }
       `}
     `,
@@ -233,40 +175,16 @@ const styleVariants = (theme: any, variant = "primary", disabled = false) =>
           ? theme.buttons.tertiary.disabledBackgroundColor
           : theme.buttons.tertiary.borderColor};
 
-      svg {
-        color: ${disabled
-          ? theme.buttons.tertiary.disabledBackgroundOppositeColor
-          : theme.buttons.tertiary.backgroundOppositeColor};
-        fill: ${disabled
-          ? theme.buttons.tertiary.disabledBackgroundOppositeColor
-          : theme.buttons.tertiary.backgroundOppositeColor};
-        path: ${disabled
-          ? theme.buttons.tertiary.disabledBackgroundOppositeColor
-          : theme.buttons.tertiary.backgroundOppositeColor};
-      }
-
       ${!disabled &&
       css`
         &:hover {
           background: ${theme.buttons.tertiary.onHoverBackgroundColor};
           color: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-
-          svg {
-            color: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-            fill: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-            path: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-          }
         }
 
         &:focus {
           background: ${theme.buttons.tertiary.onHoverBackgroundColor};
           color: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-
-          svg {
-            color: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-            fill: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-            path: ${theme.buttons.tertiary.onHoverBackgroundOppositeColor};
-          }
         }
       `}
     `,

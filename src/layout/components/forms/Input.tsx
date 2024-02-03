@@ -110,7 +110,7 @@ const IconWrapper = styled.div<{ inputSize: "large" | "small" }>(
     cursor: pointer;
 
     display: block;
-  `,
+  `
 );
 interface FormElementStylesProps {
   disabled?: boolean;
@@ -156,5 +156,5 @@ const StyledInput = styled.input<FormElementStylesProps>(
         border-color: ${
           $isError ? theme.general.errorMessageColor : `#5069A7`
         } !important;
-    `,
+    `
 );

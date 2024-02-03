@@ -3,9 +3,10 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-import { Button } from "components/atoms/Button/Button";
+import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
 import { cutText } from "core/tools/cutText";
+import Link from "next/link";
 
 interface LargeInfoCardProps {
   buttonText: string;
@@ -29,17 +30,18 @@ const LargeInfoCard = ({
     <Wrapper data-testid="new-bar-publication">
       <Container>
         <Part>
-          <ImageLink href={link} />
-          <ImageBackground
-            src={photo.path}
-            fill
-            objectFit="cover"
-            alt={photo.alt}
-          ></ImageBackground>
+          <Link href={link}>
+            <ImageBackground
+              src={photo.path}
+              fill
+              objectFit="cover"
+              alt={photo.alt}
+            />
+          </Link>
         </Part>
         <Part>
           <Description>
-            <Title>
+            <Title href={link}>
               <Typography color="white" variant="h2">
                 {title}
               </Typography>
@@ -47,7 +49,11 @@ const LargeInfoCard = ({
             <Typography color="white" marginBottom={30}>
               {cutText(description, 300)}
             </Typography>
-            <Button>{buttonText}</Button>
+            <Link href={link}>
+              <Button size="large">
+                <Typography>{buttonText}</Typography>
+              </Button>
+            </Link>
           </Description>
         </Part>
       </Container>
@@ -81,21 +87,8 @@ const ImageBackground = styled(Image)`
   max-height: 540px;
   max-width: 600px;
   border-radius: 12px;
-`;
 
-const ImageLink = styled.a`
-  z-index: 2;
   cursor: pointer;
-
-  background: rgba(0, 0, 0, 0.5);
-  background: -webkit-linear-gradient(
-    bottom,
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0)
-  );
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-  background: linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `;
 
 const Description = styled.div`
@@ -108,7 +101,7 @@ const Description = styled.div`
   height: 100%;
 `;
 
-const Title = styled.div`
+const Title = styled(Link)`
   margin: 12px 0;
   z-index: 300;
   cursor: pointer;
