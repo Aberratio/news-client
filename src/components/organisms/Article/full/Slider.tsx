@@ -75,7 +75,7 @@ const Description = styled.div`
 const SliderContainer = styled.div`
   position: relative;
   display: block;
-  height: 420px;
+  height: 600px;
   width: 100%;
 `;
 

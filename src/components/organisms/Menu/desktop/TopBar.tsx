@@ -32,7 +32,7 @@ const Container = styled.div`
   padding-left: 15px;
   width: 100%;
   height: 100% !important;
-  max-width: 1080px;
+  max-width: 1380px;
   min-height: 50px;
   display: flex;
   justify-content: space-between;

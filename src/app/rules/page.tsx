@@ -22,7 +22,7 @@ const RulesPage = () => {
   ];
 
   return (
-    <SimplePageTemplate breadcrumbs={breadcrumbs} name="Regulamin">
+    <SimplePageTemplate breadcrumbs={breadcrumbs}>
       <Container>
         {rules.map((rule) => {
           return (

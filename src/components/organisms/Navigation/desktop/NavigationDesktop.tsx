@@ -35,7 +35,7 @@ const Container = styled.div`
 const Navigation = styled.nav`
   display: block;
   max-width: calc(100% - 30px);
-  width: 1050px;
+  width: 1350px;
   margin: 0 auto;
   height: 55px;
   position: relative;

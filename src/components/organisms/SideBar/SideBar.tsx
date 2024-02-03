@@ -1,8 +1,15 @@
+"use client";
+
 import styled from "styled-components";
 import { FirstSite } from "./FirstSite";
 import { VisitCounter } from "./visit-counter/VisitCounter";
+import { useActiveViewportSize } from "layout/responsivenes/useActiveViewportSize";
 
 export const SideBar = () => {
+  const { tabletL } = useActiveViewportSize();
+
+  if (!tabletL) return null;
+
   return (
     <Wrapper data-testid="information-bar">
       <Container>

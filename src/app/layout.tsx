@@ -10,6 +10,8 @@ import { TabItem } from "types/TabItem";
 import Menu from "components/organisms/Menu";
 import Navigation from "components/organisms/Navigation";
 import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
+import { SideBar } from "components/organisms/SideBar/SideBar";
+import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 
 const cabin = Cabin({
   weight: "400",
@@ -36,7 +38,10 @@ const RootLayout = async ({
             <GlobalThemeWrapper>
               <Menu />
               <Navigation />
-              {children}
+              <MainColumn>
+                {children}
+                <SideBar />
+              </MainColumn>
               <Footer />
               <ScrollToTopButton />
             </GlobalThemeWrapper>

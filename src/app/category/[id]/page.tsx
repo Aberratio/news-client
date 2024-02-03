@@ -48,10 +48,7 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
   if (!category) return null;
 
   return (
-    <SimplePageTemplate
-      breadcrumbs={createBreadcrumbFromCategory(category)}
-      name={category.name}
-    >
+    <SimplePageTemplate breadcrumbs={createBreadcrumbFromCategory(category)}>
       <ArticlesOverview category={category} />
     </SimplePageTemplate>
   );

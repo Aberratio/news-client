@@ -4,19 +4,17 @@ import { MainContainerTemplate } from "components/templates/MainContainerTemplat
 
 interface SimplePageTemplateProps {
   breadcrumbs: BreadCrumbsItem[];
-  name?: string;
   children: React.ReactNode;
 }
 
 export const SimplePageTemplate = ({
   breadcrumbs,
-  name,
   children,
 }: SimplePageTemplateProps) => {
   return (
     <div>
       <BreadCrumbs breadcrumbs={breadcrumbs} />
-      <MainContainerTemplate name={name}>{children}</MainContainerTemplate>
+      <MainContainerTemplate>{children}</MainContainerTemplate>
     </div>
   );
 };

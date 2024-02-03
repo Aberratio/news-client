@@ -55,11 +55,16 @@ const Link = styled.a`
   &:hover {
     color: #17b978;
   }
+
+  p {
+    line-height: 1.25;
+  }
 `;
 
 const StyledImage = styled(Image)`
   vertical-align: middle;
   border-style: none;
+  border-radius: 8px;
 
   object-fit: cover;
   object-position: 50% 50%;

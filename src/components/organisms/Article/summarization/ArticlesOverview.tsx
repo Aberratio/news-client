@@ -14,7 +14,7 @@ interface ArticlesOverviewProps {
 }
 
 export const ArticlesOverview = ({
-  amount = 20,
+  amount = 30,
   category,
   page = 0,
 }: ArticlesOverviewProps) => {
@@ -48,13 +48,20 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: grid;
-  padding-bottom: 20px;
-  gap: 16px;
-  margin: 0 16px;
-
-  @media screen and (min-width: 420px) {
+  ${({ theme }) => `
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
+    padding-bottom: 20px;
+    gap: 24px;
+    margin: 0 16px;
+
+    @media screen and (min-width: 420px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: ${theme.breakpoints.tabletS}) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  `}
 `;

@@ -16,7 +16,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <SimplePageTemplate breadcrumbs={breadcrumbs} name="Skład redakcji">
+    <SimplePageTemplate breadcrumbs={breadcrumbs}>
       <SectionContainer />
     </SimplePageTemplate>
   );
