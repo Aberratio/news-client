@@ -44,6 +44,13 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
       line-height: 1.5;
+      
+      background: #fafafa;
+      background: -webkit-linear-gradient(to right, #FFFFFF, #fafafa);
+      background: linear-gradient(to right, #FFFFFF, #fafafa);
+   
+   
+
     }
 
     html {

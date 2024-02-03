@@ -67,7 +67,6 @@ const Container = styled.div`
   align-items: center;
 
   padding: 8px 0px;
-  background-color: #fff;
 `;
 
 const Row = styled.div`

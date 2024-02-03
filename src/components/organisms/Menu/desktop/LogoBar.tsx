@@ -9,10 +9,10 @@ export const LogoBar = () => {
       <Container>
         <Link href="/">
           <StyledImage
-            src="/icons/logo.png"
+            src="/icons/logo_footer.png"
             alt="logo"
-            width={1500}
-            height={150}
+            width={300}
+            height={35}
           />
         </Link>
       </Container>
@@ -27,11 +27,10 @@ const Wrapper = styled.div`
     align-items: center;
 
     width: 100%;
-    max-width: 1080px;
-    height: 100px;
+    max-width: 300px;
+    height: 65px;
 
     margin: auto;
-    padding: ${theme.spaces.lg} 0 ${theme.spaces.sm} 0;
   `}
 `;
 
@@ -43,7 +42,6 @@ const Container = styled.div`
 
     width: 100%;
     height: 100%;
-    padding-bottom: ${theme.spaces.md};
   `}
 `;
 

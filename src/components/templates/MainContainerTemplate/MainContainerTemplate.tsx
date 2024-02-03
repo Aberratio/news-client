@@ -19,8 +19,6 @@ export const MainContainerTemplate = ({
 const Wrapper = styled.div`
   display: block;
   padding-top: 24px;
-
-  background-color: #fff;
 `;
 
 const Container = styled.div`

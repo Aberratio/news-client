@@ -15,6 +15,7 @@ export const Slider = ({ images }: SliderProps) => {
   const [image, setImage] = useState<PhotoItem>(images[0]);
   const [index, setIndex] = useState<number>(0);
   const isSlideable = images.length > 1;
+  const hasDescription = image.description.trim() !== "";
 
   const nextItem = () => {
     if (index < images.length - 1) {
@@ -44,6 +45,7 @@ export const Slider = ({ images }: SliderProps) => {
           fill
           objectFit="cover"
           alt={image.description ?? "zdjęcie artykułu"}
+          $hasDescription={hasDescription}
         />
         {isSlideable && (
           <>
@@ -56,7 +58,7 @@ export const Slider = ({ images }: SliderProps) => {
           </>
         )}
       </SliderContainer>
-      {image.description.trim() !== "" && (
+      {hasDescription && (
         <Description>
           <Typography variant="small">{image.description}</Typography>
         </Description>
@@ -80,30 +82,32 @@ const SliderContainer = styled.div`
   width: 100%;
 `;
 
-const StyledImage = styled(Image)`
-  border-style: none;
-  object-fit: cover;
-  object-position: 50% 50%;
-  vertical-align: middle;
-  border-radius: 8px 8px 0 0;
+const StyledImage = styled(Image)<{ $hasDescription: boolean }>`
+  ${({ $hasDescription }) => `
+    border-style: none;
+    object-fit: cover;
+    object-position: 50% 50%;
+    vertical-align: middle;
+    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"}; 
+  `}
 `;
 
 const SliderArrow = styled.div<{ $isRight?: boolean }>`
   ${({ $isRight }) => `
-  touch-action: manipulation;
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: rgb(46, 104, 150) !important;
-  font-weight: bold;
-  font-size: 20px;
-  -webkit-user-select: none;
-  ${$isRight && `right: 0`};
-  border-radius: 3px 0 0 3px;
-  background-color: rgba(0, 0, 0, 0.8);
-  text-decoration: none;
+    touch-action: manipulation;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: rgb(46, 104, 150) !important;
+    font-weight: bold;
+    font-size: 20px;
+    -webkit-user-select: none;
+    ${$isRight && `right: 0`};
+    border-radius: 3px 0 0 3px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
   `}
 `;

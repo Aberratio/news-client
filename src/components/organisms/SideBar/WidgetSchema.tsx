@@ -26,7 +26,7 @@ export const WidgetSchema = ({
 const Container = styled.div`
   border-radius: 8px;
 
-  background-color: #f5f8fa;
+  background-color: white;
 `;
 
 const Header = styled.div`
