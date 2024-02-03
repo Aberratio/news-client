@@ -1,4 +1,4 @@
-import { ArticlesOverview } from "components/organisms/Article/summarization/ArticlesOverview";
+import { ArticlesOverview } from "components/organisms/Article/ArticlesOverview";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
 
 const HomePage = () => {

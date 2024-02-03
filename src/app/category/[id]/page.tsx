@@ -1,6 +1,6 @@
 "use client";
 
-import { ArticlesOverview } from "components/organisms/Article/summarization/ArticlesOverview";
+import { ArticlesOverview } from "components/organisms/Article/ArticlesOverview";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import { useEffect, useState } from "react";
 import { CategoryItem } from "types/CategoryItem";

@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { ArticlesOverview } from "../Article/summarization/ArticlesOverview";
+import { ArticlesOverview } from "../Article/ArticlesOverview";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import { Suspense } from "react";
 

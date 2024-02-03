@@ -1,47 +1,61 @@
-import styled from "styled-components";
-import Typography from "components/atoms/Typography";
-import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
-import Image from "next/image";
-import { Button } from "components/atoms/Button/Button";
+"use client";
 
-interface NewsBarPublicationProps {
-  article: ArticleSummarizationItem;
+import styled from "styled-components";
+import Image from "next/image";
+
+import { Button } from "components/atoms/Button/Button";
+import Typography from "components/atoms/Typography";
+import { cutText } from "core/tools/cutText";
+
+interface LargeInfoCardProps {
+  buttonText: string;
+  description: string;
+  link: string;
+  title: string;
+  photo: {
+    path: string;
+    alt: string;
+  };
 }
 
-export const NewsBarPublication = ({ article }: NewsBarPublicationProps) => {
+const LargeInfoCard = ({
+  buttonText,
+  description,
+  link,
+  title,
+  photo,
+}: LargeInfoCardProps) => {
   return (
     <Wrapper data-testid="new-bar-publication">
       <Container>
         <Part>
-          <ImageLink href={`article/${article.id}`}></ImageLink>
+          <ImageLink href={link} />
           <ImageBackground
-            src={article.photo.path}
+            src={photo.path}
             fill
             objectFit="cover"
-            alt={article.photo.description}
+            alt={photo.alt}
           ></ImageBackground>
         </Part>
         <Part>
           <Description>
             <Title>
               <Typography color="white" variant="h2">
-                {article.title}
+                {title}
               </Typography>
             </Title>
             <Typography color="white" marginBottom={30}>
-              Premier Donald Tusk ogłosił, że tegoroczne wybory samorządowe
-              odbędą się w niedzielę 7 kwietnia. Ewentualna druga tura wyborów
-              na włodarzy odbędzie się dwa tygodnie później, 21 kwietnia.
-              Publicznie chęć startu w wyborach na burmistrza gminy Milicz
-              potwierdziło na razie dwóch kandydatów – obecny burmistrz Piotr...
+              {cutText(description, 300)}
             </Typography>
-            <Button>Więcej</Button>
+            <Button>{buttonText}</Button>
           </Description>
         </Part>
       </Container>
     </Wrapper>
   );
 };
+
+export default LargeInfoCard;
 
 const Part = styled.div`
   height: 500px;

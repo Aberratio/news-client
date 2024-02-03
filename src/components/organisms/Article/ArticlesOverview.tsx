@@ -1,11 +1,11 @@
 "use client";
 
-import { ArticleSummarization } from "components/organisms/Article/summarization/ArticleSummarization";
 import { useEffect } from "react";
 import { CategoryItem } from "types/CategoryItem";
-import { ArticleSummarizationItem } from "../../../../types/ArticleSummarizationItem";
-import { useLastArticles } from "../useLastArticles";
+import { ArticleSummarizationItem } from "../../../types/ArticleSummarizationItem";
+import { useLastArticles } from "./useLastArticles";
 import OverviewGrid from "components/molecules/OverviewGrid";
+import { SummarizationCard } from "components/molecules/SummarizationCard/SummarizationCard";
 
 interface ArticlesOverviewProps {
   amount?: number;
@@ -35,7 +35,15 @@ export const ArticlesOverview = ({
       }`}
     >
       {articles.map((article: ArticleSummarizationItem) => {
-        return <ArticleSummarization article={article} key={article.id} />;
+        return (
+          <SummarizationCard
+            key={article.id}
+            item={{
+              ...article,
+              photo: { ...article.photo, alt: "article photo" },
+            }}
+          />
+        );
       })}
     </OverviewGrid>
   );
