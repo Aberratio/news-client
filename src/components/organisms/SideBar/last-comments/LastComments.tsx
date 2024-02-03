@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { WidgetSchema } from "../WidgetSchema";
 import { Comment } from "./Comment";
 import { useLastComments } from "./useLastComments";
 import { useEffect } from "react";
+import Widget from "components/molecules/Widget";
 
 export const LastComments = () => {
   const { comments, isLoading, loadLastComments } = useLastComments();
@@ -16,13 +16,13 @@ export const LastComments = () => {
   }
 
   return (
-    <WidgetSchema dataTestId="last-comments" title="Ostatnie komentarze">
+    <Widget dataTestId="last-comments" title="Ostatnie komentarze">
       <List>
         {comments.map((comment, index) => (
           <Comment comment={comment} key={index} iterator={index + 1} />
         ))}
       </List>
-    </WidgetSchema>
+    </Widget>
   );
 };
 

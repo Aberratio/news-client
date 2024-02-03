@@ -1,18 +1,15 @@
-import Typography from "components/atoms/Typography";
-import React from "react";
-import styled from "styled-components";
+"use client";
 
-interface WidgetSchemaProps {
+import styled from "styled-components";
+import Typography from "components/atoms/Typography";
+
+interface WidgetProps {
   dataTestId: string;
   title: string;
   children: React.ReactNode;
 }
 
-export const WidgetSchema = ({
-  dataTestId,
-  title,
-  children,
-}: WidgetSchemaProps) => {
+const Widget = ({ dataTestId, title, children }: WidgetProps) => {
   return (
     <Container data-testid={dataTestId}>
       <Header>
@@ -22,6 +19,8 @@ export const WidgetSchema = ({
     </Container>
   );
 };
+
+export default Widget;
 
 const Container = styled.div`
   border-radius: 8px;

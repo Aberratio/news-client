@@ -1,10 +1,10 @@
 "use client";
 
 import styled from "styled-components";
-import { WidgetSchema } from "../WidgetSchema";
 import Typography from "components/atoms/Typography";
 import { useVisitCounter } from "./useVisitCounter";
 import { useEffect } from "react";
+import Widget from "components/molecules/Widget";
 
 export const VisitCounter = () => {
   const { isLoading, visits, loadVisits } = useVisitCounter();
@@ -18,11 +18,11 @@ export const VisitCounter = () => {
   }
 
   return (
-    <WidgetSchema dataTestId="visit-counter" title="Licznik odwiedzin">
+    <Widget dataTestId="visit-counter" title="Licznik odwiedzin">
       <Container>
         <Typography>{visits}</Typography>
       </Container>
-    </WidgetSchema>
+    </Widget>
   );
 };
 
