@@ -26,5 +26,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 0;
 `;

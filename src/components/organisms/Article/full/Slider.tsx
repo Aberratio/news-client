@@ -70,6 +70,7 @@ const Description = styled.div`
   background-color: #222;
   padding: 16px;
   color: white;
+  border-radius: 0 0 8px 8px;
 `;
 
 const SliderContainer = styled.div`
@@ -84,6 +85,7 @@ const StyledImage = styled(Image)`
   object-fit: cover;
   object-position: 50% 50%;
   vertical-align: middle;
+  border-radius: 8px 8px 0 0;
 `;
 
 const SliderArrow = styled.div<{ $isRight?: boolean }>`

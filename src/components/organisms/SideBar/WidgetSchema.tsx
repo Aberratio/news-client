@@ -24,21 +24,24 @@ export const WidgetSchema = ({
 };
 
 const Container = styled.div`
-  padding-bottom: 30px;
+  border-radius: 8px;
+
+  background-color: #f5f8fa;
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 50px;
-  padding: 0 18px;
   position: relative;
-  background-color: #222;
+  background-color: blue;
   color: white;
+  border-radius: 8px 8px 0 0;
+  padding: 16px;
+  background-color: rgb(46, 104, 150);
 `;
 
 const Body = styled.div`
-  padding-top: 35px;
   margin: 0;
+  padding: 12px;
 `;
