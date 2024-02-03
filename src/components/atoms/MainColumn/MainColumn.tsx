@@ -13,8 +13,8 @@ export const MainColumn = ({ children }: MainColumnProps) => {
 const Wrapper = styled.div`
   ${({ theme }) => `
     display: flex;
-    padding: 0;
     max-width: 1380px;
+    padding: 0;
     margin: auto;
 
     @media screen and (min-width: ${theme.breakpoints.tabletL}) {

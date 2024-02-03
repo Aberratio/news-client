@@ -21,7 +21,7 @@ export const FullArticle = ({ article }: FullArticleProps) => {
         />
         <Slider images={article.photos} />
         <LeadContainer>
-          <Typography>
+          <Typography color="#666">
             <strong>{article.lead}</strong>
           </Typography>
         </LeadContainer>
@@ -47,5 +47,4 @@ const LeadContainer = styled.div`
   margin: 0;
   margin-top: 3rem !important;
   padding-bottom: 42px;
-  color: #666;
 `;

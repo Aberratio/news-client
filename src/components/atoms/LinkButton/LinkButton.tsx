@@ -24,15 +24,16 @@ const StyledLink = styled(Link)<{ $isDisabled?: boolean }>`
   justify-content: center;
 
   height: 2rem;
-  padding: 0.375rem 0.5rem;
-  border-radius: 0.25rem;
   min-width: 7rem;
+  padding: 0.375rem 0.5rem;
+  
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
 
   color: ${theme.buttons.link.color};
   background-color: none;
   background: none;
-  border: none;
-  cursor: pointer;
 
   ${
     !$isDisabled &&

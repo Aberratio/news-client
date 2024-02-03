@@ -39,20 +39,25 @@ const ScrollToTopButton = () => {
 export default ScrollToTopButton;
 
 const Wrapper = styled.div`
-  display: flex;
   position: fixed;
-  width: 45px;
-  height: 45px;
   right: 40px;
-  border-radius: 30px;
-  background-color: rgb(46, 104, 150);
+  bottom: 10px;
+
+  display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 30px;
   z-index: 1000;
   cursor: pointer;
-  -webkit-transition: all 0.4s;
-  bottom: 10px;
+
+  background-color: rgb(46, 104, 150);
   opacity: 1;
+
+  -webkit-transition: all 0.4s;
 
   &:hover {
     opacity: 0.9;

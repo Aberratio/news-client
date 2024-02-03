@@ -49,18 +49,20 @@ export const Slider = ({ images }: SliderProps) => {
         />
         {isSlideable && (
           <>
-            <SliderArrow className="prev" onClick={prevItem}>
-              <Arrow color="white" />
+            <SliderArrow onClick={prevItem}>
+              <Arrow color="rgb(46, 104, 150)" />
             </SliderArrow>
-            <SliderArrow className="next" $isRight onClick={nextItem}>
-              <Arrow color="white" direction="right" />
+            <SliderArrow $isRight onClick={nextItem}>
+              <Arrow color="rgb(46, 104, 150)" direction="right" />
             </SliderArrow>
           </>
         )}
       </SliderContainer>
       {hasDescription && (
         <Description>
-          <Typography variant="small">{image.description}</Typography>
+          <Typography variant="small" color="white" textAlign="center">
+            {image.description}
+          </Typography>
         </Description>
       )}
     </>
@@ -68,11 +70,9 @@ export const Slider = ({ images }: SliderProps) => {
 };
 
 const Description = styled.div`
-  text-align: center;
-  background-color: #222;
   padding: 16px;
-  color: white;
   border-radius: 0 0 8px 8px;
+  background-color: #222;
 `;
 
 const SliderContainer = styled.div`
@@ -84,30 +84,30 @@ const SliderContainer = styled.div`
 
 const StyledImage = styled(Image)<{ $hasDescription: boolean }>`
   ${({ $hasDescription }) => `
+    vertical-align: middle;
     border-style: none;
+    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"}; 
+
     object-fit: cover;
     object-position: 50% 50%;
-    vertical-align: middle;
-    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"}; 
   `}
 `;
 
 const SliderArrow = styled.div<{ $isRight?: boolean }>`
   ${({ $isRight }) => `
-    touch-action: manipulation;
-    cursor: pointer;
     position: absolute;
     top: 50%;
+    ${$isRight && `right: 0`};
+  
     width: auto;
     padding: 16px;
     margin-top: -50px;
-    color: rgb(46, 104, 150) !important;
-    font-weight: bold;
-    font-size: 20px;
-    -webkit-user-select: none;
-    ${$isRight && `right: 0`};
     border-radius: 3px 0 0 3px;
-    background-color: rgba(0, 0, 0, 0.8);
+    
+    cursor: pointer;
+    touch-action: manipulation;
+
     text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.8);
   `}
 `;

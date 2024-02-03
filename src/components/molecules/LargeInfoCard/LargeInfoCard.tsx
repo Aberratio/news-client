@@ -42,11 +42,11 @@ const LargeInfoCard = ({
         <Part>
           <Description>
             <Title href={link}>
-              <Typography color="white" variant="h2">
+              <Typography color="white" variant="h2" textAlign="left">
                 {title}
               </Typography>
             </Title>
-            <Typography color="white" marginBottom={30}>
+            <Typography color="white" marginBottom={30} textAlign="left">
               {cutText(description, 300)}
             </Typography>
             <Link href={link}>
@@ -77,8 +77,8 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: grid;
-  gap: 12px;
   grid-template-columns: 600px 1fr;
+  gap: 12px;
 `;
 
 const ImageBackground = styled(Image)`
@@ -96,20 +96,15 @@ const Description = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  color: white;
-  padding: 12px;
+
   height: 100%;
+  padding: 12px;
 `;
 
 const Title = styled(Link)`
   margin: 12px 0;
   z-index: 300;
   cursor: pointer;
-  color: white !important;
-
-  p {
-    text-align: left !important;
-  }
 
   &:hover p {
     color: #17b978 !important;

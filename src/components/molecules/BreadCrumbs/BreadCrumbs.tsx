@@ -85,10 +85,13 @@ const Current = styled.span`
 `;
 
 const Path = styled.a`
-  text-decoration: none;
-  background-color: transparent;
-  touch-action: manipulation;
-  float: left;
   display: flex;
+
+  float: left;
   cursor: pointer;
+
+  background-color: transparent;
+
+  text-decoration: none;
+  touch-action: manipulation;
 `;

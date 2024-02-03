@@ -26,7 +26,9 @@ export const Section = ({ header, links }: SectionProps) => {
           return (
             <Typography key={link.name}>
               <strong>{link.name}</strong>
-              <Link href={`${link.href}`}>{link.link}</Link>
+              <Link href={`${link.href}`}>
+                <Typography color="#0056b3">{link.link}</Typography>
+              </Link>
             </Typography>
           );
         })}
@@ -40,9 +42,10 @@ const SectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: 32px;
   width: 100%;
   gap: 16px;
-  margin-bottom: 32px;
 `;
 
 const LinkBox = styled.div`
@@ -50,12 +53,12 @@ const LinkBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  gap: 16px;
+
   width: 100%;
+  gap: 16px;
 `;
 
 const Link = styled.a`
   margin-left: 4px;
-  color: #0056b3;
   cursor: pointer;
 `;
