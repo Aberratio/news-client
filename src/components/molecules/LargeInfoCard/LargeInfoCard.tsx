@@ -69,9 +69,14 @@ const Part = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
+  display: block;
+  margin-top: 65px;
+  border-radius: 12px;
+
+  background-color: #222;
 
   @media screen and (min-width: 768px) {
-    height: 100%;
+    margin-top: 20px;
   }
 `;
 
@@ -79,6 +84,9 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 600px 1fr;
   gap: 12px;
+  margin: auto;
+  width: 100%;
+  max-width: 1080px;
 `;
 
 const ImageBackground = styled(Image)`

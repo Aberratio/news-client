@@ -1,18 +1,9 @@
 import { GetArticlesLastResponse } from "core/api/responses/GetArticlesLastResponse";
 import { useBasicApi } from "core/api/useBasicApi";
-import { GetArticleResponse } from "./responses/GetArticleResponse";
 import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
 
 export const useArticlesApi = () => {
-  const { getArticle, getArticlesLast, getPopularTitles } = useBasicApi();
-
-  const getArticleDetails = async (
-    articleId: number
-  ): Promise<GetArticleResponse> => {
-    return await getArticle({
-      id: articleId,
-    });
-  };
+  const { getArticlesLast, getPopularTitles } = useBasicApi();
 
   const getLastArticlesDetails = async (
     categoryId?: number,
@@ -37,7 +28,6 @@ export const useArticlesApi = () => {
   };
 
   return {
-    getArticleDetails,
     getLastArticlesDetails,
     getPopularTitlesDetails,
   };

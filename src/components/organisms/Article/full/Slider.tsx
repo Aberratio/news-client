@@ -105,8 +105,6 @@ const SliderArrow = styled.div<{ $isRight?: boolean }>`
     border-radius: 3px 0 0 3px;
     
     cursor: pointer;
-    touch-action: manipulation;
-
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.8);
   `}

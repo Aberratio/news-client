@@ -1,22 +1,15 @@
-import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
+"use server";
+
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 import { SectionContainer } from "components/organisms/SectionContainer/SectionContainer";
-import { aboutPagePath } from "core/builders/buildPath";
 
 const AboutPage = () => {
-  const breadcrumbs: BreadCrumbsItem[] = [
-    {
-      name: "Strona Główna",
-      path: "/",
-    },
-    {
-      name: "O nas",
-      path: aboutPagePath,
-    },
-  ];
-
   return (
-    <SimplePageTemplate breadcrumbs={breadcrumbs}>
+    <SimplePageTemplate
+      breadCrubmsInfo={{
+        currentName: "O nas",
+      }}
+    >
       <SectionContainer />
     </SimplePageTemplate>
   );

@@ -1,28 +1,19 @@
 "use client";
 
-import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
 import styled from "styled-components";
 import Typography from "components/atoms/Typography";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
-import { rulesPagePath } from "core/builders/buildPath";
 import { useStyles } from "core/styles/customization/useStyles";
 
 const RulesPage = () => {
   const { customTheme } = useStyles();
 
-  const breadcrumbs: BreadCrumbsItem[] = [
-    {
-      name: "Strona Główna",
-      path: "/",
-    },
-    {
-      name: "Regulamin",
-      path: rulesPagePath,
-    },
-  ];
-
   return (
-    <SimplePageTemplate breadcrumbs={breadcrumbs}>
+    <SimplePageTemplate
+      breadCrubmsInfo={{
+        currentName: "Regulamin",
+      }}
+    >
       <Container>
         {rules.map((rule) => {
           return (

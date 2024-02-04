@@ -1,38 +1,30 @@
-"use client";
+"use server";
 
-import { useEffect } from "react";
-import { CategoryItem } from "types/CategoryItem";
 import { ArticleSummarizationItem } from "../../../types/ArticleSummarizationItem";
-import { useLastArticles } from "./useLastArticles";
 import OverviewGrid from "components/molecules/OverviewGrid";
 import { SummarizationCard } from "components/molecules/SummarizationCard/SummarizationCard";
+import { fetchArticlesLast } from "core/api/fetchArticlesLast";
 
 interface ArticlesOverviewProps {
   amount?: number;
-  category?: CategoryItem;
+  categoryId?: number;
   page?: number;
 }
 
-export const ArticlesOverview = ({
+export const ArticlesOverview = async ({
   amount = 30,
-  category,
+  categoryId,
   page = 0,
 }: ArticlesOverviewProps) => {
-  const { articles, isLoading, loadArticles } = useLastArticles();
-
-  useEffect(() => {
-    loadArticles(category?.id ?? undefined, amount, page);
-  }, []);
-
-  if (isLoading) {
-    return null;
-  }
+  const articles = await fetchArticlesLast({
+    category: categoryId,
+    limit: amount,
+    page,
+  });
 
   return (
     <OverviewGrid
-      dataTestId={`article-summarizatoin-box-${
-        category ? category.id : "latest"
-      }`}
+      dataTestId={`article-summarizatoin-box-${categoryId ?? "latest"}`}
     >
       {articles.map((article: ArticleSummarizationItem) => {
         return (

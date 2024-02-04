@@ -1,19 +1,21 @@
+"use server";
+
 import BreadCrumbs from "components/molecules/BreadCrumbs";
-import { BreadCrumbsItem } from "components/molecules/BreadCrumbs/BreadCrumbs";
+import { BreadCrumbsInfo } from "components/molecules/BreadCrumbs/useGenerateBreadcrumbs";
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
 
 interface SimplePageTemplateProps {
-  breadcrumbs: BreadCrumbsItem[];
+  breadCrubmsInfo: BreadCrumbsInfo;
   children: React.ReactNode;
 }
 
 export const SimplePageTemplate = ({
-  breadcrumbs,
+  breadCrubmsInfo,
   children,
 }: SimplePageTemplateProps) => {
   return (
     <div>
-      <BreadCrumbs breadcrumbs={breadcrumbs} />
+      <BreadCrumbs breadCrubmsInfo={breadCrubmsInfo} />
       <MainContainerTemplate>{children}</MainContainerTemplate>
     </div>
   );
