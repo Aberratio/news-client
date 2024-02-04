@@ -8,7 +8,7 @@ export const TitleBar = () => {
     <Wrapper>
       <Container>
         <Typography color="white" isUppercase variant="h2">
-          Temat tygodnia!
+          25-LECIE POWIATU MILICKIEGO
         </Typography>
       </Container>
     </Wrapper>

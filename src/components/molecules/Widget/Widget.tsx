@@ -13,7 +13,7 @@ const Widget = ({ dataTestId, title, children }: WidgetProps) => {
   return (
     <Container data-testid={dataTestId}>
       <Header>
-        <Typography isUppercase color="black">
+        <Typography isUppercase color="white">
           {title}
         </Typography>
       </Header>
@@ -35,10 +35,9 @@ const Header = styled.div`
   justify-content: center;
   align-items: center;
   padding: 16px;
-  border-bottom: 1px solid #2222221a;
 
-  // border-radius: 8px 8px 0 0;
-  // background-color: rgb(46, 104, 150);
+  border-radius: 8px 8px 0 0;
+  background-color: rgb(46, 104, 150);
 `;
 
 const Body = styled.div`

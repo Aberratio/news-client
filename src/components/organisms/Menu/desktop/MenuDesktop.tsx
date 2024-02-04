@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 import { BigLogoBar } from "./BigLogoBar";
-import { BigTopBar } from "./BigTopBar";
+// import { BigTopBar } from "./BigTopBar";
 import { SubTitleBar } from "./SubTitleBar";
 import { TitleBar } from "./TitleBar";
 
@@ -10,7 +10,7 @@ export const MenuDesktop = () => {
   return (
     <Header data-testid="menu-desktop">
       <Container>
-        <BigTopBar />
+        {/* <BigTopBar /> */}
         <TitleBar />
         <BigLogoBar />
         <SubTitleBar />
