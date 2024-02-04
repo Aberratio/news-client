@@ -3,6 +3,7 @@
 import { ArticleSummarizationItem } from "../../../types/ArticleSummarizationItem";
 import OverviewGrid from "components/molecules/OverviewGrid";
 import { SummarizationCard } from "components/molecules/SummarizationCard/SummarizationCard";
+import { SummarizationCardWithStats } from "components/molecules/SummarizationCard/SummarizationCardWithStats";
 import { fetchArticlesLast } from "core/api/fetchArticlesLast";
 
 interface ArticlesOverviewProps {
@@ -28,7 +29,7 @@ export const ArticlesOverview = async ({
     >
       {articles.map((article: ArticleSummarizationItem) => {
         return (
-          <SummarizationCard
+          <SummarizationCardWithStats
             key={article.id}
             item={{
               ...article,

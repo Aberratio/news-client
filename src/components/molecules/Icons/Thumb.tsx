@@ -4,7 +4,7 @@ export const Thumb = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     color={color}
     direction={direction}
-    size={size ?? { width: "1rem", height: "1rem" }}
+    size={size ?? { width: "0.9rem", height: "0.9rem" }}
     viewBox="0 0 512 512"
     title="thumb"
   >

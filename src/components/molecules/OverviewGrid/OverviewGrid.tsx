@@ -24,8 +24,10 @@ const Wrapper = styled.div`
 const Container = styled.div`
   ${({ theme }) => `
     display: grid;
+    column-gap: 24px;
+    row-gap: 32px;
+    
     padding-bottom: 20px;
-    gap: 24px;
 
     @media screen and (min-width: 420px) {
       display: grid;

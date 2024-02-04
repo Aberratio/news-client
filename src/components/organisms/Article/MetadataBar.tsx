@@ -29,5 +29,4 @@ const Link = styled.a`
 const Container = styled.div`
   display: flex;
   gap: 4px;
-  padding: 16px 0 4px 0;
 `;

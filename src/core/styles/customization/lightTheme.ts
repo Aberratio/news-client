@@ -1,9 +1,9 @@
 import { OppositeColor, CustomTheme } from "../types/CustomTheme";
 
 //  GM color
-const BLUE = "rgb(46,104,150)";
+const BLUE = "#2e6896"; //rgb(46,104,150)";
 const GREEN = "#15a752";
-const RED = "rgb(184,0,0)";
+const RED = "#b80000"; //rgb(184,0,0)";
 
 const WHITE: OppositeColor = "white";
 const BLACK: OppositeColor = "black";

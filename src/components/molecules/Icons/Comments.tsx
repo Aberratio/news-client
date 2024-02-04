@@ -6,7 +6,7 @@ export const Comments = ({
   size,
 }: IconCustomizationProps) => (
   <Icon
-    size={size ?? { width: "1.25rem", height: "1.25rem" }}
+    size={size ?? { width: "1rem", height: "1rem" }}
     viewBox="0 0 58 58"
     direction={direction}
     color={color}
@@ -31,7 +31,7 @@ export const Comments = ({
         d="M35,36.465H9c-0.553,0-1-0.448-1-1s0.447-1,1-1h26c0.553,0,1,0.448,1,1S35.553,36.465,35,36.465z"
       />
       <path
-        style={{ fill: "black" }}
+        style={{ fill: "#15a752" }}
         d="M53.071,2.535l-34.141-0.07C16.207,2.465,14,4.672,14,7.394v6.122l25.071-0.052
 		c2.722,0,4.929,2.207,4.929,4.93v18.441l7,7.7v-11h2.071c2.722,0,4.929-2.207,4.929-4.929V7.465
 		C58,4.742,55.793,2.535,53.071,2.535z"

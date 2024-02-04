@@ -2,7 +2,7 @@ import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
 export const Eye = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
-    size={size ?? { width: "1.25rem", height: "1.25rem" }}
+    size={size ?? { width: "1rem", height: "1rem" }}
     viewBox="0 0 511.999 511.999"
     direction={direction}
     color={color}
@@ -23,6 +23,7 @@ export const Eye = ({ color, direction, size }: IconCustomizationProps) => (
     <g>
       <g>
         <path
+          fill="#2e6896"
           d="M255.999,167.174c-48.978,0-88.825,39.847-88.825,88.825c0,48.978,39.847,88.825,88.825,88.825
 			c48.978,0,88.825-39.847,88.825-88.825S304.977,167.174,255.999,167.174z M255.999,238.234c-9.796,0-17.765,7.969-17.765,17.765
 			h-35.53c0-29.387,23.908-53.295,53.295-53.295V238.234z"
