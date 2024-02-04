@@ -34,6 +34,6 @@ export const MainMenu = () => {
 const Container = styled.ul`
   height: 100%;
   display: flex;
-  gap: 16px;
+  gap: 40px;
   overflow: unset;
 `;

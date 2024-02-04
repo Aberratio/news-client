@@ -1,5 +1,10 @@
 import { ReactNode, ReactElement } from "react";
-import { FlexboxProps, SpaceProps, TextAlignProps } from "styled-system";
+import {
+  FlexboxProps,
+  GridProps,
+  SpaceProps,
+  TextAlignProps,
+} from "styled-system";
 
 import { TypographyWrapper } from "./TypographyWrapper";
 import { useTypographyVariant } from "./useTypographyVariant";
@@ -8,6 +13,7 @@ import { WordBreakProps } from "./types/WordBreakProps";
 
 export interface TypographyProps
   extends FlexboxProps,
+    GridProps,
     SpaceProps,
     TextAlignProps {
   ariaLabel?: string;

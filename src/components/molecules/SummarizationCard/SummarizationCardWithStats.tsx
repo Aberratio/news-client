@@ -32,9 +32,11 @@ export const SummarizationCardWithStats = ({
         <ImageLink href={item.path}>
           <StyledImage src={item.photo.path} fill alt={item.photo.alt} />
         </ImageLink>
-        <Link href={item.path}>
-          <Typography wrap>{item.title}</Typography>
-        </Link>
+        <StyledLink href={item.path}>
+          <Typography wrap marginBottom={2}>
+            {item.title}
+          </Typography>
+        </StyledLink>
         <MetadataBar authorName="anm" createdOn="2024-02-02" />
         <StatisticBar
           statistics={{

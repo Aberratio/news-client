@@ -1,9 +1,11 @@
 import { css, styled } from "styled-components";
 import {
   FlexboxProps,
+  GridProps,
   SpaceProps,
   TextAlignProps,
   flexbox,
+  grid,
   space,
   textAlign,
 } from "styled-system";
@@ -12,6 +14,7 @@ import { WordBreakProps } from "./types/WordBreakProps";
 
 interface TypographyWrapperProps
   extends FlexboxProps,
+    GridProps,
     SpaceProps,
     TextAlignProps {
   $color?: string;
@@ -33,9 +36,11 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
 
   strong {
     font-weight: 700;
+    margin: 0 6px;
   }
 
   ${flexbox};
+  ${grid};
   ${space};
   ${textAlign};
 
