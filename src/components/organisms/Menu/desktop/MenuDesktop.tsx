@@ -1,13 +1,19 @@
 "use client";
 
 import styled from "styled-components";
-import { TopBar } from "./TopBar";
+import { BigLogoBar } from "./BigLogoBar";
+import { BigTopBar } from "./BigTopBar";
+import { SubTitleBar } from "./SubTitleBar";
+import { TitleBar } from "./TitleBar";
 
 export const MenuDesktop = () => {
   return (
     <Header data-testid="menu-desktop">
       <Container>
-        <TopBar />
+        <BigTopBar />
+        <TitleBar />
+        <BigLogoBar />
+        <SubTitleBar />
       </Container>
     </Header>
   );
