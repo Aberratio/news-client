@@ -30,5 +30,4 @@ const ImageContainer = styled.div`
 
 const Date = styled.strong`
   margin-left: 4px;
-  margin-right: 4px;
 `;

@@ -11,53 +11,40 @@ import styled, { css } from "styled-components";
 
 import { FormElementContainer } from "./FormElementContainer";
 
-export interface InputProps {
+export interface BasicInputProps {
   defaultValue?: string | number;
   disabled?: boolean;
   error?: ReactNode;
-  hint?: ReactNode;
-  Icon?: ReactNode;
   innerRef?: ForwardedRef<HTMLInputElement>;
   inputSize?: "large" | "small";
   label?: string;
-  max?: string | number;
-  min?: string | number;
   name: string;
   placeholder?: string;
   readOnly?: boolean;
   required?: boolean;
   selectInput?: boolean;
-  step?: number;
   tabIndex?: number;
-  type?: string;
   value?: number | string;
   onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({
+export const BasicInput = ({
   defaultValue,
   disabled,
   error,
-  hint,
-  Icon,
   innerRef,
-  inputSize = "large",
   label,
-  max,
-  min,
   name,
   placeholder,
   readOnly = false,
   required,
   selectInput,
-  step,
   tabIndex = 0,
-  type = "text",
   value = "",
   onChange,
   onBlur,
-}: InputProps): ReactElement => {
+}: BasicInputProps) => {
   const [isError, setIsError] = useState<boolean>(false);
   const labelControl = (event: SyntheticEvent) => {
     const target = event.target as HTMLInputElement;
@@ -74,25 +61,19 @@ export const Input = ({
     <FormElementContainer
       error={isError ? error : ""}
       formElementName={name}
-      hint={hint}
       isDisabled={disabled}
       label={label}
     >
-      {!!Icon && <IconWrapper inputSize={inputSize}>{Icon}</IconWrapper>}
       <StyledInput
         defaultValue={defaultValue}
         disabled={disabled}
         $isError={isError}
         name={name}
-        max={max}
-        min={min}
         placeholder={placeholder}
         readOnly={readOnly}
         ref={innerRef}
         required={required}
-        step={step}
         tabIndex={tabIndex}
-        type={type}
         value={value}
         onBlur={onBlur ?? labelControl}
         onChange={onChange}
@@ -102,25 +83,12 @@ export const Input = ({
   );
 };
 
-const IconWrapper = styled.div<{ inputSize: "large" | "small" }>(
-  ({ theme: { spaces }, inputSize }) => css`
-    position: absolute;
-    top: ${inputSize === "small" ? "11.5px" : "36px"};
-    right: ${inputSize === "small" ? spaces.sm : "16px"};
-    cursor: pointer;
-
-    display: block;
-  `
-);
-interface FormElementStylesProps {
+const StyledInput = styled.input<{
   disabled?: boolean;
   $isError?: boolean;
-}
-
-const StyledInput = styled.input<FormElementStylesProps>(
+}>(
   ({ theme, $isError = false, disabled }) => `
         border-radius: ${theme.general.borderRadius};
-        
         box-sizing: border-box;
         border-width: ${theme.spaces["3xs"]};
         border: 1px solid #5069A7;

@@ -5,6 +5,7 @@ import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import { Slider } from "./Slider";
+import { CommentSection } from "./CommentSection";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -29,6 +30,7 @@ export const FullArticle = ({ article }: FullArticleProps) => {
           <Typography innerHtml={article.body} />
         </div>
       </Container>
+      <CommentSection />
     </Wrapper>
   );
 };

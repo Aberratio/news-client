@@ -1,60 +1,42 @@
 import { ChangeEvent, RefObject } from "react";
 import { Control, Controller } from "react-hook-form";
 
-import { InputProps, Input } from "./Input";
+import { BasicInputProps, BasicInput } from "./common/BasicInput";
 
-interface ControlledInputProps extends Omit<InputProps, "value" | "ref"> {
+interface InputProps extends Omit<BasicInputProps, "value" | "ref"> {
   control: Control<any>;
   innerRef?: RefObject<HTMLInputElement>;
 }
 
-export const ControlledInput = ({
+export const Input = ({
   control,
   defaultValue,
   disabled = false,
   error,
-  hint,
-  Icon,
   innerRef,
   inputSize = "large",
   label,
-  max,
-  min,
   name,
   placeholder,
-  readOnly = false,
   required,
-  selectInput,
-  step,
-  type = "text",
   onBlur,
   onChange,
-}: ControlledInputProps) => {
+}: InputProps) => {
   return (
     <Controller
       control={control}
       name={name}
-      defaultValue=""
       render={({ field: { onChange: onFieldChange, value = undefined } }) => (
-        <Input
+        <BasicInput
           defaultValue={defaultValue}
           disabled={disabled}
           error={error}
-          hint={hint}
-          Icon={Icon}
           innerRef={innerRef}
           inputSize={inputSize}
           label={label}
-          max={max}
-          min={min}
           name={name}
           placeholder={placeholder}
-          readOnly={readOnly}
           required={required}
-          selectInput={selectInput}
-          step={step}
-          type={type}
-           
           value={value}
           onBlur={onBlur}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
