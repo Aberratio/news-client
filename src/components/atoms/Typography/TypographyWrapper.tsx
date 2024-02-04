@@ -36,7 +36,6 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
 
   strong {
     font-weight: 700;
-    margin: 0 6px;
   }
 
   ${flexbox};

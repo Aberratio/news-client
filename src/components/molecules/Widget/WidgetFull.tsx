@@ -21,9 +21,10 @@ export default WidgetFull;
 const Container = styled.div`
   border-radius: 8px;
   background-color: white;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 `;
 
 const Body = styled.div`
-  margin: 0;
-  background-color: rgb(46, 104, 150);
+  padding: 16px;
+  background-color: #222;
 `;

@@ -11,9 +11,9 @@ interface CommentProps {
 export const Comment = ({ comment, iterator }: CommentProps) => {
   return (
     <Container data-testid={`comment-${iterator}`}>
-      <Counter>
+      {/* <Counter>
         <Typography>{iterator}</Typography>
-      </Counter>
+      </Counter> */}
       <Link href={buildArticlePath(comment.articleId)}>
         <Typography>{comment.articleTitle}</Typography>
       </Link>
@@ -35,6 +35,11 @@ const Container = styled.li`
   justify-content: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
+
+  p {
+    display: inline !important;
+    line-height: 1.25;
+  }
 `;
 
 const Counter = styled.div`
@@ -61,4 +66,9 @@ const Link = styled.a`
   text-align: left;
 
   cursor: pointer;
+  margin-bottom: 8px;
+
+  p {
+    line-height: 1.15;
+  }
 `;

@@ -13,7 +13,9 @@ const Widget = ({ dataTestId, title, children }: WidgetProps) => {
   return (
     <Container data-testid={dataTestId}>
       <Header>
-        <Typography color="white">{title}</Typography>
+        <Typography isUppercase color="black">
+          {title}
+        </Typography>
       </Header>
       <Body>{children}</Body>
     </Container>
@@ -25,16 +27,18 @@ export default Widget;
 const Container = styled.div`
   border-radius: 8px;
   background-color: white;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 `;
 
 const Header = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 16px;
+  border-bottom: 1px solid #2222221a;
 
-  border-radius: 8px 8px 0 0;
-  background-color: rgb(46, 104, 150);
+  // border-radius: 8px 8px 0 0;
+  // background-color: rgb(46, 104, 150);
 `;
 
 const Body = styled.div`

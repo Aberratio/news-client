@@ -21,7 +21,7 @@ export const VisitCounter = () => {
   return (
     <WidgetFull dataTestId="visit-counter" title="Licznik odwiedzin">
       <Container>
-        <Typography color="white">Licznik odwiedzin</Typography>
+        <Typography color="white">Licznik odwiedzin strony</Typography>
         <VisitCounterContent>
           {digits.map((digit, index) => (
             <NumberCard>
@@ -37,10 +37,8 @@ export const VisitCounter = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: rgb(46, 104, 150);
   justify-content: center;
   align-items: center;
-  padding: 16px;
   gap: 16px;
 `;
 

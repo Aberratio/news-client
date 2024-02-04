@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FirstSite } from "./FirstSite";
 import { VisitCounter } from "./visit-counter/VisitCounter";
 import { useActiveViewportSize } from "layout/responsivenes/useActiveViewportSize";
+import { LastComments } from "./last-comments/LastComments";
 
 export const SideBar = () => {
   const { tabletL } = useActiveViewportSize();
@@ -14,8 +15,8 @@ export const SideBar = () => {
     <Wrapper data-testid="information-bar">
       <Container>
         <FirstSite />
+        <LastComments />
         <VisitCounter />
-        {/* <LastComments /> */}
       </Container>
     </Wrapper>
   );
@@ -29,5 +30,5 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 20px 0;
+  padding: 20px 4px;
 `;

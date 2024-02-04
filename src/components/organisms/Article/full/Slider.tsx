@@ -50,10 +50,10 @@ export const Slider = ({ images }: SliderProps) => {
         {isSlideable && (
           <>
             <SliderArrow onClick={prevItem}>
-              <Arrow color="rgb(46, 104, 150)" />
+              <Arrow color="white" />
             </SliderArrow>
             <SliderArrow $isRight onClick={nextItem}>
-              <Arrow color="rgb(46, 104, 150)" direction="right" />
+              <Arrow color="white" direction="right" />
             </SliderArrow>
           </>
         )}
