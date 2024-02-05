@@ -44,7 +44,7 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    // "composite": true,
+    "composite": true,
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -69,7 +69,7 @@
     "noEmit": true
   },
   "include": [
-    "src", ".next/types/**/*.ts", "styled.d.ts"],
+    "src/**/*.ts", "src/**/*.tsx",".next/types/**/*.ts", "styled.d.ts"],
   "exclude": [
     "node_modules",
     "build"
