@@ -18,6 +18,7 @@ export const AllComments = ({ comments }: AllCommentsProps) => {
       {comments.map((comment: any, index: number) => (
         <Comment
           author={comment.author}
+          commentId={comment.id}
           date={comment.date}
           dislikes={comment.dislikes}
           key={index}

@@ -21,6 +21,7 @@ module.exports = {
     "@typescript-eslint/no-unsafe-return": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-misused-promises": "off",
   },
   overrides: [
     {

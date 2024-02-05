@@ -4,6 +4,7 @@ import { StatisticCommentBar } from "../../organisms/Article/StatisticCommentBar
 
 interface CommentProps {
   author: string;
+  commentId: number;
   date: string;
   text: string;
   likes: number;
@@ -12,6 +13,7 @@ interface CommentProps {
 
 export const Comment = ({
   author,
+  commentId,
   date,
   text,
   likes,
@@ -26,7 +28,11 @@ export const Comment = ({
         <Typography variant="small">{date}</Typography>
       </CommentMeta>
       <Typography>{text}</Typography>
-      <StatisticCommentBar likes={likes} dislikes={dislikes} />
+      <StatisticCommentBar
+        commentId={commentId}
+        likes={likes}
+        dislikes={dislikes}
+      />
     </div>
   );
 };
