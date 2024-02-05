@@ -2,6 +2,7 @@
 
 import { revalidateTag } from "next/cache";
 
-export default function revalidateCommentsTag() {
+//eslint-disable-next-line @typescript-eslint/require-await
+export const revalidateCommentsTag = async () => {
   revalidateTag("comments");
-}
+};

@@ -5,7 +5,7 @@ import { CommentForm } from "./CommentForm";
 import { AllComments } from "./AllComments";
 import { CommentItem } from "types/CommentItem";
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
-import revalidateCommentsTag from "./revalidateCommentsTag";
+import { revalidateCommentsTag } from "./revalidateCommentsTag";
 
 interface CommentsSectionProps {
   articleId: number;

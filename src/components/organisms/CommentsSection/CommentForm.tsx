@@ -2,6 +2,7 @@
 
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { styled } from "styled-components";
 
@@ -24,7 +25,8 @@ export const CommentForm = ({
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    reset,
+    formState: { errors, isSubmitting },
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
@@ -37,6 +39,7 @@ export const CommentForm = ({
     });
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     revalidateCommentsTag();
+    reset();
   };
 
   return (
@@ -46,14 +49,49 @@ export const CommentForm = ({
         <label htmlFor="name">
           <Typography variant="small">Nazwa</Typography>
         </label>
-        <Input {...register("name")} type="text" placeholder="Nazwa" />
+        <Input
+          {...register("name", {
+            minLength: {
+              value: 2,
+              message: "Nazwa musi mieć co najmniej 2 znaki",
+            },
+            required: {
+              value: true,
+              message: "Nazwa jest wymagana",
+            },
+          })}
+          type="text"
+          placeholder="Wpisz swoją nazwę..."
+        />
+        {errors.name && (
+          <Typography variant="small" color="red">
+            {errors.name.message}
+          </Typography>
+        )}
       </FormElement>
 
       <FormElement>
         <label htmlFor="comment">
           <Typography variant="small">Komentarz</Typography>
         </label>
-        <Textarea {...register("comment")} placeholder="Komentarz" />
+        <Textarea
+          {...register("comment", {
+            minLength: {
+              value: 2,
+              message: "Komentarz musi mieć co najmniej 2 znaki",
+            },
+            required: {
+              value: true,
+              message: "Komentarz jest wymagany",
+            },
+          })}
+          placeholder="Wpisz swój komenatrz..."
+        />
+        {errors.comment && (
+          <Typography variant="small" color="red">
+            {errors.comment.message}
+          </Typography>
+        )}
       </FormElement>
       <Button
         variant="secondary"
