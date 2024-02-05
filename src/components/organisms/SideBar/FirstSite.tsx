@@ -1,3 +1,5 @@
+"use client";
+
 import Typography from "components/atoms/Typography";
 import Widget from "components/molecules/Widget";
 import Image from "next/image";

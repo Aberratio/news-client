@@ -19,7 +19,7 @@ export const fetchCommentsReaction = async ({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ like, dislike }),
-      cache: "force-cache",
+      next: { revalidate: 60 },
     }
   );
 };

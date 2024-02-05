@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode, ReactElement } from "react";
 import {
   FlexboxProps,

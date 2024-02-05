@@ -1,36 +1,17 @@
-import styled from "styled-components";
-import { CommentSummarization } from "./CommentSummarization";
-import { useLastComments } from "./useLastComments";
-import { useEffect } from "react";
+"use server";
+
 import Widget from "components/molecules/Widget";
+import { fetchCommentsLast } from "core/api/comments/fetchCommentsLast";
+import { LastCommentsList } from "./LastCommentsList";
 
-export const LastComments = () => {
-  const { comments, isLoading, loadLastComments } = useLastComments();
+export const LastComments = async () => {
+  const comments = await fetchCommentsLast(5);
 
-  useEffect(() => {
-    loadLastComments(5);
-  }, []);
-
-  if (isLoading) {
-    return <></>;
-  }
+  if (comments.length === 0) return null;
 
   return (
     <Widget dataTestId="last-comments" title="Ostatnie komentarze">
-      <List>
-        {comments.map((comment, index) => (
-          <CommentSummarization
-            comment={comment}
-            key={index}
-            iterator={index}
-          />
-        ))}
-      </List>
+      <LastCommentsList comments={comments} />
     </Widget>
   );
 };
-
-const List = styled.ul`
-  margin: 0;
-  list-style-type: none;
-`;

@@ -14,7 +14,7 @@ export const FullArticle = async ({ article }: FullArticleProps) => {
 
   return (
     <FullArticleContent article={article}>
-      <CommentSection comments={comments} />
+      <CommentSection articleId={article.id} comments={comments} />
     </FullArticleContent>
   );
 };

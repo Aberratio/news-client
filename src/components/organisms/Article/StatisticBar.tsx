@@ -1,3 +1,5 @@
+"use client";
+
 import { Comments } from "components/molecules/Icons/Comments";
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";

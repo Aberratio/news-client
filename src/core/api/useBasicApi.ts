@@ -4,8 +4,6 @@ import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
 import { GetArticlesLastResponse } from "./responses/GetArticlesLastResponse";
 import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
 import { GetPopularTitlesRequest } from "./requests/GetPopularTitlesRequest";
-import { GetCommentsLastRequest } from "./requests/GetCommentsLastRequest";
-import { GetCommentsLastResponse } from "./responses/GetCommentsLastResponse";
 import { GetTabsResponse } from "./responses/GetTabsResponse";
 import { PostVisitsRequest } from "./requests/PostVisitsRequest";
 
@@ -38,16 +36,6 @@ export const useBasicApi = () => {
     get<void, GetTabsResponse[]>(`${apiUrl}/categories/tabs`);
 
   // ===================================
-  // comments
-  const getCommentsLast = async (
-    request: GetCommentsLastRequest
-  ): Promise<GetCommentsLastResponse[]> =>
-    get<GetCommentsLastRequest, GetCommentsLastResponse[]>(
-      `${apiUrl}/comments/last`,
-      request
-    );
-
-  // ===================================
   // admin
   const getVisits = async (): Promise<number> =>
     get<void, number>(`${apiUrl}/admin/visits`);
@@ -65,9 +53,6 @@ export const useBasicApi = () => {
 
     // categories
     getTabs,
-
-    // comments
-    getCommentsLast,
 
     // admin
     getVisits,

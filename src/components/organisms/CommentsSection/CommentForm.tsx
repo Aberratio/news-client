@@ -5,12 +5,22 @@ import Typography from "components/atoms/Typography";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { styled } from "styled-components";
 
-interface FormFields {
+export interface FormFields {
   name: string;
   comment: string;
 }
 
-export const CommentForm = () => {
+interface CommentFormProps {
+  articleId: number;
+  sendComment: any;
+  revalidateCommentsTag: any;
+}
+
+export const CommentForm = ({
+  articleId,
+  sendComment,
+  revalidateCommentsTag,
+}: CommentFormProps) => {
   const {
     register,
     handleSubmit,
@@ -18,11 +28,18 @@ export const CommentForm = () => {
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log(data);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    sendComment({
+      articleId,
+      author: data.name,
+      data: new Date(),
+      text: data.comment,
+    });
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    revalidateCommentsTag();
   };
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Typography variant="h3">Skomentuj</Typography>
       <FormElement>

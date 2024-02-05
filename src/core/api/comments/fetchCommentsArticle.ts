@@ -19,9 +19,7 @@ export const fetchCommentsArticle = async (
 ): Promise<CommentItem[]> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASIC_URL}/comments/article/${articleId}`,
-    {
-      cache: "force-cache",
-    }
+    { next: { revalidate: 60, tags: ["comments"] } }
   );
 
   return mapData((await response.json()) as GetCommentsArticleResponse[]);
