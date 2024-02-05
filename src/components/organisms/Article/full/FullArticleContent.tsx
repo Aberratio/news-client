@@ -5,6 +5,7 @@ import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import { Slider } from "./Slider";
+import { StatisticBar } from "../StatisticBar";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -15,20 +16,25 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
-        <Typography variant="h1">{article.title}</Typography>
-        <MetadataBar
-          authorName={article.author.name}
-          createdOn={article.createdOn}
-        />
-        <Slider images={article.photos} />
-        <LeadContainer>
+        <Typography variant="h1" marginBottom={12}>
+          {article.title}
+        </Typography>
+        <InfoWrapper>
+          <MetadataBar
+            authorName={article.author.name}
+            createdOn={article.createdOn}
+          />
+          <StatisticBar statistics={article.statistics} />
+        </InfoWrapper>
+        <LeadWrapper>
           <Typography color="#666">
             <strong>{article.lead}</strong>
           </Typography>
-        </LeadContainer>
-        <div>
+        </LeadWrapper>
+        <Slider images={article.photos} />
+        <BodyWrapper>
           <Typography innerHtml={article.body} />
-        </div>
+        </BodyWrapper>
       </Container>
       {children}
     </Wrapper>
@@ -38,15 +44,30 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
 const Wrapper = styled.div`
   position: relative;
   min-height: 1px;
-  padding: 0 12px 30px 12px;
+  padding: 0 12px;
 `;
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   padding-bottom: 70px;
 `;
 
-const LeadContainer = styled.div`
-  margin: 0;
-  margin-top: 3rem !important;
-  padding-bottom: 42px;
+const InfoWrapper = styled.div`
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+const LeadWrapper = styled.div`
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const BodyWrapper = styled.div`
+  margin: 64px 0;
+  display: flex;
+  flex-direction: column;
 `;

@@ -1,7 +1,5 @@
 import { useHttp } from "core/hooks/useHttp";
 
-import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
-import { GetArticlesLastResponse } from "./responses/GetArticlesLastResponse";
 import { GetPopularTitlesResponse } from "./responses/GetPopularTitlesResponse";
 import { GetPopularTitlesRequest } from "./requests/GetPopularTitlesRequest";
 import { GetTabsResponse } from "./responses/GetTabsResponse";
@@ -13,15 +11,6 @@ export const useBasicApi = () => {
 
   // ===================================
   // articles
-
-  const getArticlesLast = async (
-    request: GetArticlesLastRequest
-  ): Promise<GetArticlesLastResponse[]> =>
-    get<GetArticlesLastRequest, GetArticlesLastResponse[]>(
-      `${apiUrl}/articles/last`,
-      request
-    );
-
   const getPopularTitles = async (
     request: GetPopularTitlesRequest
   ): Promise<GetPopularTitlesResponse[]> =>
@@ -48,7 +37,6 @@ export const useBasicApi = () => {
 
   return {
     // articles
-    getArticlesLast,
     getPopularTitles,
 
     // categories
