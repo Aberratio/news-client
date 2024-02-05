@@ -1,7 +1,10 @@
 export interface CommentItem {
-  comment: string;
-  commentedOn: string;
+  author: string;
+  articleId: number;
+  date: Date;
+  dislikes: number;
   id: number;
   isVisible: boolean;
-  user?: any;
+  likes: number;
+  text: string;
 }

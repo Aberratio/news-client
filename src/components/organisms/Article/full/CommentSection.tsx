@@ -1,7 +1,15 @@
+"use client";
+
 import Typography from "components/atoms/Typography";
 import { CommentForm } from "./CommentForm";
+import { CommentContainer } from "./CommentContainer";
+import { CommentItem } from "types/CommentItem";
 
-export const CommentSection = () => {
+interface CommentSectionProps {
+  comments: CommentItem[];
+}
+
+export const CommentSection = ({ comments }: CommentSectionProps) => {
   return (
     <div>
       <hr />
@@ -12,6 +20,7 @@ export const CommentSection = () => {
       <div>
         <Typography>Brak komentarzy</Typography>
       </div>
+      <CommentContainer comments={comments} />
     </div>
   );
 };

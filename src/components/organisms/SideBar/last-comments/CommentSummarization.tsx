@@ -1,25 +1,25 @@
 import styled from "styled-components";
 import Typography from "components/atoms/Typography";
-import { CommentItem } from "./CommentItem";
 import { buildArticlePath } from "core/builders/buildPath";
+import { CommentSummarizationItem } from "types/CommentSummarizationItem";
 
-interface CommentProps {
-  comment: CommentItem;
+interface CommentSummarizationProps {
+  comment: CommentSummarizationItem;
   iterator: number;
 }
 
-export const Comment = ({ comment, iterator }: CommentProps) => {
+export const CommentSummarization = ({
+  comment,
+  iterator,
+}: CommentSummarizationProps) => {
   return (
-    <Container data-testid={`comment-${iterator}`}>
-      {/* <Counter>
-        <Typography>{iterator}</Typography>
-      </Counter> */}
+    <Container data-testid={`comment-summarization-${iterator}`}>
       <Link href={buildArticlePath(comment.articleId)}>
         <Typography>{comment.articleTitle}</Typography>
       </Link>
       <Typography wordBreak="break-word">
         <strong>{comment.author}: </strong>
-        <i>{comment.comment}</i>
+        <i>{comment.text}</i>
       </Typography>
     </Container>
   );
@@ -40,21 +40,6 @@ const Container = styled.li`
     display: inline !important;
     line-height: 1.25;
   }
-`;
-
-const Counter = styled.div`
-  margin-right: 0.5rem !important;
-  border-radius: 3px;
-  margin-bottom: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 16px;
-  line-height: 1.5;
-  width: 30px;
-  height: 30px;
-  background-color: rgb(46, 104, 150);
 `;
 
 const Link = styled.a`

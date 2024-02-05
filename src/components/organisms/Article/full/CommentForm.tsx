@@ -1,3 +1,5 @@
+"use client";
+
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
 import { SubmitHandler, useForm } from "react-hook-form";

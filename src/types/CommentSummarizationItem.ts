@@ -1,6 +1,6 @@
-export interface CommentItem {
+export interface CommentSummarizationItem {
   articleId: number;
   articleTitle: string;
   author: string;
-  comment: string;
+  text: string;
 }

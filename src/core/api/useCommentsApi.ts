@@ -5,7 +5,7 @@ export const useCommentsApi = () => {
   const { getCommentsLast } = useBasicApi();
 
   const getCommentsLastDetails = async (
-    limit: number,
+    limit: number
   ): Promise<GetCommentsLastResponse[]> => {
     return await getCommentsLast({
       limit,

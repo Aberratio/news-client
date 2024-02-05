@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Comment } from "./Comment";
+import { CommentSummarization } from "./CommentSummarization";
 import { useLastComments } from "./useLastComments";
 import { useEffect } from "react";
 import Widget from "components/molecules/Widget";
@@ -19,7 +19,11 @@ export const LastComments = () => {
     <Widget dataTestId="last-comments" title="Ostatnie komentarze">
       <List>
         {comments.map((comment, index) => (
-          <Comment comment={comment} key={index} iterator={index + 1} />
+          <CommentSummarization
+            comment={comment}
+            key={index}
+            iterator={index}
+          />
         ))}
       </List>
     </Widget>
