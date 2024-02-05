@@ -19,6 +19,7 @@ export const FirstSite = () => {
           src={`/images/first-site/${number}.jpg`}
           alt="Najnowszy numer"
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </ImageContainer>
     </Widget>

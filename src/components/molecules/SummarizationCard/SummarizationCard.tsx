@@ -25,7 +25,12 @@ export const SummarizationCard = ({ item }: SummarizationCardProps) => {
     <Wrapper data-testid="summarization-card">
       <Container>
         <Link href={item.path}>
-          <StyledImage src={item.photo.path} fill alt={item.photo.alt} />
+          <StyledImage
+            src={item.photo.path}
+            fill
+            alt={item.photo.alt}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </Link>
         <div>
           <Link href={item.path}>

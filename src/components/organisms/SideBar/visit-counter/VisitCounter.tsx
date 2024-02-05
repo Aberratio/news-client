@@ -24,8 +24,8 @@ export const VisitCounter = () => {
         <Typography color="white">Licznik odwiedzin strony</Typography>
         <VisitCounterContent>
           {digits.map((digit, index) => (
-            <NumberCard>
-              <Typography key={index}>{digit}</Typography>
+            <NumberCard key={index}>
+              <Typography>{digit}</Typography>
             </NumberCard>
           ))}
         </VisitCounterContent>

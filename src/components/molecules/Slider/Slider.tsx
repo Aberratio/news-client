@@ -46,6 +46,7 @@ const Slider = ({ images }: SliderProps) => {
           objectFit="cover"
           alt={image.description}
           $hasDescription={hasDescription}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {isSlideable && (
           <>

@@ -16,7 +16,6 @@ export const OrganizationContextProvider: React.FC<
 
   useEffect(() => {
     if (tabs.length > 0) {
-      console.log(tabs);
       setIsReady(true);
     }
   }, [tabs]);

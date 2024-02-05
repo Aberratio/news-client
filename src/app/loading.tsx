@@ -8,6 +8,7 @@ export default function Loading() {
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        marginTop: "200px",
       }}
     >
       <Spinner />

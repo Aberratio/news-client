@@ -6,6 +6,7 @@ import { AllComments } from "./AllComments";
 import { CommentItem } from "types/CommentItem";
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
 import { revalidateCommentsTag } from "./revalidateCommentsTag";
+import { EmptyCommentsSection } from "./EmptyCommentsSection";
 
 interface CommentsSectionProps {
   articleId: number;
@@ -26,9 +27,7 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
       />
       {/* <form action={fetchNewComment}></form> */}
       {comments.length === 0 ? (
-        <div>
-          <Typography>Brak komentarzy</Typography>
-        </div>
+        <EmptyCommentsSection />
       ) : (
         <AllComments comments={comments} />
       )}
