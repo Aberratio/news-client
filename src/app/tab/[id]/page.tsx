@@ -14,7 +14,7 @@ const TabPage = ({ params }: TabPageProps) => {
         tabId: Number(params.id),
       }}
     >
-      <ArticlesOverview categoryId={Number(params.id)} />
+      <ArticlesOverview tabId={Number(params.id)} />
     </SimplePageTemplate>
   );
 };

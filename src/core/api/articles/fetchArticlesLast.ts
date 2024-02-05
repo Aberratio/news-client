@@ -60,9 +60,10 @@ const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
   });
 
 interface GetArticlesLastRequest {
-  category?: number;
+  categoryId?: number;
   limit: number;
   page?: number;
+  tabId?: number;
 }
 
 interface GetArticlesLastResponse {

@@ -4,19 +4,22 @@ import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems"
 import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 
 interface ArticlesOverviewProps {
-  amount?: number;
+  limit?: number;
   categoryId?: number;
+  tabId?: number;
   page?: number;
 }
 
 export const ArticlesOverview = async ({
-  amount = 30,
+  limit = 30,
   categoryId,
   page = 0,
+  tabId,
 }: ArticlesOverviewProps) => {
   const articles = await fetchArticlesLast({
-    category: categoryId,
-    limit: amount,
+    categoryId,
+    tabId,
+    limit,
     page,
   });
 
