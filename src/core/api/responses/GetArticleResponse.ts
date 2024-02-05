@@ -2,7 +2,7 @@ export interface GetArticleResponse {
   author: Author;
   body: string;
   category: Category;
-  comments?: Comment[];
+  commentsAmount: number;
   createdOn: Date;
   id: number;
   isArchived: boolean;
@@ -11,14 +11,8 @@ export interface GetArticleResponse {
   photos: Photo[];
   title: string;
   views: number;
-}
-
-interface Comment {
-  comment: string;
-  commentedOn: Date;
-  id: number;
-  isVisible: boolean;
-  user?: any;
+  likes: number;
+  dislikes: number;
 }
 
 interface Photo {

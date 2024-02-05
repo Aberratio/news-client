@@ -7,6 +7,7 @@ import Typography from "components/atoms/Typography";
 import { MetadataBar } from "components/organisms/Article/MetadataBar";
 import { StatisticBar } from "components/organisms/Article/StatisticBar";
 import Link from "next/link";
+import { StatisticsItem } from "types/StatisticsItem";
 
 interface SummarizationCardWithStatsItem {
   id: number;
@@ -17,6 +18,7 @@ interface SummarizationCardWithStatsItem {
     description?: string;
     path: string;
   };
+  statistics: StatisticsItem;
 }
 
 interface SummarizationCardWithStatsProps {
@@ -38,14 +40,7 @@ export const SummarizationCardWithStats = ({
           </Typography>
         </StyledLink>
         <MetadataBar authorName="anm" createdOn="2024-02-02" />
-        <StatisticBar
-          statistics={{
-            comments: 0,
-            dislikes: 1,
-            likes: 5,
-            views: 381,
-          }}
-        />
+        <StatisticBar statistics={item.statistics} />
       </Container>
     </Wrapper>
   );

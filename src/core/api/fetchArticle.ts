@@ -16,9 +16,7 @@ export const fetchArticle = async (
 ): Promise<FullArticleItem> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/${articleId}`,
-    {
-      cache: "force-cache",
-    }
+    { next: { revalidate: 60, tags: ["comments"] } }
   );
 
   return mapData((await response.json()) as GetArticleResponse);
@@ -53,9 +51,9 @@ const mapData = (data: GetArticleResponse): FullArticleItem => {
       };
     }),
     statistics: {
-      comments: data.comments?.length ?? 0,
-      dislikes: 0,
-      likes: 0,
+      comments: data.commentsAmount ?? 0,
+      dislikes: data.dislikes ?? 0,
+      likes: data.likes ?? 0,
       views: data.views ?? 0,
     },
     title: data.title,
