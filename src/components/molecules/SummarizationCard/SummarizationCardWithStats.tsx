@@ -40,7 +40,7 @@ export const SummarizationCardWithStats = ({
           />
         </ImageLink>
         <StyledLink href={item.path}>
-          <Typography wrap marginBottom={2}>
+          <Typography wrap space={{ marginBottom: 2 }}>
             {item.title}
           </Typography>
         </StyledLink>

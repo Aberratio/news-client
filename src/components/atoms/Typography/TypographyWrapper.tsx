@@ -12,17 +12,17 @@ import {
 import { Font } from "core/styles/types/CustomFonts";
 import { WordBreakProps } from "./types/WordBreakProps";
 
-interface TypographyWrapperProps
-  extends FlexboxProps,
-    GridProps,
-    SpaceProps,
-    TextAlignProps {
+interface TypographyWrapperProps {
   $color?: string;
   $isCapitalized?: boolean;
   $isUppercase?: boolean;
   $typographyVariant: Font;
   $wordBreak?: WordBreakProps;
   $wrap?: boolean;
+  $flexbox?: FlexboxProps;
+  $grid?: GridProps;
+  $space?: SpaceProps;
+  $textAlign?: TextAlignProps;
 }
 
 export const TypographyWrapper = styled.p<TypographyWrapperProps>`
@@ -38,10 +38,10 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
     font-weight: 700;
   }
 
-  ${flexbox};
-  ${grid};
-  ${space};
-  ${textAlign};
+  ${({ $flexbox }) => $flexbox && flexbox($flexbox)};
+  ${({ $grid }) => $grid && grid($grid)};
+  ${({ $space }) => $space && space($space)};
+  ${({ $textAlign }) => $textAlign && textAlign($textAlign)};
 
   ${({ $color }) =>
     $color &&

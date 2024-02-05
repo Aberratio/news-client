@@ -54,4 +54,5 @@ const Logo = styled(Image)`
   vertical-align: middle;
   border-style: none;
   width: 95%;
+  height: auto;
 `;

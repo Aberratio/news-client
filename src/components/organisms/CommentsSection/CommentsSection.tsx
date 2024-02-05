@@ -17,7 +17,7 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
   return (
     <div id="comments">
       <hr />
-      <Typography variant="h2" marginBottom={40} marginTop={24}>
+      <Typography variant="h2" space={{ marginBottom: 40, marginTop: 24 }}>
         Komentarze
       </Typography>
       <CommentForm

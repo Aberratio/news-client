@@ -16,7 +16,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
-        <Typography variant="h1" marginBottom={12}>
+        <Typography variant="h1" space={{ marginBottom: 12 }}>
           {article.title}
         </Typography>
         <InfoWrapper>

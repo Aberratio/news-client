@@ -21,8 +21,7 @@ const RulesPage = () => {
               <Typography
                 variant="h3"
                 color={customTheme.general.secondaryColor}
-                marginTop={30}
-                marginBottom={10}
+                space={{ marginBottom: 10, marginTop: 30 }}
               >
                 {rule.title}
               </Typography>

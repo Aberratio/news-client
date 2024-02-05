@@ -43,11 +43,19 @@ const LargeInfoCard = ({
         <Part>
           <Description>
             <Title href={link}>
-              <Typography color="white" variant="h2" textAlign="left">
+              <Typography
+                color="white"
+                variant="h2"
+                textAlign={{ textAlign: "left" }}
+              >
                 {title}
               </Typography>
             </Title>
-            <Typography color="white" marginBottom={30} textAlign="left">
+            <Typography
+              color="white"
+              space={{ marginBottom: 30 }}
+              textAlign={{ textAlign: "left" }}
+            >
               {cutText(description, 300)}
             </Typography>
             <Link href={link}>
