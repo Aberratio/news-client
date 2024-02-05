@@ -1,18 +1,20 @@
 "use client";
 
 import Typography from "components/atoms/Typography";
-import { Comment } from "../../../molecules/Comment/Comment";
+import { Comment } from "../../molecules/Comment/Comment";
 import { styled } from "styled-components";
 import { CommentItem } from "types/CommentItem";
 
-interface CommentContainerProps {
+interface AllCommentsProps {
   comments: CommentItem[];
 }
 
-export const CommentContainer = ({ comments }: CommentContainerProps) => {
+export const AllComments = ({ comments }: AllCommentsProps) => {
   return (
     <Container>
-      <Typography variant="h3">Wszystkie komentarze</Typography>
+      <Typography variant="h3" marginTop={32}>
+        Wszystkie komentarze
+      </Typography>
       {comments.map((comment: any, index: number) => (
         <Comment
           author={comment.author}

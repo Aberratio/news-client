@@ -1,7 +1,7 @@
 "use server";
 
 import { FullArticleItem } from "types/FullArticleItem";
-import { CommentSection } from "./CommentSection";
+import CommentSection from "../../CommentsSection";
 import { FullArticleContent } from "./FullArticleContent";
 import { fetchCommentsArticle } from "core/api/comments/fetchCommentsArticle";
 

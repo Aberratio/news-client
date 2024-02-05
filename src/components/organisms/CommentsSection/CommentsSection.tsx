@@ -2,14 +2,14 @@
 
 import Typography from "components/atoms/Typography";
 import { CommentForm } from "./CommentForm";
-import { CommentContainer } from "./CommentContainer";
+import { AllComments } from "./AllComments";
 import { CommentItem } from "types/CommentItem";
 
-interface CommentSectionProps {
+interface CommentsSectionProps {
   comments: CommentItem[];
 }
 
-export const CommentSection = ({ comments }: CommentSectionProps) => {
+const CommentsSection = ({ comments }: CommentsSectionProps) => {
   return (
     <div>
       <hr />
@@ -17,10 +17,15 @@ export const CommentSection = ({ comments }: CommentSectionProps) => {
         Komentarze
       </Typography>
       <CommentForm />
-      <div>
-        <Typography>Brak komentarzy</Typography>
-      </div>
-      <CommentContainer comments={comments} />
+      {comments.length === 0 ? (
+        <div>
+          <Typography>Brak komentarzy</Typography>
+        </div>
+      ) : (
+        <AllComments comments={comments} />
+      )}
     </div>
   );
 };
+
+export default CommentsSection;
