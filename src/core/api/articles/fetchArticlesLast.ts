@@ -8,16 +8,8 @@ import {
   buildArticlePath,
   buildPhotoPath,
 } from "core/builders/buildPath";
-import { GetArticlesLastRequest } from "./requests/GetArticlesLastRequest";
 import { buildUrl } from "core/builders/buildUrl";
-import { GetArticlesLastResponse } from "./responses/GetArticlesLastResponse";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
-
-// {
-//   category: categoryId,
-//   limit: limit ?? 10,
-//   page: page ?? 0,
-// }
 
 export const fetchArticlesLast = async (
   request: GetArticlesLastRequest
@@ -28,7 +20,7 @@ export const fetchArticlesLast = async (
   );
 
   const response = await fetch(fullUrl, {
-    cache: "force-cache",
+    next: { revalidate: 60, tags: ["comments"] },
   });
 
   return mapData((await response.json()) as GetArticlesLastResponse[]);
@@ -58,11 +50,41 @@ const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
         path: buildPhotoPath(item.photo.path),
       },
       statistics: {
-        comments: 0,
-        dislikes: 0,
-        likes: 0,
+        comments: item.commentsAmount ?? 0,
+        dislikes: item.dislikes ?? 0,
+        likes: item.likes ?? 0,
         views: item.views ?? 0,
       },
       title: item.title,
     };
   });
+
+interface GetArticlesLastRequest {
+  category?: number;
+  limit: number;
+  page?: number;
+}
+
+interface GetArticlesLastResponse {
+  author: {
+    id: number;
+    name: string;
+  };
+  category: {
+    id: number;
+    name: string;
+    tabId: number;
+    tabName: string;
+  };
+  commentsAmount: number;
+  createdOn: Date;
+  id: number;
+  photo: {
+    description: string;
+    path: string;
+  };
+  title: string;
+  views: number;
+  likes: number;
+  dislikes: number;
+}

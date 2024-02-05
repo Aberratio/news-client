@@ -3,7 +3,7 @@
 import { FullArticle } from "components/organisms/Article/full/FullArticle";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
-import { fetchArticle } from "../../../core/api/fetchArticle";
+import { fetchArticle } from "../../../core/api/articles/fetchArticle";
 
 interface ArticlePageProps {
   params: { id: string };

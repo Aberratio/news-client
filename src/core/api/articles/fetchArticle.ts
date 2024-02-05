@@ -1,6 +1,5 @@
 "use server";
 
-import { GetArticleResponse } from "core/api/responses/GetArticleResponse";
 import { formatDateToString } from "core/builders/buildDate";
 import {
   buildAuthorPath,
@@ -59,3 +58,37 @@ const mapData = (data: GetArticleResponse): FullArticleItem => {
     title: data.title,
   };
 };
+
+interface GetArticleResponse {
+  author: {
+    id: number;
+    name: string;
+  };
+  body: string;
+  category: {
+    id: number;
+    name: string;
+    tabId: number;
+    tabName: string;
+  };
+  commentsAmount: number;
+  createdOn: Date;
+  id: number;
+  isArchived: boolean;
+  isPublished: boolean;
+  lead: string;
+  photos: {
+    author: {
+      id: number;
+      name: string;
+    };
+    description: string;
+    id: number;
+    isMain: boolean;
+    path: string;
+  }[];
+  title: string;
+  views: number;
+  likes: number;
+  dislikes: number;
+}

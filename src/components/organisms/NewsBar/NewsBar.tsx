@@ -1,23 +1,14 @@
-"use client";
+"use server";
 
 import LargeInfoCard from "../../molecules/LargeInfoCard";
-import { useLastArticles } from "components/organisms/Article/useLastArticles";
-import { useEffect, useState } from "react";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 
-export const NewsBar = () => {
-  const { articles, isLoading, loadArticles } = useLastArticles();
-  const [article, setArticle] = useState<ArticleSummarizationItem>();
+interface NewsBarProps {
+  article: ArticleSummarizationItem;
+}
 
-  useEffect(() => {
-    loadArticles(undefined, 4);
-  }, []);
-
-  useEffect(() => {
-    articles.length && setArticle(articles[0]);
-  }, [articles]);
-
-  if (isLoading || !article) {
+export const NewsBar = ({ article }: NewsBarProps) => {
+  if (!article) {
     return null;
   }
 

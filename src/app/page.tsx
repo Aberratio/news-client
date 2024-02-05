@@ -1,10 +1,21 @@
-import { ArticlesOverview } from "components/organisms/Article/ArticlesOverview";
-import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
+"use server";
 
-const HomePage = () => {
+import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
+import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
+import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
+
+const HomePage = async () => {
+  const articles = await fetchArticlesLast({
+    limit: 61,
+    page: 0,
+  });
+
   return (
-    <HomePageTemplate>
-      <ArticlesOverview amount={60} />
+    <HomePageTemplate article={articles[0]}>
+      <OverviewWithStatsItems
+        items={articles.slice(1)}
+        dataTestId={`article-summarizatoin-box-latest`}
+      />
     </HomePageTemplate>
   );
 };
