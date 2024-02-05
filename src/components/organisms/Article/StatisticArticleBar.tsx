@@ -3,54 +3,59 @@
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { Thumb } from "components/molecules/Icons/Thumb";
-import { fetchCommentsReaction } from "core/api/comments/fetchCommentsReaction";
 import { useEffect, useState } from "react";
+import { fetchArticleReaction } from "core/api/articles/fetchArticleReaction";
+import { Comments } from "components/molecules/Icons/Comments";
+import { Eye } from "components/molecules/Icons/Eye";
+import { StatisticsItem } from "types/StatisticsItem";
+import Link from "next/link";
 
-interface StatisticBarProps {
-  commentId: number;
-  likes: number;
-  dislikes: number;
+interface StatisticArticleBarProps {
+  articleId: number;
+  commentsPath: string;
+  statistics: StatisticsItem;
 }
 
-export const StatisticCommentBar = ({
-  commentId,
-  likes,
-  dislikes,
-}: StatisticBarProps) => {
+export const StatisticArticleBar = ({
+  articleId,
+  commentsPath,
+  statistics,
+}: StatisticArticleBarProps) => {
   const [sessionReaction, setSessionReaction] = useState<string>("");
+  const { likes, dislikes, views, comments } = statistics;
 
   useEffect(() => {
-    const storedReaction = sessionStorage.getItem(`comment-${commentId}`);
+    const storedReaction = sessionStorage.getItem(`article-${articleId}`);
     if (["like", "dislike", ""].includes(storedReaction ?? "")) {
       setSessionReaction(storedReaction ?? "");
     }
-  }, [commentId]);
+  }, [articleId]);
 
   const onReactionClick = async (reaction: "like" | "dislike") => {
     if (sessionReaction === "") {
       // Jest zero reakcji, klika nową
       setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${commentId}`, reaction);
-      await fetchCommentsReaction({
-        commentId,
+      sessionStorage.setItem(`article-${articleId}`, reaction);
+      await fetchArticleReaction({
+        articleId,
         like: reaction === "like" ? 1 : 0,
         dislike: reaction === "dislike" ? 1 : 0,
       });
     } else if (sessionReaction !== reaction) {
       // Jest stara reakcja, klika inną
       setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${commentId}`, reaction);
-      await fetchCommentsReaction({
-        commentId,
+      sessionStorage.setItem(`comment-${articleId}`, reaction);
+      await fetchArticleReaction({
+        articleId,
         like: reaction === "like" ? 1 : -1,
         dislike: reaction === "dislike" ? 1 : -1,
       });
     } else {
       // Jest stara reakcja, klika tą samą
       setSessionReaction("");
-      sessionStorage.setItem(`comment-${commentId}`, "");
-      await fetchCommentsReaction({
-        commentId,
+      sessionStorage.setItem(`comment-${articleId}`, "");
+      await fetchArticleReaction({
+        articleId,
         like: reaction === "like" ? -1 : 0,
         dislike: reaction === "dislike" ? -1 : 0,
       });
@@ -59,6 +64,18 @@ export const StatisticCommentBar = ({
 
   return (
     <Container data-testid="statistic-bar">
+      <Item>
+        <Counter>
+          <Typography variant="small">{views}</Typography>
+        </Counter>
+        <Eye />
+      </Item>
+      <LinkItem href={commentsPath}>
+        <Counter>
+          <Typography variant="small">{comments}</Typography>
+        </Counter>
+        <Comments />
+      </LinkItem>
       <Item onClick={() => onReactionClick("like")}>
         <Counter>
           <Typography variant="small" color="black">
@@ -96,6 +113,15 @@ const Item = styled.div`
   padding: 0 12px 0 0;
   cursor: pointer;
   border: none;
+`;
+
+const LinkItem = styled(Link)`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px 0 0;
+  cursor: pointer;
 `;
 
 const Container = styled.div`

@@ -10,15 +10,11 @@ import Link from "next/link";
 
 interface StatisticBarProps {
   commentsPath?: string;
-  onDislikeClick?: () => void;
-  onLikeClick?: () => void;
   statistics: StatisticsItem;
 }
 
 export const StatisticBar = ({
   commentsPath,
-  onDislikeClick,
-  onLikeClick,
   statistics,
 }: StatisticBarProps) => {
   return (
@@ -29,19 +25,19 @@ export const StatisticBar = ({
         </Counter>
         <Eye />
       </Item>
-      <LinkItem href={commentsPath ?? "#"} $isClickable={!!commentsPath}>
+      <LinkItem href={commentsPath ?? "#"}>
         <Counter>
           <Typography variant="small">{statistics.comments}</Typography>
         </Counter>
         <Comments />
       </LinkItem>
-      <Item onClick={onLikeClick} $isClickable={!!onLikeClick}>
+      <Item>
         <Counter>
           <Typography variant="small">{statistics.likes}</Typography>
         </Counter>
         <ThumbDown />
       </Item>
-      <Item onClick={onDislikeClick} $isClickable={!!onDislikeClick}>
+      <Item>
         <Counter>
           <Typography variant="small">{statistics.dislikes}</Typography>
         </Counter>
@@ -70,18 +66,12 @@ const LinkItem = styled(Link)<{ $isClickable?: boolean }>`
   `}
 `;
 
-const Item = styled.div<{ $isClickable?: boolean }>`
+const Item = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
   padding: 0 12px 0 0;
-
-  ${({ $isClickable }) =>
-    $isClickable &&
-    `
-    cursor: pointer;
-  `}
 `;
 
 const Container = styled.a`

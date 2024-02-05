@@ -1,6 +1,6 @@
 import Typography from "components/atoms/Typography";
 import { styled } from "styled-components";
-import { StatisticCommentBar } from "../../organisms/Article/StatisticCommentBar";
+import { StatisticCommentBar } from "./StatisticCommentBar";
 
 interface CommentProps {
   author: string;

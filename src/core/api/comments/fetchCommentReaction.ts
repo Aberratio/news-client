@@ -1,16 +1,16 @@
 "use server";
 
-interface FetchCommentsReactionProps {
+interface FetchCommentReactionProps {
   commentId: number;
   like: number;
   dislike: number;
 }
 
-export const fetchCommentsReaction = async ({
+export const fetchCommentReaction = async ({
   commentId,
   like,
   dislike,
-}: FetchCommentsReactionProps): Promise<void> => {
+}: FetchCommentReactionProps): Promise<void> => {
   await fetch(
     `${process.env.NEXT_PUBLIC_BASIC_URL}/comments/reaction/${commentId}`,
     {

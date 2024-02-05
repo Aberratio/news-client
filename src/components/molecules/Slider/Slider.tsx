@@ -11,7 +11,7 @@ interface SliderProps {
   images: PhotoItem[];
 }
 
-export const Slider = ({ images }: SliderProps) => {
+const Slider = ({ images }: SliderProps) => {
   const [image, setImage] = useState<PhotoItem>(images[0]);
   const [index, setIndex] = useState<number>(0);
   const isSlideable = images.length > 1;
@@ -44,7 +44,7 @@ export const Slider = ({ images }: SliderProps) => {
           src={image.path}
           fill
           objectFit="cover"
-          alt={image.description ?? "zdjęcie artykułu"}
+          alt={image.description}
           $hasDescription={hasDescription}
         />
         {isSlideable && (
@@ -68,6 +68,8 @@ export const Slider = ({ images }: SliderProps) => {
     </>
   );
 };
+
+export default Slider;
 
 const Description = styled.div`
   padding: 16px;

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import Typography from "components/atoms/Typography";
 import { MetadataBar } from "components/organisms/Article/MetadataBar";
-import { StatisticBar } from "components/organisms/Article/StatisticBar";
+import { StatisticBar } from "components/molecules/SummarizationCard/StatisticBar";
 import Link from "next/link";
 import { StatisticsItem } from "types/StatisticsItem";
 

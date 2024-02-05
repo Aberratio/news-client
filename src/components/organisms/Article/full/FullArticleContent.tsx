@@ -4,8 +4,8 @@ import { MetadataBar } from "components/organisms/Article/MetadataBar";
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
-import { Slider } from "./Slider";
-import { StatisticBar } from "../StatisticBar";
+import Slider from "../../../molecules/Slider";
+import { StatisticArticleBar } from "../StatisticArticleBar";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -13,10 +13,6 @@ interface FullArticleProps {
 }
 
 export const FullArticleContent = ({ article, children }: FullArticleProps) => {
-  const onDislikeClick = () => {
-    console.log("onDislikeClick clicked");
-  };
-
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
@@ -28,10 +24,10 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
             authorName={article.author.name}
             createdOn={article.createdOn}
           />
-          <StatisticBar
+          <StatisticArticleBar
+            articleId={article.id}
             commentsPath="#comments"
             statistics={article.statistics}
-            onDislikeClick={onDislikeClick}
           />
         </InfoWrapper>
         <LeadWrapper>

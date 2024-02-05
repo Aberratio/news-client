@@ -2,7 +2,6 @@
 
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
-import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { styled } from "styled-components";
 
