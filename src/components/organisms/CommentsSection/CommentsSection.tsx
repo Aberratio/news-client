@@ -14,9 +14,9 @@ interface CommentsSectionProps {
 
 const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
   return (
-    <div>
+    <div id="comments">
       <hr />
-      <Typography variant="h2" marginBottom={40}>
+      <Typography variant="h2" marginBottom={40} marginTop={24}>
         Komentarze
       </Typography>
       <CommentForm

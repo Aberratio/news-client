@@ -13,6 +13,10 @@ interface FullArticleProps {
 }
 
 export const FullArticleContent = ({ article, children }: FullArticleProps) => {
+  const onDislikeClick = () => {
+    console.log("onDislikeClick clicked");
+  };
+
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
@@ -24,7 +28,11 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
             authorName={article.author.name}
             createdOn={article.createdOn}
           />
-          <StatisticBar statistics={article.statistics} />
+          <StatisticBar
+            commentsPath="#comments"
+            statistics={article.statistics}
+            onDislikeClick={onDislikeClick}
+          />
         </InfoWrapper>
         <LeadWrapper>
           <Typography color="#666">
@@ -50,7 +58,6 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 70px;
 `;
 
 const InfoWrapper = styled.div`

@@ -6,12 +6,21 @@ import styled from "styled-components";
 import { StatisticsItem } from "../../../types/StatisticsItem";
 import { Eye } from "components/molecules/Icons/Eye";
 import { Thumb } from "components/molecules/Icons/Thumb";
+import Link from "next/link";
 
 interface StatisticBarProps {
+  commentsPath?: string;
+  onDislikeClick?: () => void;
+  onLikeClick?: () => void;
   statistics: StatisticsItem;
 }
 
-export const StatisticBar = ({ statistics }: StatisticBarProps) => {
+export const StatisticBar = ({
+  commentsPath,
+  onDislikeClick,
+  onLikeClick,
+  statistics,
+}: StatisticBarProps) => {
   return (
     <Container data-testid="statistic-bar">
       <Item>
@@ -20,19 +29,19 @@ export const StatisticBar = ({ statistics }: StatisticBarProps) => {
         </Counter>
         <Eye />
       </Item>
-      <Item>
+      <LinkItem href={commentsPath ?? "#"} $isClickable={!!commentsPath}>
         <Counter>
           <Typography variant="small">{statistics.comments}</Typography>
         </Counter>
         <Comments />
-      </Item>
-      <Item>
+      </LinkItem>
+      <Item onClick={onLikeClick} $isClickable={!!onLikeClick}>
         <Counter>
           <Typography variant="small">{statistics.likes}</Typography>
         </Counter>
         <ThumbDown />
       </Item>
-      <Item>
+      <Item onClick={onDislikeClick} $isClickable={!!onDislikeClick}>
         <Counter>
           <Typography variant="small">{statistics.dislikes}</Typography>
         </Counter>
@@ -47,12 +56,32 @@ const ThumbDown = styled(Thumb)`
 `;
 const Counter = styled.div``;
 
-const Item = styled.div`
+const LinkItem = styled(Link)<{ $isClickable?: boolean }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
   padding: 0 12px 0 0;
+
+  ${({ $isClickable }) =>
+    $isClickable &&
+    `
+    cursor: pointer;
+  `}
+`;
+
+const Item = styled.div<{ $isClickable?: boolean }>`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px 0 0;
+
+  ${({ $isClickable }) =>
+    $isClickable &&
+    `
+    cursor: pointer;
+  `}
 `;
 
 const Container = styled.a`
