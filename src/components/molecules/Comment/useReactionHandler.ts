@@ -4,11 +4,15 @@ import { fetchCommentReaction } from "core/api/comments/fetchCommentReaction";
 export const useReactionHandler = (commentId: number) => {
   const [sessionReaction, setSessionReaction] = useState<string>("");
 
-  useEffect(() => {
+  const reload = () => {
     const storedReaction = sessionStorage.getItem(`comment-${commentId}`);
     if (["like", "dislike", ""].includes(storedReaction ?? "")) {
       setSessionReaction(storedReaction ?? "");
     }
+  };
+
+  useEffect(() => {
+    reload();
   }, [commentId]);
 
   const handleReaction = async (reaction: "like" | "dislike") => {
@@ -39,5 +43,5 @@ export const useReactionHandler = (commentId: number) => {
     }
   };
 
-  return { sessionReaction, handleReaction };
+  return { sessionReaction, handleReaction, reload };
 };

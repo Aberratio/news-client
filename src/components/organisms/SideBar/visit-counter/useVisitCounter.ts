@@ -1,3 +1,5 @@
+"use client";
+
 import { useAdminApi } from "core/api/useAdminApi";
 import { useState } from "react";
 

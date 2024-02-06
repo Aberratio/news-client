@@ -21,28 +21,24 @@ export const LogoBar = () => {
 };
 
 const Wrapper = styled.div`
-  ${({ theme }) => `
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    width: 100%;
-    max-width: 300px;
-    height: 65px;
+  width: 100%;
+  max-width: 300px;
+  height: 65px;
 
-    margin: auto;
-  `}
+  margin: auto;
 `;
 
 const Container = styled.div`
-  ${({ theme }) => `
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 100%;
-    height: 100%;
-  `}
+  width: 100%;
+  height: 100%;
 `;
 
 const Link = styled.a`

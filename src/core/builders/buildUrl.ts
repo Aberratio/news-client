@@ -1,31 +1,24 @@
-const eachRecursive = <TRequest>(
-  url: string,
-  obj: TRequest,
-  objName = "",
+export const buildUrl = (
+  baseUrl: string,
+  params?: Record<string, any>
 ): string => {
-  for (const key in obj) {
-    if (typeof obj[key] === "object" && obj[key] !== null) {
-      url = eachRecursive(url, obj[key], key);
-    } else if (obj[key] !== null && obj[key] !== undefined) {
-      let key2 = key;
+  if (!params) return baseUrl;
 
-      if (objName !== "") {
-        key2 = `${objName}.${key}` as Extract<keyof TRequest, string>;
+  const queryString = Object.entries(params)
+    .map(([key, value]) => {
+      if (typeof value === "object" && value !== null) {
+        return Object.entries(value)
+          .map(
+            ([nestedKey, nestedValue]) => `${key}.${nestedKey}=${nestedValue}`
+          )
+          .join("&");
+      } else if (value !== null && value !== undefined) {
+        return `${key}=${value}`;
       }
+      return "";
+    })
+    .filter(Boolean)
+    .join("&");
 
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      const param = `${key2}=${obj[key]}`;
-
-      url += (url.indexOf("?") !== -1 ? "&" : "?") + param;
-    }
-  }
-
-  return url;
-};
-
-export const buildUrl = <TRequest>(
-  url: string,
-  parameters: TRequest,
-): string => {
-  return eachRecursive(url, parameters);
+  return `${baseUrl}${queryString ? `?${queryString}` : ""}`;
 };

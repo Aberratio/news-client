@@ -61,7 +61,11 @@ const Slider = ({ images }: SliderProps) => {
       </SliderContainer>
       {hasDescription && (
         <Description>
-          <Typography variant="small" color="white" textAlign="center">
+          <Typography
+            variant="small"
+            color="white"
+            textAlign={{ textAlign: "center" }}
+          >
             {image.description}
           </Typography>
         </Description>

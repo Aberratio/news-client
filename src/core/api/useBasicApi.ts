@@ -14,20 +14,17 @@ export const useBasicApi = () => {
   const getPopularTitles = async (
     request: GetPopularTitlesRequest
   ): Promise<GetPopularTitlesResponse[]> =>
-    get<GetPopularTitlesRequest, GetPopularTitlesResponse[]>(
-      `${apiUrl}/articles/popular`,
-      request
-    );
+    get<GetPopularTitlesResponse[]>(`${apiUrl}/articles/popular`, request);
 
   // ===================================
   // categories
   const getTabs = async (): Promise<GetTabsResponse[]> =>
-    get<void, GetTabsResponse[]>(`${apiUrl}/categories/tabs`);
+    get<GetTabsResponse[]>(`${apiUrl}/categories/tabs`);
 
   // ===================================
   // admin
   const getVisits = async (): Promise<number> =>
-    get<void, number>(`${apiUrl}/admin/visits`);
+    get<number>(`${apiUrl}/admin/visits`);
 
   const postVisits = async (request: PostVisitsRequest): Promise<number> =>
     post<PostVisitsRequest, number>(`${apiUrl}/admin/visits`, request);

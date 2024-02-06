@@ -26,7 +26,6 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
         sendComment={fetchNewComment}
         revalidateCommentsTag={revalidateCommentsTag}
       />
-      {/* <form action={fetchNewComment}></form> */}
       {comments.length === 0 ? (
         <EmptyCommentsSection />
       ) : (

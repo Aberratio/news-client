@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 import { colors } from "core/styles/colors";
 
@@ -11,8 +12,15 @@ export const Thumb = ({
   isActive = false,
   size,
 }: ThumbProps) => {
+  const [isThumbActive, setIsThumbActive] = useState<boolean>(isActive);
+
+  useEffect(() => {
+    setIsThumbActive(isActive);
+    console.log("isActive", isActive);
+  }, [isActive]);
+
   const calculateColor = () => {
-    if (isActive) {
+    if (isThumbActive) {
       return direction === "right" ? colors.red : colors.green;
     }
 

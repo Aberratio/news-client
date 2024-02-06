@@ -1,6 +1,9 @@
+"use server";
+
 import Typography from "components/atoms/Typography";
-import { styled } from "styled-components";
 import { StatisticCommentBar } from "./StatisticCommentBar";
+import { CommentMeta } from "./CommentMeta";
+import { revalidateCommentReactionsTag } from "components/organisms/CommentsSection/revalidateCommentReactionsTag";
 
 interface CommentProps {
   author: string;
@@ -23,27 +26,17 @@ const Comment = ({
 }: CommentProps) => {
   return (
     <div>
-      <CommentMeta>
-        <Typography>
-          <strong>{author}</strong>
-        </Typography>
-        <Typography variant="small">{date}</Typography>
-      </CommentMeta>
+      <CommentMeta author={author} date={date} />
       <Typography>{text}</Typography>
       <StatisticCommentBar
         commentId={commentId}
+        dislikes={dislikes}
         isReadOnly={isReadOnly}
         likes={likes}
-        dislikes={dislikes}
+        revalidateCommentReactionsTag={revalidateCommentReactionsTag}
       />
     </div>
   );
 };
 
 export default Comment;
-
-const CommentMeta = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;

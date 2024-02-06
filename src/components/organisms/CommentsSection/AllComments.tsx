@@ -1,9 +1,9 @@
-"use client";
+"use server";
 
 import Typography from "components/atoms/Typography";
 import Comment from "../../molecules/Comment";
-import { styled } from "styled-components";
 import { CommentItem } from "types/CommentItem";
+import { AllCommentsWrapper } from "./AllCommentsWrapper";
 
 interface AllCommentsProps {
   comments: CommentItem[];
@@ -11,7 +11,7 @@ interface AllCommentsProps {
 
 export const AllComments = ({ comments }: AllCommentsProps) => {
   return (
-    <Container>
+    <AllCommentsWrapper>
       <Typography variant="h3" space={{ marginTop: 32 }}>
         Wszystkie komentarze
       </Typography>
@@ -26,13 +26,6 @@ export const AllComments = ({ comments }: AllCommentsProps) => {
           text={comment.text}
         />
       ))}
-    </Container>
+    </AllCommentsWrapper>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 24px 0;
-`;

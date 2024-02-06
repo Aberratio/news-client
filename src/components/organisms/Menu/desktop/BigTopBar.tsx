@@ -11,7 +11,7 @@ export const BigTopBar = () => {
       <Container>
         <Part>
           <LinkButton to={aboutPagePath}>
-            <Typography variant="small" justifyContent="center">
+            <Typography variant="small" flexbox={{ justifyContent: "center" }}>
               O nas
             </Typography>
           </LinkButton>

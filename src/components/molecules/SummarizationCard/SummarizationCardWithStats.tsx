@@ -10,6 +10,8 @@ import Link from "next/link";
 import { StatisticsItem } from "types/StatisticsItem";
 
 interface SummarizationCardWithStatsItem {
+  authorName: string;
+  date: string;
   id: number;
   title: string;
   path: string;
@@ -44,7 +46,7 @@ export const SummarizationCardWithStats = ({
             {item.title}
           </Typography>
         </StyledLink>
-        <MetadataBar authorName="anm" createdOn="2024-02-02" />
+        <MetadataBar authorName={item.authorName} createdOn={item.date} />
         <StatisticBar statistics={item.statistics} />
       </Container>
     </Wrapper>

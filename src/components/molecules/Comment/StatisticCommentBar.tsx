@@ -1,46 +1,68 @@
+"use client";
+
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { Thumb } from "components/molecules/Icons/Thumb";
 import { useReactionHandler } from "./useReactionHandler";
+import { useEffect, useState } from "react";
 
 interface StatisticBarProps {
   commentId: number;
+  dislikes: number;
   isReadOnly: boolean;
   likes: number;
-  dislikes: number;
+  revalidateCommentReactionsTag: any;
 }
 
 export const StatisticCommentBar = ({
   commentId,
+  dislikes,
   isReadOnly,
   likes,
-  dislikes,
+  revalidateCommentReactionsTag,
 }: StatisticBarProps) => {
-  const { sessionReaction, handleReaction } = useReactionHandler(commentId);
+  const { sessionReaction, handleReaction, reload } =
+    useReactionHandler(commentId);
+  const [selectedReaction, setSelectedReaction] = useState<string>("");
+
+  const handleClicked = (reaction: "like" | "dislike") => {
+    handleReaction(reaction);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    revalidateCommentReactionsTag();
+  };
+
+  useEffect(() => {
+    console.log("sessionReaction", sessionReaction);
+    setSelectedReaction(sessionReaction);
+  }, [sessionReaction]);
+
+  useEffect(() => {
+    reload();
+  }, [likes, dislikes]);
 
   return (
     <Container data-testid="statistic-bar">
       <Item
-        onClick={() => !isReadOnly && handleReaction("like")}
+        onClick={() => !isReadOnly && handleClicked("like")}
         $isReadOnly={isReadOnly}
       >
         <Counter>
           <Typography variant="small" color="black">
-            {likes + (sessionReaction === "like" ? 1 : 0)}
+            {likes + (selectedReaction === "like" ? 1 : 0)}
           </Typography>
         </Counter>
-        <ThumbDown isActive={sessionReaction === "like"} />
+        <ThumbDown isActive={selectedReaction === "like"} />
       </Item>
       <Item
-        onClick={() => !isReadOnly && handleReaction("dislike")}
+        onClick={() => !isReadOnly && handleClicked("dislike")}
         $isReadOnly={isReadOnly}
       >
         <Counter>
           <Typography variant="small" color="black">
-            {dislikes + (sessionReaction === "dislike" ? 1 : 0)}
+            {dislikes + (selectedReaction === "dislike" ? 1 : 0)}
           </Typography>
         </Counter>
-        <Thumb direction="right" isActive={sessionReaction === "dislike"} />
+        <Thumb direction="right" isActive={selectedReaction === "dislike"} />
       </Item>
     </Container>
   );

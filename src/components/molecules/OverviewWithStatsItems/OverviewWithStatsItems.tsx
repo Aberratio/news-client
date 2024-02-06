@@ -21,6 +21,8 @@ const OverviewWithStatsItems = ({
             key={item.id}
             item={{
               ...item,
+              authorName: item.author.name,
+              date: item.createdOn,
               photo: { ...item.photo, alt: "article photo" },
             }}
           />

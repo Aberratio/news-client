@@ -2,14 +2,14 @@
 
 import { FirstSite } from "./FirstSite";
 import { VisitCounter } from "./visit-counter/VisitCounter";
-import { LastComments } from "./last-comments/LastComments";
+import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
 
 export const SideBar = () => {
   return (
     <SideBarWrapper>
       <FirstSite />
-      <LastComments />
+      <LastCommentsWidget />
       <VisitCounter />
     </SideBarWrapper>
   );

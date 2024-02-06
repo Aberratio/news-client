@@ -3,7 +3,6 @@
 import { LinkButton } from "components/atoms/LinkButton/LinkButton";
 import Typography from "components/atoms/Typography";
 import { aboutPagePath } from "core/builders/buildPath";
-import Image from "next/image";
 import styled from "styled-components";
 import { LogoBar } from "./LogoBar";
 
@@ -16,7 +15,7 @@ export const TopBar = () => {
         </Part>
         <Part>
           <LinkButton to={aboutPagePath}>
-            <Typography variant="small" justifyContent="center">
+            <Typography variant="small" flexbox={{ justifyContent: "center" }}>
               O nas
             </Typography>
           </LinkButton>
@@ -51,12 +50,4 @@ const Part = styled.div`
   justify-content: center;
   align-items: center;
   height: 65px;
-`;
-
-const Logo = styled(Image)`
-  width: 400px;
-  margin: auto;
-  height: 65px;
-  max-height: 65px;
-  max-width: 400px;
 `;

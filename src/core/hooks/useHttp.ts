@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
- 
+
 import { useCache } from "./useCache";
 import { buildUrl } from "../builders/buildUrl";
 
@@ -12,7 +12,7 @@ export const useHttp = () => {
 
   const authorizedFetch = async <TResponse>(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions: RequestOptions
   ): Promise<TResponse> => {
     return fetch(url, {
       ...requestOptions,
@@ -43,10 +43,10 @@ export const useHttp = () => {
       });
   };
 
-  const get = async <TRequest, TResponse>(
+  const get = async <TResponse>(
     url: string,
-    parameters?: TRequest,
-    options?: HttpOptions,
+    parameters?: Record<string, any>,
+    options?: HttpOptions
   ): Promise<TResponse> => {
     const fullUrl = buildUrl(url, parameters);
 
@@ -65,13 +65,13 @@ export const useHttp = () => {
           cache: "force-cache",
         }),
       fullUrl,
-      options.cacheTimeoutMs,
+      options.cacheTimeoutMs
     );
   };
 
   const post = async <TPayload, TResponse>(
     url: string,
-    payload?: TPayload,
+    payload?: TPayload
   ): Promise<TResponse> => {
     return authorizedFetch(url, {
       method: "POST",

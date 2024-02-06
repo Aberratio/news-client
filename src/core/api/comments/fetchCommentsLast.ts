@@ -18,7 +18,7 @@ export const fetchCommentsLast = async (
 ): Promise<CommentSummarizationItem[]> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASIC_URL}/comments/last?limit=${limit}`,
-    { next: { revalidate: 60, tags: ["comments"] } }
+    { next: { revalidate: 60, tags: ["comments", "commentReactions"] } }
   );
 
   return mapData((await response.json()) as GetCommentsLastResponse[]);

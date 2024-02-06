@@ -11,7 +11,7 @@ export const FirstSite = () => {
 
   return (
     <Widget dataTestId="first-site" title="Najnowszy numer">
-      <Typography flexDirection="row">
+      <Typography flexbox={{ flexDirection: "row" }}>
         W sprzedaży od <Date>{date}</Date>
       </Typography>
       <ImageContainer>
