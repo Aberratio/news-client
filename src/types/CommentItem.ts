@@ -1,7 +1,7 @@
 export interface CommentItem {
   author: string;
   articleId: number;
-  date: Date;
+  date: string;
   dislikes: number;
   id: number;
   isVisible: boolean;

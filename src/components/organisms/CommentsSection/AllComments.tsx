@@ -1,7 +1,7 @@
 "use client";
 
 import Typography from "components/atoms/Typography";
-import { Comment } from "../../molecules/Comment/Comment";
+import Comment from "../../molecules/Comment";
 import { styled } from "styled-components";
 import { CommentItem } from "types/CommentItem";
 
@@ -12,10 +12,10 @@ interface AllCommentsProps {
 export const AllComments = ({ comments }: AllCommentsProps) => {
   return (
     <Container>
-      <Typography variant="h3" marginTop={32}>
+      <Typography variant="h3" space={{ marginTop: 32 }}>
         Wszystkie komentarze
       </Typography>
-      {comments.map((comment: any, index: number) => (
+      {comments.map((comment: CommentItem, index: number) => (
         <Comment
           author={comment.author}
           commentId={comment.id}

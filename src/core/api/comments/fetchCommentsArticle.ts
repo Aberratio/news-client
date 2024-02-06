@@ -26,5 +26,17 @@ export const fetchCommentsArticle = async (
 };
 
 const mapData = (data: GetCommentsArticleResponse[]): CommentItem[] => {
-  return [...data];
+  return data.map((item: GetCommentsArticleResponse) => {
+    return {
+      articleId: item.articleId,
+      articleTitle: item.articleTitle,
+      author: item.author,
+      date: new Date(item.date).toLocaleString(),
+      dislikes: item.dislikes,
+      id: item.id,
+      isVisible: item.isVisible,
+      likes: item.likes,
+      text: item.text,
+    } as CommentItem;
+  });
 };

@@ -6,6 +6,10 @@ interface GetCommentsLastResponse {
   articleId: number;
   articleTitle: string;
   author: string;
+  date: Date;
+  dislikes: number;
+  id: number;
+  likes: number;
   text: string;
 }
 
@@ -32,6 +36,10 @@ const mapData = (
       articleId: item.articleId,
       articleTitle: item.articleTitle,
       author: item.author,
+      date: new Date(item.date).toLocaleString(),
+      dislikes: item.dislikes,
+      id: item.id,
+      likes: item.likes,
       text: cutComment(item.text),
     } as CommentSummarizationItem;
   });

@@ -7,6 +7,7 @@ import { CommentItem } from "types/CommentItem";
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
 import { revalidateCommentsTag } from "./revalidateCommentsTag";
 import { EmptyCommentsSection } from "./EmptyCommentsSection";
+import Hr from "components/atoms/Hr";
 
 interface CommentsSectionProps {
   articleId: number;
@@ -16,7 +17,7 @@ interface CommentsSectionProps {
 const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
   return (
     <div id="comments">
-      <hr />
+      <Hr />
       <Typography variant="h2" space={{ marginBottom: 40, marginTop: 24 }}>
         Komentarze
       </Typography>

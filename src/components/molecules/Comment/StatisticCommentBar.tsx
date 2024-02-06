@@ -1,82 +1,46 @@
-"use client";
-
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { Thumb } from "components/molecules/Icons/Thumb";
-import { fetchCommentReaction } from "core/api/comments/fetchCommentReaction";
-import { useEffect, useState } from "react";
+import { useReactionHandler } from "./useReactionHandler";
 
 interface StatisticBarProps {
   commentId: number;
+  isReadOnly: boolean;
   likes: number;
   dislikes: number;
 }
 
 export const StatisticCommentBar = ({
   commentId,
+  isReadOnly,
   likes,
   dislikes,
 }: StatisticBarProps) => {
-  const [sessionReaction, setSessionReaction] = useState<string>("");
-
-  useEffect(() => {
-    const storedReaction = sessionStorage.getItem(`comment-${commentId}`);
-    if (["like", "dislike", ""].includes(storedReaction ?? "")) {
-      setSessionReaction(storedReaction ?? "");
-    }
-  }, [commentId]);
-
-  const onReactionClick = async (reaction: "like" | "dislike") => {
-    if (sessionReaction === "") {
-      // Jest zero reakcji, klika nową
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${commentId}`, reaction);
-      await fetchCommentReaction({
-        commentId,
-        like: reaction === "like" ? 1 : 0,
-        dislike: reaction === "dislike" ? 1 : 0,
-      });
-    } else if (sessionReaction !== reaction) {
-      // Jest stara reakcja, klika inną
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${commentId}`, reaction);
-      await fetchCommentReaction({
-        commentId,
-        like: reaction === "like" ? 1 : -1,
-        dislike: reaction === "dislike" ? 1 : -1,
-      });
-    } else {
-      // Jest stara reakcja, klika tą samą
-      setSessionReaction("");
-      sessionStorage.setItem(`comment-${commentId}`, "");
-      await fetchCommentReaction({
-        commentId,
-        like: reaction === "like" ? -1 : 0,
-        dislike: reaction === "dislike" ? -1 : 0,
-      });
-    }
-  };
+  const { sessionReaction, handleReaction } = useReactionHandler(commentId);
 
   return (
     <Container data-testid="statistic-bar">
-      <Item onClick={() => onReactionClick("like")}>
+      <Item
+        onClick={() => !isReadOnly && handleReaction("like")}
+        $isReadOnly={isReadOnly}
+      >
         <Counter>
           <Typography variant="small" color="black">
             {likes + (sessionReaction === "like" ? 1 : 0)}
           </Typography>
         </Counter>
-        <ThumbDown color={sessionReaction === "like" ? "blue" : "black"} />
+        <ThumbDown isActive={sessionReaction === "like"} />
       </Item>
-      <Item onClick={() => onReactionClick("dislike")}>
+      <Item
+        onClick={() => !isReadOnly && handleReaction("dislike")}
+        $isReadOnly={isReadOnly}
+      >
         <Counter>
           <Typography variant="small" color="black">
             {dislikes + (sessionReaction === "dislike" ? 1 : 0)}
           </Typography>
         </Counter>
-        <Thumb
-          direction="right"
-          color={sessionReaction === "dislike" ? "blue" : "black"}
-        />
+        <Thumb direction="right" isActive={sessionReaction === "dislike"} />
       </Item>
     </Container>
   );
@@ -88,14 +52,16 @@ const ThumbDown = styled(Thumb)`
 
 const Counter = styled.div``;
 
-const Item = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px 0 0;
-  cursor: pointer;
-  border: none;
+const Item = styled.div<{ $isReadOnly: boolean }>`
+  ${({ $isReadOnly }) => `
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px 0 0;
+    cursor: ${$isReadOnly ? "default" : "pointer"};
+    border: none;
+  `}
 `;
 
 const Container = styled.div`
