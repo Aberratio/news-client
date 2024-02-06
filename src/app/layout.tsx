@@ -2,7 +2,7 @@ import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
 import StyledComponentsRegistry from "../lib/register";
 
 import type { Metadata } from "next";
-import { Cabin } from "next/font/google";
+import { Spectral } from "next/font/google";
 
 import Footer from "components/organisms/Footer";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
@@ -13,9 +13,9 @@ import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTo
 import { SideBar } from "components/organisms/SideBar/SideBar";
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 
-const cabin = Cabin({
-  weight: "400",
+const spectral = Spectral({
   subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ const RootLayout = async ({
 
   return (
     <html lang="en">
-      <body className={cabin.className}>
+      <body className={spectral.className}>
         <OrganizationContextProvider tabs={tabs}>
           <StyledComponentsRegistry>
             <GlobalThemeWrapper>

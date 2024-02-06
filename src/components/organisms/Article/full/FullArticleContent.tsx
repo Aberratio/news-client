@@ -1,6 +1,6 @@
 "use client";
 
-import { MetadataBar } from "components/organisms/Article/MetadataBar";
+import MetadataBar from "components/molecules/MetadataBar";
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
@@ -16,9 +16,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
-        <Typography variant="h1" space={{ marginBottom: 12 }}>
-          {article.title}
-        </Typography>
+        <Title>{article.title}</Title>
         <InfoWrapper>
           <MetadataBar
             authorName={article.author.name}
@@ -31,9 +29,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
           />
         </InfoWrapper>
         <LeadWrapper>
-          <Typography color="#666">
-            <strong>{article.lead}</strong>
-          </Typography>
+          <Typography variant="h2">{article.lead}</Typography>
         </LeadWrapper>
         <Slider images={article.photos} />
         <BodyWrapper>
@@ -73,4 +69,12 @@ const BodyWrapper = styled.div`
   margin: 64px 0;
   display: flex;
   flex-direction: column;
+`;
+
+const Title = styled.h1`
+  ${({ theme }) => theme.customFonts.titleM};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    ${({ theme }) => theme.customFonts.title};
+  }
 `;

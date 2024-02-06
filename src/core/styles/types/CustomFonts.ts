@@ -6,8 +6,9 @@ export interface Font {
 }
 
 export interface CustomFonts {
+  title: Font;
+  titleM: Font;
   h1: Font;
-  h1T: Font;
   h1M: Font;
   h2: Font;
   h2M: Font;

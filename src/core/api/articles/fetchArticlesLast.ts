@@ -43,6 +43,7 @@ const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
         tabPath: buildTabPath(item.category.tabId),
       },
       createdOn: formatDateToString(item.createdOn),
+      lead: item.lead,
       id: item.id,
       path: buildArticlePath(item.id),
       photo: {
@@ -79,6 +80,7 @@ interface GetArticlesLastResponse {
   };
   commentsAmount: number;
   createdOn: Date;
+  lead: string;
   id: number;
   photo: {
     description: string;

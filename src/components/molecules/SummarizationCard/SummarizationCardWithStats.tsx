@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 import Typography from "components/atoms/Typography";
-import { MetadataBar } from "components/organisms/Article/MetadataBar";
+import MetadataBar from "components/molecules/MetadataBar";
 import { StatisticBar } from "components/molecules/SummarizationCard/StatisticBar";
 import Link from "next/link";
 import { StatisticsItem } from "types/StatisticsItem";
@@ -42,7 +42,7 @@ export const SummarizationCardWithStats = ({
           />
         </ImageLink>
         <StyledLink href={item.path}>
-          <Typography wrap space={{ marginBottom: 2 }}>
+          <Typography variant="h3" wrap space={{ marginBottom: 2 }}>
             {item.title}
           </Typography>
         </StyledLink>

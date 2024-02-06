@@ -9,6 +9,7 @@ import { Comments } from "components/molecules/Icons/Comments";
 import { Eye } from "components/molecules/Icons/Eye";
 import { StatisticsItem } from "types/StatisticsItem";
 import Link from "next/link";
+import Bar from "components/atoms/Bar";
 
 interface StatisticArticleBarProps {
   articleId: number;
@@ -63,7 +64,7 @@ export const StatisticArticleBar = ({
   };
 
   return (
-    <Container data-testid="statistic-bar">
+    <Bar dataTestId="statistic-bar">
       <Item>
         <Counter>
           <Typography variant="small">{views}</Typography>
@@ -95,7 +96,7 @@ export const StatisticArticleBar = ({
           color={sessionReaction === "dislike" ? "blue" : "black"}
         />
       </Item>
-    </Container>
+    </Bar>
   );
 };
 
@@ -122,10 +123,4 @@ const LinkItem = styled(Link)`
   gap: 8px;
   padding: 0 12px 0 0;
   cursor: pointer;
-`;
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
 `;

@@ -7,7 +7,7 @@ export const TitleBar = () => {
   return (
     <Wrapper>
       <Container>
-        <Typography color="white" isUppercase variant="h2">
+        <Typography color="white" isUppercase variant="h1">
           25-LECIE POWIATU MILICKIEGO
         </Typography>
       </Container>

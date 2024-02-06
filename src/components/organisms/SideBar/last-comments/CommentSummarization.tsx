@@ -19,7 +19,7 @@ export const CommentSummarization = ({
   return (
     <CommentContainer data-testid={`comment-summarization-${iterator}`}>
       <Link href={buildArticlePath(comment.articleId)}>
-        <Typography>{comment.articleTitle}</Typography>
+        <Typography variant="h3">{comment.articleTitle}</Typography>
       </Link>
       <Comment
         author={comment.author}

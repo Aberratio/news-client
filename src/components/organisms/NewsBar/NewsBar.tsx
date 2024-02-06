@@ -1,5 +1,6 @@
 "use server";
 
+import { cutText } from "core/tools/cutText";
 import LargeInfoCard from "../../molecules/LargeInfoCard";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 
@@ -7,7 +8,7 @@ interface NewsBarProps {
   article: ArticleSummarizationItem;
 }
 
-export const NewsBar = ({ article }: NewsBarProps) => {
+const NewsBar = ({ article }: NewsBarProps) => {
   if (!article) {
     return null;
   }
@@ -15,7 +16,7 @@ export const NewsBar = ({ article }: NewsBarProps) => {
   return (
     <LargeInfoCard
       buttonText="Wyświetl artykuł"
-      description="Premier Donald Tusk ogłosił, że tegoroczne wybory samorządowe odbędą się w niedzielę 7 kwietnia. Ewentualna druga tura wyborów na włodarzy odbędzie się dwa tygodnie później, 21 kwietnia. Publicznie chęć startu w wyborach na burmistrza gminy Milicz potwierdziło na razie dwóch kandydatów – obecny burmistrz Piotr..."
+      description={cutText(article.lead, 300)}
       link={`article/${article.id}`}
       title={article.title}
       photo={{
@@ -25,3 +26,5 @@ export const NewsBar = ({ article }: NewsBarProps) => {
     />
   );
 };
+
+export default NewsBar;

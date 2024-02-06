@@ -45,7 +45,7 @@ const LargeInfoCard = ({
             <Title href={link}>
               <Typography
                 color="white"
-                variant="h2"
+                variant="h1"
                 textAlign={{ textAlign: "left" }}
               >
                 {title}

@@ -32,7 +32,6 @@ export const StatisticCommentBar = ({
   };
 
   useEffect(() => {
-    console.log("sessionReaction", sessionReaction);
     setSelectedReaction(sessionReaction);
   }, [sessionReaction]);
 

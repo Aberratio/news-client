@@ -11,10 +11,12 @@ interface CommentMetaProps {
 export const CommentMeta = ({ author, date }: CommentMetaProps) => {
   return (
     <Container>
-      <Typography>
+      <Typography variant="small">
         <strong>{author}</strong>
       </Typography>
-      <Typography variant="small">{date}</Typography>
+      <Typography variant="small" color="#6b6b6b">
+        {date}
+      </Typography>
     </Container>
   );
 };

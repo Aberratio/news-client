@@ -8,6 +8,7 @@ export interface ArticleSummarizationItem {
   category: CategoryItem;
   createdOn: string;
   id: number;
+  lead: string;
   path: string;
   photo: PhotoItem;
   statistics: StatisticsItem;
