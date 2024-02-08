@@ -73,39 +73,58 @@ const LargeInfoCard = ({
 export default LargeInfoCard;
 
 const Part = styled.div`
-  height: 500px;
+  height: 350px;
+  @media screen and (min-width: 768px) {
+    height: 500px;
+  }
 `;
 
 const Wrapper = styled.div`
   position: relative;
   display: block;
   margin-top: 65px;
-  border-radius: 12px;
 
   background-color: #222;
 
   @media screen and (min-width: 768px) {
     margin-top: 20px;
+    border-radius: 12px;
   }
 `;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 600px 1fr;
+  grid-template-rows: 500px 1fr;
   gap: 12px;
   margin: auto;
   width: 100%;
   max-width: 1080px;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 500px 1fr;
+  }
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: 600px 1fr;
+  }
 `;
 
 const ImageBackground = styled(Image)`
   width: 100%;
   height: 100%;
   max-height: 540px;
-  max-width: 600px;
-  border-radius: 12px;
+  max-width: 100%;
 
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    max-width: 500px;
+    border-radius: 12px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 600px;
+  }
 `;
 
 const Description = styled.div`
@@ -115,7 +134,11 @@ const Description = styled.div`
   align-items: flex-start;
 
   height: 100%;
-  padding: 12px;
+  padding: 8px 24px;
+
+  @media screen and (min-width: 768px) {
+    padding: 12px;
+  }
 `;
 
 const Title = styled(Link)`
