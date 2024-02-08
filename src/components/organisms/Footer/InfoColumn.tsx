@@ -41,7 +41,7 @@ export const InfoColumn = ({ items }: InfoColumnProps) => {
             return <Typography key={content.text}>{content.text}</Typography>;
           default:
             return (
-              <Typography key={content.text}>
+              <Typography key={content.text} flexbox={{ flexDirection: "row" }}>
                 <strong>{content.bolded}</strong>: {content.text}
               </Typography>
             );
