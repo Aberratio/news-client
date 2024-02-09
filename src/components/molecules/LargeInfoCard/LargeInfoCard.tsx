@@ -143,7 +143,7 @@ const Description = styled.div`
 
 const Title = styled(Link)`
   margin: 12px 0;
-  z-index: 300;
+  z-index: 30;
   cursor: pointer;
 
   &:hover p {

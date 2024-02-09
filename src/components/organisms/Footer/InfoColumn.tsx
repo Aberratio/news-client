@@ -75,6 +75,10 @@ const Header = styled.div`
 `;
 
 const Content = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   list-style-type: none;
   color: white;
 `;
@@ -82,7 +86,7 @@ const Content = styled.ul`
 const ListElement = styled.li`
   margin: 0;
   list-style-type: none;
-  padding: 12px 8px;
+  padding: 0 8px;
   border: none;
 `;
 

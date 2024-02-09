@@ -18,7 +18,12 @@ export const MainContainerTemplate = ({
 
 const Wrapper = styled.div`
   display: block;
-  padding-top: 24px;
+  padding: 12px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0px;
+    padding-top: 24px;
+  }
 `;
 
 const Container = styled.div`
