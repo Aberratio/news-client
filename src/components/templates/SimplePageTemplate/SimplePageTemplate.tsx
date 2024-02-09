@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import BreadCrumbs from "components/molecules/BreadCrumbs";
 import { BreadCrumbsInfo } from "components/molecules/BreadCrumbs/useGenerateBreadcrumbs";
