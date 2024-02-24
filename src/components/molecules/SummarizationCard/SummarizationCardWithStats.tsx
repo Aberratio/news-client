@@ -12,7 +12,7 @@ import { StatisticsItem } from "types/StatisticsItem";
 interface SummarizationCardWithStatsItem {
   authorName: string;
   date: string;
-  id: number;
+  id: number | string;
   title: string;
   path: string;
   photo: {

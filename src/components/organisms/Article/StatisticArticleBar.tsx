@@ -12,7 +12,7 @@ import Link from "next/link";
 import Bar from "components/atoms/Bar";
 
 interface StatisticArticleBarProps {
-  articleId: number;
+  articleId: string;
   commentsPath: string;
   statistics: StatisticsItem;
 }

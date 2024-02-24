@@ -1,7 +1,7 @@
-"use client";
+"use server";
 
 import { Section } from "components/molecules/Section/Section";
-import { styled } from "styled-components";
+import { Container } from "./Container";
 
 export const SectionContainer = () => {
   return (
@@ -79,9 +79,3 @@ export const SectionContainer = () => {
     </Container>
   );
 };
-
-const Container = styled.div`
-  text-align: justify;
-  margin: 0 auto;
-  max-width: 800px;
-`;

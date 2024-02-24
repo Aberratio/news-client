@@ -1,93 +1,137 @@
-"use server";
-
-import { formatDateToString } from "core/builders/buildDate";
+import { buildImageUrl } from "core/builders/buildImageUrl";
+import { sanityClient } from "../sanityClient";
 import {
-  buildAuthorPath,
+  buildArticlePath,
   buildCategoryPath,
   buildTabPath,
-  buildArticlePath,
-  buildPhotoPath,
 } from "core/builders/buildPath";
-import { buildUrl } from "core/builders/buildUrl";
-import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 
-export const fetchArticlesLast = async (
-  request: GetArticlesLastRequest
-): Promise<ArticleSummarizationItem[]> => {
-  const fullUrl = buildUrl(
-    `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/last`,
-    request
-  );
-
-  const response = await fetch(fullUrl, {
-    next: { revalidate: 60, tags: ["comments"] },
-  });
-
-  return mapData((await response.json()) as GetArticlesLastResponse[]);
-};
-
-const mapData = (data: GetArticlesLastResponse[]): ArticleSummarizationItem[] =>
-  data.map((item: GetArticlesLastResponse) => {
-    return {
-      author: {
-        id: item.author.id,
-        name: item.author.name,
-        path: buildAuthorPath(item.author.id),
-      },
-      category: {
-        id: item.category.id,
-        name: item.category.name,
-        path: buildCategoryPath(item.category.id),
-        tabId: item.category.tabId,
-        tabName: item.category.tabName,
-        tabPath: buildTabPath(item.category.tabId),
-      },
-      createdOn: formatDateToString(item.createdOn),
-      lead: item.lead,
-      id: item.id,
-      path: buildArticlePath(item.id),
-      photo: {
-        description: item.photo.description,
-        path: buildPhotoPath(item.photo.path),
-      },
-      statistics: {
-        comments: item.commentsAmount ?? 0,
-        dislikes: item.dislikes ?? 0,
-        likes: item.likes ?? 0,
-        views: item.views ?? 0,
-      },
-      title: item.title,
-    };
-  });
-
-interface GetArticlesLastRequest {
-  categoryId?: number;
-  limit: number;
-  page?: number;
-  tabId?: number;
+interface AuthorItem {
+  id: number | string;
+  name: string;
+  path: string;
 }
 
-interface GetArticlesLastResponse {
-  author: {
-    id: number;
-    name: string;
-  };
-  category: {
-    id: number;
-    name: string;
-    tabId: number;
-    tabName: string;
-  };
-  commentsAmount: number;
-  createdOn: Date;
+interface CategoryItem {
+  id: number | string;
+  name: string;
+  path: string;
+  tabId: string;
+  tabName: string;
+  tabPath: string;
+}
+
+interface PhotoItem {
+  path: string;
+}
+
+interface StatisticsItem {
+  comments: number;
+  dislikes: number;
+  likes: number;
+  views: number;
+}
+
+interface ArticleSummarizationItem {
+  author: AuthorItem;
+  category: CategoryItem;
+  createdOn: string;
+  id: number | string;
   lead: string;
-  id: number;
-  photo: {
-    description: string;
-    path: string;
+  path: string;
+  photo: PhotoItem;
+  statistics: StatisticsItem;
+  title: string;
+}
+
+interface SanityArticleSummarizationItem {
+  author: {
+    name: string;
+    slug: {
+      current: string;
+    };
+  };
+  body: any;
+  category: {
+    name: string;
+    slug: {
+      current: string;
+    };
+    tab: {
+      name: string;
+      slug: {
+        current: string;
+      };
+    };
+  };
+  lead: string;
+  mainImage: {
+    asset: {
+      _ref: string;
+    };
+    alt: string;
+  };
+  publishedAt: string;
+  slug: {
+    current: string;
   };
   title: string;
-  views: number;
-  likes: number;
-  dislikes: number;
 }
+
+interface FetchArticlesLastParams {
+  categoryId?: number;
+  tabId?: number;
+  limit?: number;
+  page?: number;
+}
+
+export const fetchArticlesLast = async ({
+  categoryId,
+  tabId,
+  limit,
+  page,
+}: FetchArticlesLastParams): Promise<ArticleSummarizationItem[]> => {
+  console.log({ categoryId, tabId, limit, page });
+
+  const tabs = await sanityClient.fetch(
+    '*[_type == "post"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug},  lead, publishedAt, body, mainImage, slug}'
+  );
+
+  return mapData(tabs);
+};
+
+const mapData = (
+  data: SanityArticleSummarizationItem[]
+): ArticleSummarizationItem[] => {
+  return data.map((post) => {
+    return {
+      author: {
+        id: post.author.slug.current,
+        name: post.author.name,
+        path: post.author.slug.current,
+      },
+      category: {
+        id: post.category.slug.current,
+        name: post.category.name,
+        path: buildCategoryPath(post.category.slug.current),
+        tabId: post.category.tab.slug.current,
+        tabName: post.category.tab.name,
+        tabPath: buildTabPath(post.category.tab.slug.current),
+      },
+      createdOn: post.publishedAt,
+      id: post.slug.current,
+      lead: post.lead,
+      path: buildArticlePath(post.slug.current),
+      statistics: {
+        comments: 0,
+        dislikes: 0,
+        likes: 0,
+        views: 0,
+      },
+      photo: {
+        path: buildImageUrl(post.mainImage.asset._ref),
+      },
+      title: post.title,
+    };
+  });
+};

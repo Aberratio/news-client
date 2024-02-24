@@ -19,6 +19,7 @@ export interface TypographyProps {
   flexbox?: FlexboxProps;
   grid?: GridProps;
   innerHtml?: any;
+  isBlockquote?: boolean;
   isCapitalized?: boolean;
   isUppercase?: boolean;
   space?: SpaceProps;
@@ -35,6 +36,7 @@ const Typography = ({
   flexbox,
   grid,
   innerHtml,
+  isBlockquote = false,
   isCapitalized = false,
   isUppercase = false,
   space,
@@ -53,6 +55,7 @@ const Typography = ({
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
       $flexbox={flexbox}
       $grid={grid}
+      $isBlockquote={isBlockquote}
       $isCapitalized={isCapitalized}
       $isUppercase={isUppercase}
       $space={space}

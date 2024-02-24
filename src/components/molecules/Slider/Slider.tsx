@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { PhotoItem } from "types/PhotoItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Typography from "components/atoms/Typography";
 import { Arrow } from "components/molecules/Icons/Arrow";
 
@@ -14,8 +14,15 @@ interface SliderProps {
 const Slider = ({ images }: SliderProps) => {
   const [image, setImage] = useState<PhotoItem>(images[0]);
   const [index, setIndex] = useState<number>(0);
+  const [hasDescription, setHasDescription] = useState<boolean>(
+    images[0].description.trim() !== ""
+  );
   const isSlideable = images.length > 1;
-  const hasDescription = image.description.trim() !== "";
+
+  useEffect(() => {
+    console.log("image.description", image.description);
+    setHasDescription(image.description.trim() !== "");
+  }, [image]);
 
   const nextItem = () => {
     if (index < images.length - 1) {
@@ -44,7 +51,7 @@ const Slider = ({ images }: SliderProps) => {
           src={image.path}
           fill
           objectFit="cover"
-          alt={image.description}
+          alt={image.description ?? ""}
           $hasDescription={hasDescription}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
@@ -93,7 +100,7 @@ const StyledImage = styled(Image)<{ $hasDescription: boolean }>`
   ${({ $hasDescription }) => `
     vertical-align: middle;
     border-style: none;
-    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"}; 
+    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"};
 
     object-fit: cover;
     object-position: 50% 50%;

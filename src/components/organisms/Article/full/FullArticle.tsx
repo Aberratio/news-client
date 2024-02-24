@@ -9,12 +9,13 @@ interface FullArticleProps {
   article: FullArticleItem;
 }
 
-export const FullArticle = async ({ article }: FullArticleProps) => {
-  const comments = await fetchCommentsArticle(article.id);
+export const FullArticle = ({ article }: FullArticleProps) => {
+  // const comments = await fetchCommentsArticle(article.id);
 
   return (
     <FullArticleContent article={article}>
-      <CommentSection articleId={article.id} comments={comments} />
+      <p>Test</p>
+      {/* <CommentSection articleId={article.id} comments={comments} /> */}
     </FullArticleContent>
   );
 };

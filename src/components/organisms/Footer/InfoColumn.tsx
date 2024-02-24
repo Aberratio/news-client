@@ -11,7 +11,7 @@ export interface LinkItem {
 }
 
 export interface ElementItem {
-  id: number;
+  id: number | string;
   type: ElementType;
   content: LinkItem[];
 }

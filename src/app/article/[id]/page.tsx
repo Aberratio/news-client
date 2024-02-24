@@ -10,7 +10,7 @@ interface ArticlePageProps {
 }
 
 const ArticlePage = async ({ params }: ArticlePageProps) => {
-  const article = await fetchArticle(Number(params.id));
+  const article = await fetchArticle(params.id);
 
   return (
     <SimplePageTemplate

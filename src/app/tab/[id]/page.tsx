@@ -11,7 +11,7 @@ const TabPage = ({ params }: TabPageProps) => {
   return (
     <SimplePageTemplate
       breadCrubmsInfo={{
-        tabId: Number(params.id),
+        tabId: params.id,
       }}
     >
       <ArticlesOverview tabId={Number(params.id)} />

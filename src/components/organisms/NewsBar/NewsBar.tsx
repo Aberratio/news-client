@@ -21,7 +21,7 @@ const NewsBar = ({ article }: NewsBarProps) => {
       title={article.title}
       photo={{
         path: article.photo.path,
-        alt: article.photo.description,
+        alt: "article.photo.description",
       }}
     />
   );

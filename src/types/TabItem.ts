@@ -1,7 +1,7 @@
 import { CategoryItem } from "./CategoryItem";
 
 export interface TabItem {
-  tabId: number;
+  tabId: string;
   categories: CategoryItem[];
   name: string;
 }

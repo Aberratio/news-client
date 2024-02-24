@@ -9,7 +9,7 @@ interface SubMenuProps {
 }
 
 export const SubMenu = ({ categories }: SubMenuProps) => {
-  const [activeCategoryId, setActiveCategoryId] = useState<number>(
+  const [activeCategoryId, setActiveCategoryId] = useState<number | string>(
     categories[0].id
   );
 

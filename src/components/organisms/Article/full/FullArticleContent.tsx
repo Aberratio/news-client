@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
+import { Body } from "./Body";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -22,18 +23,18 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
             authorName={article.author.name}
             createdOn={article.createdOn}
           />
-          <StatisticArticleBar
+          {/* <StatisticArticleBar
             articleId={article.id}
             commentsPath="#comments"
             statistics={article.statistics}
-          />
+          /> */}
         </InfoWrapper>
         <LeadWrapper>
           <Typography variant="h2">{article.lead}</Typography>
         </LeadWrapper>
         <Slider images={article.photos} />
         <BodyWrapper>
-          <Typography innerHtml={article.body} />
+          <Body value={article.body} />
         </BodyWrapper>
       </Container>
       {children}

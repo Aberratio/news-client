@@ -1,5 +1,5 @@
 export interface AuthorItem {
-  id: number;
+  id: number | string;
   name: string;
   path: string;
 }

@@ -3,12 +3,12 @@
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
 
 interface GetCommentsLastResponse {
-  articleId: number;
+  articleId: string;
   articleTitle: string;
   author: string;
   date: Date;
   dislikes: number;
-  id: number;
+  id: number | string;
   likes: number;
   text: string;
 }
@@ -20,6 +20,10 @@ export const fetchCommentsLast = async (
     `${process.env.NEXT_PUBLIC_BASIC_URL}/comments/last?limit=${limit}`,
     { next: { revalidate: 60, tags: ["comments", "commentReactions"] } }
   );
+
+  if (response.status >= 300) throw new Error("Failed to fetch article");
+  if (response.headers.get("content-type")?.includes("text"))
+    throw new Error("Failed to fetch article");
 
   return mapData((await response.json()) as GetCommentsLastResponse[]);
 };

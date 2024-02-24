@@ -1,16 +1,16 @@
-export const buildArticlePath = (articleId: number) => {
+export const buildArticlePath = (articleId: string) => {
   return `/article/${articleId}`;
 };
 
-export const buildAuthorPath = (articleId: number) => {
+export const buildAuthorPath = (articleId: string) => {
   return `/author/${articleId}`;
 };
 
-export const buildCategoryPath = (categoryId: number) => {
+export const buildCategoryPath = (categoryId: string) => {
   return `/category/${categoryId}`;
 };
 
-export const buildTabPath = (tabId: number) => {
+export const buildTabPath = (tabId: string) => {
   return `/tab/${tabId}`;
 };
 

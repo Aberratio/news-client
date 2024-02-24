@@ -11,7 +11,7 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
   return (
     <SimplePageTemplate
       breadCrubmsInfo={{
-        categoryId: Number(params.id),
+        categoryId: params.id,
       }}
     >
       <ArticlesOverview categoryId={Number(params.id)} />

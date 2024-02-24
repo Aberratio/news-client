@@ -1,8 +1,8 @@
 export interface CategoryItem {
-  id: number;
+  id: string;
   name: string;
   path: string;
-  tabId: number;
+  tabId: string;
   tabName: string;
   tabPath: string;
 }

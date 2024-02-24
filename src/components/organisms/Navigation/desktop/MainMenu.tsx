@@ -15,14 +15,14 @@ export const MainMenu = () => {
 
   return (
     <Container data-testid="main-menu" ref={mainMenuRef}>
-      {tabs.map((tab) => {
+      {tabs.map((tab, index) => {
         return (
           <NavigationItem
             isActive={activeNavigationItemIndex === tab.tabId}
-            key={tab.tabId}
+            key={index}
             tab={tab}
             onClick={() => {
-              setActiveNavigationItemIndex(tab.tabId);
+              setActiveNavigationItemIndex(index);
             }}
           />
         );

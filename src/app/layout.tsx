@@ -6,12 +6,12 @@ import { Spectral } from "next/font/google";
 
 import Footer from "components/organisms/Footer";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
-import { TabItem } from "types/TabItem";
 import Menu from "components/organisms/Menu";
 import Navigation from "components/organisms/Navigation";
 import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
 import { SideBar } from "components/organisms/SideBar/SideBar";
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
+import { fetchTabs } from "core/api/navigation/fetchTabs";
 
 const spectral = Spectral({
   subsets: ["latin"],
@@ -53,17 +53,3 @@ const RootLayout = async ({
 };
 
 export default RootLayout;
-
-const fetchTabs = async (): Promise<TabItem[]> => {
-  ("use server");
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASIC_URL}/categories/tabs`,
-    {
-      cache: "force-cache",
-    }
-  );
-
-  const tabs = await response.json();
-
-  return tabs;
-};

@@ -1,4 +1,4 @@
 export interface GetPopularTitlesResponse {
-  id: number;
+  id: number | string;
   title: string;
 }

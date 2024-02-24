@@ -111,10 +111,10 @@ interface BreadCrumbSimple {
   currentName: string;
 }
 interface BreadCrumbTab {
-  tabId: number;
+  tabId: string;
 }
 interface BreadCrumbCategory {
-  categoryId: number;
+  categoryId: string;
 }
 type BreadCrumbArticle = BreadCrumbSimple & {
   categoryName: string;

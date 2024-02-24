@@ -1,5 +1,5 @@
 export interface TitleItem {
-  articleId: number;
-  id: number;
+  articleId: string;
+  id: number | string;
   title: string;
 }

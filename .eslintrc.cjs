@@ -24,6 +24,7 @@ module.exports = {
     "react/require-default-props": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
   },
   overrides: [
     {

@@ -1,3 +1,3 @@
 export interface GetArticleRequest {
-  id: number;
+  id: number | string;
 }

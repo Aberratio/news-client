@@ -1,7 +1,7 @@
 "use server";
 
 interface FetchNewCommentProps {
-  articleId: number;
+  articleId: string;
   author: string;
   text: string;
 }

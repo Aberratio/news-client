@@ -11,7 +11,7 @@ export interface FormFields {
 }
 
 interface CommentFormProps {
-  articleId: number;
+  articleId: string;
   sendComment: any;
   revalidateCommentsTag: any;
 }

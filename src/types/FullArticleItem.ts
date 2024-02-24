@@ -6,16 +6,14 @@ import { StatisticsItem } from "./StatisticsItem";
 
 export interface FullArticleItem {
   author: AuthorItem;
-  body: string;
+  body: any;
   category: CategoryItem;
   comments?: CommentItem[];
   createdOn: string;
-  id: number;
-  isArchived: boolean;
-  isPublished: boolean;
+  id: number | string;
   lead: string;
   path: string;
   photos: PhotoItem[];
-  statistics: StatisticsItem;
+  statistics?: StatisticsItem;
   title: string;
 }

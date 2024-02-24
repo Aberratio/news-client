@@ -14,6 +14,7 @@ import { WordBreakProps } from "./types/WordBreakProps";
 
 interface TypographyWrapperProps {
   $color?: string;
+  $isBlockquote?: boolean;
   $isCapitalized?: boolean;
   $isUppercase?: boolean;
   $typographyVariant: Font;
@@ -47,6 +48,15 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
     $color &&
     css`
       color: ${$color};
+    `};
+
+  ${({ $isBlockquote }) =>
+    $isBlockquote &&
+    css`
+      border-left: 4px solid
+        ${({ theme }) => theme.customTheme.general.primaryColor};
+      padding: 0 0 0 16px;
+      margin: 12px 0;
     `};
 
   ${({ $isCapitalized }) =>

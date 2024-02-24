@@ -1,7 +1,7 @@
 "use server";
 
 interface FetchArticleReactionProps {
-  articleId: number;
+  articleId: string;
   like: number;
   dislike: number;
 }

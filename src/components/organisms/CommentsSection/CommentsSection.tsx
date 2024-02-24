@@ -10,7 +10,7 @@ import { EmptyCommentsSection } from "./EmptyCommentsSection";
 import Hr from "components/atoms/Hr";
 
 interface CommentsSectionProps {
-  articleId: number;
+  articleId: string;
   comments: CommentItem[];
 }
 

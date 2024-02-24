@@ -6,7 +6,7 @@ import Image from "next/image";
 import Typography from "components/atoms/Typography";
 
 interface SummarizationCardItem {
-  id: number;
+  id: number | string;
   title: string;
   path: string;
   photo: {
