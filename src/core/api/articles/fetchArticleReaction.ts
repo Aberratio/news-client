@@ -11,7 +11,7 @@ export const fetchArticleReaction = async ({
   like,
   dislike,
 }: FetchArticleReactionProps): Promise<void> => {
-  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/articles/reactions/`, {
+  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/articles/reactions`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

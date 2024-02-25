@@ -1,7 +1,7 @@
 export const useAdminApi = () => {
   const getVisitsDetails = async (): Promise<number> => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASIC_URL}/visits/`,
+      `${process.env.NEXT_PUBLIC_BASIC_URL}/visits`,
       {
         next: { revalidate: 60, tags: ["visits"] },
         headers: {
@@ -23,7 +23,7 @@ export const useAdminApi = () => {
   };
 
   const incrementVisits = async (url: string): Promise<void> => {
-    await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/visits/`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/visits`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

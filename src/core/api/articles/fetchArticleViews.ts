@@ -7,7 +7,7 @@ interface FetchArticleReactionProps {
 export const fetchArticleViews = async ({
   articleSlug,
 }: FetchArticleReactionProps): Promise<void> => {
-  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/articles/views/`, {
+  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/articles/views`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -20,8 +20,6 @@ const nextConfig = {
       },
     ];
   },
-  reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ["kokot.it", "localhost", "cdn.sanity.io"],
     remotePatterns: [

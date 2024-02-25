@@ -11,7 +11,7 @@ export const fetchCommentReaction = async ({
   like,
   dislike,
 }: FetchCommentReactionProps): Promise<void> => {
-  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments/`, {
+  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
