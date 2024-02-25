@@ -15,7 +15,6 @@ interface GetCommentsLastResponse {
 export const fetchCommentsLast = async (
   limit: number
 ): Promise<CommentSummarizationItem[]> => {
-  console.log(process.env.NEXT_PUBLIC_BASIC_URL);
   const response: Response = await fetch(
     `${process.env.NEXT_PUBLIC_BASIC_URL}/comments?limit=${limit}`,
     {
@@ -23,8 +22,6 @@ export const fetchCommentsLast = async (
       next: { revalidate: 60, tags: ["comments", "commentReactions"] },
     }
   );
-
-  console.log(response);
 
   if (response.status >= 300) throw new Error("Failed to fetch last comments");
   if (response.headers.get("content-type")?.includes("text"))
@@ -40,11 +37,9 @@ const cutComment = (comment: string) => {
 const mapData = (
   data: GetCommentsLastResponse[]
 ): CommentSummarizationItem[] => {
-  console.log(data);
-  console.log(typeof data);
   return data.map((item: GetCommentsLastResponse) => {
     return {
-      articleId: item.article_slug,
+      articleSlug: item.article_slug,
       author: item.author,
       date: new Date(item.datetime).toLocaleString(),
       dislikes: item.dislikes,

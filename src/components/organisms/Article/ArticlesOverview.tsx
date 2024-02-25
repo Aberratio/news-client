@@ -5,27 +5,27 @@ import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 
 interface ArticlesOverviewProps {
   limit?: number;
-  categoryId?: number;
-  tabId?: number;
+  categorySlug?: string;
+  tabSlug?: string;
   page?: number;
 }
 
 export const ArticlesOverview = async ({
   limit = 30,
-  categoryId,
+  categorySlug,
   page = 0,
-  tabId,
+  tabSlug,
 }: ArticlesOverviewProps) => {
   const articles = await fetchArticlesLast({
-    categoryId,
-    tabId,
+    categorySlug,
+    tabSlug,
     limit,
     page,
   });
 
   return (
     <OverviewWithStatsItems
-      dataTestId={`article-summarizatoin-box-${categoryId}`}
+      dataTestId={`article-summarizatoin-box-${categorySlug}`}
       items={articles}
     />
   );

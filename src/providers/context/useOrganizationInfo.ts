@@ -18,9 +18,9 @@ export const useOrganizationInfo = () => {
             id: category.id,
             name: category.name,
             path: buildCategoryPath(category.id),
-            tabId: category.tabId,
+            tabSlug: category.tabSlug,
             tabName: category.tabName,
-            tabPath: buildTabPath(category.tabId),
+            tabPath: buildTabPath(category.tabSlug),
           };
         });
       })

@@ -17,7 +17,7 @@ interface CategoryItem {
   id: string;
   name: string;
   path: string;
-  tabId: string;
+  tabSlug: string;
   tabName: string;
   tabPath: string;
 }
@@ -39,7 +39,7 @@ interface ArticleItem {
   body: string;
   category: CategoryItem;
   createdOn: string;
-  id: number | string;
+  id: string;
   lead: string;
   path: string;
   photos: PhotoItem[];
@@ -90,10 +90,8 @@ interface SanityArticleItem {
 }
 
 export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
-  console.log(slug);
-  const slug2 = "udany-jarmark-bozonarodzeniowy-w-miliczu";
   const articles = await sanityClient.fetch(
-    `*[_type == "post" && slug.current == "${slug2}"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
+    `*[_type == "post" && slug.current == "${slug}"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
   );
 
   return mapData(articles[0]);
@@ -111,7 +109,7 @@ const mapData = (post: SanityArticleItem): ArticleItem => {
       id: post.category.slug.current,
       name: post.category.name,
       path: buildCategoryPath(post.category.slug.current),
-      tabId: post.category.tab.slug.current,
+      tabSlug: post.category.tab.slug.current,
       tabName: post.category.tab.name,
       tabPath: buildTabPath(post.category.tab.slug.current),
     },

@@ -27,7 +27,7 @@ export const StatisticCommentBar = ({
 
   const handleClicked = (reaction: "like" | "dislike") => {
     handleReaction(reaction);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+     
     revalidateCommentReactionsTag();
   };
 

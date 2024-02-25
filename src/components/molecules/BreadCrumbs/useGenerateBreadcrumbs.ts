@@ -29,7 +29,7 @@ export const useGenerateBreadcrumbs = () => {
       },
       {
         name:
-          tabs.find((tab) => tab.tabId === breadCrubmsInfo.tabId)?.name ??
+          tabs.find((tab) => tab.tabSlug === breadCrubmsInfo.tabSlug)?.name ??
           "...",
         path: "#",
       },
@@ -42,16 +42,16 @@ export const useGenerateBreadcrumbs = () => {
     const category = tabs
       .find((tab) =>
         tab.categories.find(
-          (category) => category.id === breadCrubmsInfo.categoryId
+          (category) => category.id === breadCrubmsInfo.categorySlug
         )
       )
       ?.categories.find(
-        (category) => category.id === breadCrubmsInfo.categoryId
+        (category) => category.id === breadCrubmsInfo.categorySlug
       );
 
     const tab = tabs.find((tab) =>
       tab.categories.find(
-        (category) => category.id === breadCrubmsInfo.categoryId
+        (category) => category.id === breadCrubmsInfo.categorySlug
       )
     );
 
@@ -62,7 +62,7 @@ export const useGenerateBreadcrumbs = () => {
       },
       {
         name: tab?.name ?? "...",
-        path: `/tab/${tab?.tabId}`,
+        path: `/tab/${tab?.tabSlug}`,
       },
       {
         name: category?.name ?? "...",
@@ -111,10 +111,10 @@ interface BreadCrumbSimple {
   currentName: string;
 }
 interface BreadCrumbTab {
-  tabId: string;
+  tabSlug: string;
 }
 interface BreadCrumbCategory {
-  categoryId: string;
+  categorySlug: string;
 }
 type BreadCrumbArticle = BreadCrumbSimple & {
   categoryName: string;
@@ -130,7 +130,7 @@ export type BreadCrumbsInfo =
 const isBreadCrumbCategory = (
   info: BreadCrumbsInfo
 ): info is BreadCrumbCategory => {
-  return (info as BreadCrumbCategory).categoryId !== undefined;
+  return (info as BreadCrumbCategory).categorySlug !== undefined;
 };
 
 const isBreadCrumbArticle = (
@@ -140,5 +140,5 @@ const isBreadCrumbArticle = (
 };
 
 const isBreadCrumbTab = (info: BreadCrumbsInfo): info is BreadCrumbTab => {
-  return (info as BreadCrumbTab).tabId !== undefined;
+  return (info as BreadCrumbTab).tabSlug !== undefined;
 };

@@ -1,17 +1,17 @@
-export const buildArticlePath = (articleId: string) => {
-  return `/article/${articleId}`;
+export const buildArticlePath = (articleSlug: string) => {
+  return `/article/${articleSlug}`;
 };
 
-export const buildAuthorPath = (articleId: string) => {
-  return `/author/${articleId}`;
+export const buildAuthorPath = (articleSlug: string) => {
+  return `/author/${articleSlug}`;
 };
 
-export const buildCategoryPath = (categoryId: string) => {
-  return `/category/${categoryId}`;
+export const buildCategoryPath = (categorySlug: string) => {
+  return `/category/${categorySlug}`;
 };
 
-export const buildTabPath = (tabId: string) => {
-  return `/tab/${tabId}`;
+export const buildTabPath = (tabSlug: string) => {
+  return `/tab/${tabSlug}`;
 };
 
 export const buildPhotoPath = (photoPath: string) => {

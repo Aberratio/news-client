@@ -12,13 +12,13 @@ import Link from "next/link";
 import Bar from "components/atoms/Bar";
 
 interface StatisticArticleBarProps {
-  articleId: string;
+  articleSlug: string;
   commentsPath: string;
   statistics: StatisticsItem;
 }
 
 export const StatisticArticleBar = ({
-  articleId,
+  articleSlug,
   commentsPath,
   statistics,
 }: StatisticArticleBarProps) => {
@@ -26,37 +26,37 @@ export const StatisticArticleBar = ({
   const { likes, dislikes, views, comments } = statistics;
 
   useEffect(() => {
-    const storedReaction = sessionStorage.getItem(`article-${articleId}`);
+    const storedReaction = sessionStorage.getItem(`article-${articleSlug}`);
     if (["like", "dislike", ""].includes(storedReaction ?? "")) {
       setSessionReaction(storedReaction ?? "");
     }
-  }, [articleId]);
+  }, [articleSlug]);
 
   const onReactionClick = async (reaction: "like" | "dislike") => {
     if (sessionReaction === "") {
       // Jest zero reakcji, klika nową
       setSessionReaction(reaction);
-      sessionStorage.setItem(`article-${articleId}`, reaction);
+      sessionStorage.setItem(`article-${articleSlug}`, reaction);
       await fetchArticleReaction({
-        articleId,
+        articleSlug,
         like: reaction === "like" ? 1 : 0,
         dislike: reaction === "dislike" ? 1 : 0,
       });
     } else if (sessionReaction !== reaction) {
       // Jest stara reakcja, klika inną
       setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${articleId}`, reaction);
+      sessionStorage.setItem(`comment-${articleSlug}`, reaction);
       await fetchArticleReaction({
-        articleId,
+        articleSlug,
         like: reaction === "like" ? 1 : -1,
         dislike: reaction === "dislike" ? 1 : -1,
       });
     } else {
       // Jest stara reakcja, klika tą samą
       setSessionReaction("");
-      sessionStorage.setItem(`comment-${articleId}`, "");
+      sessionStorage.setItem(`comment-${articleSlug}`, "");
       await fetchArticleReaction({
-        articleId,
+        articleSlug,
         like: reaction === "like" ? -1 : 0,
         dislike: reaction === "dislike" ? -1 : 0,
       });

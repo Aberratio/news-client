@@ -1,5 +1,5 @@
 export interface CommentSummarizationItem {
-  articleId: string;
+  articleSlug: string;
   articleTitle: string;
   author: string;
   date: string;

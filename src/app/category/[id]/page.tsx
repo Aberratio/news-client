@@ -11,10 +11,10 @@ const CategoryPage = ({ params }: CategoryPageProps) => {
   return (
     <SimplePageTemplate
       breadCrubmsInfo={{
-        categoryId: params.id,
+        categorySlug: params.id,
       }}
     >
-      <ArticlesOverview categoryId={Number(params.id)} />
+      <ArticlesOverview categorySlug={params.id} />
     </SimplePageTemplate>
   );
 };

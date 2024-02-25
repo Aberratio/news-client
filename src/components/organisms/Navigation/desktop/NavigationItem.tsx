@@ -34,7 +34,7 @@ export const NavigationItem = ({
         setIsActive(false);
       }}
     >
-      <Link href={buildTabPath(tab.tabId)}>
+      <Link href={buildTabPath(tab.tabSlug)}>
         <Typography color="black">{tab.name}</Typography>
         {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
       </Link>

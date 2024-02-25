@@ -7,22 +7,23 @@ import {
 } from "core/builders/buildPath";
 
 interface AuthorItem {
-  id: number | string;
+  id: string;
   name: string;
   path: string;
 }
 
 interface CategoryItem {
-  id: number | string;
+  id: string;
   name: string;
   path: string;
-  tabId: string;
+  tabSlug: string;
   tabName: string;
   tabPath: string;
 }
 
 interface PhotoItem {
   path: string;
+  description: string;
 }
 
 interface StatisticsItem {
@@ -36,7 +37,7 @@ interface ArticleSummarizationItem {
   author: AuthorItem;
   category: CategoryItem;
   createdOn: string;
-  id: number | string;
+  id: string;
   lead: string;
   path: string;
   photo: PhotoItem;
@@ -70,6 +71,7 @@ interface SanityArticleSummarizationItem {
       _ref: string;
     };
     alt: string;
+    description: string;
   };
   publishedAt: string;
   slug: {
@@ -79,22 +81,27 @@ interface SanityArticleSummarizationItem {
 }
 
 interface FetchArticlesLastParams {
-  categoryId?: number;
-  tabId?: number;
+  categorySlug?: string;
+  tabSlug?: string;
   limit?: number;
   page?: number;
 }
 
 export const fetchArticlesLast = async ({
-  categoryId,
-  tabId,
-  limit,
-  page,
+  categorySlug,
+  tabSlug,
+  limit = 10,
+  page = 1,
 }: FetchArticlesLastParams): Promise<ArticleSummarizationItem[]> => {
-  console.log({ categoryId, tabId, limit, page });
+  const start = (page - 1) * limit;
+  const end = start + limit - 1;
 
   const tabs = await sanityClient.fetch(
-    '*[_type == "post"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug},  lead, publishedAt, body, mainImage, slug}'
+    `*[_type == "post" ${
+      categorySlug ? `&& category->slug.current == "${categorySlug}"` : ""
+    } ${
+      tabSlug ? `&& category->tab->slug.current == "${tabSlug}"` : ""
+    }]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug},  lead, publishedAt, body, mainImage, slug} | order(publishedAt desc) [${start}..${end}]`
   );
 
   return mapData(tabs);
@@ -114,7 +121,7 @@ const mapData = (
         id: post.category.slug.current,
         name: post.category.name,
         path: buildCategoryPath(post.category.slug.current),
-        tabId: post.category.tab.slug.current,
+        tabSlug: post.category.tab.slug.current,
         tabName: post.category.tab.name,
         tabPath: buildTabPath(post.category.tab.slug.current),
       },
@@ -130,6 +137,7 @@ const mapData = (
       },
       photo: {
         path: buildImageUrl(post.mainImage.asset._ref),
+        description: post.mainImage.description,
       },
       title: post.title,
     };

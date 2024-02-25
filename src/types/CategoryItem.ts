@@ -2,7 +2,7 @@ export interface CategoryItem {
   id: string;
   name: string;
   path: string;
-  tabId: string;
+  tabSlug: string;
   tabName: string;
   tabPath: string;
 }

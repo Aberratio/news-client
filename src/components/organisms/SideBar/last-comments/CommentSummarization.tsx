@@ -18,7 +18,7 @@ export const CommentSummarization = ({
 }: CommentSummarizationProps) => {
   return (
     <CommentContainer data-testid={`comment-summarization-${iterator}`}>
-      <Link href={buildArticlePath(comment.articleId)}>
+      <Link href={buildArticlePath(comment.articleSlug)}>
         <Typography variant="h3">{comment.articleTitle}</Typography>
       </Link>
       <Comment

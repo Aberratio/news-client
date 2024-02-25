@@ -1,13 +1,13 @@
 "use server";
 
 interface FetchArticleReactionProps {
-  articleId: string;
+  articleSlug: string;
   like: number;
   dislike: number;
 }
 
 export const fetchArticleReaction = async ({
-  articleId,
+  articleSlug,
   like,
   dislike,
 }: FetchArticleReactionProps): Promise<void> => {
@@ -16,7 +16,7 @@ export const fetchArticleReaction = async ({
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ like, dislike, articleSlug: articleId }),
+    body: JSON.stringify({ like, dislike, articleSlug: articleSlug }),
     next: { revalidate: 60 },
   });
 };

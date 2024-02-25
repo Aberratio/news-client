@@ -10,7 +10,7 @@ export interface FullArticleItem {
   category: CategoryItem;
   comments?: CommentItem[];
   createdOn: string;
-  id: number | string;
+  id: string;
   lead: string;
   path: string;
   photos: PhotoItem[];

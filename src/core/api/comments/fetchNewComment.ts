@@ -1,13 +1,13 @@
 "use server";
 
 interface FetchNewCommentProps {
-  articleId: string;
+  articleSlug: string;
   author: string;
   text: string;
 }
 
 export const fetchNewComment = async ({
-  articleId,
+  articleSlug,
   author,
   text,
 }: FetchNewCommentProps): Promise<void> => {
@@ -17,6 +17,6 @@ export const fetchNewComment = async ({
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ author, text, articleId }),
+    body: JSON.stringify({ author, text, articleSlug }),
   });
 };

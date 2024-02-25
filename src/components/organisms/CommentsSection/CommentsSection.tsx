@@ -10,11 +10,11 @@ import { EmptyCommentsSection } from "./EmptyCommentsSection";
 import Hr from "components/atoms/Hr";
 
 interface CommentsSectionProps {
-  articleId: string;
+  articleSlug: string;
   comments: CommentItem[];
 }
 
-const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
+const CommentsSection = ({ articleSlug, comments }: CommentsSectionProps) => {
   return (
     <div id="comments">
       <Hr />
@@ -22,7 +22,7 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
         Komentarze
       </Typography>
       <CommentForm
-        articleId={articleId}
+        articleSlug={articleSlug}
         sendComment={fetchNewComment}
         revalidateCommentsTag={revalidateCommentsTag}
       />

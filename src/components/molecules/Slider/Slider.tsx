@@ -20,7 +20,6 @@ const Slider = ({ images }: SliderProps) => {
   const isSlideable = images.length > 1;
 
   useEffect(() => {
-    console.log("image.description", image.description);
     setHasDescription(image.description.trim() !== "");
   }, [image]);
 

@@ -10,8 +10,6 @@ const HomePage = async () => {
     page: 0,
   });
 
-  console.log(articles);
-
   return (
     <HomePageTemplate article={articles[0]}>
       <OverviewWithStatsItems

@@ -18,7 +18,7 @@ export const MainMenu = () => {
       {tabs.map((tab, index) => {
         return (
           <NavigationItem
-            isActive={activeNavigationItemIndex === tab.tabId}
+            isActive={activeNavigationItemIndex === index}
             key={index}
             tab={tab}
             onClick={() => {

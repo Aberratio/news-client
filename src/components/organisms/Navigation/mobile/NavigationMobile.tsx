@@ -32,10 +32,10 @@ export const NavigationMobile = () => {
             {tabs.map((tab) => {
               return (
                 <NavigtionItem
-                  key={tab.tabId}
+                  key={tab.tabSlug}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <Link href={buildTabPath(tab.tabId)}>
+                  <Link href={buildTabPath(tab.tabSlug)}>
                     <Typography variant="h2" color="white">
                       {tab.name}
                     </Typography>

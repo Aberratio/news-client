@@ -11,13 +11,13 @@ export interface FormFields {
 }
 
 interface CommentFormProps {
-  articleId: string;
+  articleSlug: string;
   sendComment: any;
   revalidateCommentsTag: any;
 }
 
 export const CommentForm = ({
-  articleId,
+  articleSlug,
   sendComment,
   revalidateCommentsTag,
 }: CommentFormProps) => {
@@ -29,14 +29,13 @@ export const CommentForm = ({
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     sendComment({
-      articleId,
+      articleSlug,
       author: data.name,
       data: new Date(),
       text: data.comment,
     });
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+
     revalidateCommentsTag();
     reset();
   };

@@ -16,7 +16,6 @@ export const Thumb = ({
 
   useEffect(() => {
     setIsThumbActive(isActive);
-    console.log("isActive", isActive);
   }, [isActive]);
 
   const calculateColor = () => {

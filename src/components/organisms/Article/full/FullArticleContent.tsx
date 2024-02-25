@@ -5,7 +5,7 @@ import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import Slider from "../../../molecules/Slider";
-import { StatisticArticleBar } from "../StatisticArticleBar";
+// import { StatisticArticleBar } from "../StatisticArticleBar";
 import { Body } from "./Body";
 
 interface FullArticleProps {
@@ -24,7 +24,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
             createdOn={article.createdOn}
           />
           {/* <StatisticArticleBar
-            articleId={article.id}
+            articleSlug={article.id}
             commentsPath="#comments"
             statistics={article.statistics}
           /> */}
