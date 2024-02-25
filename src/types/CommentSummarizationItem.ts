@@ -4,7 +4,7 @@ export interface CommentSummarizationItem {
   author: string;
   date: string;
   dislikes: number;
-  id: number | string;
+  id: number;
   likes: number;
   text: string;
 }

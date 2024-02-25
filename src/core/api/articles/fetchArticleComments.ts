@@ -3,22 +3,20 @@
 import { CommentItem } from "types/CommentItem";
 
 interface GetCommentsArticleResponse {
-  articleId: string;
-  articleTitle: string;
+  article_slug: string;
   author: string;
-  date: Date;
+  datetime: Date;
   dislikes: number;
-  id: number | string;
-  isVisible: boolean;
+  id_comment: number;
   likes: number;
   text: string;
 }
 
-export const fetchCommentsArticle = async (
+export const fetchArticleComments = async (
   articleId: string
 ): Promise<CommentItem[]> => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASIC_URL}/comments/article/${articleId}`,
+    `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/comments?articleSlug=${articleId}`,
     { next: { revalidate: 60, tags: ["comments"] } }
   );
 
@@ -32,13 +30,11 @@ export const fetchCommentsArticle = async (
 const mapData = (data: GetCommentsArticleResponse[]): CommentItem[] => {
   return data.map((item: GetCommentsArticleResponse) => {
     return {
-      articleId: item.articleId,
-      articleTitle: item.articleTitle,
+      articleId: item.article_slug,
       author: item.author,
-      date: new Date(item.date).toLocaleString(),
+      date: new Date(item.datetime).toLocaleString(),
       dislikes: item.dislikes,
-      id: item.id,
-      isVisible: item.isVisible,
+      id: item.id_comment,
       likes: item.likes,
       text: item.text,
     } as CommentItem;

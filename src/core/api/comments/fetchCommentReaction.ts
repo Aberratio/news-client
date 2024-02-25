@@ -11,15 +11,12 @@ export const fetchCommentReaction = async ({
   like,
   dislike,
 }: FetchCommentReactionProps): Promise<void> => {
-  await fetch(
-    `${process.env.NEXT_PUBLIC_BASIC_URL}/comments/reaction/${commentId}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ like, dislike }),
-      next: { revalidate: 60 },
-    }
-  );
+  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ like, dislike, commentId }),
+    next: { revalidate: 60 },
+  });
 };

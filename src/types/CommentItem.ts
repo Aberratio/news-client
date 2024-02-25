@@ -3,8 +3,7 @@ export interface CommentItem {
   articleId: string;
   date: string;
   dislikes: number;
-  id: number | string;
-  isVisible: boolean;
+  id: number;
   likes: number;
   text: string;
 }

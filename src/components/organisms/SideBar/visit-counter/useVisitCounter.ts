@@ -4,14 +4,14 @@ import { useAdminApi } from "core/api/useAdminApi";
 import { useState } from "react";
 
 export const useVisitCounter = () => {
-  const { getVisitsDetails, incrementViews, incrementVisits } = useAdminApi();
+  const { getVisitsDetails, incrementVisits } = useAdminApi();
   const [visits, setVisits] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const loadVisits = () => {
     void getVisitsDetails()
-      .then((data) => {
-        setVisits(data);
+      .then((data: any) => {
+        setVisits(data[0].visits);
         sessionStorage.setItem("visits", data.toString());
       })
       .finally(() => {
@@ -23,15 +23,13 @@ export const useVisitCounter = () => {
     if (sessionStorage.getItem("visits") === null) {
       setIsLoading(true);
       void incrementVisits(url)
-        .then((data) => {
-          setVisits(data);
+        .then(() => {
+          setVisits((prev) => prev + 1);
         })
         .finally(() => {
           setIsLoading(false);
         });
     }
-
-    void incrementViews(url);
   };
 
   return {

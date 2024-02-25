@@ -3,7 +3,7 @@
 import { FullArticleItem } from "types/FullArticleItem";
 import CommentSection from "../../CommentsSection";
 import { FullArticleContent } from "./FullArticleContent";
-import { fetchCommentsArticle } from "core/api/comments/fetchCommentsArticle";
+import { fetchArticleComments } from "core/api/articles/fetchArticleComments";
 
 interface FullArticleProps {
   article: FullArticleItem;

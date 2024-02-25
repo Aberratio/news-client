@@ -7,7 +7,7 @@ export interface ArticleSummarizationItem {
   author: AuthorItem;
   category: CategoryItem;
   createdOn: string;
-  id: number | string;
+  id: string;
   lead: string;
   path: string;
   photo: PhotoItem;
