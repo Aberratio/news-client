@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export const PUT = async (request: Request) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const { like, dislike, articleSlug } = await request.json();
 
     if (like * dislike === 1) {
@@ -29,7 +30,19 @@ export const PUT = async (request: Request) => {
       });
     }
 
-    return Response.json({ like, dislike, articleSlug }, { status: 200 });
+    return Response.json(
+      { like, dislike, articleSlug },
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": allowedOrigin || "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+          "Access-Control-Max-Age": "86400",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error fetching article reactions:", error);
     return Response.json(

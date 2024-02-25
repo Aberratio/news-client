@@ -3,6 +3,7 @@ import { query } from "core/db/query";
 
 export const GET = async (request: NextRequest): Promise<any> => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const searchParams = request.nextUrl.searchParams;
     const limit = searchParams.get("limit") || 2;
 
@@ -11,7 +12,16 @@ export const GET = async (request: NextRequest): Promise<any> => {
       values: [],
     });
 
-    return Response.json(comments, { status: 200 });
+    return Response.json(comments, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": allowedOrigin || "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers":
+          "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+        "Access-Control-Max-Age": "86400",
+      },
+    });
   } catch (error) {
     console.error("Error fetching comments:", error);
     return Response.json(
@@ -23,6 +33,7 @@ export const GET = async (request: NextRequest): Promise<any> => {
 
 export const POST = async (request: Request) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const { articleSlug, author, text } = await request.json();
 
     await query({
@@ -30,7 +41,19 @@ export const POST = async (request: Request) => {
       values: [articleSlug, author, text],
     });
 
-    return Response.json({ articleSlug, author, text }, { status: 200 });
+    return Response.json(
+      { articleSlug, author, text },
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": allowedOrigin || "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+          "Access-Control-Max-Age": "86400",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error adding comment:", error);
     return Response.json(
@@ -42,6 +65,7 @@ export const POST = async (request: Request) => {
 
 export const PUT = async (request: Request) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const { like, dislike, commentId } = await request.json();
 
     if (like * dislike === 1) {
@@ -55,7 +79,19 @@ export const PUT = async (request: Request) => {
       values: [like, dislike, commentId],
     });
 
-    return Response.json({ like, dislike, commentId }, { status: 200 });
+    return Response.json(
+      { like, dislike, commentId },
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": allowedOrigin || "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+          "Access-Control-Max-Age": "86400",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error updating comment:", error);
     return Response.json(

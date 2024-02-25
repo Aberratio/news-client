@@ -1,14 +1,24 @@
 import { query } from "core/db/query";
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
+export const GET = async (request: Request) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const visits = await query({
       query: `SELECT COALESCE(SUM(amount), 0) as visits FROM visits`,
       values: [],
     });
 
-    return Response.json(visits);
+    return Response.json(visits, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": allowedOrigin || "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers":
+          "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+        "Access-Control-Max-Age": "86400",
+      },
+    });
   } catch (error) {
     console.error("Error fetching views:", error);
     return Response.json(
@@ -20,6 +30,7 @@ export const GET = async () => {
 
 export const PUT = async (request: Request) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const { url } = await request.json();
 
     await query({
@@ -28,7 +39,19 @@ export const PUT = async (request: Request) => {
       values: [url],
     });
 
-    return Response.json({ url });
+    return Response.json(
+      { url },
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": allowedOrigin || "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+          "Access-Control-Max-Age": "86400",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error updating views:", error);
     return Response.json(

@@ -3,6 +3,7 @@ import { query } from "core/db/query";
 
 export const GET = async (request: NextRequest) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const searchParams = request.nextUrl.searchParams;
     const articleSlug = searchParams.get("articleSlug") ?? "";
 
@@ -11,7 +12,16 @@ export const GET = async (request: NextRequest) => {
       values: [articleSlug],
     });
 
-    return Response.json(stats, { status: 200 });
+    return Response.json(stats, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": allowedOrigin || "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers":
+          "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
+        "Access-Control-Max-Age": "86400",
+      },
+    });
   } catch (error) {
     console.error("Error fetching article stats:", error);
     return Response.json([], { status: 500 });
