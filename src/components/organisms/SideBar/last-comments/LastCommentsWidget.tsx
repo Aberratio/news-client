@@ -1,4 +1,4 @@
-"use server";
+export const dynamic = "force-dynamic";
 
 import Widget from "components/molecules/Widget";
 import { fetchCommentsLast } from "core/api/comments/fetchCommentsLast";

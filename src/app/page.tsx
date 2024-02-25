@@ -1,4 +1,4 @@
-"use server";
+export const dynamic = "force-dynamic";
 
 import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
@@ -9,6 +9,10 @@ const HomePage = async () => {
     limit: 61,
     page: 0,
   });
+
+  if (!articles.length) {
+    return <p>No articles</p>;
+  }
 
   return (
     <HomePageTemplate article={articles[0]}>

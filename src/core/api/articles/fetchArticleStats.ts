@@ -17,10 +17,6 @@ export const fetchArticleStats = async (
     { next: { revalidate: 60, tags: ["stats"] } }
   );
 
-  if (response.status >= 300) throw new Error("Failed to fetch article stats");
-  if (response.headers.get("content-type")?.includes("text"))
-    throw new Error("Failed to fetch article stats");
-
   return mapData(((await response.json()) as GetArticleStatsResponse[])[0]);
 };
 

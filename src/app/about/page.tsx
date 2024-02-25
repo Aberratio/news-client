@@ -1,4 +1,4 @@
-"use server";
+export const dynamic = "force-dynamic";
 
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 import { SectionContainer } from "components/organisms/SectionContainer/SectionContainer";

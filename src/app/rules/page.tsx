@@ -1,4 +1,4 @@
-"use server";
+export const dynamic = "force-dynamic";
 
 import { RulesPageTemplate } from "components/templates/RulesPageTemplate/RulesPageTemplate";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";

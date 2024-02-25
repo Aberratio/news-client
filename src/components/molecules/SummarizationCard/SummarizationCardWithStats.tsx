@@ -7,6 +7,7 @@ import { SummarizationCardTitle } from "./SummarizationCardTitle";
 import { SummarizationCardWrapper } from "./SummarizationCardWrapper";
 import { fetchArticleStats } from "core/api/articles/fetchArticleStats";
 import { Suspense } from "react";
+import { notFound } from "next/navigation";
 
 interface SummarizationCardWithStatsItem {
   authorName: string;
@@ -29,6 +30,10 @@ export const SummarizationCardWithStats = async ({
   item,
 }: SummarizationCardWithStatsProps) => {
   const statistics = await fetchArticleStats(item.id);
+
+  if (!statistics) {
+    notFound();
+  }
 
   return (
     <SummarizationCardWrapper>

@@ -11,6 +11,7 @@ interface BreadCrumbsProps {
 }
 
 export const BreadCrumbsContent = ({ breadcrumbs }: BreadCrumbsProps) => {
+  if (breadcrumbs.length === 0) return null;
   const length = breadcrumbs.length - 1;
 
   return (

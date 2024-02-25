@@ -2,6 +2,7 @@
 
 import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
 import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
+import { notFound } from "next/navigation";
 
 interface ArticlesOverviewProps {
   limit?: number;
@@ -22,6 +23,10 @@ export const ArticlesOverview = async ({
     limit,
     page,
   });
+
+  if(!articles) {
+    notFound();
+  }
 
   return (
     <OverviewWithStatsItems

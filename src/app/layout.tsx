@@ -12,6 +12,7 @@ import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTo
 import { SideBar } from "components/organisms/SideBar/SideBar";
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 import { fetchTabs } from "core/api/navigation/fetchTabs";
+import ErrorBoundary from "providers/context/ErrorBoundary";
 
 const spectral = Spectral({
   subsets: ["latin"],
@@ -30,23 +31,29 @@ const RootLayout = async ({
 }>) => {
   const tabs = await fetchTabs();
 
+  if (!tabs) {
+    return null;
+  }
+
   return (
     <html lang="en">
       <body className={spectral.className}>
-        <OrganizationContextProvider tabs={tabs}>
-          <StyledComponentsRegistry>
-            <GlobalThemeWrapper>
-              <Menu />
-              <Navigation />
-              <MainColumn>
-                {children}
-                <SideBar />
-              </MainColumn>
-              <Footer />
-              <ScrollToTopButton />
-            </GlobalThemeWrapper>
-          </StyledComponentsRegistry>
-        </OrganizationContextProvider>
+        <ErrorBoundary>
+          <OrganizationContextProvider tabs={tabs}>
+            <StyledComponentsRegistry>
+              <GlobalThemeWrapper>
+                <Menu />
+                <Navigation />
+                <MainColumn>
+                  {children}
+                  <SideBar />
+                </MainColumn>
+                <Footer />
+                <ScrollToTopButton />
+              </GlobalThemeWrapper>
+            </StyledComponentsRegistry>
+          </OrganizationContextProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
