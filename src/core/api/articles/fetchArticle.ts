@@ -6,7 +6,6 @@ import {
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
-import { fetchArticleStats } from "./fetchArticleStats";
 
 interface AuthorItem {
   id: string;
@@ -26,13 +25,6 @@ interface CategoryItem {
 interface PhotoItem {
   path: string;
   description: string;
-}
-
-interface StatisticsItem {
-  comments: number;
-  dislikes: number;
-  likes: number;
-  views: number;
 }
 
 interface ArticleItem {

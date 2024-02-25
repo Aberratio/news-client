@@ -4,6 +4,7 @@ import { FullArticle } from "components/organisms/Article/full/FullArticle";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 import { fetchArticle } from "../../../core/api/articles/fetchArticle";
+import { fetchArticleViews } from "core/api/articles/fetchArticleViews";
 
 interface ArticlePageProps {
   params: { id: string };
@@ -11,6 +12,7 @@ interface ArticlePageProps {
 
 const ArticlePage = async ({ params }: ArticlePageProps) => {
   const article = await fetchArticle(params.id);
+  await fetchArticleViews({ articleSlug: params.id });
 
   return (
     <SimplePageTemplate

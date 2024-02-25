@@ -21,14 +21,14 @@ export const fetchArticleStats = async (
   if (response.headers.get("content-type")?.includes("text"))
     throw new Error("Failed to fetch article stats");
 
-  return mapData((await response.json()) as GetArticleStatsResponse);
+  return mapData(((await response.json()) as GetArticleStatsResponse[])[0]);
 };
 
 const mapData = (data: GetArticleStatsResponse): StatisticsItem => {
   return {
-    comments: 0,
-    dislikes: data.dislikes ?? 0,
-    likes: data.likes ?? 0,
-    views: data.views ?? 1,
+    comments: Number(data.comments) ?? 0,
+    dislikes: Number(data.dislikes) ?? 0,
+    likes: Number(data.likes) ?? 0,
+    views: Number(data.views) + 1 ?? 1,
   } as StatisticsItem;
 };

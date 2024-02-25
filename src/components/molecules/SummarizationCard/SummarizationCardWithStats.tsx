@@ -1,18 +1,17 @@
-"use client";
+"use server";
 
-import styled from "styled-components";
-import Image from "next/image";
-
-import Typography from "components/atoms/Typography";
 import MetadataBar from "components/molecules/MetadataBar";
 import { StatisticBar } from "components/molecules/SummarizationCard/StatisticBar";
-import Link from "next/link";
-import { StatisticsItem } from "types/StatisticsItem";
+import { SummarizationCardImage } from "./SummarizationCardImage";
+import { SummarizationCardTitle } from "./SummarizationCardTitle";
+import { SummarizationCardWrapper } from "./SummarizationCardWrapper";
+import { fetchArticleStats } from "core/api/articles/fetchArticleStats";
+import { Suspense } from "react";
 
 interface SummarizationCardWithStatsItem {
   authorName: string;
   date: string;
-  id: number | string;
+  id: string;
   title: string;
   path: string;
   photo: {
@@ -20,81 +19,31 @@ interface SummarizationCardWithStatsItem {
     description?: string;
     path: string;
   };
-  statistics: StatisticsItem;
 }
 
 interface SummarizationCardWithStatsProps {
   item: SummarizationCardWithStatsItem;
 }
 
-export const SummarizationCardWithStats = ({
+export const SummarizationCardWithStats = async ({
   item,
 }: SummarizationCardWithStatsProps) => {
+  const statistics = await fetchArticleStats(item.id);
+
   return (
-    <Wrapper data-testid="summarization-card">
-      <Container>
-        <ImageLink href={item.path}>
-          <StyledImage
-            src={item.photo.path}
-            fill
-            alt={item.photo.alt}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </ImageLink>
-        <StyledLink href={item.path}>
-          <Typography variant="h3" wrap space={{ marginBottom: 2 }}>
-            {item.title}
-          </Typography>
-        </StyledLink>
+    <SummarizationCardWrapper>
+      <Suspense>
+        <SummarizationCardImage path={item.path} photo={item.photo} />
+      </Suspense>
+      <Suspense>
+        <SummarizationCardTitle path={item.path} title={item.title} />
+      </Suspense>
+      <Suspense>
         <MetadataBar authorName={item.authorName} createdOn={item.date} />
-        <StatisticBar statistics={item.statistics} />
-      </Container>
-    </Wrapper>
+      </Suspense>
+      <Suspense>
+        <StatisticBar statistics={statistics} />
+      </Suspense>
+    </SummarizationCardWrapper>
   );
 };
-
-const Wrapper = styled.div`
-  width: 100%;
-  background-color: #fff;
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  background-color: transparent;
-
-  touch-action: manipulation;
-  transition: all 0.3s;
-  cursor: pointer;
-
-  &:hover {
-    color: #17b978;
-  }
-
-  p {
-    line-height: 1.25;
-  }
-`;
-
-const ImageLink = styled(Link)`
-  position: relative;
-
-  cursor: pointer;
-  width: 100%;
-
-  height: 180px;
-`;
-
-const StyledImage = styled(Image)`
-  vertical-align: middle;
-  border-style: none;
-  border-radius: 8px;
-
-  object-fit: cover;
-  object-position: 50% 50%;
-`;
