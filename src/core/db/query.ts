@@ -7,11 +7,11 @@ interface QueryParams {
 
 export const query = async ({ query, values = [] }: QueryParams) => {
   const dbconnection = await mysql.createConnection({
-    host: "h29.seohost.pl",
-    port: 3306,
-    database: "srv64660_interaction_base",
-    user: "srv64660_interaction_base",
-    password: "GkLPmjtN4uDc7qgcSRJp",
+    host: process.env.DB_HOST ?? "",
+    port: Number(process.env.DB_PORT) ?? 0,
+    database: process.env.DB_DATABASE ?? "",
+    user: process.env.DB_USER ?? "",
+    password: process.env.DB_PASSWORD ?? "",
   });
 
   try {
