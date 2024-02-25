@@ -8,12 +8,12 @@ import WidgetFull from "components/molecules/Widget/WidgetFull";
 import { usePathname } from "next/navigation";
 
 export const VisitCounter = () => {
-  const { isLoading, visits, loadVisitsCounter } = useVisitCounter();
+  const { isLoading, visits, loadVisits } = useVisitCounter();
   const [digits, setDigits] = useState<number[]>([0, 0, 0, 0, 0, 0]);
   const pathName = usePathname();
 
   useEffect(() => {
-    loadVisitsCounter(pathName);
+    loadVisits(pathName);
   }, []);
 
   useEffect(() => {

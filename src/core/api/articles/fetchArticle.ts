@@ -6,6 +6,7 @@ import {
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
+import { fetchArticleStats } from "./fetchArticleStats";
 
 interface AuthorItem {
   id: string;
@@ -43,7 +44,6 @@ interface ArticleItem {
   lead: string;
   path: string;
   photos: PhotoItem[];
-  statistics?: StatisticsItem;
   title: string;
 }
 

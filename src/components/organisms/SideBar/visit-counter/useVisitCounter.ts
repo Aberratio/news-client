@@ -8,7 +8,7 @@ export const useVisitCounter = () => {
   const [visits, setVisits] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const loadVisitsCounter = (url: string) => {
+  const loadVisits = (url: string) => {
     void getVisitsDetails()
       .then((data: any) => {
         setVisits(data[0].visits);
@@ -33,6 +33,6 @@ export const useVisitCounter = () => {
   return {
     isLoading,
     visits,
-    loadVisitsCounter,
+    loadVisits,
   };
 };

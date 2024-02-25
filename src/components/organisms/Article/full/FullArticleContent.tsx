@@ -5,15 +5,21 @@ import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { FullArticleItem } from "types/FullArticleItem";
 import Slider from "../../../molecules/Slider";
-// import { StatisticArticleBar } from "../StatisticArticleBar";
+import { StatisticArticleBar } from "../StatisticArticleBar";
 import { Body } from "./Body";
+import { StatisticsItem } from "types/StatisticsItem";
 
 interface FullArticleProps {
   article: FullArticleItem;
+  statistics: StatisticsItem;
   children: React.ReactNode;
 }
 
-export const FullArticleContent = ({ article, children }: FullArticleProps) => {
+export const FullArticleContent = ({
+  article,
+  statistics,
+  children,
+}: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.id}`}>
       <Container>
@@ -23,11 +29,11 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
             authorName={article.author.name}
             createdOn={article.createdOn}
           />
-          {/* <StatisticArticleBar
+          <StatisticArticleBar
             articleSlug={article.id}
             commentsPath="#comments"
-            statistics={article.statistics}
-          /> */}
+            statistics={statistics}
+          />
         </InfoWrapper>
         <LeadWrapper>
           <Typography variant="h2">{article.lead}</Typography>
