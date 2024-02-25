@@ -2,7 +2,7 @@ export const useAdminApi = () => {
   const getVisitsDetails = async (): Promise<number> => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASIC_URL}/visits`,
-      { next: { revalidate: 60 } }
+      { next: { revalidate: 60, tags: ["visits"] } }
     );
 
     if (response.status >= 300) throw new Error("Failed to fetch visits");

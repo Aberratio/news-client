@@ -16,7 +16,7 @@ export const fetchArticleReaction = async ({
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ like, dislike, articleSlug: articleSlug }),
+    body: JSON.stringify({ like, dislike, articleSlug }),
     next: { revalidate: 60 },
   });
 };

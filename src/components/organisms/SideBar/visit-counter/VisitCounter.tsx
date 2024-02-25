@@ -3,20 +3,26 @@
 import styled from "styled-components";
 import Typography from "components/atoms/Typography";
 import { useVisitCounter } from "./useVisitCounter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import WidgetFull from "components/molecules/Widget/WidgetFull";
+import { usePathname } from "next/navigation";
 
 export const VisitCounter = () => {
-  const { isLoading, visits, loadVisits } = useVisitCounter();
+  const { isLoading, visits, loadVisitsCounter } = useVisitCounter();
+  const [digits, setDigits] = useState<number[]>([0, 0, 0, 0, 0, 0]);
+  const pathName = usePathname();
 
   useEffect(() => {
-    loadVisits();
+    loadVisitsCounter(pathName);
   }, []);
+
+  useEffect(() => {
+    setDigits(visits.toString().split("").map(Number));
+  }, [visits]);
 
   if (isLoading) {
     return <></>;
   }
-  const digits = visits.toString().split("").map(Number);
 
   return (
     <WidgetFull dataTestId="visit-counter" title="Licznik odwiedzin">

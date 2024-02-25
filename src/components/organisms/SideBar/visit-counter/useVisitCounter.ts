@@ -8,19 +8,17 @@ export const useVisitCounter = () => {
   const [visits, setVisits] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const loadVisits = () => {
+  const loadVisitsCounter = (url: string) => {
     void getVisitsDetails()
       .then((data: any) => {
         setVisits(data[0].visits);
-        sessionStorage.setItem("visits", data.toString());
+        sessionStorage.setItem("visits", data[0].visits.toString());
       })
       .finally(() => {
         setIsLoading(false);
       });
-  };
 
-  const incrementVisitsCounter = (url: string) => {
-    if (sessionStorage.getItem("visits") === null) {
+    if (!sessionStorage.getItem("visits")) {
       setIsLoading(true);
       void incrementVisits(url)
         .then(() => {
@@ -35,7 +33,6 @@ export const useVisitCounter = () => {
   return {
     isLoading,
     visits,
-    incrementVisitsCounter,
-    loadVisits,
+    loadVisitsCounter,
   };
 };

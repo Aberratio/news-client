@@ -7,11 +7,11 @@ import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 
 export const MainMenu = () => {
   const [activeNavigationItemIndex, setActiveNavigationItemIndex] =
-    useState<number>(0);
+    useState<number>(-1);
   const mainMenuRef = useRef(null);
   const { tabs } = useOrganizationInfo();
 
-  useOutsideClick([mainMenuRef], () => setActiveNavigationItemIndex(0));
+  useOutsideClick([mainMenuRef], () => setActiveNavigationItemIndex(-1));
 
   return (
     <Container data-testid="main-menu" ref={mainMenuRef}>

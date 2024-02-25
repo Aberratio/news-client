@@ -12,7 +12,7 @@ export const fetchArticleViews = async ({
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ articleSlug: articleSlug }),
+    body: JSON.stringify({ articleSlug }),
     next: { revalidate: 60 },
   });
 };

@@ -8,11 +8,24 @@ export const PUT = async (request: Request) => {
     return;
   }
 
-  await query({
-    query:
-      "UPDATE article_reactions SET likes = likes + ?, dislikes = dislikes + ? WHERE article_slug = ?",
-    values: [like, dislike, articleSlug],
+  const existingRecord: any = await query({
+    query: "SELECT * FROM article_reactions WHERE article_slug = ?",
+    values: [articleSlug],
   });
+
+  if (existingRecord.length === 0) {
+    await query({
+      query:
+        "INSERT INTO article_reactions (article_slug, likes, dislikes) VALUES (?, ?, ?)",
+      values: [articleSlug, like, dislike],
+    });
+  } else {
+    await query({
+      query:
+        "UPDATE article_reactions SET likes = likes + ?, dislikes = dislikes + ? WHERE article_slug = ?",
+      values: [like, dislike, articleSlug],
+    });
+  }
 
   return Response.json({ like, dislike, articleSlug }, { status: 200 });
 };
