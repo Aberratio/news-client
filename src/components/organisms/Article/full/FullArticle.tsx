@@ -11,12 +11,18 @@ interface FullArticleProps {
 }
 
 export const FullArticle = async ({ article }: FullArticleProps) => {
-  const comments = await fetchArticleComments(article._id);
+  const comments = await fetchArticleComments(article._id)
+    .then((res) => res)
+    .catch((error) => {
+      console.error(error);
+    });
 
   return (
     <FullArticleContent article={article}>
       <Suspense>
-        <CommentSection articleId={article._id} comments={comments} />
+        {comments !== undefined && (
+          <CommentSection articleId={article._id} comments={comments} />
+        )}
       </Suspense>
     </FullArticleContent>
   );
