@@ -6,7 +6,6 @@ import { SummarizationCardImage } from "./SummarizationCardImage";
 import { SummarizationCardTitle } from "./SummarizationCardTitle";
 import { SummarizationCardWrapper } from "./SummarizationCardWrapper";
 import { Suspense } from "react";
-import { notFound } from "next/navigation";
 
 interface SummarizationCardWithStatsItem {
   authorName: string;
