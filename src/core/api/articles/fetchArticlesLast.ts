@@ -39,6 +39,9 @@ interface ArticleSummarizationItem {
   createdOn: string;
   id: string;
   lead: string;
+  likes: number;
+  dislikes: number;
+  views: number;
   path: string;
   photo: PhotoItem;
   statistics: StatisticsItem;
@@ -66,6 +69,9 @@ interface SanityArticleSummarizationItem {
     };
   };
   lead: string;
+  likes: number;
+  dislikes: number;
+  views: number;
   mainImage: {
     asset: {
       _ref: string;
@@ -101,7 +107,7 @@ export const fetchArticlesLast = async ({
       categorySlug ? `&& category->slug.current == "${categorySlug}"` : ""
     } ${
       tabSlug ? `&& category->tab->slug.current == "${tabSlug}"` : ""
-    }]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug},  lead, publishedAt, body, mainImage, slug} | order(publishedAt desc) [${start}..${end}]`
+    }]{ title, likes, dislikes, views, category->{ title, slug, tab->{title, slug }}, author->{name, slug},  lead, publishedAt, body, mainImage, slug} | order(publishedAt desc) [${start}..${end}]`
   );
 
   return mapData(tabs);
@@ -128,6 +134,9 @@ const mapData = (
       createdOn: post.publishedAt,
       id: post.slug.current,
       lead: post.lead,
+      likes: post.likes,
+      dislikes: post.dislikes,
+      views: post.views,
       path: buildArticlePath(post.slug.current),
       statistics: {
         comments: 0,

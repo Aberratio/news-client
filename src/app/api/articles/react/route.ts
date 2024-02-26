@@ -1,41 +1,28 @@
-import { NextResponse } from "next/server";
 import { sanityClient } from "core/api/sanityClient";
-
-export interface SanityCommentItem {
-  author: string;
-  _createdAt: string;
-  likes: number;
-  _id: string;
-  text: string;
-  post: any;
-}
+import { NextResponse } from "next/server";
 
 export const POST = async (request: Request) => {
   try {
-    const { _id, author, text, date } = await request.json();
+    const { like, dislike, _id } = await request.json();
 
-    sanityClient.create({
-      _type: "comment",
-      post: {
-        _type: "reference",
-        _ref: _id,
-      },
-      author,
-      publishedAt: date,
-      text,
-      likes: 0,
-    });
+    if (like * dislike === 1) {
+      return Response.json(
+        { error: "An error occurred adding reaction on article" },
+        { status: 500 }
+      );
+    }
+
+    sanityClient.patch(_id).inc({ likes: like, dislikes: dislike }).commit();
   } catch (error) {
-    console.error("Error adding comment:", error);
+    console.error("Error adding reaction on article:", error);
     return Response.json(
-      { error: "An error occurred adding comment" },
+      { error: "An error occurred adding reaction on article" },
       { status: 500 }
     );
   }
 
   return Response.json({ status: "ok" }, { status: 200 });
 };
-
 export const OPTIONS = (request: Request) => {
   const allowedOrigin = request.headers.get("origin");
   const response = new NextResponse(null, {

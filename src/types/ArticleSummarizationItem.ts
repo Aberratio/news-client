@@ -9,6 +9,9 @@ export interface ArticleSummarizationItem {
   createdOn: string;
   id: string;
   lead: string;
+  likes: number;
+  dislikes: number;
+  views: number;
   path: string;
   photo: PhotoItem;
   statistics: StatisticsItem;

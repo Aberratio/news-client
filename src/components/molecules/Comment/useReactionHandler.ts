@@ -19,14 +19,12 @@ export const useReactionHandler = (commentId: string) => {
     if (sessionReaction === "") {
       setSessionReaction(reaction);
       sessionStorage.setItem(`comment-${commentId}`, reaction);
-      console.log("fetchCommentReaction 1");
       await fetchCommentReaction({
         commentId,
         like: reaction === "like" ? 1 : 0,
         dislike: reaction === "dislike" ? 1 : 0,
       });
     } else if (sessionReaction !== reaction) {
-      console.log("fetchCommentReaction 2");
       setSessionReaction(reaction);
       sessionStorage.setItem(`comment-${commentId}`, reaction);
       await fetchCommentReaction({
@@ -35,7 +33,6 @@ export const useReactionHandler = (commentId: string) => {
         dislike: reaction === "dislike" ? 1 : -1,
       });
     } else {
-      console.log("fetchCommentReactio3n");
       setSessionReaction("");
       sessionStorage.setItem(`comment-${commentId}`, "");
       await fetchCommentReaction({

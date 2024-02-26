@@ -13,6 +13,9 @@ export interface FullArticleItem {
   _id: string;
   _rev: string;
   lead: string;
+  likes: number;
+  dislikes: number;
+  views: number;
   path: string;
   photos: PhotoItem[];
   title: string;

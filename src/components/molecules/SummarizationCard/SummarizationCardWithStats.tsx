@@ -5,7 +5,6 @@ import { StatisticBar } from "components/molecules/SummarizationCard/StatisticBa
 import { SummarizationCardImage } from "./SummarizationCardImage";
 import { SummarizationCardTitle } from "./SummarizationCardTitle";
 import { SummarizationCardWrapper } from "./SummarizationCardWrapper";
-import { fetchArticleStats } from "core/api/articles/fetchArticleStats";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
@@ -20,21 +19,18 @@ interface SummarizationCardWithStatsItem {
     description?: string;
     path: string;
   };
+  likes: number;
+  dislikes: number;
+  views: number;
 }
 
 interface SummarizationCardWithStatsProps {
   item: SummarizationCardWithStatsItem;
 }
 
-export const SummarizationCardWithStats = async ({
+export const SummarizationCardWithStats = ({
   item,
 }: SummarizationCardWithStatsProps) => {
-  const statistics = await fetchArticleStats(item.id);
-
-  if (!statistics) {
-    notFound();
-  }
-
   return (
     <SummarizationCardWrapper>
       <Suspense>
@@ -47,7 +43,14 @@ export const SummarizationCardWithStats = async ({
         <MetadataBar authorName={item.authorName} createdOn={item.date} />
       </Suspense>
       <Suspense>
-        <StatisticBar statistics={statistics} />
+        <StatisticBar
+          statistics={{
+            comments: 0,
+            likes: item.likes,
+            dislikes: item.dislikes,
+            views: item.views,
+          }}
+        />
       </Suspense>
     </SummarizationCardWrapper>
   );

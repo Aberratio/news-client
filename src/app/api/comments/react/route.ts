@@ -3,15 +3,20 @@ import { sanityClient } from "core/api/sanityClient";
 
 export const POST = async (request: Request) => {
   try {
-    console.log("jestem");
-    const { _id } = await request.json();
-    console.log(_id);
+    const { like, dislike, _id } = await request.json();
 
-    sanityClient.patch(_id).inc({ likes: 1 }).commit();
+    if (like * dislike === 1) {
+      return Response.json(
+        { error: "An error occurred adding reaction on comment" },
+        { status: 500 }
+      );
+    }
+
+    sanityClient.patch(_id).inc({ likes: like, dislikes: dislike }).commit();
   } catch (error) {
-    console.error("Error adding comment:", error);
+    console.error("Error adding reaction on comment:", error);
     return Response.json(
-      { error: "An error occurred adding comment" },
+      { error: "An error occurred adding reaction on comment" },
       { status: 500 }
     );
   }

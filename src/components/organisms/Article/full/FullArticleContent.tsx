@@ -7,20 +7,14 @@ import { FullArticleItem } from "types/FullArticleItem";
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
 import { Body } from "./Body";
-import { StatisticsItem } from "types/StatisticsItem";
 import { Suspense } from "react";
 
 interface FullArticleProps {
   article: FullArticleItem;
-  statistics: StatisticsItem;
   children: React.ReactNode;
 }
 
-export const FullArticleContent = ({
-  article,
-  statistics,
-  children,
-}: FullArticleProps) => {
+export const FullArticleContent = ({ article, children }: FullArticleProps) => {
   return (
     <Wrapper data-testid={`full-article-${article.slug}`}>
       <Container>
@@ -34,9 +28,14 @@ export const FullArticleContent = ({
           </Suspense>
           <Suspense>
             <StatisticArticleBar
-              articleSlug={article.slug}
+              _id={article._id}
               commentsPath="#comments"
-              statistics={statistics}
+              statistics={{
+                comments: 0,
+                dislikes: article.dislikes,
+                likes: article.likes,
+                views: article.views,
+              }}
             />
           </Suspense>
         </InfoWrapper>

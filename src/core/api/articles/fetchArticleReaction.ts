@@ -1,18 +1,18 @@
 "use server";
 
 interface FetchArticleReactionProps {
-  articleSlug: string;
+  _id: string;
   like: number;
   dislike: number;
 }
 
 export const fetchArticleReaction = async ({
-  articleSlug,
+  _id,
   like,
   dislike,
 }: FetchArticleReactionProps): Promise<void> => {
-  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/articles/reactions`, {
-    method: "PUT",
+  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/articles/react`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -21,7 +21,7 @@ export const fetchArticleReaction = async ({
         "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
       "Access-Control-Max-Age": "86400",
     },
-    body: JSON.stringify({ like, dislike, articleSlug }),
+    body: JSON.stringify({ like, dislike, _id }),
     next: { revalidate: 60 },
   });
 };
