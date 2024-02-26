@@ -12,13 +12,13 @@ interface FullArticleProps {
 }
 
 export const FullArticle = async ({ article }: FullArticleProps) => {
-  const comments = await fetchArticleComments(article.id);
-  const statistics = await fetchArticleStats(article.id);
+  const comments = await fetchArticleComments(article.slug);
+  const statistics = await fetchArticleStats(article.slug);
 
   return (
     <FullArticleContent statistics={statistics} article={article}>
       <Suspense>
-        <CommentSection articleSlug={article.id} comments={comments} />
+        <CommentSection articleId={article._id} comments={comments} />
       </Suspense>
     </FullArticleContent>
   );

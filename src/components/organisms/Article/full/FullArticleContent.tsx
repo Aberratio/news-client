@@ -22,7 +22,7 @@ export const FullArticleContent = ({
   children,
 }: FullArticleProps) => {
   return (
-    <Wrapper data-testid={`full-article-${article.id}`}>
+    <Wrapper data-testid={`full-article-${article.slug}`}>
       <Container>
         <Title>{article.title}</Title>
         <InfoWrapper>
@@ -34,7 +34,7 @@ export const FullArticleContent = ({
           </Suspense>
           <Suspense>
             <StatisticArticleBar
-              articleSlug={article.id}
+              articleSlug={article.slug}
               commentsPath="#comments"
               statistics={statistics}
             />

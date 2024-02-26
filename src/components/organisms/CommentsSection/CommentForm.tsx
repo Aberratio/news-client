@@ -11,13 +11,13 @@ export interface FormFields {
 }
 
 interface CommentFormProps {
-  articleSlug: string;
+  _id: string;
   sendComment: any;
   revalidateCommentsTag: any;
 }
 
 export const CommentForm = ({
-  articleSlug,
+  _id,
   sendComment,
   revalidateCommentsTag,
 }: CommentFormProps) => {
@@ -29,15 +29,31 @@ export const CommentForm = ({
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    sendComment({
-      articleSlug,
-      author: data.name,
-      data: new Date(),
-      text: data.comment,
-    });
+    // sendComment();
 
-    revalidateCommentsTag();
-    reset();
+    const body = {
+      _id,
+      author: data.name,
+      date: new Date(),
+      text: data.comment,
+    };
+
+    console.log(body);
+    const body2 = JSON.stringify(body);
+
+    console.log(body2);
+
+    fetch("/api/comments", {
+      method: "POST",
+      body: body2,
+    })
+      .then(() => {
+        revalidateCommentsTag();
+        reset();
+      })
+      .catch((error) => {
+        console.error("Error adding comment:", error);
+      });
   };
 
   return (

@@ -9,7 +9,8 @@ export interface FullArticleItem {
   category: CategoryItem;
   comments?: CommentItem[];
   createdOn: string;
-  id: string;
+  slug: string;
+  _id: string;
   lead: string;
   path: string;
   photos: PhotoItem[];

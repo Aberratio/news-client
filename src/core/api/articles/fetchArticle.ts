@@ -28,11 +28,12 @@ interface PhotoItem {
 }
 
 interface ArticleItem {
+  _id: string;
   author: AuthorItem;
   body: string;
   category: CategoryItem;
   createdOn: string;
-  id: string;
+  slug: string;
   lead: string;
   path: string;
   photos: PhotoItem[];
@@ -40,6 +41,7 @@ interface ArticleItem {
 }
 
 interface SanityArticleItem {
+  _id: string;
   author: {
     name: string;
     slug: {
@@ -84,7 +86,7 @@ interface SanityArticleItem {
 export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
   try {
     const articles = await sanityClient.fetch(
-      `*[_type == "post" && slug.current == "${slug}"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
+      `*[_type == "post" && slug.current == "${slug}"]{ _id, title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
     );
 
     return mapData(articles[0]);
@@ -96,6 +98,7 @@ export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
 
 const mapData = (post: SanityArticleItem): ArticleItem => {
   return {
+    _id: post._id,
     author: {
       id: post.author.slug.current,
       name: post.author.name,
@@ -111,7 +114,7 @@ const mapData = (post: SanityArticleItem): ArticleItem => {
       tabPath: buildTabPath(post.category.tab.slug.current),
     },
     createdOn: post.publishedAt,
-    id: post.slug.current,
+    slug: post.slug.current,
     lead: post.lead,
     path: buildArticlePath(post.slug.current),
     photos: [
