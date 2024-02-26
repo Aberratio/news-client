@@ -1,7 +1,7 @@
 "use server";
 
 import { FirstSite } from "./first-site/FirstSite";
-import { VisitCounter } from "./visit-counter/VisitCounter";
+import { VisitCounterWidget } from "./visit-counter/VisitCounterWidget";
 import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
 
@@ -10,7 +10,7 @@ export const SideBar = () => {
     <SideBarWrapper>
       <FirstSite />
       <LastCommentsWidget />
-      <VisitCounter />
+      <VisitCounterWidget />
     </SideBarWrapper>
   );
 };
