@@ -11,6 +11,10 @@ interface ArticlePageProps {
 }
 
 const ArticlePage = async ({ params }: ArticlePageProps) => {
+  if (!params.id) {
+    return null;
+  }
+
   const article = await fetchArticle(params.id)
     .then((res) => res)
     .catch((error) => {
