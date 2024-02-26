@@ -8,6 +8,7 @@ import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
 import { Body } from "./Body";
 import { StatisticsItem } from "types/StatisticsItem";
+import { Suspense } from "react";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -25,22 +26,30 @@ export const FullArticleContent = ({
       <Container>
         <Title>{article.title}</Title>
         <InfoWrapper>
-          <MetadataBar
-            authorName={article.author.name}
-            createdOn={article.createdOn}
-          />
-          <StatisticArticleBar
-            articleSlug={article.id}
-            commentsPath="#comments"
-            statistics={statistics}
-          />
+          <Suspense>
+            <MetadataBar
+              authorName={article.author.name}
+              createdOn={article.createdOn}
+            />
+          </Suspense>
+          <Suspense>
+            <StatisticArticleBar
+              articleSlug={article.id}
+              commentsPath="#comments"
+              statistics={statistics}
+            />
+          </Suspense>
         </InfoWrapper>
         <LeadWrapper>
           <Typography variant="h2">{article.lead}</Typography>
         </LeadWrapper>
-        <Slider images={article.photos} />
+        <Suspense>
+          <Slider images={article.photos} />
+        </Suspense>
         <BodyWrapper>
-          <Body value={article.body} />
+          <Suspense>
+            <Body value={article.body} />
+          </Suspense>
         </BodyWrapper>
       </Container>
       {children}

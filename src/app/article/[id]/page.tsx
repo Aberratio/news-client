@@ -5,6 +5,7 @@ import { SimplePageTemplate } from "components/templates/SimplePageTemplate/Simp
 
 import { fetchArticle } from "../../../core/api/articles/fetchArticle";
 import { fetchArticleViews } from "core/api/articles/fetchArticleViews";
+import { Suspense } from "react";
 
 interface ArticlePageProps {
   params: { id: string };
@@ -35,7 +36,9 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
         categoryPath: article.category.path,
       }}
     >
-      <FullArticle article={article} />
+      <Suspense>
+        <FullArticle article={article} />
+      </Suspense>
     </SimplePageTemplate>
   );
 };
