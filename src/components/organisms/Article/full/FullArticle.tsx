@@ -5,6 +5,7 @@ import CommentSection from "../../CommentsSection";
 import { FullArticleContent } from "./FullArticleContent";
 import { fetchArticleComments } from "core/api/articles/fetchArticleComments";
 import { fetchArticleStats } from "core/api/articles/fetchArticleStats";
+import { Suspense } from "react";
 
 interface FullArticleProps {
   article: FullArticleItem;
@@ -16,7 +17,9 @@ export const FullArticle = async ({ article }: FullArticleProps) => {
 
   return (
     <FullArticleContent statistics={statistics} article={article}>
-      <CommentSection articleSlug={article.id} comments={comments} />
+      <Suspense>
+        <CommentSection articleSlug={article.id} comments={comments} />
+      </Suspense>
     </FullArticleContent>
   );
 };

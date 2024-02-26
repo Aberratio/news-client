@@ -16,6 +16,7 @@ export const fetchArticleStats = async (
     `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/stats?articleSlug=${articleSlug}`,
     {
       next: { revalidate: 60, tags: ["stats"] },
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

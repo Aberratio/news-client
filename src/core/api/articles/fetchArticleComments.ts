@@ -19,6 +19,7 @@ export const fetchArticleComments = async (
     `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/comments?articleSlug=${articleSlug}`,
     {
       next: { revalidate: 60, tags: ["comments"] },
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

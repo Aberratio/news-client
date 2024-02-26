@@ -3,6 +3,7 @@
 export const fetchVisits = async (): Promise<number> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/visits`, {
     next: { revalidate: 60, tags: ["visits"] },
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
