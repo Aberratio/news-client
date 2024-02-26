@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 export const GET = async (request: Request) => {
   try {
     const allowedOrigin = request.headers.get("origin");
-    const visits = await query({
+    const visits: any = await query({
       query: `SELECT COALESCE(SUM(amount), 0) as visits FROM visits`,
       values: [],
     });
 
-    return Response.json(visits, {
+    return Response.json(visits[0].visits, {
       status: 200,
       headers: {
         "Access-Control-Allow-Origin": allowedOrigin || "*",
