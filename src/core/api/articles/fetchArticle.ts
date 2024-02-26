@@ -83,7 +83,13 @@ interface SanityArticleItem {
 
 export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
   const articles = await sanityClient.fetch(
-    `*[_type == "post" && slug.current == "${slug}"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
+    `*[_type == "post" && slug.current == "${slug}"]{ title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`,
+    {},
+    {
+      method: "post",
+      cache: "force-cache",
+      next: { tags: ["pages"] },
+    }
   );
 
   return mapData(articles[0]);
