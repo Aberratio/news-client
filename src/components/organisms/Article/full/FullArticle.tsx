@@ -20,9 +20,7 @@ export const FullArticle = async ({ article }: FullArticleProps) => {
   return (
     <FullArticleContent article={article}>
       <Suspense>
-        {comments !== undefined && (
-          <CommentSection articleId={article._id} comments={comments} />
-        )}
+        <CommentSection articleId={article._id} comments={comments ?? []} />
       </Suspense>
     </FullArticleContent>
   );
