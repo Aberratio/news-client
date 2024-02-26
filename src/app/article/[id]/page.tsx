@@ -4,7 +4,6 @@ import { FullArticle } from "components/organisms/Article/full/FullArticle";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 import { fetchArticle } from "../../../core/api/articles/fetchArticle";
-import { fetchArticleViews } from "core/api/articles/fetchArticleViews";
 import { Suspense } from "react";
 
 interface ArticlePageProps {
@@ -18,13 +17,7 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
       console.error(error);
     });
 
-  try {
-    await fetchArticleViews({ articleSlug: params.id });
-  } catch (error) {
-    console.error(error);
-  }
-
-  if (!article) {
+  if (!article || !article._id) {
     return null;
   }
 
