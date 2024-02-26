@@ -16,7 +16,12 @@ const ArticlePage = async ({ params }: ArticlePageProps) => {
     .catch((error) => {
       console.error(error);
     });
-  await fetchArticleViews({ articleSlug: params.id });
+
+  try {
+    await fetchArticleViews({ articleSlug: params.id });
+  } catch (error) {
+    console.error(error);
+  }
 
   if (!article) {
     return null;
