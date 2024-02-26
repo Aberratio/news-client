@@ -1,12 +1,13 @@
 export const dynamic = "force-dynamic";
 
 import Widget from "components/molecules/Widget";
-import { fetchCommentsLast } from "core/api/comments/fetchCommentsLast";
 import { LastCommentsContent } from "./LastCommentsContent";
 
-export const LastCommentsWidget = async () => {
-  const comments = await fetchCommentsLast(5);
+interface LastCommentsWidgetProps {
+  comments: any;
+}
 
+export const LastCommentsWidget = ({ comments }: LastCommentsWidgetProps) => {
   if (comments.length === 0) return null;
 
   return (

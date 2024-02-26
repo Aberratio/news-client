@@ -1,25 +1,16 @@
 "use server";
 
-import { CommentItem } from "types/CommentItem";
-
-interface GetCommentsArticleResponse {
-  article_slug: string;
-  author: string;
-  datetime: Date;
-  dislikes: number;
-  id_comment: number;
-  likes: number;
-  text: string;
-}
+import { CommentSummarizationItem } from "types/CommentSummarizationItem";
 
 export const fetchArticleComments = async (
-  articleSlug: string
-): Promise<CommentItem[]> => {
+  _id: string
+): Promise<CommentSummarizationItem[]> => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/comments?articleSlug=${articleSlug}`,
+    `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/comments`,
     {
       next: { revalidate: 60, tags: ["comments"] },
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify({ _ref: _id }),
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -35,19 +26,5 @@ export const fetchArticleComments = async (
   if (response.headers.get("content-type")?.includes("text"))
     throw new Error("Failed to fetch article");
 
-  return mapData((await response.json()) as GetCommentsArticleResponse[]);
-};
-
-const mapData = (data: GetCommentsArticleResponse[]): CommentItem[] => {
-  return data.map((item: GetCommentsArticleResponse) => {
-    return {
-      articleSlug: item.article_slug,
-      author: item.author,
-      date: new Date(item.datetime).toLocaleString(),
-      dislikes: item.dislikes,
-      id: item.id_comment,
-      likes: item.likes,
-      text: item.text,
-    } as CommentItem;
-  });
+  return (await response.json()).comments as CommentSummarizationItem[];
 };

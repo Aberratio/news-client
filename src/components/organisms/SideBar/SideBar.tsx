@@ -6,14 +6,18 @@ import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
 import { Suspense } from "react";
 
-export const SideBar = () => {
+interface SideBarProps {
+  comments: any;
+}
+
+export const SideBar = ({ comments }: SideBarProps) => {
   return (
     <SideBarWrapper>
       <Suspense>
         <FirstSite />
       </Suspense>
       <Suspense>
-        <LastCommentsWidget />
+        <LastCommentsWidget comments={comments} />
       </Suspense>
       <Suspense>
         <VisitCounterWidget />

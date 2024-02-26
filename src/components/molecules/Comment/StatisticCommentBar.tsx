@@ -7,7 +7,7 @@ import { useReactionHandler } from "./useReactionHandler";
 import { useEffect, useState } from "react";
 
 interface StatisticBarProps {
-  commentId: number;
+  commentId: string;
   dislikes: number;
   isReadOnly: boolean;
   likes: number;
@@ -27,7 +27,7 @@ export const StatisticCommentBar = ({
 
   const handleClicked = (reaction: "like" | "dislike") => {
     handleReaction(reaction);
-     
+
     revalidateCommentReactionsTag();
   };
 

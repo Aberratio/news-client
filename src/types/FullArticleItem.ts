@@ -11,6 +11,7 @@ export interface FullArticleItem {
   createdOn: string;
   slug: string;
   _id: string;
+  _rev: string;
   lead: string;
   path: string;
   photos: PhotoItem[];

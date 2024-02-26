@@ -1,7 +1,7 @@
 "use server";
 
 interface FetchCommentReactionProps {
-  commentId: number;
+  commentId: string;
   like: number;
   dislike: number;
 }
@@ -11,8 +11,11 @@ export const fetchCommentReaction = async ({
   like,
   dislike,
 }: FetchCommentReactionProps): Promise<void> => {
-  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments`, {
-    method: "PUT",
+  console.log("fetchCommentReaction -wsr");
+  console.log(commentId);
+
+  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments/react`, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -21,7 +24,7 @@ export const fetchCommentReaction = async ({
         "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
       "Access-Control-Max-Age": "86400",
     },
-    body: JSON.stringify({ like, dislike, commentId }),
+    body: JSON.stringify({ _id: commentId }),
     next: { revalidate: 60 },
   });
 };

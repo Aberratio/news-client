@@ -29,6 +29,7 @@ interface PhotoItem {
 
 interface ArticleItem {
   _id: string;
+  _rev: string;
   author: AuthorItem;
   body: string;
   category: CategoryItem;
@@ -42,6 +43,7 @@ interface ArticleItem {
 
 interface SanityArticleItem {
   _id: string;
+  _rev: string;
   author: {
     name: string;
     slug: {
@@ -86,7 +88,7 @@ interface SanityArticleItem {
 export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
   try {
     const articles = await sanityClient.fetch(
-      `*[_type == "post" && slug.current == "${slug}"]{ _id, title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
+      `*[_type == "post" && slug.current == "${slug}"]{ _id, _rev, title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
     );
 
     return mapData(articles[0]);
@@ -98,6 +100,7 @@ export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
 
 const mapData = (post: SanityArticleItem): ArticleItem => {
   return {
+    _rev: post._rev,
     _id: post._id,
     author: {
       id: post.author.slug.current,

@@ -7,7 +7,7 @@ import { revalidateCommentReactionsTag } from "components/organisms/CommentsSect
 
 interface CommentProps {
   author: string;
-  commentId: number;
+  commentId: string;
   date: string;
   isReadOnly?: boolean;
   text: string;

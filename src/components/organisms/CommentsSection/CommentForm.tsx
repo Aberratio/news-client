@@ -18,7 +18,6 @@ interface CommentFormProps {
 
 export const CommentForm = ({
   _id,
-  sendComment,
   revalidateCommentsTag,
 }: CommentFormProps) => {
   const {
@@ -38,10 +37,7 @@ export const CommentForm = ({
       text: data.comment,
     };
 
-    console.log(body);
     const body2 = JSON.stringify(body);
-
-    console.log(body2);
 
     fetch("/api/comments", {
       method: "POST",
