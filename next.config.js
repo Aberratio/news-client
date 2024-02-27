@@ -28,6 +28,9 @@ const nextConfig = {
         hostname: "**",
       },
     ],
+    minimumCacheTTL: 86400,
+    imageSizes: [32, 128],
+    deviceSizes: [750, 1920],
   },
 };
 

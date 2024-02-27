@@ -7,11 +7,12 @@ export const fetchArticleComments = async (_id: string) => {
     method: "POST",
     body: JSON.stringify({ _id }),
     next: {
+      revalidate: 360,
       tags: ["comments"],
     },
   })
     .then(async (res) => {
-      return ((await res.json())).comments as CommentSummarizationItem[];
+      return (await res.json()).comments as CommentSummarizationItem[];
     })
     .catch((error) => {
       console.error("Error adding comment:", error);

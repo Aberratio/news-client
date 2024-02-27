@@ -42,11 +42,15 @@ export const CommentForm = ({
       body: body2,
     })
       .then(() => {
-        revalidateCommentsTag();
         reset();
       })
       .catch((error) => {
         console.error("Error adding comment:", error);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          revalidateCommentsTag();
+        }, 1000);
       });
   };
 

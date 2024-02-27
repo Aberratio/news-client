@@ -10,22 +10,28 @@ interface AllCommentsProps {
 }
 
 export const AllComments = ({ comments }: AllCommentsProps) => {
+  if (comments.length === 0) return null;
+
   return (
-    <AllCommentsWrapper>
+    <AllCommentsWrapper key={comments.length}>
       <Typography variant="h3" space={{ marginTop: 32 }}>
         Wszystkie komentarze
       </Typography>
-      {comments.map((comment: CommentItem, index: number) => (
-        <Comment
-          author={comment.author}
-          commentId={comment.id}
-          date={comment.date}
-          dislikes={comment.dislikes}
-          key={index}
-          likes={comment.likes}
-          text={comment.text}
-        />
-      ))}
+      {comments.map((comment: CommentItem, index: number) => {
+        return (
+          comment && (
+            <Comment
+              author={comment.author}
+              commentId={comment.id}
+              date={comment.date}
+              dislikes={comment.dislikes}
+              key={index}
+              likes={comment.likes}
+              text={comment.text}
+            />
+          )
+        );
+      })}
     </AllCommentsWrapper>
   );
 };
