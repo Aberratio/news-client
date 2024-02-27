@@ -74,7 +74,7 @@ const fetchLastComments = async () => {
 };
 
 const cutComment = (comment: string) => {
-  return comment.length > 100 ? comment.substring(0, 100) + "..." : comment;
+  return comment?.length > 100 ? comment?.substring(0, 100) + "..." : comment;
 };
 
 const mapData = (data: SanityCommentItem[]): CommentSummarizationItem[] => {

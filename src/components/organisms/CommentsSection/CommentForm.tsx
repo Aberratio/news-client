@@ -37,7 +37,7 @@ export const CommentForm = ({
 
     const body2 = JSON.stringify(body);
 
-    fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/comments`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments`, {
       method: "POST",
       body: body2,
     })
