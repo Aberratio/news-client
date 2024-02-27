@@ -7,6 +7,7 @@ export interface ArticleSummarizationItem {
   author: AuthorItem;
   category: CategoryItem;
   createdOn: string;
+  comments: number;
   id: string;
   lead: string;
   likes: number;

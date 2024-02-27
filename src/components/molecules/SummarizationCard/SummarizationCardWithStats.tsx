@@ -20,6 +20,7 @@ interface SummarizationCardWithStatsItem {
   };
   likes: number;
   dislikes: number;
+  comments: number;
   views: number;
 }
 
@@ -44,7 +45,7 @@ export const SummarizationCardWithStats = ({
       <Suspense>
         <StatisticBar
           statistics={{
-            comments: 0,
+            comments: item.comments,
             likes: item.likes,
             dislikes: item.dislikes,
             views: item.views,

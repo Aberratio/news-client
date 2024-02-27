@@ -31,7 +31,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
               _id={article._id}
               commentsPath="#comments"
               statistics={{
-                comments: 0,
+                comments: article.comments,
                 dislikes: article.dislikes,
                 likes: article.likes,
                 views: article.views,

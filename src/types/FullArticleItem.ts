@@ -1,13 +1,12 @@
 import { AuthorItem } from "./AuthorItem";
 import { CategoryItem } from "./CategoryItem";
-import { CommentItem } from "./CommentItem";
 import { PhotoItem } from "./PhotoItem";
 
 export interface FullArticleItem {
   author: AuthorItem;
   body: any;
   category: CategoryItem;
-  comments?: CommentItem[];
+  comments: number;
   createdOn: string;
   slug: string;
   _id: string;
