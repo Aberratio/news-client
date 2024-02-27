@@ -32,6 +32,9 @@ const nextConfig = {
     imageSizes: [32, 128],
     deviceSizes: [750, 1920],
   },
+  reactStrictMode: true,
+  swcMinify: true,
+  output: "standalone",
 };
 
 module.exports = nextConfig;
