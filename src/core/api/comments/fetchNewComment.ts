@@ -1,27 +1,33 @@
 "use server";
 
+import { sanityClient } from "../sanityClient";
+
 interface FetchNewCommentProps {
-  articleSlug: string;
+  _id: string;
   author: string;
   text: string;
+  date: Date;
 }
 
-export const fetchNewComment = async ({
-  articleSlug,
+export const fetchNewComment = ({
+  _id,
   author,
   text,
-}: FetchNewCommentProps): Promise<void> => {
-  "use server";
-  await fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
-      "Access-Control-Max-Age": "86400",
-    },
-    body: JSON.stringify({ author, text, articleSlug }),
-  });
+  date,
+}: FetchNewCommentProps) => {
+  try {
+    sanityClient.create({
+      _type: "comment",
+      post: {
+        _type: "reference",
+        _ref: _id,
+      },
+      author,
+      publishedAt: date,
+      text,
+      likes: 0,
+    });
+  } catch (error) {
+    console.error("Error adding comment to Sanity:", error);
+  }
 };

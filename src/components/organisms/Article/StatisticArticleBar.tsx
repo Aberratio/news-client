@@ -32,12 +32,12 @@ export const StatisticArticleBar = ({
     }
   }, [_id]);
 
-  const onReactionClick = async (reaction: "like" | "dislike") => {
+  const onReactionClick = (reaction: "like" | "dislike") => {
     if (!_id) return;
     if (sessionReaction === "") {
       setSessionReaction(reaction);
       sessionStorage.setItem(`article-${_id}`, reaction);
-      await fetchArticleReaction({
+      fetchArticleReaction({
         _id,
         like: reaction === "like" ? 1 : 0,
         dislike: reaction === "dislike" ? 1 : 0,
@@ -45,7 +45,7 @@ export const StatisticArticleBar = ({
     } else if (sessionReaction !== reaction) {
       setSessionReaction(reaction);
       sessionStorage.setItem(`comment-${_id}`, reaction);
-      await fetchArticleReaction({
+      fetchArticleReaction({
         _id,
         like: reaction === "like" ? 1 : -1,
         dislike: reaction === "dislike" ? 1 : -1,
@@ -53,7 +53,7 @@ export const StatisticArticleBar = ({
     } else {
       setSessionReaction("");
       sessionStorage.setItem(`comment-${_id}`, "");
-      await fetchArticleReaction({
+      fetchArticleReaction({
         _id,
         like: reaction === "like" ? -1 : 0,
         dislike: reaction === "dislike" ? -1 : 0,

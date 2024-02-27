@@ -2,6 +2,7 @@
 
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
+import { fetchNewComment } from "core/api/comments/fetchNewComment";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { styled } from "styled-components";
 
@@ -28,30 +29,16 @@ export const CommentForm = ({
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    const body = {
+    fetchNewComment({
       _id,
       author: data.name,
       date: new Date(),
       text: data.comment,
-    };
-
-    const body2 = JSON.stringify(body);
-
-    fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/comments`, {
-      method: "POST",
-      body: body2,
-    })
-      .then(() => {
-        reset();
-      })
-      .catch((error) => {
-        console.error("Error adding comment:", error);
-      })
-      .finally(() => {
-        setTimeout(() => {
-          revalidateCommentsTag();
-        }, 1000);
-      });
+    });
+    setTimeout(() => {
+      reset();
+      revalidateCommentsTag();
+    }, 1000);
   };
 
   return (
