@@ -5,6 +5,7 @@ import { CommentSummarizationItem } from "types/CommentSummarizationItem";
 
 export const POST = async (request: Request) => {
   try {
+    const allowedOrigin = request.headers.get("origin");
     const { _id } = await request.json();
     const responseComments: SanityCommentItem[] = await sanityClient.fetch(
       `*[_type == "comment" && post._ref == "${_id}"]{author, _createdAt, likes, _id, text, post->} | order(_createdAt desc)`
@@ -16,8 +17,7 @@ export const POST = async (request: Request) => {
       {
         status: 200,
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": allowedOrigin || "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers":
             "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
