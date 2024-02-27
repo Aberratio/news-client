@@ -26,9 +26,9 @@ export const POST = async (request: Request) => {
       likes: 0,
     });
   } catch (error) {
-    console.error("Error adding comment:", error);
+    console.error("Error adding comment to Sanity:", error);
     return Response.json(
-      { error: "An error occurred adding comment" },
+      { error: "An error occurred adding comment to Sanity" },
       { status: 500 }
     );
   }

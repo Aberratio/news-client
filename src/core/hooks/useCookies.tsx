@@ -31,8 +31,11 @@ export const useCookies = () => {
     const strCookie = getRawCookie(cookieName);
 
     if (strCookie !== "undefined" && strCookie !== null) {
-       
-      return JSON.parse(strCookie);
+      try {
+        return JSON.parse(strCookie);
+      } catch (error) {
+        return null;
+      }
     }
 
     return undefined;
@@ -40,7 +43,6 @@ export const useCookies = () => {
 
   const getCookie = (cookieName: string, cookieFormat?: "json" | "raw") => {
     if (cookieFormat === "json") {
-       
       return getJson(cookieName);
     }
 
@@ -69,7 +71,7 @@ export const useCookies = () => {
   const setRawValueToCookie = (
     name: string,
     value: string,
-    time: ExpireTime,
+    time: ExpireTime
   ) => {
     const date = getExpireTimeDate(time);
 
