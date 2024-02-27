@@ -33,8 +33,8 @@ export const StatisticArticleBar = ({
   }, [_id]);
 
   const onReactionClick = async (reaction: "like" | "dislike") => {
+    if (!_id) return;
     if (sessionReaction === "") {
-      // Jest zero reakcji, klika nową
       setSessionReaction(reaction);
       sessionStorage.setItem(`article-${_id}`, reaction);
       await fetchArticleReaction({
@@ -43,7 +43,6 @@ export const StatisticArticleBar = ({
         dislike: reaction === "dislike" ? 1 : 0,
       });
     } else if (sessionReaction !== reaction) {
-      // Jest stara reakcja, klika inną
       setSessionReaction(reaction);
       sessionStorage.setItem(`comment-${_id}`, reaction);
       await fetchArticleReaction({
@@ -52,7 +51,6 @@ export const StatisticArticleBar = ({
         dislike: reaction === "dislike" ? 1 : -1,
       });
     } else {
-      // Jest stara reakcja, klika tą samą
       setSessionReaction("");
       sessionStorage.setItem(`comment-${_id}`, "");
       await fetchArticleReaction({
