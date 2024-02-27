@@ -15,7 +15,7 @@ import { fetchTabs } from "core/api/navigation/fetchTabs";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { sanityClient } from "core/api/sanityClient";
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
-import { SanityCommentItem } from "./api/comments/route";
+import { SanityCommentItem } from "core/api/articles/fetchArticleComments";
 
 const spectral = Spectral({
   subsets: ["latin"],
