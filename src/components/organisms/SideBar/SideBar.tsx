@@ -5,12 +5,15 @@ import { VisitCounterWidget } from "./visit-counter/VisitCounterWidget";
 import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
 import { Suspense } from "react";
+import { fetchVisits } from "core/api/fetchVisits";
 
 interface SideBarProps {
   comments: any;
 }
 
-export const SideBar = ({ comments }: SideBarProps) => {
+export const SideBar = async ({ comments }: SideBarProps) => {
+  const visits = await fetchVisits();
+
   return (
     <SideBarWrapper>
       <Suspense>
@@ -20,7 +23,7 @@ export const SideBar = ({ comments }: SideBarProps) => {
         <LastCommentsWidget comments={comments} />
       </Suspense>
       <Suspense>
-        <VisitCounterWidget />
+        <VisitCounterWidget visits={visits} />
       </Suspense>
     </SideBarWrapper>
   );

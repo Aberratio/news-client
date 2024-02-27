@@ -1,30 +1,40 @@
 "use server";
 
+import { SanityCommentItem } from "app/api/comments/route";
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+import { sanityClient } from "../sanityClient";
 
 export const fetchArticleComments = async (
   _id: string
 ): Promise<CommentSummarizationItem[]> => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASIC_URL}/articles/comments`,
-    {
-      next: { revalidate: 60, tags: ["comments"] },
-      method: "POST",
-      body: JSON.stringify({ _ref: _id }),
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers":
-          "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
-        "Access-Control-Max-Age": "86400",
-      },
-    }
-  );
+  try {
+    const responseComments: SanityCommentItem[] = await sanityClient.fetch(
+      `*[_type == "comment" && post._ref == "${_id}"]{author, _createdAt, likes, _id, text, post->} | order(_createdAt desc)`
+    );
 
-  if (response.status >= 300) throw new Error("Failed to fetch article");
-  if (response.headers.get("content-type")?.includes("text"))
-    throw new Error("Failed to fetch article");
+    const mappedComments = mapData(responseComments);
+    return mappedComments;
+  } catch (error) {
+    console.error("Error loading comments for article:", error);
+    return [];
+  }
+};
 
-  return (await response.json()).comments as CommentSummarizationItem[];
+const cutComment = (comment: string) => {
+  return comment.length > 100 ? comment.substring(0, 100) + "..." : comment;
+};
+
+const mapData = (data: SanityCommentItem[]): CommentSummarizationItem[] => {
+  return data.map((item: SanityCommentItem) => {
+    return {
+      articleSlug: item.post.slug.current,
+      articleTitle: item.post.title,
+      author: item.author,
+      date: new Date(item._createdAt).toLocaleString(),
+      dislikes: item.likes,
+      id: item._id,
+      likes: item.likes,
+      text: cutComment(item.text),
+    } as CommentSummarizationItem;
+  });
 };

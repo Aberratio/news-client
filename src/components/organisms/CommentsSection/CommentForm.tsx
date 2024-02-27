@@ -28,8 +28,6 @@ export const CommentForm = ({
   } = useForm<FormFields>();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
-    // sendComment();
-
     const body = {
       _id,
       author: data.name,
@@ -39,7 +37,7 @@ export const CommentForm = ({
 
     const body2 = JSON.stringify(body);
 
-    fetch("/api/comments", {
+    fetch(`${process.env.NEXT_PUBLIC_BASIC_URL}/api/comments`, {
       method: "POST",
       body: body2,
     })

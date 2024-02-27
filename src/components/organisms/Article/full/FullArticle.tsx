@@ -12,7 +12,9 @@ interface FullArticleProps {
 
 export const FullArticle = async ({ article }: FullArticleProps) => {
   const comments = await fetchArticleComments(article._id)
-    .then((res) => res)
+    .then((res) => {
+      return res;
+    })
     .catch((error) => {
       console.error(error);
     });

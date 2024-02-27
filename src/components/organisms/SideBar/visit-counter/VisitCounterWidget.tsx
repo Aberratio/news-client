@@ -1,10 +1,11 @@
 "use server";
 
-import { fetchVisits } from "core/api/stats/fetchVisits";
 import { VisitCounter } from "./VisitCounter";
 
-export const VisitCounterWidget = async () => {
-  const visits: number = await fetchVisits();
+interface VisitCounterWidgetProps {
+  visits: number;
+}
 
+export const VisitCounterWidget = ({ visits }: VisitCounterWidgetProps) => {
   return <VisitCounter visits={visits} />;
 };

@@ -23,6 +23,7 @@ export const POST = async (request: Request) => {
 
   return Response.json({ status: "ok" }, { status: 200 });
 };
+
 export const OPTIONS = (request: Request) => {
   const allowedOrigin = request.headers.get("origin");
   const response = new NextResponse(null, {
