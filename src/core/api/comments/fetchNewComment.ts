@@ -26,6 +26,7 @@ export const fetchNewComment = ({
       publishedAt: date,
       text,
       likes: 0,
+      dislikes: 0,
     });
   } catch (error) {
     console.error("Error adding comment to Sanity:", error);
