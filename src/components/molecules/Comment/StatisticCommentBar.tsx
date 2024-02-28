@@ -11,7 +11,7 @@ interface StatisticBarProps {
   dislikes: number;
   isReadOnly: boolean;
   likes: number;
-  revalidateCommentReactionsTag: any;
+  revalidateCommentReactionsTag?: any;
 }
 
 export const StatisticCommentBar = ({
@@ -19,7 +19,6 @@ export const StatisticCommentBar = ({
   dislikes,
   isReadOnly,
   likes,
-  revalidateCommentReactionsTag,
 }: StatisticBarProps) => {
   const { sessionReaction, handleReaction, reload } =
     useReactionHandler(commentId);
@@ -27,8 +26,6 @@ export const StatisticCommentBar = ({
 
   const handleClicked = (reaction: "like" | "dislike") => {
     handleReaction(reaction);
-
-    revalidateCommentReactionsTag();
   };
 
   useEffect(() => {
