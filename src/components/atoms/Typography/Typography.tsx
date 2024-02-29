@@ -21,6 +21,7 @@ export interface TypographyProps {
   innerHtml?: any;
   isBlockquote?: boolean;
   isCapitalized?: boolean;
+  isInline?: boolean;
   isUppercase?: boolean;
   space?: SpaceProps;
   textAlign?: TextAlignProps;
@@ -38,6 +39,7 @@ const Typography = ({
   innerHtml,
   isBlockquote = false,
   isCapitalized = false,
+  isInline = false,
   isUppercase = false,
   space,
   textAlign,
@@ -57,6 +59,7 @@ const Typography = ({
       $grid={grid}
       $isBlockquote={isBlockquote}
       $isCapitalized={isCapitalized}
+      $isInline={isInline}
       $isUppercase={isUppercase}
       $space={space}
       $textAlign={textAlign}

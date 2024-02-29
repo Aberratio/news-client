@@ -36,7 +36,7 @@ export const fonts: CustomFonts = {
   },
   h2: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "24px",
+    fontSize: "22px",
     lineHeight: "32px",
     fontWeight: WEIGHT_200,
   },

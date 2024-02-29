@@ -16,6 +16,7 @@ interface TypographyWrapperProps {
   $color?: string;
   $isBlockquote?: boolean;
   $isCapitalized?: boolean;
+  $isInline?: boolean;
   $isUppercase?: boolean;
   $typographyVariant: Font;
   $wordBreak?: WordBreakProps;
@@ -27,10 +28,17 @@ interface TypographyWrapperProps {
 }
 
 export const TypographyWrapper = styled.p<TypographyWrapperProps>`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  ${({ $isInline }) =>
+    $isInline
+      ? css`
+          display: inline;
+        `
+      : css`
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+        `};
 
   vertical-align: middle;
   text-align: left;
