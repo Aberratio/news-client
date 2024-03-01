@@ -1,8 +1,11 @@
 import { CustomFonts } from "../types/CustomFonts";
 
-const FONT_FAMILY_PRIMARY = "'Spectral', sans-serif";
-const FONT_FAMILY_SECONDARY = "'Spectral Italic', sans-serif";
+// const FONT_FAMILY_PRIMARY = "'Spectral', sans-serif";
+// const FONT_FAMILY_SECONDARY = "'Spectral Italic', sans-serif";
 // const FONT_FAMILY_SECONDARY = "Roboto-Medium";font-family: 'Libre Baskerville', serif;
+const FONT_FAMILY_PRIMARY = "'Spectral', sans-serif";
+const FONT_FAMILY_SECONDARY =
+  'source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif';
 const WEIGHT_100 = 100;
 const WEIGHT_200 = 200;
 const WEIGHT_300 = 300;
@@ -60,8 +63,8 @@ export const fonts: CustomFonts = {
   },
   body: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "18px",
-    lineHeight: "1.5",
+    fontSize: "20px",
+    lineHeight: "32px",
     fontWeight: WEIGHT_200,
   },
   bodyM: {
@@ -80,6 +83,18 @@ export const fonts: CustomFonts = {
     fontFamily: FONT_FAMILY_PRIMARY,
     fontSize: "12px",
     lineHeight: "16px",
+    fontWeight: WEIGHT_100,
+  },
+  article: {
+    fontFamily: FONT_FAMILY_SECONDARY,
+    fontSize: "20px",
+    lineHeight: "32px",
+    fontWeight: WEIGHT_200,
+  },
+  articleM: {
+    fontFamily: FONT_FAMILY_SECONDARY,
+    fontSize: "16px",
+    lineHeight: "1.5",
     fontWeight: WEIGHT_100,
   },
 };

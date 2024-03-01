@@ -13,9 +13,6 @@ import { SideBar } from "components/organisms/SideBar/SideBar";
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 import { fetchTabs } from "core/api/navigation/fetchTabs";
 import ErrorBoundary from "providers/context/ErrorBoundary";
-import { sanityClient } from "core/api/sanityClient";
-import { CommentSummarizationItem } from "types/CommentSummarizationItem";
-import { SanityCommentItem } from "core/api/articles/fetchArticleComments";
 import { fetchFirstSite } from "core/api/settings/fetchFirstSite";
 
 const spectral = Spectral({
@@ -41,7 +38,7 @@ const RootLayout = async ({
   }
 
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={spectral.className}>
         <ErrorBoundary>
           <OrganizationContextProvider tabs={tabs} firstSite={firstSite}>

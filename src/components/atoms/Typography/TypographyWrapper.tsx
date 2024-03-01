@@ -42,6 +42,7 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
 
   vertical-align: middle;
   text-align: left;
+  hyphens: auto;
 
   strong {
     font-weight: 700;

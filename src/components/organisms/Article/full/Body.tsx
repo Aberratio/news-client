@@ -23,12 +23,14 @@ const SampleImageComponent = ({ value }: any) => {
 const components = {
   block: {
     normal: ({ children }: any) => (
-      <Typography isInline space={{ marginY: "4px" }}>
+      <Typography variant="article" isInline space={{ marginY: "4px" }}>
         {children}
       </Typography>
     ),
     blockquote: ({ children }: any) => (
-      <Typography isBlockquote>{children}</Typography>
+      <Typography variant="article" isBlockquote>
+        {children}
+      </Typography>
     ),
   },
   list: {
@@ -38,7 +40,9 @@ const components = {
   listItem: {
     bullet: ({ children }: any) => (
       <ListItem>
-        <Typography isInline>{children}</Typography>
+        <Typography variant="article" isInline>
+          {children}
+        </Typography>
       </ListItem>
     ),
   },

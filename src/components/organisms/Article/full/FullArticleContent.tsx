@@ -40,7 +40,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
           </Suspense>
         </InfoWrapper>
         <LeadWrapper>
-          <Typography variant="h2">{article.lead}</Typography>
+          <Typography variant="article">{article.lead}</Typography>
         </LeadWrapper>
         <Suspense>
           <Slider images={article.photos} />
@@ -60,6 +60,7 @@ const Wrapper = styled.div`
   position: relative;
   min-height: 1px;
   padding: 0 12px;
+  max-width: 680px;
 `;
 
 const Container = styled.div`

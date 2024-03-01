@@ -18,4 +18,6 @@ export interface CustomFonts {
   bodyM: Font;
   small: Font;
   smallM: Font;
+  article: Font;
+  articleM: Font;
 }
