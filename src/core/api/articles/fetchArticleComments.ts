@@ -22,10 +22,6 @@ export const fetchArticleComments = async (_id: string) => {
   }
 };
 
-const cutComment = (comment: string) => {
-  return comment.length > 100 ? comment.substring(0, 100) + "..." : comment;
-};
-
 const mapData = (data: SanityCommentItem[]): CommentSummarizationItem[] => {
   return data
     .map((item: SanityCommentItem) => {
@@ -38,7 +34,7 @@ const mapData = (data: SanityCommentItem[]): CommentSummarizationItem[] => {
         dislikes: item.likes,
         id: item._id,
         likes: item.likes,
-        text: cutComment(item.text),
+        text: item.text,
       } as CommentSummarizationItem;
     })
     .filter((x) => x) as CommentSummarizationItem[];

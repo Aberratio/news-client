@@ -8,7 +8,8 @@ import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 
 export const useOrganizationInfo = () => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
-  const { tabs } = useContext(OrganizationContext);
+  const { tabs, firstSite } = useContext(OrganizationContext);
+  const { mainTopic, releaseDate, image } = firstSite;
 
   useEffect(() => {
     setCategories(
@@ -29,6 +30,9 @@ export const useOrganizationInfo = () => {
 
   return {
     categories,
+    mainTopic,
+    newReleaseDate: releaseDate,
+    newCoverImage: image,
     tabs,
   };
 };

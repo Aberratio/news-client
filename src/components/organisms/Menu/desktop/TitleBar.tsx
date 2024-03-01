@@ -1,14 +1,17 @@
 "use cleint";
 
 import Typography from "components/atoms/Typography";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
 
 export const TitleBar = () => {
+  const { mainTopic } = useOrganizationInfo();
+
   return (
     <Wrapper>
       <Container>
         <Typography color="white" isUppercase variant="h1">
-          25-LECIE POWIATU MILICKIEGO
+          {mainTopic}
         </Typography>
       </Container>
     </Wrapper>

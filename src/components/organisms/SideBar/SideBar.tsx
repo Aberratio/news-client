@@ -6,13 +6,11 @@ import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
 import { Suspense } from "react";
 import { fetchVisits } from "core/api/fetchVisits";
+import { fetchLastComments } from "core/api/comments/fetchLastComments";
 
-interface SideBarProps {
-  comments: any;
-}
-
-export const SideBar = async ({ comments }: SideBarProps) => {
+export const SideBar = async () => {
   const visits = await fetchVisits();
+  const comments = await fetchLastComments();
 
   return (
     <SideBarWrapper>
