@@ -21,7 +21,7 @@ const SPECIAL_ACCENT_COLOR = SILVER;
 
 export const darkTheme: CustomTheme = {
   general: {
-    borderRadius: "0px",
+    borderRadius: "8px",
     errorMessageColor: "red",
     primaryColor: PRIMARY_COLOR,
     primaryOppositeColor: PRIMARY_OPPOSITE_COLOR,
@@ -43,7 +43,7 @@ export const darkTheme: CustomTheme = {
     secondary: {
       backgroundColor: PRIMARY_COLOR,
       backgroundOppositeColor: PRIMARY_OPPOSITE_COLOR,
-      borderColor: BLACK,
+      borderColor: "transparent",
       disabledBackgroundColor: DISABLED,
       disabledBackgroundOppositeColor: DARK_GREY,
       onHoverBackgroundColor: DARK_GREY,

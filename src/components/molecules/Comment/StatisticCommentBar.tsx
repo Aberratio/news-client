@@ -42,23 +42,23 @@ export const StatisticCommentBar = ({
         onClick={() => !isReadOnly && handleClicked("like")}
         $isReadOnly={isReadOnly}
       >
+        <ThumbDown isActive={selectedReaction === "like"} />
         <Counter>
           <Typography variant="small" color="black">
             {likes + (selectedReaction === "like" ? 1 : 0)}
           </Typography>
         </Counter>
-        <ThumbDown isActive={selectedReaction === "like"} />
       </Item>
       <Item
         onClick={() => !isReadOnly && handleClicked("dislike")}
         $isReadOnly={isReadOnly}
       >
+        <Thumb direction="right" isActive={selectedReaction === "dislike"} />
         <Counter>
           <Typography variant="small" color="black">
             {dislikes + (selectedReaction === "dislike" ? 1 : 0)}
           </Typography>
         </Counter>
-        <Thumb direction="right" isActive={selectedReaction === "dislike"} />
       </Item>
     </Container>
   );
@@ -75,7 +75,7 @@ const Item = styled.div<{ $isReadOnly: boolean }>`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     padding: 0 12px 0 0;
     cursor: ${$isReadOnly ? "default" : "pointer"};
     border: none;
@@ -86,4 +86,5 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 4px;
 `;

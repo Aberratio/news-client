@@ -27,7 +27,7 @@ const Comment = ({
   return (
     <div>
       <CommentMeta author={author} date={date} />
-      <Typography>{text}</Typography>
+      <Typography space={{ marginY: 4 }}>{text}</Typography>
       <StatisticCommentBar
         commentId={commentId}
         dislikes={dislikes}

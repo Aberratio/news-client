@@ -1,11 +1,9 @@
 import { CustomFonts } from "../types/CustomFonts";
 
-// const FONT_FAMILY_PRIMARY = "'Spectral', sans-serif";
-// const FONT_FAMILY_SECONDARY = "'Spectral Italic', sans-serif";
-// const FONT_FAMILY_SECONDARY = "Roboto-Medium";font-family: 'Libre Baskerville', serif;
 const FONT_FAMILY_PRIMARY = "'Spectral', sans-serif";
 const FONT_FAMILY_SECONDARY =
   'source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif';
+
 const WEIGHT_100 = 100;
 const WEIGHT_200 = 200;
 const WEIGHT_300 = 300;
@@ -14,25 +12,25 @@ const WEIGHT_500 = 500;
 
 export const fonts: CustomFonts = {
   title: {
-    fontFamily: FONT_FAMILY_SECONDARY,
-    fontSize: "38px",
-    lineHeight: "1.25",
+    fontFamily: FONT_FAMILY_PRIMARY,
+    fontSize: "32px",
+    lineHeight: "1.75",
     fontWeight: WEIGHT_500,
   },
   titleM: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "32px",
-    lineHeight: "1.15",
+    fontSize: "24px",
+    lineHeight: "1.5",
     fontWeight: WEIGHT_400,
   },
   h1: {
-    fontFamily: FONT_FAMILY_PRIMARY,
+    fontFamily: FONT_FAMILY_SECONDARY,
     fontSize: "40px",
     lineHeight: "1.25",
     fontWeight: WEIGHT_500,
   },
   h1M: {
-    fontFamily: FONT_FAMILY_PRIMARY,
+    fontFamily: FONT_FAMILY_SECONDARY,
     fontSize: "30px",
     lineHeight: "1.15",
     fontWeight: WEIGHT_300,
@@ -63,26 +61,26 @@ export const fonts: CustomFonts = {
   },
   body: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "20px",
-    lineHeight: "32px",
+    fontSize: "16px",
+    lineHeight: "22px",
     fontWeight: WEIGHT_200,
   },
   bodyM: {
     fontFamily: FONT_FAMILY_PRIMARY,
-    fontSize: "16px",
+    fontSize: "14px",
     lineHeight: "1.5",
     fontWeight: WEIGHT_100,
   },
   small: {
     fontFamily: FONT_FAMILY_PRIMARY,
     fontSize: "14px",
-    lineHeight: "18px",
+    lineHeight: "22px",
     fontWeight: WEIGHT_100,
   },
   smallM: {
     fontFamily: FONT_FAMILY_PRIMARY,
     fontSize: "12px",
-    lineHeight: "16px",
+    lineHeight: "18px",
     fontWeight: WEIGHT_100,
   },
   article: {
@@ -94,7 +92,7 @@ export const fonts: CustomFonts = {
   articleM: {
     fontFamily: FONT_FAMILY_SECONDARY,
     fontSize: "16px",
-    lineHeight: "1.5",
-    fontWeight: WEIGHT_100,
+    lineHeight: "24px",
+    fontWeight: WEIGHT_200,
   },
 };

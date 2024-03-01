@@ -20,32 +20,36 @@ export const StatisticBar = ({
   return (
     <Container data-testid="statistic-bar">
       <Item>
+        <Eye />
         <Counter>
           <Typography variant="small">{statistics.views}</Typography>
         </Counter>
-        <Eye />
       </Item>
       <LinkItem href={commentsPath ?? "#"}>
+        <Comments />
         <Counter>
           <Typography variant="small">{statistics.comments}</Typography>
         </Counter>
-        <Comments />
       </LinkItem>
       <Item>
+        <ThumbDown />
         <Counter>
           <Typography variant="small">{statistics.likes}</Typography>
         </Counter>
-        <ThumbDown />
       </Item>
       <Item>
+        <ThumbUp direction="right" />
         <Counter>
           <Typography variant="small">{statistics.dislikes}</Typography>
         </Counter>
-        <Thumb direction="right" />
       </Item>
     </Container>
   );
 };
+
+const ThumbUp = styled(Thumb)`
+  margin-top: 4px;
+`;
 
 const ThumbDown = styled(Thumb)`
   margin-bottom: 4px;
@@ -70,7 +74,7 @@ const Item = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   padding: 0 12px 0 0;
 `;
 

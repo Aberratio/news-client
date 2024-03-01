@@ -44,7 +44,7 @@ const LargeInfoCard = ({
           <Description>
             <Title href={link}>
               <Typography
-                color="white"
+                color="black"
                 variant="h1"
                 textAlign={{ textAlign: "left" }}
               >
@@ -52,14 +52,15 @@ const LargeInfoCard = ({
               </Typography>
             </Title>
             <Typography
-              color="white"
+              color="black"
+              variant="article"
               space={{ marginBottom: 30 }}
               textAlign={{ textAlign: "left" }}
             >
-              {cutText(description, 300)}
+              {cutText(description, 250)}
             </Typography>
             <Link href={link}>
-              <Button size="large">
+              <Button size="small" variant="secondary">
                 <Typography>{buttonText}</Typography>
               </Button>
             </Link>
@@ -81,7 +82,8 @@ const Wrapper = styled.div`
   display: block;
   margin-top: 65px;
 
-  background-color: #222;
+  background-color: white;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
 
   @media screen and (min-width: 768px) {
     margin-top: 20px;
@@ -98,7 +100,7 @@ const Container = styled.div`
   max-width: 1080px;
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 500px 1fr;
+    grid-template-columns: 450px 1fr;
   }
 
   @media screen and (min-width: 1200px) {
@@ -115,8 +117,8 @@ const ImageBackground = styled(Image)`
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    max-width: 500px;
-    border-radius: 12px;
+    max-width: 450px;
+    border-radius: 12px 0 0 12px;
   }
 
   @media screen and (min-width: 1200px) {

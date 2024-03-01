@@ -18,6 +18,10 @@ export const useTypographyVariant = () => {
           return "h3M";
         case "body":
           return "bodyM";
+        case "article":
+          return "articleM";
+        case "title":
+          return "titleM";
         default:
           return "smallM";
       }

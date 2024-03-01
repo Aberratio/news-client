@@ -60,7 +60,6 @@ const Wrapper = styled.div`
   position: relative;
   min-height: 1px;
   padding: 0 12px;
-  max-width: 680px;
 `;
 
 const Container = styled.div`

@@ -11,24 +11,18 @@ interface WidgetProps {
 
 const Widget = ({ dataTestId, title, children }: WidgetProps) => {
   return (
-    <Container data-testid={dataTestId}>
+    <div data-testid={dataTestId}>
       <Header>
-        <Typography isUppercase color="white">
-          {title}
+        <Typography isUppercase color="black">
+          <strong>{title}</strong>
         </Typography>
       </Header>
       <Body>{children}</Body>
-    </Container>
+    </div>
   );
 };
 
 export default Widget;
-
-const Container = styled.div`
-  border-radius: 8px;
-  background-color: white;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
-`;
 
 const Header = styled.div`
   display: flex;
@@ -37,7 +31,7 @@ const Header = styled.div`
   padding: 16px;
 
   border-radius: 8px 8px 0 0;
-  background-color: rgb(46, 104, 150);
+  border-bottom: 1px solid rgb(46, 104, 150);
 `;
 
 const Body = styled.div`

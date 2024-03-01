@@ -15,7 +15,7 @@ export const SummarizationCardTitle = ({
 }: SummarizationCardTitleProps) => {
   return (
     <StyledLink href={path}>
-      <Typography variant="h3" wrap space={{ marginBottom: 2 }}>
+      <Typography variant="article" wrap space={{ marginBottom: 2 }}>
         {title}
       </Typography>
     </StyledLink>

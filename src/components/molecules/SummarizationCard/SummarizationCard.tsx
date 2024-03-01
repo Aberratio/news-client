@@ -34,7 +34,9 @@ export const SummarizationCard = ({ item }: SummarizationCardProps) => {
         </Link>
         <div>
           <Link href={item.path}>
-            <Typography wrap>{item.title}</Typography>
+            <Typography wrap variant="article">
+              {item.title}
+            </Typography>
           </Link>
         </div>
       </Container>

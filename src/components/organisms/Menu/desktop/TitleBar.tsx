@@ -8,9 +8,9 @@ export const TitleBar = () => {
   const { mainTopic } = useOrganizationInfo();
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="title-bar">
       <Container>
-        <Typography color="white" isUppercase variant="h1">
+        <Typography color="white" isUppercase variant="title">
           {mainTopic}
         </Typography>
       </Container>
