@@ -62,7 +62,7 @@ export const fonts: CustomFonts = {
   body: {
     fontFamily: FONT_FAMILY_PRIMARY,
     fontSize: "16px",
-    lineHeight: "22px",
+    lineHeight: "24px",
     fontWeight: WEIGHT_200,
   },
   bodyM: {
@@ -92,7 +92,7 @@ export const fonts: CustomFonts = {
   articleM: {
     fontFamily: FONT_FAMILY_SECONDARY,
     fontSize: "16px",
-    lineHeight: "24px",
+    lineHeight: "28px",
     fontWeight: WEIGHT_200,
   },
 };

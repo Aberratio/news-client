@@ -74,7 +74,11 @@ const LargeInfoCard = ({
 export default LargeInfoCard;
 
 const Part = styled.div`
-  height: 500px;
+  height: 400px;
+
+  @media screen and (min-width: 768px) {
+    height: 500px;
+  }
 `;
 
 const Wrapper = styled.div`

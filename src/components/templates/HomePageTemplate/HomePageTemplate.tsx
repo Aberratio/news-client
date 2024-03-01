@@ -3,6 +3,7 @@
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
 import NewsBar from "../../organisms/NewsBar";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
+import Box from "components/atoms/Box";
 
 interface HomePageTemplateProps {
   article: ArticleSummarizationItem;
@@ -14,9 +15,9 @@ export const HomePageTemplate = ({
   children,
 }: HomePageTemplateProps) => {
   return (
-    <div data-testid="home-page">
+    <Box dataTestId="home-page" padding="0 12px">
       <NewsBar article={article} />
       <MainContainerTemplate>{children}</MainContainerTemplate>
-    </div>
+    </Box>
   );
 };

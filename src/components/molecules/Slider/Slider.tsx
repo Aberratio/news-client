@@ -70,7 +70,7 @@ const Slider = ({ images }: SliderProps) => {
           <Typography
             variant="small"
             color="white"
-            textAlign={{ textAlign: "center" }}
+            textAlign={{ textAlign: "left" }}
           >
             {image.description}
           </Typography>

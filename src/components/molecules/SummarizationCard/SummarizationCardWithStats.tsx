@@ -4,7 +4,7 @@ import MetadataBar from "components/molecules/MetadataBar";
 import { StatisticBar } from "components/molecules/SummarizationCard/StatisticBar";
 import { SummarizationCardImage } from "./SummarizationCardImage";
 import { SummarizationCardTitle } from "./SummarizationCardTitle";
-import { SummarizationCardWrapper } from "./SummarizationCardWrapper";
+import { SummarizationCard } from "./SummarizationCard";
 import { Suspense } from "react";
 
 interface SummarizationCardWithStatsItem {
@@ -32,7 +32,7 @@ export const SummarizationCardWithStats = ({
   item,
 }: SummarizationCardWithStatsProps) => {
   return (
-    <SummarizationCardWrapper>
+    <SummarizationCard>
       <Suspense>
         <SummarizationCardImage path={item.path} photo={item.photo} />
       </Suspense>
@@ -52,6 +52,6 @@ export const SummarizationCardWithStats = ({
           }}
         />
       </Suspense>
-    </SummarizationCardWrapper>
+    </SummarizationCard>
   );
 };

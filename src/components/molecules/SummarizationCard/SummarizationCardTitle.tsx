@@ -25,6 +25,7 @@ export const SummarizationCardTitle = ({
 const StyledLink = styled(Link)`
   text-decoration: none;
   background-color: transparent;
+  margin-top: 4px;
 
   touch-action: manipulation;
   transition: all 0.3s;

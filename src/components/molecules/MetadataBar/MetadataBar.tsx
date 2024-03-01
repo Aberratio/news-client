@@ -13,9 +13,13 @@ const MetadataBar = ({ authorName, createdOn }: MetadataBarProps) => {
   return (
     <Bar dataTestId={`metadata-bar`}>
       <Link href="#">
-        <Typography variant="small">{authorName}</Typography>
+        <Typography variant="small">
+          <strong>{authorName}</strong>
+        </Typography>
       </Link>
-      <Typography variant="small">- {createdOn}</Typography>
+      <Typography variant="small" color="#6b6b6b">
+        {createdOn}
+      </Typography>
     </Bar>
   );
 };

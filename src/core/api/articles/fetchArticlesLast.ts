@@ -133,7 +133,7 @@ const mapData = (
         tabName: post.category.tab.name,
         tabPath: buildTabPath(post.category.tab.slug.current),
       },
-      createdOn: post.publishedAt,
+      createdOn: new Date(post.publishedAt).toLocaleDateString(),
       id: post.slug.current,
       lead: post.lead,
       likes: post.likes,

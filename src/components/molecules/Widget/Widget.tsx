@@ -32,6 +32,10 @@ const Header = styled.div`
 
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid rgb(46, 104, 150);
+
+  p {
+    letter-spacing: 1px;
+  }
 `;
 
 const Body = styled.div`

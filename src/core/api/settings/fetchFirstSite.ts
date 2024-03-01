@@ -33,6 +33,6 @@ const mapData = (data: SanityFirstSiteItem): FirstSiteItem => {
     image: {
       path: buildImageUrl(data.image.asset._ref),
     },
-    releaseDate: data.releaseDate,
+    releaseDate: new Date(data.releaseDate).toLocaleDateString(),
   };
 };

@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   display: block;
   padding: 12px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1366px) {
     padding: 0px;
     padding-top: 24px;
   }

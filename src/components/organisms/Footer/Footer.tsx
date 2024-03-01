@@ -1,5 +1,5 @@
 import { WebcoBar } from "./WebcoBar";
-import { rulesPagePath } from "core/builders/buildPath";
+import { aboutPagePath, rulesPagePath } from "core/builders/buildPath";
 import FooterWrapper from "./FooterWrapper";
 
 export enum ElementType {
@@ -29,6 +29,16 @@ const secondColumnMock = {
         {
           text: "Regulamin",
           link: rulesPagePath,
+        },
+      ],
+    },
+    {
+      id: 2,
+      type: ElementType.Link,
+      content: [
+        {
+          text: "O nas",
+          link: aboutPagePath,
         },
       ],
     },
