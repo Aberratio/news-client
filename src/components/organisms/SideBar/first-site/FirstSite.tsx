@@ -26,7 +26,7 @@ export const FirstSite = () => {
   );
 };
 
-const ImageContainer = styled.div`
+export const ImageContainer = styled.div`
   position: relative;
   height: 370px;
 `;

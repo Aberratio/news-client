@@ -14,6 +14,8 @@ import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 import { fetchTabs } from "core/api/navigation/fetchTabs";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { fetchFirstSite } from "core/api/settings/fetchFirstSite";
+import LandscapeAdd from "components/organisms/LandscapeAdd/LandscapeAdd";
+import { fetchAdds } from "core/api/settings/fetchAdds";
 
 const spectral = Spectral({
   subsets: ["latin"],
@@ -31,7 +33,8 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   const tabs = await fetchTabs();
-  const firstSite = await fetchFirstSite();
+  const firstSite = await fetchFirstSite(); //marketingContent
+  const adds = await fetchAdds();
 
   if (!tabs) {
     return null;
@@ -46,9 +49,10 @@ const RootLayout = async ({
               <GlobalThemeWrapper>
                 <Menu />
                 <Navigation />
+                {adds?.mainAdd && <LandscapeAdd mainAdd={adds?.mainAdd} />}
                 <MainColumn>
                   {children}
-                  <SideBar />
+                  <SideBar boxAdds={adds?.boxAdds} />
                 </MainColumn>
                 <Footer />
                 <ScrollToTopButton />

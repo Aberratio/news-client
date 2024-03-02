@@ -1,6 +1,6 @@
 export const buildImageUrl = (ref: string) => {
   return `https://cdn.sanity.io/images/${
-    process.env.SANITY_PROJECT_ID
+    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
   }/production/${ref
     .slice(6)
     .replace("-webp", ".webp")

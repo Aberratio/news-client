@@ -21,10 +21,10 @@ export interface FirstSiteItem {
 
 export const fetchFirstSite = async (): Promise<FirstSiteItem> => {
   const firstSite = await sanityClient.fetch(
-    '*[_type == "firstSite"]{image, releaseDate, mainTopic}'
+    '*[_type == "firstSite"][0]{image, releaseDate, mainTopic}'
   );
 
-  return mapData(firstSite[0]);
+  return mapData(firstSite);
 };
 
 const mapData = (data: SanityFirstSiteItem): FirstSiteItem => {

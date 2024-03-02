@@ -7,8 +7,14 @@ import { SideBarWrapper } from "./SideBarWrapper";
 import { Suspense } from "react";
 import { fetchVisits } from "core/api/fetchVisits";
 import { fetchLastComments } from "core/api/comments/fetchLastComments";
+import AddsBar from "./adds-bar/AddsBar";
+import { BoxAddItem } from "core/api/settings/fetchAdds";
 
-export const SideBar = async () => {
+interface SideBarProps {
+  boxAdds?: BoxAddItem[];
+}
+
+export const SideBar = async ({ boxAdds }: SideBarProps) => {
   const visits = await fetchVisits();
   const comments = await fetchLastComments();
 
@@ -23,6 +29,7 @@ export const SideBar = async () => {
       <Suspense>
         <VisitCounterWidget visits={visits} />
       </Suspense>
+      <Suspense>{boxAdds && <AddsBar boxAdds={boxAdds} />}</Suspense>
     </SideBarWrapper>
   );
 };
