@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import Typography from "components/atoms/Typography";
 import { useStyles } from "core/styles/customization/useStyles";
+import Link from "next/link";
 
 interface SectionProps {
   header: string;
@@ -26,9 +27,9 @@ export const Section = ({ header, links }: SectionProps) => {
           return (
             <Typography key={link.name}>
               <strong>{link.name}</strong>
-              <Link href={`${link.href}`}>
+              <StyledLink href={`${link.href}`}>
                 <Typography color="#0056b3">{link.link}</Typography>
-              </Link>
+              </StyledLink>
             </Typography>
           );
         })}
@@ -58,7 +59,7 @@ const LinkBox = styled.div`
   gap: 16px;
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   margin-left: 4px;
   cursor: pointer;
 `;

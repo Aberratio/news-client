@@ -3,6 +3,7 @@
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { ElementType } from "./Footer";
+import Link from "next/link";
 
 export interface LinkItem {
   bolded?: string;
@@ -33,7 +34,7 @@ export const InfoColumn = ({ items }: InfoColumnProps) => {
         switch (element.type) {
           case ElementType.Link:
             return (
-              <StyledLink key={content.text} href={content.link}>
+              <StyledLink key={content.text} href={content.link ?? ""}>
                 <Typography>{content.text}</Typography>
               </StyledLink>
             );
@@ -90,7 +91,7 @@ const ListElement = styled.li`
   border: none;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   padding: 8px 0;
 
   text-decoration: none;

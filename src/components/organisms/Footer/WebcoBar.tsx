@@ -1,6 +1,7 @@
 "use client";
 
 import Typography from "components/atoms/Typography";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const WebcoBar = () => {
@@ -8,9 +9,9 @@ export const WebcoBar = () => {
     <Wrapper>
       <Container>
         <Typography>Copyright © 2021-2024</Typography>
-        <Link href="https:webcodesign.pl" target="_blank">
+        <StyledLink href="https:webcodesign.pl" target="_blank">
           <Typography> webco.design </Typography>
-        </Link>
+        </StyledLink>
         <Typography>☕ All rights reserved.</Typography>
       </Container>
     </Wrapper>
@@ -35,7 +36,7 @@ const Container = styled.div`
   color: white;
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   margin: 0 8px;
   color: #15a752;
   cursor: pointer;

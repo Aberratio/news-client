@@ -4,6 +4,7 @@ import { buildTabPath } from "core/builders/buildPath";
 import { useState } from "react";
 import { TabItem } from "types/TabItem";
 import { SubMenu } from "./SubMenu";
+import Link from "next/link";
 
 interface NavigationItemProps {
   isActive: boolean;
@@ -34,10 +35,10 @@ export const NavigationItem = ({
         setIsActive(false);
       }}
     >
-      <Link href={buildTabPath(tab.tabSlug)}>
+      <StyledLink href={buildTabPath(tab.tabSlug)}>
         <Typography color="black">{tab.name}</Typography>
         {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
-      </Link>
+      </StyledLink>
     </Container>
   );
 };
@@ -57,7 +58,7 @@ const Container = styled.li<{ $isActive: boolean }>`
   }
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   list-style-type: none;
   margin: 0;
   height: 100%;

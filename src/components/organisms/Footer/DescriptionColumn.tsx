@@ -2,6 +2,7 @@
 
 import Typography from "components/atoms/Typography";
 import Image from "next/image";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const DescriptionColumn = () => {
@@ -43,7 +44,7 @@ const Container = styled.div`
   max-width: 400px;
 `;
 
-const LogoWrapper = styled.a`
+const LogoWrapper = styled(Link)`
   display: flex;
   justify-content: flex-start;
   align-items: center;

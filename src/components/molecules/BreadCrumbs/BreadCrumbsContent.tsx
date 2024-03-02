@@ -5,6 +5,7 @@ import Typography from "components/atoms/Typography";
 import styled from "styled-components";
 import { Fragment } from "react";
 import { BreadCrumbsItem } from "./BreadCrumbsItem";
+import Link from "next/link";
 
 interface BreadCrumbsProps {
   breadcrumbs: BreadCrumbsItem[];
@@ -79,7 +80,7 @@ const Current = styled.span`
   color: rgb(184, 0, 0);
 `;
 
-const Path = styled.a`
+const Path = styled(Link)`
   display: flex;
 
   float: left;

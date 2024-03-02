@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { buildCategoryPath } from "core/builders/buildPath";
 import { CategoryItem } from "types/CategoryItem";
+import Link from "next/link";
 
 interface SubMenuProps {
   categories: CategoryItem[];
@@ -19,13 +20,13 @@ export const SubMenu = ({ categories }: SubMenuProps) => {
         {categories.map((category) => {
           return (
             <Typography key={category.id} isCapitalized>
-              <Link
+              <StyledLink
                 href={`${buildCategoryPath(category.id)}`}
                 $isActive={activeCategoryId === category.id}
                 onClick={() => setActiveCategoryId(category.id)}
               >
                 {category.name}
-              </Link>
+              </StyledLink>
             </Typography>
           );
         })}
@@ -59,7 +60,7 @@ const CategoryContainer = styled.div`
   padding: 0;
 `;
 
-const Link = styled.a<{ $isActive: boolean }>`
+const StyledLink = styled(Link)<{ $isActive: boolean }>`
   display: flex;
   width: 100%;
   opacity: 1;

@@ -78,7 +78,7 @@ const Item = styled.div`
   padding: 0 12px 0 0;
 `;
 
-const Container = styled.a`
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;

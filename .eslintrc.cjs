@@ -26,6 +26,7 @@ module.exports = {
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/unbound-method": "off",
   },
   overrides: [
     {

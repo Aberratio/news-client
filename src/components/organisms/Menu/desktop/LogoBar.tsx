@@ -2,19 +2,20 @@
 
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 export const LogoBar = () => {
   return (
     <Wrapper>
       <Container>
-        <Link href="/">
+        <StyledLink href="/">
           <StyledImage
             src="/icons/logo_footer.png"
             alt="logo"
             width={300}
             height={35}
           />
-        </Link>
+        </StyledLink>
       </Container>
     </Wrapper>
   );
@@ -41,7 +42,7 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
 

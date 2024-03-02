@@ -2,19 +2,20 @@
 
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 export const BigLogoBar = () => {
   return (
     <Wrapper>
       <Container>
-        <Link href="/">
+        <StyledLink href="/">
           <StyledImage
             src="/icons/logo.png"
             alt="logo"
             width={1500}
             height={150}
           />
-        </Link>
+        </StyledLink>
       </Container>
     </Wrapper>
   );
@@ -47,7 +48,7 @@ const Container = styled.div`
   `}
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
 
