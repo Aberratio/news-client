@@ -64,35 +64,35 @@ export const StatisticArticleBar = ({
   return (
     <Bar dataTestId="statistic-bar">
       <Item>
+        <Eye />
         <Counter>
           <Typography variant="small">{views}</Typography>
         </Counter>
-        <Eye />
       </Item>
       <LinkItem href={commentsPath}>
+        <Comments />
         <Counter>
           <Typography variant="small">{comments}</Typography>
         </Counter>
-        <Comments />
       </LinkItem>
       <Item onClick={() => onReactionClick("like")}>
+        <ThumbDown color={sessionReaction === "like" ? "blue" : "black"} />
         <Counter>
           <Typography variant="small" color="black">
             {likes + (sessionReaction === "like" ? 1 : 0)}
           </Typography>
         </Counter>
-        <ThumbDown color={sessionReaction === "like" ? "blue" : "black"} />
       </Item>
       <Item onClick={() => onReactionClick("dislike")}>
+        <Thumb
+          direction="right"
+          color={sessionReaction === "dislike" ? "blue" : "black"}
+        />
         <Counter>
           <Typography variant="small" color="black">
             {dislikes + (sessionReaction === "dislike" ? 1 : 0)}
           </Typography>
         </Counter>
-        <Thumb
-          direction="right"
-          color={sessionReaction === "dislike" ? "blue" : "black"}
-        />
       </Item>
     </Bar>
   );
