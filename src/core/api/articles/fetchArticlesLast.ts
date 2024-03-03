@@ -1,10 +1,10 @@
-import { formatDateToString } from "core/builders/buildDate";
 import { buildImageUrl } from "core/builders/buildImageUrl";
 import {
   buildArticlePath,
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
+import { formatDateToString } from "core/formaters/formatDateToString";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
 import { SanityArticleSummaryItem } from "../sanity-types/SanityArticleSummaryItem";

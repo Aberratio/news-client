@@ -1,9 +1,10 @@
+import { formatDateTimeToString } from "core/formaters/formatDateTimeToString";
 import { cutText } from "core/tools/cutText";
 import { CommentSummaryItem } from "types/CommentSummaryItem";
 
 export interface SanityCommentItem {
   author: string;
-  _createdAt: string;
+  _createdAt: Date;
   likes: number;
   _id: string;
   text: string;
@@ -18,7 +19,7 @@ export const mapToCommentSummaryItem = (
       articleSlug: item.post.slug.current,
       articleTitle: item.post.title,
       author: item.author,
-      date: new Date(item._createdAt).toLocaleString(),
+      date: formatDateTimeToString(item._createdAt),
       dislikes: item.likes,
       id: item._id,
       likes: item.likes,

@@ -1,4 +1,3 @@
-import { formatDateToString } from "core/builders/buildDate";
 import { buildImageUrl } from "core/builders/buildImageUrl";
 import {
   buildArticlePath,
@@ -6,6 +5,7 @@ import {
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
+import { formatDateToString } from "core/formaters/formatDateToString";
 import { ArticleItem } from "types/ArticleItem";
 
 export interface SanityArticleItem {
@@ -86,10 +86,12 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
       {
         path: buildImageUrl(post.mainImage.asset._ref),
         description: post.mainImage.description || "",
+        alt: post.mainImage.alt,
       },
       ...(post.images?.map((image) => ({
         path: buildImageUrl(image.asset._ref),
         description: image.description || "",
+        alt: image.alt,
       })) || []),
     ],
     title: post.title,

@@ -1,4 +1,5 @@
 import { buildImageUrl } from "core/builders/buildImageUrl";
+import { formatDateToString } from "core/formaters/formatDateToString";
 import { FirstSiteItem } from "types/FirstSiteItem";
 
 export interface SanityFirstSiteItem {
@@ -8,7 +9,7 @@ export interface SanityFirstSiteItem {
       _ref: string;
     };
   };
-  releaseDate: string;
+  releaseDate: Date;
 }
 
 export const mapDataToFirstSiteItem = (
@@ -19,6 +20,6 @@ export const mapDataToFirstSiteItem = (
     image: {
       path: buildImageUrl(data.image.asset._ref),
     },
-    releaseDate: new Date(data.releaseDate).toLocaleDateString(),
+    releaseDate: formatDateToString(data.releaseDate),
   };
 };
