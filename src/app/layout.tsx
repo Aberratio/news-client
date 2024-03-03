@@ -36,13 +36,6 @@ export const metadata: Metadata = {
     },
     description: "Lokalny tygodnik informacyjny",
   },
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-      "de-DE": "/de-DE",
-    },
-  },
 };
 
 const RootLayout = async ({

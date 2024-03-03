@@ -32,6 +32,9 @@ export async function generateMetadata(
     description: articleMeta.lead,
     openGraph: {
       title: articleMeta.title,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/article/${slug}`,
+      locale: "pl_PL",
+      type: "article",
       description: articleMeta.lead,
       images: [imagePath, ...previousImages],
     },
