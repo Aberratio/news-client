@@ -5,7 +5,7 @@ import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 import Box from "components/atoms/Box";
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
 
-import NewsBar from "../../organisms/NewsBar";
+import PinnedArticle from "../../organisms/PinnedArticle";
 
 interface HomePageTemplateProps {
   article: ArticleSummarizationItem;
@@ -18,7 +18,7 @@ export const HomePageTemplate = ({
 }: HomePageTemplateProps) => {
   return (
     <Box dataTestId="home-page" padding="0 12px">
-      <NewsBar article={article} />
+      <PinnedArticle article={article} />
       <MainContainerTemplate>{children}</MainContainerTemplate>
     </Box>
   );

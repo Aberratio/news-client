@@ -1,7 +1,7 @@
 import { aboutPagePath, rulesPagePath } from "core/builders/buildPath";
 
-import FooterWrapper from "./FooterWrapper";
-import { WebcoBar } from "./WebcoBar";
+import FooterColumns from "./columns/FooterColumns";
+import { WebcoBar } from "./columns/WebcoBar";
 
 export enum ElementType {
   Link,
@@ -12,7 +12,7 @@ export enum ElementType {
 const Footer = () => {
   return (
     <footer>
-      <FooterWrapper columns={[secondColumnMock, thirdColumnMock]} />
+      <FooterColumns columns={[secondColumnMock, thirdColumnMock]} />
       <WebcoBar />
     </footer>
   );

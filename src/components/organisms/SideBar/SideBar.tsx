@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { fetchLastComments } from "core/api/comments/fetchLastComments";
 import { fetchVisits } from "core/api/fetchVisits";
-import { BoxAddItem } from "core/api/settings/fetchAdds";
+import { BoxAddItem } from "types/AddsItem";
 
 import AddsBar from "./adds-bar/AddsBar";
 import { FirstSite } from "./first-site/FirstSite";

@@ -5,11 +5,11 @@ import styled from "styled-components";
 import { DescriptionColumn } from "./DescriptionColumn";
 import { InfoColumn, InfoColumnItem } from "./InfoColumn";
 
-export interface FooterWrapperProps {
+export interface FooterColumnsProps {
   columns: InfoColumnItem[];
 }
 
-const FooterWrapper = ({ columns }: FooterWrapperProps) => {
+const FooterColumns = ({ columns }: FooterColumnsProps) => {
   return (
     <Wrapper>
       <Container>
@@ -24,7 +24,7 @@ const FooterWrapper = ({ columns }: FooterWrapperProps) => {
   );
 };
 
-export default FooterWrapper;
+export default FooterColumns;
 
 const Wrapper = styled.div`
   padding-top: 40px;

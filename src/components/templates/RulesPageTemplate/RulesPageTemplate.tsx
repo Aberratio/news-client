@@ -8,7 +8,7 @@ export const RulesPageTemplate = () => {
   const { customTheme } = useStyles();
 
   return (
-    <Container>
+    <Container data-testid="rules-page">
       {rules.map((rule) => {
         return (
           <div>

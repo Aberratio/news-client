@@ -5,11 +5,11 @@ import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
 
 import LargeInfoCard from "../../molecules/LargeInfoCard";
 
-interface NewsBarProps {
+interface PinnedArticleProps {
   article: ArticleSummarizationItem;
 }
 
-const NewsBar = ({ article }: NewsBarProps) => {
+const PinnedArticle = ({ article }: PinnedArticleProps) => {
   if (!article) {
     return null;
   }
@@ -28,4 +28,4 @@ const NewsBar = ({ article }: NewsBarProps) => {
   );
 };
 
-export default NewsBar;
+export default PinnedArticle;

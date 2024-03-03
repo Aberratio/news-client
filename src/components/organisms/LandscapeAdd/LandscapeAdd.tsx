@@ -1,7 +1,7 @@
 "use client";
 
-import { MainAddItem } from "core/api/settings/fetchAdds";
 import { styled } from "styled-components";
+import { MainAddItem } from "types/AddsItem";
 
 import SanityImage from "components/atoms/SanityImage/SanityImage";
 

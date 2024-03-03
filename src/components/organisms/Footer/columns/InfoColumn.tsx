@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import Typography from "components/atoms/Typography";
 
-import { ElementType } from "./Footer";
+import { ElementType } from "../Footer";
 
 export interface LinkItem {
   bolded?: string;

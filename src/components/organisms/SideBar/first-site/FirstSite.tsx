@@ -7,6 +7,8 @@ import { styled } from "styled-components";
 import Typography from "components/atoms/Typography";
 import Widget from "components/molecules/Widget";
 
+import { SideBarSmallImageContainer } from "../image-containers/SideBarSmallImageContainer";
+
 export const FirstSite = () => {
   const { newReleaseDate, newCoverImage } = useOrganizationInfo();
 
@@ -15,22 +17,17 @@ export const FirstSite = () => {
       <Typography flexbox={{ flexDirection: "row" }}>
         W sprzedaży od <Date>{newReleaseDate}</Date>
       </Typography>
-      <ImageContainer>
+      <SideBarSmallImageContainer>
         <Image
           src={newCoverImage.path}
           alt="Najnowszy numer"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-      </ImageContainer>
+      </SideBarSmallImageContainer>
     </Widget>
   );
 };
-
-export const ImageContainer = styled.div`
-  position: relative;
-  height: 370px;
-`;
 
 const Date = styled.strong`
   margin-left: 4px;

@@ -3,7 +3,8 @@
 import Typography from "components/atoms/Typography";
 import { revalidateCommentReactionsTag } from "components/organisms/CommentsSection/revalidateCommentReactionsTag";
 
-import { CommentMeta } from "./CommentMeta";
+import MetadataBar from "../MetadataBar";
+
 import { StatisticCommentBar } from "./StatisticCommentBar";
 
 interface CommentProps {
@@ -27,7 +28,7 @@ const Comment = ({
 }: CommentProps) => {
   return (
     <div>
-      <CommentMeta author={author} date={date} />
+      <MetadataBar name={author} date={date} />
       <Typography space={{ marginY: 4 }}>{text}</Typography>
       <StatisticCommentBar
         commentId={commentId}
