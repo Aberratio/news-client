@@ -23,8 +23,26 @@ const spectral = Spectral({
 });
 
 export const metadata: Metadata = {
-  title: "Głos  Milicza",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ""),
   description: "Lokalny tygodnik informacyjny",
+  title: {
+    default: "Głos  Milicza",
+    template: "%s | Głos  Milicza",
+  },
+  openGraph: {
+    title: {
+      default: "Głos  Milicza",
+      template: "%s | Głos  Milicza",
+    },
+    description: "Lokalny tygodnik informacyjny",
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+      "de-DE": "/de-DE",
+    },
+  },
 };
 
 const RootLayout = async ({

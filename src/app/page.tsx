@@ -12,7 +12,7 @@ const HomePage = async () => {
   });
 
   if (!articles.length) {
-    return <p>No articles</p>;
+    return <p>Brak artykułów</p>;
   }
 
   return (

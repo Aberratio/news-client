@@ -21,7 +21,6 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ["kokot.it", "localhost", "cdn.sanity.io"],
     remotePatterns: [
       {
         protocol: "https",

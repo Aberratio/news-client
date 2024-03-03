@@ -1,7 +1,13 @@
 export const dynamic = "force-dynamic";
 
+import { Metadata } from "next";
+
 import { RulesPageTemplate } from "components/templates/RulesPageTemplate/RulesPageTemplate";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
+
+export const metadata: Metadata = {
+  title: "Regulamin",
+};
 
 const RulesPage = () => {
   return (
