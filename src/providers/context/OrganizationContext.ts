@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext } from "react";
-import { FirstSiteItem } from "core/api/settings/fetchFirstSite";
+import { FirstSiteItem } from "types/FirstSiteItem";
 import { TabItem } from "types/TabItem";
 
 interface OrganizationContextProps {

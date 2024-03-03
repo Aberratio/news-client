@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ReactNode, useEffect, useState } from "react";
-import { FirstSiteItem } from "core/api/settings/fetchFirstSite";
+import { FirstSiteItem } from "types/FirstSiteItem";
 import { TabItem } from "types/TabItem";
 
 import { OrganizationContext } from "./OrganizationContext";
