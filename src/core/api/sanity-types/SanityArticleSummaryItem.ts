@@ -1,4 +1,4 @@
-export interface SanityArticleSummarizationItem {
+export interface SanityArticleSummaryItem {
   author: {
     name: string;
     slug: {

@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 
-import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
+import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
 
 const HomePage = async () => {
@@ -17,9 +17,9 @@ const HomePage = async () => {
 
   return (
     <HomePageTemplate article={articles[0]}>
-      <OverviewWithStatsItems
+      <ArticlesOverviewBox
         items={articles.slice(1)}
-        dataTestId={`article-summarizatoin-box-latest`}
+        dataTestId={`articles-overview-box-latest`}
       />
     </HomePageTemplate>
   );

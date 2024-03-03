@@ -1,13 +1,13 @@
 "use server";
 
-import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+import { CommentSummaryItem } from "types/CommentSummaryItem";
 
 import Typography from "components/atoms/Typography";
 
 import { CommentSummarization } from "./CommentSummarization";
 
 interface LastCommentsContentProps {
-  comments: CommentSummarizationItem[];
+  comments: CommentSummaryItem[];
 }
 
 export const LastCommentsContent = ({ comments }: LastCommentsContentProps) => {

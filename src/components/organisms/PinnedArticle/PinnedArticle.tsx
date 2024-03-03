@@ -1,12 +1,12 @@
 "use server";
 
 import { cutText } from "core/tools/cutText";
-import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
+import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
 import LargeInfoCard from "../../molecules/LargeInfoCard";
 
 interface PinnedArticleProps {
-  article: ArticleSummarizationItem;
+  article: ArticleSummaryItem;
 }
 
 const PinnedArticle = ({ article }: PinnedArticleProps) => {

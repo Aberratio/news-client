@@ -3,7 +3,7 @@ import { CategoryItem } from "./CategoryItem";
 import { PhotoItem } from "./PhotoItem";
 import { StatisticsItem } from "./StatisticsItem";
 
-export interface ArticleSummarizationItem {
+export interface ArticleSummaryItem {
   author: AuthorItem;
   category: CategoryItem;
   createdOn: string;

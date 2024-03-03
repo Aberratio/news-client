@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-interface SummarizationCardImageProps {
+interface ArticleBoxImageProps {
   path: string;
   photo: {
     alt: string;
@@ -13,10 +13,7 @@ interface SummarizationCardImageProps {
   };
 }
 
-export const SummarizationCardImage = ({
-  path,
-  photo,
-}: SummarizationCardImageProps) => {
+export const ArticleBoxImage = ({ path, photo }: ArticleBoxImageProps) => {
   return (
     <ImageLink href={path}>
       <StyledImage

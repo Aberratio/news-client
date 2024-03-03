@@ -1,4 +1,4 @@
-export interface CommentSummarizationItem {
+export interface CommentSummaryItem {
   articleSlug: string;
   articleTitle: string;
   author: string;

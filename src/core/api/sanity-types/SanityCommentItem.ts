@@ -1,5 +1,5 @@
 import { cutText } from "core/tools/cutText";
-import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+import { CommentSummaryItem } from "types/CommentSummaryItem";
 
 export interface SanityCommentItem {
   author: string;
@@ -10,9 +10,9 @@ export interface SanityCommentItem {
   post: any;
 }
 
-export const mapToCommentSummarizationItem = (
+export const mapToCommentSummaryItem = (
   data: SanityCommentItem[]
-): CommentSummarizationItem[] => {
+): CommentSummaryItem[] => {
   return data.map((item: SanityCommentItem) => {
     return {
       articleSlug: item.post.slug.current,
@@ -23,6 +23,6 @@ export const mapToCommentSummarizationItem = (
       id: item._id,
       likes: item.likes,
       text: cutText(item.text, 100),
-    } as CommentSummarizationItem;
+    } as CommentSummaryItem;
   });
 };

@@ -1,6 +1,6 @@
 "use server";
 
-import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
+import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
 import Box from "components/atoms/Box";
 import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
@@ -8,7 +8,7 @@ import { MainContainerTemplate } from "components/templates/MainContainerTemplat
 import PinnedArticle from "../../organisms/PinnedArticle";
 
 interface HomePageTemplateProps {
-  article: ArticleSummarizationItem;
+  article: ArticleSummaryItem;
   children: React.ReactNode;
 }
 

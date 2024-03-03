@@ -2,7 +2,7 @@
 
 import { buildArticlePath } from "core/builders/buildPath";
 import Link from "next/link";
-import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+import { CommentSummaryItem } from "types/CommentSummaryItem";
 
 import Typography from "components/atoms/Typography";
 import Comment from "components/molecules/Comment";
@@ -10,7 +10,7 @@ import Comment from "components/molecules/Comment";
 import { CommentContainer } from "./CommentContainer";
 
 interface CommentSummarizationProps {
-  comment: CommentSummarizationItem;
+  comment: CommentSummaryItem;
   iterator: number;
 }
 

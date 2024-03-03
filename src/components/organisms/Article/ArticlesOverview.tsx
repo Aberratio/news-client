@@ -3,7 +3,7 @@
 import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 import { notFound } from "next/navigation";
 
-import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
+import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
 
 interface ArticlesOverviewProps {
   limit?: number;
@@ -25,13 +25,13 @@ export const ArticlesOverview = async ({
     page,
   });
 
-  if(!articles) {
+  if (!articles) {
     notFound();
   }
 
   return (
-    <OverviewWithStatsItems
-      dataTestId={`article-summarizatoin-box-${categorySlug}`}
+    <ArticlesOverviewBox
+      dataTestId={`articles-overview-box-${categorySlug}`}
       items={articles}
     />
   );

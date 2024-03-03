@@ -5,15 +5,12 @@ import styled from "styled-components";
 
 import Typography from "components/atoms/Typography";
 
-interface SummarizationCardTitleProps {
+interface ArticleBoxTitleProps {
   title: string;
   path: string;
 }
 
-export const SummarizationCardTitle = ({
-  title,
-  path,
-}: SummarizationCardTitleProps) => {
+export const ArticleBoxTitle = ({ title, path }: ArticleBoxTitleProps) => {
   return (
     <StyledLink href={path}>
       <Typography variant="article" wrap space={{ marginBottom: 2 }}>

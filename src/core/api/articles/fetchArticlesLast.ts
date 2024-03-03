@@ -5,52 +5,10 @@ import {
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
+import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
-import { SanityArticleSummarizationItem } from "../sanity-types/SanityArticleSummarizationItem";
+import { SanityArticleSummaryItem } from "../sanity-types/SanityArticleSummaryItem";
 import { sanityClient } from "../sanityClient";
-
-interface AuthorItem {
-  id: string;
-  name: string;
-  path: string;
-}
-
-interface CategoryItem {
-  id: string;
-  name: string;
-  path: string;
-  tabSlug: string;
-  tabName: string;
-  tabPath: string;
-}
-
-interface PhotoItem {
-  path: string;
-  description: string;
-}
-
-interface StatisticsItem {
-  comments: number;
-  dislikes: number;
-  likes: number;
-  views: number;
-}
-
-interface ArticleSummarizationItem {
-  author: AuthorItem;
-  category: CategoryItem;
-  createdOn: string;
-  id: string;
-  lead: string;
-  likes: number;
-  comments: number;
-  dislikes: number;
-  views: number;
-  path: string;
-  photo: PhotoItem;
-  statistics: StatisticsItem;
-  title: string;
-}
 
 interface FetchArticlesLastParams {
   categorySlug?: string;
@@ -64,7 +22,7 @@ export const fetchArticlesLast = async ({
   tabSlug,
   limit = 10,
   page = 1,
-}: FetchArticlesLastParams): Promise<ArticleSummarizationItem[]> => {
+}: FetchArticlesLastParams): Promise<ArticleSummaryItem[]> => {
   const start = (page - 1) * limit;
   const end = start + limit - 1;
 
@@ -79,9 +37,7 @@ export const fetchArticlesLast = async ({
   return mapData(tabs);
 };
 
-const mapData = (
-  data: SanityArticleSummarizationItem[]
-): ArticleSummarizationItem[] => {
+const mapData = (data: SanityArticleSummaryItem[]): ArticleSummaryItem[] => {
   return data.map((post) => {
     return {
       author: {
@@ -114,6 +70,7 @@ const mapData = (
       photo: {
         path: buildImageUrl(post.mainImage.asset._ref),
         description: post.mainImage.description,
+        alt: post.mainImage.alt,
       },
       title: post.title,
     };

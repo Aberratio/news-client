@@ -2,13 +2,17 @@
 
 import styled from "styled-components";
 
-interface SummarizationCardProps {
+interface ArticleBoxWraperProps {
+  dataTestId: string;
   children: React.ReactNode;
 }
 
-export const SummarizationCard = ({ children }: SummarizationCardProps) => {
+export const ArticleBoxWraper = ({
+  dataTestId,
+  children,
+}: ArticleBoxWraperProps) => {
   return (
-    <Wrapper data-testid="summarization-card">
+    <Wrapper data-testid={dataTestId}>
       <Container>{children}</Container>
     </Wrapper>
   );

@@ -1,6 +1,6 @@
 "use server";
 
-import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+import { CommentSummaryItem } from "types/CommentSummaryItem";
 
 import { SanityCommentItem } from "../sanity-types/SanityCommentItem";
 import { sanityClient } from "../sanityClient";
@@ -15,7 +15,7 @@ export const fetchArticleComments = async (_id: string) => {
   }
 };
 
-const mapData = (data: SanityCommentItem[]): CommentSummarizationItem[] => {
+const mapData = (data: SanityCommentItem[]): CommentSummaryItem[] => {
   return data
     .map((item: SanityCommentItem) => {
       if (!item.text) return;
@@ -28,7 +28,7 @@ const mapData = (data: SanityCommentItem[]): CommentSummarizationItem[] => {
         id: item._id,
         likes: item.likes,
         text: item.text,
-      } as CommentSummarizationItem;
+      } as CommentSummaryItem;
     })
-    .filter((x) => x) as CommentSummarizationItem[];
+    .filter((x) => x) as CommentSummaryItem[];
 };
