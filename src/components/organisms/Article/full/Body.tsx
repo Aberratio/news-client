@@ -72,7 +72,6 @@ interface BodyProps {
 }
 
 export const Body = ({ value }: BodyProps) => {
-  console.log(value, "value");
   return (
     <PortableText
       value={value}

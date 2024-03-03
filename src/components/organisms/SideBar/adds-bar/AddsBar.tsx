@@ -10,11 +10,15 @@ interface AddsBarProps {
 
 const AddsBar = ({ boxAdds }: AddsBarProps) => {
   return (
-    <>
+    <div data-testid="adds">
       {boxAdds.map((add: BoxAddItem) => (
-        <AddBox path={add.image.path} alt={add.image.alt} />
+        <AddBox
+          key={add.image._ref}
+          path={add.image.path}
+          alt={add.image.alt}
+        />
       ))}
-    </>
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
+import { Skeleton } from "@nextui-org/react";
 import styled from "styled-components";
 import { ArticleItem } from "types/ArticleItem";
 
@@ -19,14 +20,14 @@ interface FullArticleProps {
 
 export const FullArticleContent = ({ article, children }: FullArticleProps) => {
   return (
-    <Wrapper data-testid={`full-article-${article.slug}`}>
+    <Wrapper data-testid={`full-article`}>
       <Container>
         <Title>{article.title}</Title>
         <InfoWrapper>
-          <Suspense>
+          <Suspense fallback={<Skeleton />}>
             <MetadataBar name={article.author.name} date={article.createdOn} />
           </Suspense>
-          <Suspense>
+          <Suspense fallback={<Skeleton />}>
             <StatisticArticleBar
               _id={article._id}
               commentsPath="#comments"
@@ -42,11 +43,11 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
         <LeadWrapper>
           <Typography variant="article">{article.lead}</Typography>
         </LeadWrapper>
-        <Suspense>
+        <Suspense fallback={<Skeleton />}>
           <Slider images={article.photos} />
         </Suspense>
         <BodyWrapper>
-          <Suspense>
+          <Suspense fallback={<Skeleton />}>
             <Body value={article.body} />
           </Suspense>
         </BodyWrapper>

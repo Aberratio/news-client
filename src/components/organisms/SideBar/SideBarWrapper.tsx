@@ -13,7 +13,7 @@ export const SideBarWrapper = ({ children }: SideBarWrapperProps) => {
   if (!tabletL) return null;
 
   return (
-    <Wrapper data-testid="information-bar">
+    <Wrapper data-testid="side-bar">
       <Container>{children}</Container>
     </Wrapper>
   );

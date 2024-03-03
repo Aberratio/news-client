@@ -50,7 +50,7 @@ const Slider = ({ images }: SliderProps) => {
         <StyledImage
           src={image.path}
           fill
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
           alt={image.description ?? ""}
           $hasDescription={hasDescription}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

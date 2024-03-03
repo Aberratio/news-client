@@ -39,8 +39,8 @@ export const NavigationItem = ({
     >
       <StyledLink href={buildTabPath(tab.tabSlug)}>
         <Typography color="black">{tab.name}</Typography>
-        {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
       </StyledLink>
+      {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
     </Container>
   );
 };

@@ -9,7 +9,7 @@ interface AddBoxProps {
 
 export const AddBox = ({ path, alt }: AddBoxProps) => {
   return (
-    <SideBarSmallImageContainer>
+    <SideBarSmallImageContainer dataTestId="add">
       <Image
         src={path}
         alt={alt}
