@@ -1,4 +1,4 @@
-import { OppositeColor, CustomTheme } from "../types/CustomTheme";
+import { CustomTheme,OppositeColor } from "../types/CustomTheme";
 
 const WHITE: OppositeColor = "white";
 const BLUE = "#5069A7";

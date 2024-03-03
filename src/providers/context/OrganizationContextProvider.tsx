@@ -1,9 +1,10 @@
 "use client";
 
 import React, { ReactNode, useEffect, useState } from "react";
-import { OrganizationContext } from "./OrganizationContext";
-import { TabItem } from "types/TabItem";
 import { FirstSiteItem } from "core/api/settings/fetchFirstSite";
+import { TabItem } from "types/TabItem";
+
+import { OrganizationContext } from "./OrganizationContext";
 
 interface OrganizationContextProviderProps {
   tabs: TabItem[];

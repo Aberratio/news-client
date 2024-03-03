@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+
 import { MainMenu } from "./MainMenu";
 
 export const NavigationDesktop = () => {

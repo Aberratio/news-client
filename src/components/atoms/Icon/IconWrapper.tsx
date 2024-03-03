@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Direction, directions } from "./directions";
 import { IconSize } from "./IconSize";
 

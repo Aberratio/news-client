@@ -1,10 +1,11 @@
 export const dynamic = "force-dynamic";
 
+import { Suspense } from "react";
+
 import { FullArticle } from "components/organisms/Article/full/FullArticle";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
 import { fetchArticle } from "../../../core/api/articles/fetchArticle";
-import { Suspense } from "react";
 
 interface ArticlePageProps {
   params: { id: string };

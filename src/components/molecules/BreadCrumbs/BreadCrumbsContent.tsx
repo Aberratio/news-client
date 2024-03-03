@@ -1,11 +1,13 @@
 "use client";
 
-import { Arrow } from "components/molecules/Icons/Arrow";
-import Typography from "components/atoms/Typography";
-import styled from "styled-components";
 import { Fragment } from "react";
-import { BreadCrumbsItem } from "./BreadCrumbsItem";
 import Link from "next/link";
+import styled from "styled-components";
+
+import Typography from "components/atoms/Typography";
+import { Arrow } from "components/molecules/Icons/Arrow";
+
+import { BreadCrumbsItem } from "./BreadCrumbsItem";
 
 interface BreadCrumbsProps {
   breadcrumbs: BreadCrumbsItem[];

@@ -1,9 +1,10 @@
 "use client";
 
-import Typography from "components/atoms/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+
+import Typography from "components/atoms/Typography";
 
 export const DescriptionColumn = () => {
   return (

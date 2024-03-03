@@ -1,15 +1,16 @@
+import { Font } from "core/styles/types/CustomFonts";
 import { css, styled } from "styled-components";
 import {
-  FlexboxProps,
-  GridProps,
-  SpaceProps,
-  TextAlignProps,
   flexbox,
+  FlexboxProps,
   grid,
+  GridProps,
   space,
+  SpaceProps,
   textAlign,
+  TextAlignProps,
 } from "styled-system";
-import { Font } from "core/styles/types/CustomFonts";
+
 import { WordBreakProps } from "./types/WordBreakProps";
 
 interface TypographyWrapperProps {

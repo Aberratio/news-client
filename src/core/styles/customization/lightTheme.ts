@@ -1,4 +1,4 @@
-import { OppositeColor, CustomTheme } from "../types/CustomTheme";
+import { CustomTheme,OppositeColor } from "../types/CustomTheme";
 
 //  GM color
 const BLUE = "#2e6896"; //rgb(46,104,150)";

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 import { colors } from "core/styles/colors";
+
+import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
 interface ThumbProps extends IconCustomizationProps {
   isActive?: boolean;

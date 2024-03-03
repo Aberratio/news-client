@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
 import { styled } from "styled-components";
 
-import { Label } from "./Label";
-import { useStyles } from "../../../../core/styles/customization/useStyles";
 import Typography from "../../../../components/atoms/Typography";
+import { useStyles } from "../../../../core/styles/customization/useStyles";
+
+import { Label } from "./Label";
 
 interface FormElementContainerProps {
   error?: ReactNode | string;

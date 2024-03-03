@@ -1,7 +1,8 @@
 "use client";
 
-import { MenuDesktop } from "./desktop/MenuDesktop";
 import { HideForMobiles } from "layout/responsivenes/HideForMobiles";
+
+import { MenuDesktop } from "./desktop/MenuDesktop";
 
 const Menu = () => {
   return (

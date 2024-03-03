@@ -1,13 +1,15 @@
 "use server";
 
-import Typography from "components/atoms/Typography";
-import { CommentForm } from "./CommentForm";
-import { AllComments } from "./AllComments";
-import { CommentItem } from "types/CommentItem";
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
-import { revalidateCommentsTag } from "./revalidateCommentsTag";
-import { EmptyCommentsSection } from "./EmptyCommentsSection";
+import { CommentItem } from "types/CommentItem";
+
 import Hr from "components/atoms/Hr";
+import Typography from "components/atoms/Typography";
+
+import { AllComments } from "./AllComments";
+import { CommentForm } from "./CommentForm";
+import { EmptyCommentsSection } from "./EmptyCommentsSection";
+import { revalidateCommentsTag } from "./revalidateCommentsTag";
 
 interface CommentsSectionProps {
   articleId: string;

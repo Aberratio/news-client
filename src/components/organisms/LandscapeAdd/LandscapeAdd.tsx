@@ -1,8 +1,9 @@
 "use client";
 
-import SanityImage from "components/atoms/SanityImage/SanityImage";
 import { MainAddItem } from "core/api/settings/fetchAdds";
 import { styled } from "styled-components";
+
+import SanityImage from "components/atoms/SanityImage/SanityImage";
 
 interface LandscapeAddProps {
   mainAdd: MainAddItem;

@@ -1,12 +1,13 @@
+import { formatDateToString } from "core/builders/buildDate";
 import { buildImageUrl } from "core/builders/buildImageUrl";
-import { sanityClient } from "../sanityClient";
 import {
   buildArticlePath,
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
-import { formatDateToString } from "core/builders/buildDate";
+
 import { SanityArticleSummarizationItem } from "../sanity-types/SanityArticleSummarizationItem";
+import { sanityClient } from "../sanityClient";
 
 interface AuthorItem {
   id: string;

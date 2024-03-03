@@ -1,9 +1,10 @@
 "use client";
 
-import styled from "styled-components";
 import Link from "next/link";
-import { Comments } from "components/molecules/Icons/Comments";
+import styled from "styled-components";
+
 import Typography from "components/atoms/Typography";
+import { Comments } from "components/molecules/Icons/Comments";
 import { Eye } from "components/molecules/Icons/Eye";
 import { Thumb } from "components/molecules/Icons/Thumb";
 

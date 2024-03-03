@@ -1,9 +1,10 @@
-import Typography from "components/atoms/Typography";
-import styled from "styled-components";
 import { useState } from "react";
 import { buildCategoryPath } from "core/builders/buildPath";
-import { CategoryItem } from "types/CategoryItem";
 import Link from "next/link";
+import styled from "styled-components";
+import { CategoryItem } from "types/CategoryItem";
+
+import Typography from "components/atoms/Typography";
 
 interface SubMenuProps {
   categories: CategoryItem[];

@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+
 import { BigLogoBar } from "./BigLogoBar";
 // import { BigTopBar } from "./BigTopBar";
 import { SubTitleBar } from "./SubTitleBar";

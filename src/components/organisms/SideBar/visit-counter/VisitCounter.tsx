@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+
 import Typography from "components/atoms/Typography";
 import Widget from "components/molecules/Widget";
 

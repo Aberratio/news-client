@@ -1,8 +1,9 @@
 "use client";
 
-import styled from "styled-components";
-import Typography from "components/atoms/Typography";
 import Link from "next/link";
+import styled from "styled-components";
+
+import Typography from "components/atoms/Typography";
 
 interface SummarizationCardTitleProps {
   title: string;

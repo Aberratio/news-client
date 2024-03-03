@@ -1,9 +1,11 @@
 "use server";
 
-import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
-import NewsBar from "../../organisms/NewsBar";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
+
 import Box from "components/atoms/Box";
+import { MainContainerTemplate } from "components/templates/MainContainerTemplate/MainContainerTemplate";
+
+import NewsBar from "../../organisms/NewsBar";
 
 interface HomePageTemplateProps {
   article: ArticleSummarizationItem;

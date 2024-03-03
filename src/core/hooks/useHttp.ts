@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 
-import { useCache } from "./useCache";
 import { buildUrl } from "../builders/buildUrl";
+
+import { useCache } from "./useCache";
 
 interface RequestOptions extends RequestInit {
   signal?: AbortSignal;

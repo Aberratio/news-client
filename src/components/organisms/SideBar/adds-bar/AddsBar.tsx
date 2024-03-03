@@ -1,8 +1,9 @@
 "use client";
 
 import { BoxAddItem } from "core/api/settings/fetchAdds";
-import { ImageContainer } from "../first-site/FirstSite";
 import Image from "next/image";
+
+import { ImageContainer } from "../first-site/FirstSite";
 
 interface AddsBarProps {
   boxAdds: BoxAddItem[];

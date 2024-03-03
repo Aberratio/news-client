@@ -1,9 +1,10 @@
 "use cleint";
 
-import { LinkButton } from "components/atoms/LinkButton/LinkButton";
-import Typography from "components/atoms/Typography";
 import { aboutPagePath } from "core/builders/buildPath";
 import styled from "styled-components";
+
+import { LinkButton } from "components/atoms/LinkButton/LinkButton";
+import Typography from "components/atoms/Typography";
 
 export const BigTopBar = () => {
   return (

@@ -1,6 +1,7 @@
 import { sanityClient } from "core/api/sanityClient";
-import { mapDataToAddsItem } from "../sanity-types/SanityAddsItem";
 import { AddsItem } from "types/AddsItem";
+
+import { mapDataToAddsItem } from "../sanity-types/SanityAddsItem";
 
 export const fetchAdds = async (): Promise<AddsItem | null> => {
   const adds = await sanityClient.fetch(

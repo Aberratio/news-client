@@ -1,9 +1,11 @@
 "use client";
 
-import styled from "styled-components";
-import { useReactionHandler } from "./useReactionHandler";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+
 import { CounterItem } from "../CounterItem/CounterItem";
+
+import { useReactionHandler } from "./useReactionHandler";
 
 interface StatisticBarProps {
   commentId: string;

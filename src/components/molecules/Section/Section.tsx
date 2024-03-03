@@ -1,9 +1,10 @@
 "use client";
 
-import styled from "styled-components";
-import Typography from "components/atoms/Typography";
 import { useStyles } from "core/styles/customization/useStyles";
 import Link from "next/link";
+import styled from "styled-components";
+
+import Typography from "components/atoms/Typography";
 
 interface SectionProps {
   header: string;

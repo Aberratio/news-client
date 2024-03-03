@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import Widget from "components/molecules/Widget";
+
 import { LastCommentsContent } from "./LastCommentsContent";
 
 interface LastCommentsWidgetProps {

@@ -1,14 +1,15 @@
 "use server";
 
-import { FirstSite } from "./first-site/FirstSite";
-import { VisitCounterWidget } from "./visit-counter/VisitCounterWidget";
-import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
-import { SideBarWrapper } from "./SideBarWrapper";
 import { Suspense } from "react";
-import { fetchVisits } from "core/api/fetchVisits";
 import { fetchLastComments } from "core/api/comments/fetchLastComments";
-import AddsBar from "./adds-bar/AddsBar";
+import { fetchVisits } from "core/api/fetchVisits";
 import { BoxAddItem } from "core/api/settings/fetchAdds";
+
+import AddsBar from "./adds-bar/AddsBar";
+import { FirstSite } from "./first-site/FirstSite";
+import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
+import { VisitCounterWidget } from "./visit-counter/VisitCounterWidget";
+import { SideBarWrapper } from "./SideBarWrapper";
 
 interface SideBarProps {
   boxAdds?: BoxAddItem[];

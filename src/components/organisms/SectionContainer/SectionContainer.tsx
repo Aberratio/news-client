@@ -1,6 +1,7 @@
 "use server";
 
 import { Section } from "components/molecules/Section/Section";
+
 import { Container } from "./Container";
 
 export const SectionContainer = () => {

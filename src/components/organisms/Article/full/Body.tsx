@@ -1,8 +1,9 @@
 import { PortableText } from "@portabletext/react";
-import Typography from "components/atoms/Typography";
 import { buildImageUrl } from "core/builders/buildImageUrl";
 import Link from "next/link";
 import { styled } from "styled-components";
+
+import Typography from "components/atoms/Typography";
 
 const SampleImageComponent = ({ value }: any) => {
   return (

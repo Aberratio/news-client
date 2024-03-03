@@ -1,10 +1,12 @@
-import Typography from "components/atoms/Typography";
-import styled from "styled-components";
-import { buildTabPath } from "core/builders/buildPath";
 import { useState } from "react";
-import { TabItem } from "types/TabItem";
-import { SubMenu } from "./SubMenu";
+import { buildTabPath } from "core/builders/buildPath";
 import Link from "next/link";
+import styled from "styled-components";
+import { TabItem } from "types/TabItem";
+
+import Typography from "components/atoms/Typography";
+
+import { SubMenu } from "./SubMenu";
 
 interface NavigationItemProps {
   isActive: boolean;

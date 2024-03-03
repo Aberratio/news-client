@@ -1,8 +1,9 @@
 "use client";
 
-import { CounterItem } from "../CounterItem/CounterItem";
 import Bar from "components/atoms/Bar";
 import Box from "components/atoms/Box";
+
+import { CounterItem } from "../CounterItem/CounterItem";
 
 interface StatisticBarProps {
   commentsPath?: string;

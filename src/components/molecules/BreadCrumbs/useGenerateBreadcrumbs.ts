@@ -1,4 +1,5 @@
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
+
 import { BreadCrumbsItem } from "./BreadCrumbsItem";
 
 export const useGenerateBreadcrumbs = () => {

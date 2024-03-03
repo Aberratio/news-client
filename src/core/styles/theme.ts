@@ -1,11 +1,12 @@
 import { lightTheme } from "core/styles/customization/lightTheme";
+
+import { fonts } from "./customization/fonts";
 import { breakpoints } from "./breakpoints";
 import { colors } from "./colors";
 import { shadows } from "./shadows";
 import tools from "./tools";
 import { spaces } from "./variables";
 import { zIndices } from "./zIndices";
-import { fonts } from "./customization/fonts";
 
 export interface Theme {
   breakpoints: typeof breakpoints;

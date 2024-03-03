@@ -1,13 +1,14 @@
 "use client";
 
-import { LinkButton } from "components/atoms/LinkButton/LinkButton";
-import Typography from "components/atoms/Typography";
-import { MenuMobile } from "components/organisms/Menu/mobile/MenuMobile";
+import { useState } from "react";
 import { aboutPagePath, buildTabPath } from "core/builders/buildPath";
 import Link from "next/link";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
-import { useState } from "react";
 import { styled } from "styled-components";
+
+import { LinkButton } from "components/atoms/LinkButton/LinkButton";
+import Typography from "components/atoms/Typography";
+import { MenuMobile } from "components/organisms/Menu/mobile/MenuMobile";
 
 export const NavigationMobile = () => {
   const { tabs } = useOrganizationInfo();

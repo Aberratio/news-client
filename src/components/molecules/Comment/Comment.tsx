@@ -1,9 +1,10 @@
 "use server";
 
 import Typography from "components/atoms/Typography";
-import { StatisticCommentBar } from "./StatisticCommentBar";
-import { CommentMeta } from "./CommentMeta";
 import { revalidateCommentReactionsTag } from "components/organisms/CommentsSection/revalidateCommentReactionsTag";
+
+import { CommentMeta } from "./CommentMeta";
+import { StatisticCommentBar } from "./StatisticCommentBar";
 
 interface CommentProps {
   author: string;

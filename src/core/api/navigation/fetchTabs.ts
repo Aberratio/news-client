@@ -1,6 +1,7 @@
 import { sanityClient } from "core/api/sanityClient";
-import { mapToTabItem } from "../sanity-types/SanityTabItem";
 import { TabItem } from "types/TabItem";
+
+import { mapToTabItem } from "../sanity-types/SanityTabItem";
 
 export const fetchTabs = async (): Promise<TabItem[]> => {
   const tabs = await sanityClient.fetch(

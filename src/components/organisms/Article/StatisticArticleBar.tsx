@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchArticleReaction } from "core/api/articles/fetchArticleReaction";
 import { StatisticsItem } from "types/StatisticsItem";
+
 import StatisticBar from "components/molecules/StatisticBar";
 
 interface StatisticArticleBarProps {

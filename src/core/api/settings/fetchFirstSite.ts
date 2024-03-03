@@ -1,6 +1,7 @@
 import { sanityClient } from "core/api/sanityClient";
-import { mapDataToFirstSiteItem } from "../sanity-types/SanityFirstSiteItem";
 import { FirstSiteItem } from "types/FirstSiteItem";
+
+import { mapDataToFirstSiteItem } from "../sanity-types/SanityFirstSiteItem";
 
 export const fetchFirstSite = async (): Promise<FirstSiteItem> => {
   const firstSite = await sanityClient.fetch(

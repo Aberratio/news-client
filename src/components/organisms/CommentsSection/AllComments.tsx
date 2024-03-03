@@ -1,8 +1,11 @@
 "use server";
 
-import Typography from "components/atoms/Typography";
-import Comment from "../../molecules/Comment";
 import { CommentItem } from "types/CommentItem";
+
+import Typography from "components/atoms/Typography";
+
+import Comment from "../../molecules/Comment";
+
 import { AllCommentsWrapper } from "./AllCommentsWrapper";
 
 interface AllCommentsProps {

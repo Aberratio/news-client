@@ -1,8 +1,9 @@
 "use cleint";
 
-import Typography from "components/atoms/Typography";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
+
+import Typography from "components/atoms/Typography";
 
 export const TitleBar = () => {
   const { mainTopic } = useOrganizationInfo();

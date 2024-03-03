@@ -1,10 +1,10 @@
 import { formatDateToString } from "core/builders/buildDate";
 import { buildImageUrl } from "core/builders/buildImageUrl";
 import {
+  buildArticlePath,
   buildAuthorPath,
   buildCategoryPath,
   buildTabPath,
-  buildArticlePath,
 } from "core/builders/buildPath";
 import { ArticleItem } from "types/ArticleItem";
 

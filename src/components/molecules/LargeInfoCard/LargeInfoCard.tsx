@@ -1,12 +1,12 @@
 "use client";
 
-import styled from "styled-components";
+import { cutText } from "core/tools/cutText";
 import Image from "next/image";
+import Link from "next/link";
+import styled from "styled-components";
 
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
-import { cutText } from "core/tools/cutText";
-import Link from "next/link";
 
 interface LargeInfoCardProps {
   buttonText: string;

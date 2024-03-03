@@ -1,10 +1,11 @@
 "use client";
 
-import Typography from "components/atoms/Typography";
-import Widget from "components/molecules/Widget";
 import Image from "next/image";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import { styled } from "styled-components";
+
+import Typography from "components/atoms/Typography";
+import Widget from "components/molecules/Widget";
 
 export const FirstSite = () => {
   const { newReleaseDate, newCoverImage } = useOrganizationInfo();

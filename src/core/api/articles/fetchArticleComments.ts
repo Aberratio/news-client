@@ -1,8 +1,9 @@
 "use server";
 
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
-import { sanityClient } from "../sanityClient";
+
 import { SanityCommentItem } from "../sanity-types/SanityCommentItem";
+import { sanityClient } from "../sanityClient";
 
 export const fetchArticleComments = async (_id: string) => {
   if (_id !== undefined) {

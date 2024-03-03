@@ -1,10 +1,11 @@
 "use client";
 
+import { SubmitHandler, useForm } from "react-hook-form";
+import { fetchNewComment } from "core/api/comments/fetchNewComment";
+import { styled } from "styled-components";
+
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
-import { fetchNewComment } from "core/api/comments/fetchNewComment";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { styled } from "styled-components";
 
 export interface FormFields {
   name: string;

@@ -1,6 +1,7 @@
+import { useStyles } from "../../../core/styles/customization/useStyles";
 import { CustomFonts } from "../../../core/styles/types/CustomFonts";
 import { useActiveViewportSize } from "../../../layout/responsivenes/useActiveViewportSize";
-import { useStyles } from "../../../core/styles/customization/useStyles";
+
 import { Variant } from "./types/Variant";
 
 export const useTypographyVariant = () => {

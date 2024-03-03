@@ -1,9 +1,9 @@
-import styled from "styled-components";
-
-import { NavigationItem } from "./NavigationItem";
 import { useRef, useState } from "react";
 import { useOutsideClick } from "core/hooks/useOutsideClick";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
+import styled from "styled-components";
+
+import { NavigationItem } from "./NavigationItem";
 
 export const MainMenu = () => {
   const [activeNavigationItemIndex, setActiveNavigationItemIndex] =

@@ -1,6 +1,7 @@
-import { WebcoBar } from "./WebcoBar";
 import { aboutPagePath, rulesPagePath } from "core/builders/buildPath";
+
 import FooterWrapper from "./FooterWrapper";
+import { WebcoBar } from "./WebcoBar";
 
 export enum ElementType {
   Link,

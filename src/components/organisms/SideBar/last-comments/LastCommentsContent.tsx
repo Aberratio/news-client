@@ -1,8 +1,10 @@
 "use server";
 
-import { CommentSummarization } from "./CommentSummarization";
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+
 import Typography from "components/atoms/Typography";
+
+import { CommentSummarization } from "./CommentSummarization";
 
 interface LastCommentsContentProps {
   comments: CommentSummarizationItem[];

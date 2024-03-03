@@ -1,13 +1,16 @@
 "use client";
 
-import MetadataBar from "components/molecules/MetadataBar";
-import Typography from "components/atoms/Typography";
+import { Suspense } from "react";
 import styled from "styled-components";
 import { ArticleItem } from "types/ArticleItem";
+
+import Typography from "components/atoms/Typography";
+import MetadataBar from "components/molecules/MetadataBar";
+
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
+
 import { Body } from "./Body";
-import { Suspense } from "react";
 
 interface FullArticleProps {
   article: ArticleItem;

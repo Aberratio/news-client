@@ -1,6 +1,7 @@
-import { sanityClient } from "../sanityClient";
-import { mapToArticleItem } from "../sanity-types/SanityArticleItem";
 import { ArticleItem } from "types/ArticleItem";
+
+import { mapToArticleItem } from "../sanity-types/SanityArticleItem";
+import { sanityClient } from "../sanityClient";
 
 export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
   try {

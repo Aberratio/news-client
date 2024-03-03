@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+
 import { DescriptionColumn } from "./DescriptionColumn";
 import { InfoColumn, InfoColumnItem } from "./InfoColumn";
 

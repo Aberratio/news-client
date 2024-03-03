@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, ReactElement } from "react";
+import { ReactElement,ReactNode } from "react";
 import {
   FlexboxProps,
   GridProps,
@@ -8,10 +8,10 @@ import {
   TextAlignProps,
 } from "styled-system";
 
-import { TypographyWrapper } from "./TypographyWrapper";
-import { useTypographyVariant } from "./useTypographyVariant";
 import { Variant } from "./types/Variant";
 import { WordBreakProps } from "./types/WordBreakProps";
+import { TypographyWrapper } from "./TypographyWrapper";
+import { useTypographyVariant } from "./useTypographyVariant";
 
 export interface TypographyProps {
   ariaLabel?: string;

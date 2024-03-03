@@ -1,9 +1,10 @@
-import { sanityClient } from "../sanityClient";
-import {
-  SanityCommentItem,
-  mapToCommentSummarizationItem,
-} from "../sanity-types/SanityCommentItem";
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
+
+import {
+  mapToCommentSummarizationItem,
+  SanityCommentItem,
+} from "../sanity-types/SanityCommentItem";
+import { sanityClient } from "../sanityClient";
 
 export const fetchLastComments = async (): Promise<
   CommentSummarizationItem[]

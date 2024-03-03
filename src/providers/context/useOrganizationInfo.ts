@@ -1,10 +1,10 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
+import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
+import { CategoryItem } from "types/CategoryItem";
 
 import { OrganizationContext } from "./OrganizationContext";
-import { CategoryItem } from "types/CategoryItem";
-import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 
 export const useOrganizationInfo = () => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);

@@ -1,8 +1,9 @@
 "use server";
 
-import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
 import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 import { notFound } from "next/navigation";
+
+import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
 
 interface ArticlesOverviewProps {
   limit?: number;

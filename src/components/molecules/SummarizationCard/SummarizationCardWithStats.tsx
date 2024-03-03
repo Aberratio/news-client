@@ -1,11 +1,13 @@
 "use server";
 
+import { Suspense } from "react";
+
 import MetadataBar from "components/molecules/MetadataBar";
 import StatisticBar from "components/molecules/StatisticBar";
+
+import { SummarizationCard } from "./SummarizationCard";
 import { SummarizationCardImage } from "./SummarizationCardImage";
 import { SummarizationCardTitle } from "./SummarizationCardTitle";
-import { SummarizationCard } from "./SummarizationCard";
-import { Suspense } from "react";
 
 interface SummarizationCardWithStatsItem {
   authorName: string;

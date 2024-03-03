@@ -1,21 +1,21 @@
-import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
-import StyledComponentsRegistry from "../lib/register";
-
+import { fetchTabs } from "core/api/navigation/fetchTabs";
+import { fetchAdds } from "core/api/settings/fetchAdds";
+import { fetchFirstSite } from "core/api/settings/fetchFirstSite";
 import type { Metadata } from "next";
 import { Spectral } from "next/font/google";
-
-import Footer from "components/organisms/Footer";
+import ErrorBoundary from "providers/context/ErrorBoundary";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
+
+import { MainColumn } from "components/atoms/MainColumn/MainColumn";
+import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
+import Footer from "components/organisms/Footer";
+import LandscapeAdd from "components/organisms/LandscapeAdd/LandscapeAdd";
 import Menu from "components/organisms/Menu";
 import Navigation from "components/organisms/Navigation";
-import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
 import { SideBar } from "components/organisms/SideBar/SideBar";
-import { MainColumn } from "components/atoms/MainColumn/MainColumn";
-import { fetchTabs } from "core/api/navigation/fetchTabs";
-import ErrorBoundary from "providers/context/ErrorBoundary";
-import { fetchFirstSite } from "core/api/settings/fetchFirstSite";
-import LandscapeAdd from "components/organisms/LandscapeAdd/LandscapeAdd";
-import { fetchAdds } from "core/api/settings/fetchAdds";
+
+import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
+import StyledComponentsRegistry from "../lib/register";
 
 const spectral = Spectral({
   subsets: ["latin"],

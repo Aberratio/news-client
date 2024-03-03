@@ -1,8 +1,9 @@
 export const dynamic = "force-dynamic";
 
+import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
+
 import OverviewWithStatsItems from "components/molecules/OverviewWithStatsItems";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
-import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 
 const HomePage = async () => {
   const articles = await fetchArticlesLast({

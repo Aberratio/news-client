@@ -1,9 +1,11 @@
 "use client";
 
-import Typography from "components/atoms/Typography";
-import styled from "styled-components";
-import { ElementType } from "./Footer";
 import Link from "next/link";
+import styled from "styled-components";
+
+import Typography from "components/atoms/Typography";
+
+import { ElementType } from "./Footer";
 
 export interface LinkItem {
   bolded?: string;

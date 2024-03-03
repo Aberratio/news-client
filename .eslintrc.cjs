@@ -5,7 +5,7 @@ module.exports = {
     "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier",
   ],
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "simple-import-sort"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
@@ -13,6 +13,8 @@ module.exports = {
   },
   root: true,
   rules: {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
@@ -33,5 +35,23 @@ module.exports = {
       files: ["*.js"],
       extends: ["plugin:@typescript-eslint/disable-type-checked"],
     },
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react", "^@?\\w"],
+              ["^(@|components)(/.*|$)"],
+              ["^\\u0000"],
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              ["^.+\\.?(css)$"]
+            ]
+          }
+        ]
+      }
+    }
   ],
 };

@@ -1,8 +1,9 @@
 "use server";
 
 import { cutText } from "core/tools/cutText";
-import LargeInfoCard from "../../molecules/LargeInfoCard";
 import { ArticleSummarizationItem } from "types/ArticleSummarizationItem";
+
+import LargeInfoCard from "../../molecules/LargeInfoCard";
 
 interface NewsBarProps {
   article: ArticleSummarizationItem;

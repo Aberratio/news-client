@@ -1,9 +1,10 @@
 "use client";
 
-import styled from "styled-components";
-import Image from "next/image";
-import { PhotoItem } from "types/PhotoItem";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import styled from "styled-components";
+import { PhotoItem } from "types/PhotoItem";
+
 import Typography from "components/atoms/Typography";
 import { Arrow } from "components/molecules/Icons/Arrow";
 

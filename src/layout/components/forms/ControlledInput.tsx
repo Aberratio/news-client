@@ -1,7 +1,7 @@
 import { ChangeEvent, RefObject } from "react";
 import { Control, Controller } from "react-hook-form";
 
-import { BasicInputProps, BasicInput } from "./common/BasicInput";
+import { BasicInput,BasicInputProps } from "./common/BasicInput";
 
 interface InputProps extends Omit<BasicInputProps, "value" | "ref"> {
   control: Control<any>;

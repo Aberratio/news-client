@@ -1,8 +1,9 @@
 "use server";
 
 import OverviewGrid from "components/atoms/OverviewGrid";
-import { ArticleSummarizationItem } from "../../../types/ArticleSummarizationItem";
 import { SummarizationCardWithStats } from "components/molecules/SummarizationCard/SummarizationCardWithStats";
+
+import { ArticleSummarizationItem } from "../../../types/ArticleSummarizationItem";
 
 interface OverviewWithStatsItemsProps {
   dataTestId: string;

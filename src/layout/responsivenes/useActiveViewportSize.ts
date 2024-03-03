@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useMediaQuery } from "react-responsive";
 
-import { Device, breakpoints } from "../../core/styles/breakpoints";
+import { breakpoints,Device } from "../../core/styles/breakpoints";
 
 export type DeviceType = Device | "_";
 

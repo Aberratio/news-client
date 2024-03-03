@@ -1,7 +1,7 @@
 "use client";
 
-import styled from "styled-components";
 import { useActiveViewportSize } from "layout/responsivenes/useActiveViewportSize";
+import styled from "styled-components";
 
 interface SideBarWrapperProps {
   children: React.ReactNode;

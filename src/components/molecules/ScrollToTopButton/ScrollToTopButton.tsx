@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Arrow } from "../Icons/Arrow";
+import { useEffect,useState } from "react";
 import { styled } from "styled-components";
+
+import { Arrow } from "../Icons/Arrow";
 
 const ScrollToTopButton = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);

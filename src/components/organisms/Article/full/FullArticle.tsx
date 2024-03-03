@@ -1,10 +1,12 @@
 "use server";
 
-import { ArticleItem } from "types/ArticleItem";
-import CommentSection from "../../CommentsSection";
-import { FullArticleContent } from "./FullArticleContent";
-import { fetchArticleComments } from "core/api/articles/fetchArticleComments";
 import { Suspense } from "react";
+import { fetchArticleComments } from "core/api/articles/fetchArticleComments";
+import { ArticleItem } from "types/ArticleItem";
+
+import CommentSection from "../../CommentsSection";
+
+import { FullArticleContent } from "./FullArticleContent";
 
 interface FullArticleProps {
   article: ArticleItem;
