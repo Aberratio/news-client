@@ -1,15 +1,9 @@
 "use client";
 
-import Typography from "components/atoms/Typography";
-import styled from "styled-components";
-import { Thumb } from "components/molecules/Icons/Thumb";
 import { useEffect, useState } from "react";
 import { fetchArticleReaction } from "core/api/articles/fetchArticleReaction";
-import { Comments } from "components/molecules/Icons/Comments";
-import { Eye } from "components/molecules/Icons/Eye";
 import { StatisticsItem } from "types/StatisticsItem";
-import Link from "next/link";
-import Bar from "components/atoms/Bar";
+import StatisticBar from "components/molecules/StatisticBar";
 
 interface StatisticArticleBarProps {
   _id: string;
@@ -19,7 +13,6 @@ interface StatisticArticleBarProps {
 
 export const StatisticArticleBar = ({
   _id,
-  commentsPath,
   statistics,
 }: StatisticArticleBarProps) => {
   const [sessionReaction, setSessionReaction] = useState<string>("");
@@ -62,63 +55,16 @@ export const StatisticArticleBar = ({
   };
 
   return (
-    <Bar dataTestId="statistic-bar">
-      <Item>
-        <Eye />
-        <Counter>
-          <Typography variant="small">{views}</Typography>
-        </Counter>
-      </Item>
-      <LinkItem href={commentsPath}>
-        <Comments />
-        <Counter>
-          <Typography variant="small">{comments}</Typography>
-        </Counter>
-      </LinkItem>
-      <Item onClick={() => onReactionClick("like")}>
-        <ThumbDown color={sessionReaction === "like" ? "blue" : "black"} />
-        <Counter>
-          <Typography variant="small" color="black">
-            {likes + (sessionReaction === "like" ? 1 : 0)}
-          </Typography>
-        </Counter>
-      </Item>
-      <Item onClick={() => onReactionClick("dislike")}>
-        <Thumb
-          direction="right"
-          color={sessionReaction === "dislike" ? "blue" : "black"}
-        />
-        <Counter>
-          <Typography variant="small" color="black">
-            {dislikes + (sessionReaction === "dislike" ? 1 : 0)}
-          </Typography>
-        </Counter>
-      </Item>
-    </Bar>
+    <StatisticBar
+      commentsPath="#comments"
+      comments={comments}
+      dislikes={dislikes + (sessionReaction === "dislike" ? 1 : 0)}
+      isLikeActive={sessionReaction === "like"}
+      isDislikeActive={sessionReaction === "dislike"}
+      likes={likes + (sessionReaction === "like" ? 1 : 0)}
+      views={views}
+      onLikeClick={() => onReactionClick("like")}
+      onDislikeClick={() => onReactionClick("dislike")}
+    />
   );
 };
-
-const ThumbDown = styled(Thumb)`
-  margin-bottom: 4px;
-`;
-
-const Counter = styled.div``;
-
-const Item = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px 0 0;
-  cursor: pointer;
-  border: none;
-`;
-
-const LinkItem = styled(Link)`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px 0 0;
-  cursor: pointer;
-`;

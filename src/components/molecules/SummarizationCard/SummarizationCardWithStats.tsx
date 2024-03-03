@@ -1,7 +1,7 @@
 "use server";
 
 import MetadataBar from "components/molecules/MetadataBar";
-import { StatisticBar } from "components/molecules/SummarizationCard/StatisticBar";
+import StatisticBar from "components/molecules/StatisticBar";
 import { SummarizationCardImage } from "./SummarizationCardImage";
 import { SummarizationCardTitle } from "./SummarizationCardTitle";
 import { SummarizationCard } from "./SummarizationCard";
@@ -44,12 +44,10 @@ export const SummarizationCardWithStats = ({
       </Suspense>
       <Suspense>
         <StatisticBar
-          statistics={{
-            comments: item.comments,
-            likes: item.likes,
-            dislikes: item.dislikes,
-            views: item.views,
-          }}
+          comments={item.comments}
+          likes={item.likes}
+          dislikes={item.dislikes}
+          views={item.views}
         />
       </Suspense>
     </SummarizationCard>
