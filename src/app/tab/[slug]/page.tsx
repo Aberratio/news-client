@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 
+import { capitalizeFirstLetter } from "core/tools/capitalizeFirstLetter";
 import { Metadata } from "next";
 
 import { ArticlesOverview } from "components/organisms/Article/ArticlesOverview";
@@ -10,10 +11,12 @@ interface Props {
 }
 
 export function generateMetadata({ params }: Props): Metadata {
+  const slug = capitalizeFirstLetter(params.slug);
+
   return {
-    title: params.slug,
+    title: slug,
     openGraph: {
-      title: params.slug,
+      title: slug,
     },
   };
 }
