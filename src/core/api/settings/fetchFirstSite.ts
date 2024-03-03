@@ -1,15 +1,6 @@
 import { sanityClient } from "core/api/sanityClient";
 import { buildImageUrl } from "core/builders/buildImageUrl";
-
-interface SanityFirstSiteItem {
-  mainTopic: string;
-  image: {
-    asset: {
-      _ref: string;
-    };
-  };
-  releaseDate: string;
-}
+import { SanityFirstSiteItem } from "../sanity-types/SanityFirstSiteItem";
 
 export interface FirstSiteItem {
   mainTopic: string;

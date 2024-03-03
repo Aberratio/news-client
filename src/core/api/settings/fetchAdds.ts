@@ -1,24 +1,6 @@
 import { sanityClient } from "core/api/sanityClient";
 import { buildImageUrl } from "core/builders/buildImageUrl";
-
-interface SanityFirstSiteItem {
-  mainAdd: {
-    image: {
-      alt: string;
-      asset: {
-        _ref: string;
-      };
-    };
-  };
-  boxAdds: {
-    image: {
-      alt: string;
-      asset: {
-        _ref: string;
-      };
-    };
-  }[];
-}
+import { SanityAddsItem } from "../sanity-types/SanityAddsItem";
 
 export interface AddItem {
   image: {
@@ -46,7 +28,7 @@ export const fetchAdds = async (): Promise<AddsItem | null> => {
   return mapData(adds);
 };
 
-const mapData = (data: SanityFirstSiteItem): AddsItem => {
+const mapData = (data: SanityAddsItem): AddsItem => {
   return {
     mainAdd: {
       image: {

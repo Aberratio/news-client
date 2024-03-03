@@ -5,20 +5,20 @@ import Typography from "components/atoms/Typography";
 import Link from "next/link";
 
 interface MetadataBarProps {
-  authorName: string;
-  createdOn: string;
+  name: string;
+  date: string;
 }
 
-const MetadataBar = ({ authorName, createdOn }: MetadataBarProps) => {
+const MetadataBar = ({ name, date }: MetadataBarProps) => {
   return (
     <Bar dataTestId={`metadata-bar`}>
       <Link href="#">
         <Typography variant="small">
-          <strong>{authorName}</strong>
+          <strong>{name}</strong>
         </Typography>
       </Link>
       <Typography variant="small" color="#6b6b6b">
-        {createdOn}
+        {date}
       </Typography>
     </Bar>
   );

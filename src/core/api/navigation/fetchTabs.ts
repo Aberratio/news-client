@@ -1,17 +1,5 @@
 import { sanityClient } from "core/api/sanityClient";
-
-interface SanityTabItem {
-  name: string;
-  categories: {
-    name: string;
-    slug: {
-      current: string;
-    };
-  }[];
-  slug: {
-    current: string;
-  };
-}
+import { SanityTabItem } from "../sanity-types/SanityTabItem";
 
 interface TabItem {
   tabSlug: string;

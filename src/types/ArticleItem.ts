@@ -2,15 +2,14 @@ import { AuthorItem } from "./AuthorItem";
 import { CategoryItem } from "./CategoryItem";
 import { PhotoItem } from "./PhotoItem";
 
-export interface FullArticleItem {
-  author: AuthorItem;
-  body: any;
-  category: CategoryItem;
-  comments: number;
-  createdOn: string;
-  slug: string;
+export interface ArticleItem {
   _id: string;
   _rev: string;
+  author: AuthorItem;
+  body: string;
+  category: CategoryItem;
+  createdOn: string;
+  slug: string;
   lead: string;
   likes: number;
   dislikes: number;
@@ -18,4 +17,5 @@ export interface FullArticleItem {
   path: string;
   photos: PhotoItem[];
   title: string;
+  comments: number;
 }

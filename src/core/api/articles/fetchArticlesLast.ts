@@ -5,6 +5,8 @@ import {
   buildCategoryPath,
   buildTabPath,
 } from "core/builders/buildPath";
+import { formatDateToString } from "core/builders/buildDate";
+import { SanityArticleSummarizationItem } from "../sanity-types/SanityArticleSummarizationItem";
 
 interface AuthorItem {
   id: string;
@@ -46,45 +48,6 @@ interface ArticleSummarizationItem {
   path: string;
   photo: PhotoItem;
   statistics: StatisticsItem;
-  title: string;
-}
-
-interface SanityArticleSummarizationItem {
-  author: {
-    name: string;
-    slug: {
-      current: string;
-    };
-  };
-  body: any;
-  category: {
-    name: string;
-    slug: {
-      current: string;
-    };
-    tab: {
-      name: string;
-      slug: {
-        current: string;
-      };
-    };
-  };
-  lead: string;
-  likes: number;
-  dislikes: number;
-  comments: number;
-  views: number;
-  mainImage: {
-    asset: {
-      _ref: string;
-    };
-    alt: string;
-    description: string;
-  };
-  publishedAt: string;
-  slug: {
-    current: string;
-  };
   title: string;
 }
 
@@ -133,7 +96,7 @@ const mapData = (
         tabName: post.category.tab.name,
         tabPath: buildTabPath(post.category.tab.slug.current),
       },
-      createdOn: new Date(post.publishedAt).toLocaleDateString(),
+      createdOn: formatDateToString(post.publishedAt),
       id: post.slug.current,
       lead: post.lead,
       likes: post.likes,

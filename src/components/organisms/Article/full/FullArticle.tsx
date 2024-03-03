@@ -1,13 +1,13 @@
 "use server";
 
-import { FullArticleItem } from "types/FullArticleItem";
+import { ArticleItem } from "types/ArticleItem";
 import CommentSection from "../../CommentsSection";
 import { FullArticleContent } from "./FullArticleContent";
 import { fetchArticleComments } from "core/api/articles/fetchArticleComments";
 import { Suspense } from "react";
 
 interface FullArticleProps {
-  article: FullArticleItem;
+  article: ArticleItem;
 }
 
 export const FullArticle = async ({ article }: FullArticleProps) => {

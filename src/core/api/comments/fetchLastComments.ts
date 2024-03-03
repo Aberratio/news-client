@@ -1,6 +1,6 @@
 import { CommentSummarizationItem } from "types/CommentSummarizationItem";
-import { SanityCommentItem } from "../articles/fetchArticleComments";
 import { sanityClient } from "../sanityClient";
+import { SanityCommentItem } from "../sanity-types/SanityCommentItem";
 
 export const fetchLastComments = async () => {
   const comments: SanityCommentItem[] = await sanityClient.fetch(

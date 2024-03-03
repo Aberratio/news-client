@@ -40,7 +40,7 @@ export const SummarizationCardWithStats = ({
         <SummarizationCardTitle path={item.path} title={item.title} />
       </Suspense>
       <Suspense>
-        <MetadataBar authorName={item.authorName} createdOn={item.date} />
+        <MetadataBar name={item.authorName} date={item.date} />
       </Suspense>
       <Suspense>
         <StatisticBar

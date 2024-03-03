@@ -3,14 +3,14 @@
 import MetadataBar from "components/molecules/MetadataBar";
 import Typography from "components/atoms/Typography";
 import styled from "styled-components";
-import { FullArticleItem } from "types/FullArticleItem";
+import { ArticleItem } from "types/ArticleItem";
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
 import { Body } from "./Body";
 import { Suspense } from "react";
 
 interface FullArticleProps {
-  article: FullArticleItem;
+  article: ArticleItem;
   children: React.ReactNode;
 }
 
@@ -21,10 +21,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
         <Title>{article.title}</Title>
         <InfoWrapper>
           <Suspense>
-            <MetadataBar
-              authorName={article.author.name}
-              createdOn={article.createdOn}
-            />
+            <MetadataBar name={article.author.name} date={article.createdOn} />
           </Suspense>
           <Suspense>
             <StatisticArticleBar
