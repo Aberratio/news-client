@@ -1,5 +1,4 @@
 export interface FirstSiteItem {
-  mainTopic: string;
   image: {
     path: string;
   };

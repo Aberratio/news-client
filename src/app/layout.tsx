@@ -1,6 +1,6 @@
 import { fetchTabs } from "core/api/navigation/fetchTabs";
 import { fetchAdds } from "core/api/settings/fetchAdds";
-import { fetchFirstSite } from "core/api/settings/fetchFirstSite";
+import { fetchOrganization } from "core/api/settings/fetchOrganization";
 import type { Metadata } from "next";
 import { Spectral } from "next/font/google";
 import ErrorBoundary from "providers/context/ErrorBoundary";
@@ -44,7 +44,7 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   const tabs = await fetchTabs();
-  const firstSite = await fetchFirstSite(); //marketingContent
+  const organization = await fetchOrganization();
   const adds = await fetchAdds();
 
   if (!tabs) {
@@ -55,7 +55,7 @@ const RootLayout = async ({
     <html lang="pl">
       <body className={spectral.className}>
         <ErrorBoundary>
-          <OrganizationContextProvider tabs={tabs} firstSite={firstSite}>
+          <OrganizationContextProvider organization={organization}>
             <StyledComponentsRegistry>
               <GlobalThemeWrapper>
                 <Menu />

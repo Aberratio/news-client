@@ -1,15 +1,12 @@
 "use client";
 
 import { createContext } from "react";
-import { FirstSiteItem } from "types/FirstSiteItem";
-import { TabItem } from "types/TabItem";
+import { OrganizationItem } from "types/OrganizationItem";
 
 interface OrganizationContextProps {
-  tabs: TabItem[];
-  firstSite: FirstSiteItem;
+  organization: OrganizationItem;
 }
 
 export const OrganizationContext = createContext<OrganizationContextProps>({
-  tabs: [],
-  firstSite: {} as FirstSiteItem,
+  organization: {} as OrganizationItem,
 });

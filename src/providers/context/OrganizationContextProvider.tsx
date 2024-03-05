@@ -1,31 +1,29 @@
 "use client";
 
 import React, { ReactNode, useEffect, useState } from "react";
-import { FirstSiteItem } from "types/FirstSiteItem";
-import { TabItem } from "types/TabItem";
+import { OrganizationItem } from "types/OrganizationItem";
 
 import { OrganizationContext } from "./OrganizationContext";
 
 interface OrganizationContextProviderProps {
-  tabs: TabItem[];
-  firstSite: FirstSiteItem;
+  organization: OrganizationItem;
   children: ReactNode;
 }
 
 export const OrganizationContextProvider: React.FC<
   OrganizationContextProviderProps
-> = ({ tabs, firstSite, children }) => {
+> = ({ organization, children }) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {
-    if (tabs.length > 0 && firstSite.mainTopic.length > 0) {
+    if (organization.tabs.length > 0) {
       setIsReady(true);
     }
-  }, [tabs, firstSite]);
+  }, [organization]);
 
   if (isReady) {
     return (
-      <OrganizationContext.Provider value={{ tabs, firstSite }}>
+      <OrganizationContext.Provider value={{ organization }}>
         {children}
       </OrganizationContext.Provider>
     );
