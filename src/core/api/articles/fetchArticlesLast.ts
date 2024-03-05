@@ -27,7 +27,7 @@ export const fetchArticlesLast = async ({
   const end = start + limit - 1;
 
   const tabs = await sanityClient.fetch(
-    `*[_type == "post" ${
+    `*[_type == "post" && !(_id in path('drafts.**')) ${
       categorySlug ? `&& category->slug.current == "${categorySlug}"` : ""
     } ${
       tabSlug ? `&& category->tab->slug.current == "${tabSlug}"` : ""

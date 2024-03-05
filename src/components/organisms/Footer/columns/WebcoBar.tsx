@@ -25,8 +25,11 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  gap: 4px;
 
   margin: auto;
   padding: 16px;
@@ -35,6 +38,10 @@ const Container = styled.div`
   max-width: 1080px;
   min-height: 80px;
   color: white;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledLink = styled(Link)`

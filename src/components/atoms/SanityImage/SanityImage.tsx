@@ -28,6 +28,7 @@ const SanityImage = ({ alt, _ref, width, height, sizes }: SanityImageProps) => {
       height={height}
       sizes={sizes}
       placeholder="blur"
+      priority
       blurDataURL={blurUrl}
     />
   );

@@ -9,7 +9,7 @@ interface SanityVisitsItem {
 export const fetchVisits = async (): Promise<number> => {
   try {
     const response: SanityVisitsItem[] = await sanityClient.fetch(
-      `*[_type == "visitCounter"]`
+      `*[_type == "visitCounter" && !(_id in path('drafts.**'))]`
     );
 
     // isNew && sanityClient.patch("visitCounter").inc({ visits: 1 }).commit();
