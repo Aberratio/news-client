@@ -10,6 +10,7 @@ import Typography from "components/atoms/Typography";
 
 interface LargeArticleBoxProps {
   buttonText: string;
+  dataTestId?: string;
   description: string;
   link: string;
   title: string;
@@ -21,13 +22,14 @@ interface LargeArticleBoxProps {
 
 const LargeArticleBox = ({
   buttonText,
+  dataTestId,
   description,
   link,
   title,
   photo,
 }: LargeArticleBoxProps) => {
   return (
-    <Wrapper data-testid="pinned-article-box">
+    <Wrapper data-testid={dataTestId}>
       <Container>
         <Part>
           <Link href={link}>

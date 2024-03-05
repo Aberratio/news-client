@@ -47,21 +47,21 @@ export const CommentForm = ({
       <Typography variant="h3">Skomentuj</Typography>
       <FormElement>
         <label htmlFor="name">
-          <Typography variant="small">Nazwa</Typography>
+          <Typography variant="small">Pseudonim</Typography>
         </label>
         <Input
           {...register("name", {
             minLength: {
               value: 2,
-              message: "Nazwa musi mieć co najmniej 2 znaki",
+              message: "Pseudonim musi mieć co najmniej 2 znaki",
             },
             required: {
               value: true,
-              message: "Nazwa jest wymagana",
+              message: "Pseudonim jest wymagany",
             },
           })}
           type="text"
-          placeholder="Wpisz swoją nazwę..."
+          placeholder="Wpisz swój pseudonim..."
         />
         {errors.name && (
           <Typography variant="small" color="red">
@@ -119,7 +119,10 @@ const FormElement = styled.div`
 `;
 
 const Input = styled.input`
-  width: 300px;
+  width: calc(100% - 32px);
+  max-width: 300px;
+  min-width: 200px;
+
   height: 56px;
   padding: 0px 16px;
   border: none;
@@ -133,12 +136,16 @@ const Input = styled.input`
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
 `;
 
 const Textarea = styled.textarea`
   width: calc(100% - 32px);
   max-width: calc(100% - 32px);
-  min-width: 300px;
+  min-width: 200px;
   height: 140px;
   padding: 16px;
   border: none;
@@ -152,4 +159,8 @@ const Textarea = styled.textarea`
   border-radius: 8px;
   background-color: white;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+
+  @media screen and (min-width: 768px) {
+    min-width: 300px;
+  }
 `;

@@ -17,6 +17,7 @@ const PinnedArticle = ({ article }: PinnedArticleProps) => {
   return (
     <LargeArticleBox
       buttonText="Wyświetl artykuł"
+      dataTestId="pinned-article-box"
       description={cutText(article.lead, 300)}
       link={`article/${article.id}`}
       title={article.title}
