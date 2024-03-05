@@ -7,8 +7,9 @@ import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePage
 
 const HomePage = async () => {
   const articles = await fetchArticlesLast({
-    limit: 61,
+    limit: 60,
     page: 0,
+    ignorePinnedPost: true,
   });
 
   if (!articles.length) {
@@ -16,7 +17,7 @@ const HomePage = async () => {
   }
 
   return (
-    <HomePageTemplate article={articles[0]}>
+    <HomePageTemplate>
       <ArticlesOverviewBox
         items={articles.slice(1)}
         dataTestId={`articles-overview-box-latest`}

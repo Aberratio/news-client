@@ -1,3 +1,12 @@
+import { buildImageUrl } from "core/builders/buildImageUrl";
+import {
+  buildArticlePath,
+  buildCategoryPath,
+  buildTabPath,
+} from "core/builders/buildPath";
+import { formatDateToString } from "core/formaters/formatDateToString";
+import { ArticleSummaryItem } from "types/ArticleSummaryItem";
+
 export interface SanityArticleSummaryItem {
   author: {
     name: string;
@@ -36,3 +45,45 @@ export interface SanityArticleSummaryItem {
   };
   title: string;
 }
+
+export const mapDataToArticleSummaryItems = (
+  data: SanityArticleSummaryItem[]
+): ArticleSummaryItem[] => {
+  return data.map((post) => {
+    return {
+      author: {
+        id: post.author.slug.current,
+        name: post.author.name,
+        path: post.author.slug.current,
+      },
+      category: {
+        id: post.category.slug.current,
+        name: post.category.name,
+        path: buildCategoryPath(post.category.slug.current),
+        tabSlug: post.category.tab.slug.current,
+        tabName: post.category.tab.name,
+        tabPath: buildTabPath(post.category.tab.slug.current),
+      },
+      createdOn: formatDateToString(post.publishedAt),
+      id: post.slug.current,
+      lead: post.lead,
+      likes: post.likes,
+      comments: post.comments,
+      dislikes: post.dislikes,
+      views: post.views,
+      path: buildArticlePath(post.slug.current),
+      statistics: {
+        comments: 0,
+        dislikes: 0,
+        likes: 0,
+        views: 0,
+      },
+      photo: {
+        path: buildImageUrl(post.mainImage.asset._ref),
+        description: post.mainImage.description,
+        alt: post.mainImage.alt,
+      },
+      title: post.title,
+    };
+  });
+};

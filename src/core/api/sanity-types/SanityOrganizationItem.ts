@@ -3,7 +3,6 @@ import { buildArticlePath } from "core/builders/buildPath";
 import { formatDateToString } from "core/formaters/formatDateToString";
 import { OrganizationItem } from "types/OrganizationItem";
 
-import { SanityArticleItem } from "./SanityArticleItem";
 import { mapToTabItem, SanityTabItem } from "./SanityTabItem";
 
 export interface SanityOrganizationItem {
