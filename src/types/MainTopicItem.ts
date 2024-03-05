@@ -1,4 +1,4 @@
 export interface MainTopicItem {
   topic?: string;
-  post?: string;
+  link?: string;
 }

@@ -1,8 +1,10 @@
 import { buildImageUrl } from "core/builders/buildImageUrl";
+import { buildArticlePath } from "core/builders/buildPath";
 import { formatDateToString } from "core/formaters/formatDateToString";
 import { OrganizationItem } from "types/OrganizationItem";
 
-import { mapToTabItem,SanityTabItem } from "./SanityTabItem";
+import { SanityArticleItem } from "./SanityArticleItem";
+import { mapToTabItem, SanityTabItem } from "./SanityTabItem";
 
 export interface SanityOrganizationItem {
   firstSite?: {
@@ -17,7 +19,9 @@ export interface SanityOrganizationItem {
   mainTopic?: {
     show: boolean;
     topic?: string;
-    post?: string;
+    post?: {
+      slug: string;
+    };
   };
   tabs: SanityTabItem[];
 }
@@ -42,7 +46,9 @@ export const mapDataToOrganizationItem = (
     mainTopic: hasMainTopic
       ? {
           topic: data.mainTopic?.topic ?? "",
-          post: data.mainTopic?.post ?? "",
+          link: data.mainTopic?.post?.slug
+            ? buildArticlePath(data.mainTopic?.post?.slug)
+            : undefined,
         }
       : undefined,
     tabs: mapToTabItem(data.tabs),

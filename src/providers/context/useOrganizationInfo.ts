@@ -11,8 +11,8 @@ import { OrganizationContext } from "./OrganizationContext";
 
 interface OrganizationInfoProps {
   categories: CategoryItem[];
-  mainTopic: MainTopicItem | undefined;
-  firstSite: FirstSiteItem | undefined;
+  mainTopic?: MainTopicItem;
+  firstSite?: FirstSiteItem;
   tabs: TabItem[];
 }
 
