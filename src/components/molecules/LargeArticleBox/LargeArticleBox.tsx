@@ -8,7 +8,7 @@ import styled from "styled-components";
 import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
 
-interface LargeInfoCardProps {
+interface LargeArticleBoxProps {
   buttonText: string;
   description: string;
   link: string;
@@ -19,15 +19,15 @@ interface LargeInfoCardProps {
   };
 }
 
-const LargeInfoCard = ({
+const LargeArticleBox = ({
   buttonText,
   description,
   link,
   title,
   photo,
-}: LargeInfoCardProps) => {
+}: LargeArticleBoxProps) => {
   return (
-    <Wrapper data-testid="new-bar-publication">
+    <Wrapper data-testid="pinned-article-box">
       <Container>
         <Part>
           <Link href={link}>
@@ -71,7 +71,7 @@ const LargeInfoCard = ({
   );
 };
 
-export default LargeInfoCard;
+export default LargeArticleBox;
 
 const Part = styled.div`
   height: 400px;
@@ -107,7 +107,7 @@ const Container = styled.div`
     grid-template-columns: 450px 1fr;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1300px) {
     grid-template-columns: 600px 1fr;
   }
 `;
@@ -125,7 +125,7 @@ const ImageBackground = styled(Image)`
     border-radius: 12px 0 0 12px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1300px) {
     max-width: 600px;
   }
 `;

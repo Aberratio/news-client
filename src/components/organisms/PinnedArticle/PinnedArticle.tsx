@@ -3,7 +3,7 @@
 import { cutText } from "core/tools/cutText";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
-import LargeInfoCard from "../../molecules/LargeInfoCard";
+import LargeArticleBox from "components/molecules/LargeArticleBox";
 
 interface PinnedArticleProps {
   article: ArticleSummaryItem;
@@ -15,7 +15,7 @@ const PinnedArticle = ({ article }: PinnedArticleProps) => {
   }
 
   return (
-    <LargeInfoCard
+    <LargeArticleBox
       buttonText="Wyświetl artykuł"
       description={cutText(article.lead, 300)}
       link={`article/${article.id}`}
