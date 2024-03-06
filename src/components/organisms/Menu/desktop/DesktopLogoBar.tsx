@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 
-export const BigLogoBar = () => {
+export const DesktopLogoBar = () => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="desktop-logo-bar">
       <Container>
         <StyledLink href="/">
           <StyledImage

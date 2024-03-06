@@ -9,7 +9,7 @@ export const SubTitleBar = () => {
   const { customTheme } = useStyles();
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="subtitle-bar">
       <Typography
         variant="small"
         color={customTheme.general.primaryOppositeColor}

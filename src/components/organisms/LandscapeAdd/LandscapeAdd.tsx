@@ -11,7 +11,7 @@ interface LandscapeAddProps {
 
 const LandscapeAdd = ({ mainAdd }: LandscapeAddProps) => {
   return (
-    <AddBackground>
+    <AddBackground data-testid="landscape-add-bar">
       <ImageWrapper>
         <SanityImage
           _ref={mainAdd.image._ref}

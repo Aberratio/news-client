@@ -15,7 +15,7 @@ export const MenuMobile = ({ isOpen, handleClick }: MenuMobileProps) => {
   return (
     <>
       <Wrapper data-testid="menu-mobile">
-        <LogoMobile>
+        <LogoMobile data-testid="logo-mobile">
           <Link href="/">
             <Logo
               src="/icons/logo_mobile.png"

@@ -11,7 +11,7 @@ export interface FooterColumnsProps {
 
 const FooterColumns = ({ columns }: FooterColumnsProps) => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="footer-info">
       <Container>
         <Row>
           <DescriptionColumn />

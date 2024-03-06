@@ -7,7 +7,7 @@ import Typography from "components/atoms/Typography";
 
 export const WebcoBar = () => {
   return (
-    <Wrapper>
+    <Wrapper data-testid="webco-bar">
       <Container>
         <Typography>Copyright © 2021-2024</Typography>
         <StyledLink href="https:webcodesign.pl" target="_blank">

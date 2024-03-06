@@ -14,7 +14,7 @@ export const TitleBar = () => {
   }
 
   return (
-    <Link href={mainTopic.link ?? "#"}>
+    <Link data-testid="pinned-article-link" href={mainTopic.link ?? "#"}>
       <Wrapper data-testid="title-bar" $isActive={!!mainTopic.link}>
         <Container>
           <Typography color="white" isUppercase variant="title">
