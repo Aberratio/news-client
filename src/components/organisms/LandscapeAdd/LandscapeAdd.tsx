@@ -41,10 +41,10 @@ const AddBackground = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 200px;
+  width: 100vw;
+  aspect-ratio: 4 / 1;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1200px) {
     width: 1200px;
     height: 300px;
   }

@@ -76,10 +76,12 @@ const LargeArticleBox = ({
 export default LargeArticleBox;
 
 const Part = styled.div`
-  height: 400px;
+  display: flex;
+  item-align: center;
+  justify-content: center;
 
-  @media screen and (min-width: 768px) {
-    height: 500px;
+  @media screen and (min-width: 1300px) {
+    height: 600px;
   }
 `;
 
@@ -99,17 +101,18 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 500px 1fr;
+  grid-template-rows: 300px 370px;
   gap: 12px;
   margin: auto;
   width: 100%;
   max-width: 1080px;
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: 450px 1fr;
+    grid-template-rows: 500px 300px;
   }
 
   @media screen and (min-width: 1300px) {
+    grid-template-rows: unset;
     grid-template-columns: 600px 1fr;
   }
 `;
@@ -117,18 +120,19 @@ const Container = styled.div`
 const ImageBackground = styled(Image)`
   width: 100%;
   height: 100%;
-  max-height: 540px;
+  max-height: 300px;
   max-width: 100%;
 
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    max-width: 450px;
-    border-radius: 12px 0 0 12px;
+    max-height: 500px;
   }
 
   @media screen and (min-width: 1300px) {
+    max-height: 600px;
     max-width: 600px;
+    border-radius: 12px 0 0 12px;
   }
 `;
 
@@ -139,10 +143,10 @@ const Description = styled.div`
   align-items: flex-start;
 
   height: 100%;
-  padding: 8px 24px;
+  padding: 0 24px;
 
-  @media screen and (min-width: 768px) {
-    padding: 12px;
+  @media screen and (min-width: 1300px) {
+    padding: 0 12px;
   }
 `;
 

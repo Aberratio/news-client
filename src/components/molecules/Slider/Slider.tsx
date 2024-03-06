@@ -92,8 +92,12 @@ const Description = styled.div`
 const SliderContainer = styled.div`
   position: relative;
   display: block;
-  height: 600px;
+  height: 250px;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    height: 600px;
+  }
 `;
 
 const StyledImage = styled(Image)<{ $hasDescription: boolean }>`
@@ -114,12 +118,17 @@ const SliderArrow = styled.div<{ $isRight?: boolean }>`
     ${$isRight && `right: 0`};
   
     width: auto;
-    padding: 16px;
+    padding: 8px;
     margin-top: -50px;
     border-radius: 3px 0 0 3px;
     
     cursor: pointer;
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.8);
+
+    
+  @media screen and (min-width: 768px) {
+    padding: 16px;
+  }
   `}
 `;

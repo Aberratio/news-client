@@ -24,10 +24,10 @@ const SanityImage = ({ alt, _ref, width, height, sizes }: SanityImageProps) => {
     <Image
       src={imageUrl}
       alt={alt}
-      width={width}
-      height={height}
+      fill
       sizes={sizes}
       placeholder="blur"
+      objectFit="cover"
       priority
       blurDataURL={blurUrl}
     />
