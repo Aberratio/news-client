@@ -6,7 +6,7 @@ import { TabItem } from "types/TabItem";
 
 import Typography from "components/atoms/Typography";
 
-import { SubMenu } from "./SubMenu";
+import { NavigationItemSubmenu } from "./NavigationItemSubmenu";
 
 interface NavigationItemProps {
   isActive: boolean;
@@ -40,7 +40,9 @@ export const NavigationItem = ({
       <StyledLink href={buildTabPath(tab.tabSlug)}>
         <Typography color="black">{tab.name}</Typography>
       </StyledLink>
-      {isActive && hasSubmenu && <SubMenu categories={tab.categories} />}
+      {isActive && hasSubmenu && (
+        <NavigationItemSubmenu categories={tab.categories} />
+      )}
     </Container>
   );
 };

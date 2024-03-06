@@ -6,17 +6,19 @@ import { CategoryItem } from "types/CategoryItem";
 
 import Typography from "components/atoms/Typography";
 
-interface SubMenuProps {
+interface NavigationItemSubmenuProps {
   categories: CategoryItem[];
 }
 
-export const SubMenu = ({ categories }: SubMenuProps) => {
+export const NavigationItemSubmenu = ({
+  categories,
+}: NavigationItemSubmenuProps) => {
   const [activeCategoryId, setActiveCategoryId] = useState<number | string>(
     categories[0].id
   );
 
   return (
-    <Container data-testid="sub-menu">
+    <Container data-testid="navigation-item-sub-menu">
       <CategoryContainer>
         {categories.map((category) => {
           return (

@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { NavigationItem } from "./NavigationItem";
 
-export const MainMenu = () => {
+export const NavigationMenu = () => {
   const [activeNavigationItemIndex, setActiveNavigationItemIndex] =
     useState<number>(-1);
   const mainMenuRef = useRef(null);
@@ -14,7 +14,7 @@ export const MainMenu = () => {
   useOutsideClick([mainMenuRef], () => setActiveNavigationItemIndex(-1));
 
   return (
-    <Container data-testid="main-menu" ref={mainMenuRef}>
+    <Container data-testid="naviagtion-menu" ref={mainMenuRef}>
       {tabs.map((tab, index) => {
         return (
           <NavigationItem

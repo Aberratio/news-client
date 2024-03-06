@@ -2,14 +2,14 @@
 
 import styled from "styled-components";
 
-import { MainMenu } from "./MainMenu";
+import { NavigationMenu } from "./NavigationMenu";
 
 export const NavigationDesktop = () => {
   return (
     <Wrapper data-testid="navigation-desktop">
       <Container>
         <Navigation>
-          <MainMenu />
+          <NavigationMenu />
         </Navigation>
       </Container>
     </Wrapper>
