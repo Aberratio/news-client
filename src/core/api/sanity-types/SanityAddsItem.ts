@@ -29,7 +29,7 @@ export const mapDataToAddsItem = (data: SanityAddsItem): AddsItem => {
         _ref: data.mainAdd.image.asset._ref,
       },
     },
-    boxAdds: data.boxAdds.map((add) => {
+    boxAdds: data.boxAdds?.map((add) => {
       return {
         image: {
           alt: add.image.alt,

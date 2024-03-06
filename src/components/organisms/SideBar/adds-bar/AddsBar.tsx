@@ -9,6 +9,8 @@ interface AddsBarProps {
 }
 
 const AddsBar = ({ boxAdds }: AddsBarProps) => {
+  if (boxAdds.length === 0) return null;
+
   return (
     <div data-testid="adds">
       {boxAdds.map((add: BoxAddItem) => (
