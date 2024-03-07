@@ -14,11 +14,11 @@ const MetadataBar = ({ name, date }: MetadataBarProps) => {
   return (
     <Bar dataTestId={`metadata-bar`}>
       <Link href="#">
-        <Typography color="black" variant="small">
+        <Typography color="black" variant="small" data-testId="metadata-name">
           <strong>{name}</strong>
         </Typography>
       </Link>
-      <Typography variant="small" color="#6b6b6b">
+      <Typography variant="small" color="#6b6b6b" data-testId="metadata-date">
         {date}
       </Typography>
     </Bar>

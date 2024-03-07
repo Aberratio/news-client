@@ -58,7 +58,7 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  // Hotjar.init(Number(process.env.NEXT_PUBLIC_HOTJAR_ID), 6);
+  Hotjar.init(Number(process.env.NEXT_PUBLIC_HOTJAR_ID), 6);
   const tabs = await fetchTabs();
   const organization = await fetchOrganization();
   const adds = await fetchAdds();
