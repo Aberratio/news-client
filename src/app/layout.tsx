@@ -1,6 +1,9 @@
+import Hotjar from "@hotjar/browser";
 import { fetchTabs } from "core/api/navigation/fetchTabs";
+import { sanityClient } from "core/api/sanityClient";
 import { fetchAdds } from "core/api/settings/fetchAdds";
 import { fetchOrganization } from "core/api/settings/fetchOrganization";
+import { buildImageUrl } from "core/builders/buildImageUrl";
 import type { Metadata } from "next";
 import { Spectral } from "next/font/google";
 import ErrorBoundary from "providers/context/ErrorBoundary";
@@ -22,27 +25,40 @@ const spectral = Spectral({
   weight: ["400", "500"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ""),
-  description: "Lokalny tygodnik informacyjny",
-  title: {
-    default: "Głos  Milicza",
-    template: "%s | Głos  Milicza",
-  },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const generalSeo = await sanityClient.fetch(
+    `'generalSeo': *[_type == "generalSeo" && !(_id in path("drafts.**")) ]`
+  );
+
+  const imagePath = buildImageUrl(generalSeo.image.asset._ref);
+
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ""),
     title: {
-      default: "Głos  Milicza",
-      template: "%s | Głos  Milicza",
+      default: generalSeo.name,
+      template: `%s | ${generalSeo.name}`,
     },
-    description: "Lokalny tygodnik informacyjny",
-  },
-};
+    description: generalSeo.description,
+    openGraph: {
+      title: {
+        default: generalSeo.name,
+        template: `%s | ${generalSeo.name}`,
+      },
+      url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}`,
+      locale: "pl_PL",
+      type: "website",
+      description: generalSeo.description,
+      images: [imagePath],
+    },
+  };
+}
 
 const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  // Hotjar.init(Number(process.env.NEXT_PUBLIC_HOTJAR_ID), 6);
   const tabs = await fetchTabs();
   const organization = await fetchOrganization();
   const adds = await fetchAdds();
