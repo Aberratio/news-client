@@ -3,7 +3,6 @@
 import Script from "next/script";
 
 export const Hotjar = () => {
-  if (process.env.NEXT_PUBLIC_HOTJAR_ID) return null;
   return (
     <div>
       <Script id="hotjar" strategy="afterInteractive">
