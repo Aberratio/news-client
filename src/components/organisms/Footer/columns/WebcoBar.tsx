@@ -32,7 +32,7 @@ const Container = styled.div`
   gap: 4px;
 
   margin: auto;
-  padding: 16px;
+  padding: 16px 0;
 
   width: 100%;
   max-width: 1080px;

@@ -6,6 +6,7 @@ export interface SanityCommentItem {
   author: string;
   _createdAt: Date;
   likes: number;
+  dislikes: number;
   _id: string;
   text: string;
   post: any;
@@ -20,7 +21,7 @@ export const mapToCommentSummaryItem = (
       articleTitle: item.post.title,
       author: item.author,
       date: formatDateTimeToString(item._createdAt),
-      dislikes: item.likes,
+      dislikes: item.dislikes,
       id: item._id,
       likes: item.likes,
       text: cutText(item.text, 100),

@@ -18,6 +18,8 @@ export const StatisticArticleBar = ({
 }: StatisticArticleBarProps) => {
   const [sessionReaction, setSessionReaction] = useState<string>("");
   const { likes, dislikes, views, comments } = statistics;
+  const [sessionLike, setSessionLike] = useState<number>(likes);
+  const [sessionDislike, setSessionDislike] = useState<number>(dislikes);
 
   useEffect(() => {
     const storedReaction = sessionStorage.getItem(`article-${_id}`);
@@ -31,19 +33,43 @@ export const StatisticArticleBar = ({
     if (sessionReaction === "") {
       setSessionReaction(reaction);
       sessionStorage.setItem(`article-${_id}`, reaction);
-      fetchArticleReaction({
-        _id,
-        like: reaction === "like" ? 1 : 0,
-        dislike: reaction === "dislike" ? 1 : 0,
-      });
+
+      if (reaction === "like") {
+        fetchArticleReaction({
+          _id,
+          like: 1,
+          dislike: 0,
+        });
+        setSessionLike(sessionLike + 1);
+      } else if (reaction === "dislike") {
+        fetchArticleReaction({
+          _id,
+          like: 0,
+          dislike: 1,
+        });
+        setSessionDislike(sessionDislike + 1);
+      }
     } else if (sessionReaction !== reaction) {
       setSessionReaction(reaction);
       sessionStorage.setItem(`comment-${_id}`, reaction);
-      fetchArticleReaction({
-        _id,
-        like: reaction === "like" ? 1 : -1,
-        dislike: reaction === "dislike" ? 1 : -1,
-      });
+
+      if (reaction === "like") {
+        fetchArticleReaction({
+          _id,
+          like: 1,
+          dislike: -1,
+        });
+        setSessionLike(sessionLike + 1);
+        setSessionDislike(sessionDislike - 1);
+      } else if (reaction === "dislike") {
+        fetchArticleReaction({
+          _id,
+          like: -1,
+          dislike: 1,
+        });
+        setSessionLike(sessionLike - 1);
+        setSessionDislike(sessionDislike + 1);
+      }
     } else {
       setSessionReaction("");
       sessionStorage.setItem(`comment-${_id}`, "");
@@ -52,6 +78,22 @@ export const StatisticArticleBar = ({
         like: reaction === "like" ? -1 : 0,
         dislike: reaction === "dislike" ? -1 : 0,
       });
+
+      if (reaction === "like") {
+        fetchArticleReaction({
+          _id,
+          like: -1,
+          dislike: 0,
+        });
+        setSessionLike(sessionLike - 1);
+      } else if (reaction === "dislike") {
+        fetchArticleReaction({
+          _id,
+          like: 0,
+          dislike: -1,
+        });
+        setSessionDislike(sessionDislike - 1);
+      }
     }
   };
 
@@ -59,10 +101,10 @@ export const StatisticArticleBar = ({
     <StatisticBar
       commentsPath="#comments"
       comments={comments}
-      dislikes={dislikes + (sessionReaction === "dislike" ? 1 : 0)}
+      dislikes={sessionDislike}
       isLikeActive={sessionReaction === "like"}
       isDislikeActive={sessionReaction === "dislike"}
-      likes={likes + (sessionReaction === "like" ? 1 : 0)}
+      likes={sessionLike}
       views={views}
       onLikeClick={() => onReactionClick("like")}
       onDislikeClick={() => onReactionClick("dislike")}

@@ -31,7 +31,7 @@ const nextConfig = {
     imageSizes: [32, 128],
     deviceSizes: [750, 1920],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   trailingSlash: true,
   output: "standalone",
