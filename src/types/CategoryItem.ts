@@ -1,5 +1,5 @@
 export interface CategoryItem {
-  id: string;
+  slug: string;
   name: string;
   path: string;
   tabSlug: string;

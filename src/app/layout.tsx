@@ -27,10 +27,10 @@ const spectral = Spectral({
 
 export async function generateMetadata(): Promise<Metadata> {
   const generalSeo = await sanityClient.fetch(
-    `'generalSeo': *[_type == "generalSeo" && !(_id in path("drafts.**")) ]`
+    `*[_type == "generalSeo" && !(_id in path("drafts.**"))][0]`
   );
 
-  const imagePath = buildImageUrl(generalSeo.image.asset._ref);
+  const imagePath = buildImageUrl(generalSeo?.image?.asset?._ref || "");
 
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ""),

@@ -13,8 +13,8 @@ interface NavigationItemSubmenuProps {
 export const NavigationItemSubmenu = ({
   categories,
 }: NavigationItemSubmenuProps) => {
-  const [activeCategoryId, setActiveCategoryId] = useState<number | string>(
-    categories[0].id
+  const [activeCategorySlug, setActiveCategorySlug] = useState<string>(
+    categories[0].slug
   );
 
   return (
@@ -22,11 +22,15 @@ export const NavigationItemSubmenu = ({
       <CategoryContainer>
         {categories.map((category) => {
           return (
-            <Typography key={category.id} isCapitalized>
+            <Typography
+              key={category.slug}
+              isCapitalized
+              data-testid={`navigation-item-sub-menu-item-${category.slug}`}
+            >
               <StyledLink
-                href={`${buildCategoryPath(category.id)}`}
-                $isActive={activeCategoryId === category.id}
-                onClick={() => setActiveCategoryId(category.id)}
+                href={`${buildCategoryPath(category.slug)}`}
+                $isActive={activeCategorySlug === category.slug}
+                onClick={() => setActiveCategorySlug(category.slug)}
               >
                 {category.name}
               </StyledLink>

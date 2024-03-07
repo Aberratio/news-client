@@ -43,16 +43,16 @@ export const useGenerateBreadcrumbs = () => {
     const category = tabs
       .find((tab) =>
         tab.categories.find(
-          (category) => category.id === breadCrubmsInfo.categorySlug
+          (category) => category.slug === breadCrubmsInfo.categorySlug
         )
       )
       ?.categories.find(
-        (category) => category.id === breadCrubmsInfo.categorySlug
+        (category) => category.slug === breadCrubmsInfo.categorySlug
       );
 
     const tab = tabs.find((tab) =>
       tab.categories.find(
-        (category) => category.id === breadCrubmsInfo.categorySlug
+        (category) => category.slug === breadCrubmsInfo.categorySlug
       )
     );
 

@@ -25,9 +25,9 @@ export const useOrganizationInfo = (): OrganizationInfoProps => {
       organization.tabs.flatMap((tab) => {
         return tab.categories.map((category) => {
           return {
-            id: category.id,
+            slug: category.slug,
             name: category.name,
-            path: buildCategoryPath(category.id),
+            path: buildCategoryPath(category.slug),
             tabSlug: category.tabSlug,
             tabName: category.tabName,
             tabPath: buildTabPath(category.tabSlug),

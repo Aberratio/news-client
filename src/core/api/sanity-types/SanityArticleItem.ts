@@ -67,7 +67,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
     },
     body: post.body,
     category: {
-      id: post.category.slug.current,
+      slug: post.category.slug.current,
       name: post.category.name,
       path: buildCategoryPath(post.category.slug.current),
       tabSlug: post.category.tab.slug.current,

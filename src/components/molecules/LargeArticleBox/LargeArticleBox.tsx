@@ -47,6 +47,7 @@ const LargeArticleBox = ({
             <Title href={link}>
               <Typography
                 color="black"
+                data-testid="article-box-title"
                 variant="h1"
                 textAlign={{ textAlign: "left" }}
               >
@@ -55,6 +56,7 @@ const LargeArticleBox = ({
             </Title>
             <Typography
               color="black"
+              data-testid="article-box-description"
               variant="article"
               space={{ marginBottom: 30 }}
               textAlign={{ textAlign: "left" }}
@@ -88,7 +90,7 @@ const Part = styled.div`
 const Wrapper = styled.div`
   position: relative;
   display: block;
-  margin-top: 65px;
+  margin-top: 20px;
 
   background-color: white;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);

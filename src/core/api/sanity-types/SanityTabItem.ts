@@ -19,7 +19,7 @@ export const mapToTabItem = (data: SanityTabItem[]): TabItem[] => {
       tabSlug: tab.slug.current,
       categories: tab.categories.map((category) => {
         return {
-          id: category.slug.current,
+          slug: category.slug.current,
           name: category.name,
           path: `/category/${category.name}`,
           tabSlug: tab.slug.current,

@@ -57,7 +57,7 @@ export const mapDataToArticleSummaryItems = (
         path: post.author.slug.current,
       },
       category: {
-        id: post.category.slug.current,
+        slug: post.category.slug.current,
         name: post.category.name,
         path: buildCategoryPath(post.category.slug.current),
         tabSlug: post.category.tab.slug.current,
