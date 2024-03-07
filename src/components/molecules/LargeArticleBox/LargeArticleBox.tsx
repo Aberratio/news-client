@@ -47,7 +47,7 @@ const LargeArticleBox = ({
             <Title href={link}>
               <Typography
                 color="black"
-                data-testid="article-box-title"
+                dataTestId={`${dataTestId}-title`}
                 variant="h1"
                 textAlign={{ textAlign: "left" }}
               >
@@ -56,14 +56,14 @@ const LargeArticleBox = ({
             </Title>
             <Typography
               color="black"
-              data-testid="article-box-description"
+              dataTestId={`${dataTestId}-description`}
               variant="article"
               space={{ marginBottom: 30 }}
               textAlign={{ textAlign: "left" }}
             >
               {cutText(description, 250)}
             </Typography>
-            <Link href={link}>
+            <Link href={link} data-testId={`${dataTestId}-link`}>
               <Button size="small" variant="secondary">
                 <Typography>{buttonText}</Typography>
               </Button>

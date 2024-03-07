@@ -13,7 +13,12 @@ interface ArticleBoxTitleProps {
 export const ArticleBoxTitle = ({ title, path }: ArticleBoxTitleProps) => {
   return (
     <StyledLink href={path}>
-      <Typography variant="article" wrap space={{ marginBottom: 2 }}>
+      <Typography
+        variant="article"
+        wrap
+        space={{ marginBottom: 2 }}
+        dataTestId="article-box-title"
+      >
         {title}
       </Typography>
     </StyledLink>

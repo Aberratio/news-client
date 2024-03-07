@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactElement,ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import {
   FlexboxProps,
   GridProps,
@@ -16,6 +16,7 @@ import { useTypographyVariant } from "./useTypographyVariant";
 export interface TypographyProps {
   ariaLabel?: string;
   color?: string;
+  dataTestId?: string;
   flexbox?: FlexboxProps;
   grid?: GridProps;
   innerHtml?: any;
@@ -34,6 +35,7 @@ export interface TypographyProps {
 const Typography = ({
   ariaLabel,
   color,
+  dataTestId,
   flexbox,
   grid,
   innerHtml,
@@ -55,6 +57,7 @@ const Typography = ({
       aria-label={ariaLabel}
       $color={color}
       dangerouslySetInnerHTML={innerHtml && { __html: `${innerHtml}` }}
+      data-testId={dataTestId}
       $flexbox={flexbox}
       $grid={grid}
       $isBlockquote={isBlockquote}

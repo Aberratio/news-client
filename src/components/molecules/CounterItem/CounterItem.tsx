@@ -43,7 +43,9 @@ export const CounterItem = ({
       <LinkItem href={href ?? "#"}>
         {getIcon(type)}
         <Counter>
-          <Typography variant="small">{count}</Typography>
+          <Typography variant="small" dataTestId={`${type}-counter`}>
+            {count}
+          </Typography>
         </Counter>
       </LinkItem>
     );
@@ -53,7 +55,9 @@ export const CounterItem = ({
     <Item $isClickable={!!onClick} onClick={onClick}>
       {getIcon(type)}
       <Counter>
-        <Typography variant="small">{count}</Typography>
+        <Typography variant="small" dataTestId={`${type}-counter`}>
+          {count}
+        </Typography>
       </Counter>
     </Item>
   );

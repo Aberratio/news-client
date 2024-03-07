@@ -15,7 +15,7 @@ interface ArticleBoxImageProps {
 
 export const ArticleBoxImage = ({ path, photo }: ArticleBoxImageProps) => {
   return (
-    <ImageLink href={path}>
+    <ImageLink href={path} data-testId="article-box-image">
       <StyledImage
         src={photo.path}
         fill
