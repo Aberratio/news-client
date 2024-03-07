@@ -63,7 +63,7 @@ const LargeArticleBox = ({
             >
               {cutText(description, 250)}
             </Typography>
-            <Link href={link} data-testId={`${dataTestId}-link`}>
+            <Link href={link} data-testid={`${dataTestId}-link`}>
               <Button size="small" variant="secondary">
                 <Typography>{buttonText}</Typography>
               </Button>
