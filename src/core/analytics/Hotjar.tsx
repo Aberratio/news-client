@@ -6,7 +6,7 @@ export const Hotjar = () => {
   if (process.env.NEXT_PUBLIC_HOTJAR_ID) return null;
   return (
     <div>
-      <Script id="hotjar">
+      <Script id="hotjar" strategy="afterInteractive">
         {`
           (function(h,o,t,j,a,r){
               h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
