@@ -1,113 +1,49 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchArticleReaction } from "core/api/articles/fetchArticleReaction";
 import { StatisticsItem } from "types/StatisticsItem";
 
 import StatisticBar from "components/molecules/StatisticBar";
 
+import { useArticleReactionHandler } from "./useArticleReactionHandler";
+
 interface StatisticArticleBarProps {
-  _id: string;
-  commentsPath: string;
+  articleId: string;
   statistics: StatisticsItem;
 }
 
 export const StatisticArticleBar = ({
-  _id,
+  articleId,
   statistics,
 }: StatisticArticleBarProps) => {
-  const [sessionReaction, setSessionReaction] = useState<string>("");
-  const { likes, dislikes, views, comments } = statistics;
-  const [sessionLike, setSessionLike] = useState<number>(likes);
-  const [sessionDislike, setSessionDislike] = useState<number>(dislikes);
+  const { comments, dislikes, likes, views } = statistics;
+  const { sessionReaction, handleReaction, reload } =
+    useArticleReactionHandler(articleId);
+  const [selectedReaction, setSelectedReaction] = useState<string>("");
+
+  const handleClicked = (reaction: "like" | "dislike") => {
+    handleReaction(reaction);
+  };
 
   useEffect(() => {
-    const storedReaction = sessionStorage.getItem(`article-${_id}`);
-    if (["like", "dislike", ""].includes(storedReaction ?? "")) {
-      setSessionReaction(storedReaction ?? "");
-    }
-  }, [_id]);
+    setSelectedReaction(sessionReaction);
+  }, [sessionReaction]);
 
-  const onReactionClick = (reaction: "like" | "dislike") => {
-    if (!_id) return;
-    if (sessionReaction === "") {
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`article-${_id}`, reaction);
-
-      if (reaction === "like") {
-        fetchArticleReaction({
-          _id,
-          like: 1,
-          dislike: 0,
-        });
-        setSessionLike(sessionLike + 1);
-      } else if (reaction === "dislike") {
-        fetchArticleReaction({
-          _id,
-          like: 0,
-          dislike: 1,
-        });
-        setSessionDislike(sessionDislike + 1);
-      }
-    } else if (sessionReaction !== reaction) {
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${_id}`, reaction);
-
-      if (reaction === "like") {
-        fetchArticleReaction({
-          _id,
-          like: 1,
-          dislike: -1,
-        });
-        setSessionLike(sessionLike + 1);
-        setSessionDislike(sessionDislike - 1);
-      } else if (reaction === "dislike") {
-        fetchArticleReaction({
-          _id,
-          like: -1,
-          dislike: 1,
-        });
-        setSessionLike(sessionLike - 1);
-        setSessionDislike(sessionDislike + 1);
-      }
-    } else {
-      setSessionReaction("");
-      sessionStorage.setItem(`comment-${_id}`, "");
-      fetchArticleReaction({
-        _id,
-        like: reaction === "like" ? -1 : 0,
-        dislike: reaction === "dislike" ? -1 : 0,
-      });
-
-      if (reaction === "like") {
-        fetchArticleReaction({
-          _id,
-          like: -1,
-          dislike: 0,
-        });
-        setSessionLike(sessionLike - 1);
-      } else if (reaction === "dislike") {
-        fetchArticleReaction({
-          _id,
-          like: 0,
-          dislike: -1,
-        });
-        setSessionDislike(sessionDislike - 1);
-      }
-    }
-  };
+  useEffect(() => {
+    reload();
+  }, [likes, dislikes]);
 
   return (
     <StatisticBar
       commentsPath="#comments"
       comments={comments}
-      dislikes={sessionDislike}
-      isLikeActive={sessionReaction === "like"}
-      isDislikeActive={sessionReaction === "dislike"}
-      likes={sessionLike}
+      dislikes={dislikes + (selectedReaction === "dislike" ? 1 : 0)}
+      isLikeActive={selectedReaction === "like"}
+      isDislikeActive={selectedReaction === "dislike"}
+      likes={likes + (sessionReaction === "like" ? 1 : 0)}
       views={views}
-      onLikeClick={() => onReactionClick("like")}
-      onDislikeClick={() => onReactionClick("dislike")}
+      onLikeClick={() => handleClicked("like")}
+      onDislikeClick={() => handleClicked("dislike")}
     />
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCommentReaction } from "core/api/comments/fetchCommentReaction";
 
-export const useReactionHandler = (commentId: string) => {
+export const useCommentReactionHandler = (commentId: string) => {
   const [sessionReaction, setSessionReaction] = useState<string>("");
 
   const reload = () => {

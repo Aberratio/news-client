@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { CounterItem } from "../CounterItem/CounterItem";
 
-import { useReactionHandler } from "./useReactionHandler";
+import { useCommentReactionHandler } from "./useCommentReactionHandler";
 
 interface StatisticBarProps {
   commentId: string;
@@ -22,7 +22,7 @@ export const StatisticCommentBar = ({
   likes,
 }: StatisticBarProps) => {
   const { sessionReaction, handleReaction, reload } =
-    useReactionHandler(commentId);
+    useCommentReactionHandler(commentId);
   const [selectedReaction, setSelectedReaction] = useState<string>("");
 
   const handleClicked = (reaction: "like" | "dislike") => {
