@@ -10,7 +10,7 @@ export const WebcoBar = () => {
     <Wrapper data-testid="webco-bar">
       <Container>
         <Typography>Copyright © 2021-2024</Typography>
-        <StyledLink href="https:webcodesign.pl" target="_blank">
+        <StyledLink href="https//:webcodesign.pl" target="_blank">
           <Typography> webco.design </Typography>
         </StyledLink>
         <Typography>☕ All rights reserved.</Typography>

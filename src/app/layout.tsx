@@ -1,4 +1,3 @@
-import Hotjar from "@hotjar/browser";
 import { fetchTabs } from "core/api/navigation/fetchTabs";
 import { sanityClient } from "core/api/sanityClient";
 import { fetchAdds } from "core/api/settings/fetchAdds";
@@ -6,6 +5,7 @@ import { fetchOrganization } from "core/api/settings/fetchOrganization";
 import { buildImageUrl } from "core/builders/buildImageUrl";
 import type { Metadata } from "next";
 import { Spectral } from "next/font/google";
+import Script from "next/script";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
 
@@ -58,7 +58,6 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  Hotjar.init(Number(process.env.NEXT_PUBLIC_HOTJAR_ID), 6);
   const tabs = await fetchTabs();
   const organization = await fetchOrganization();
   const adds = await fetchAdds();
@@ -71,6 +70,25 @@ const RootLayout = async ({
     <html lang="pl">
       <body className={spectral.className}>
         <ErrorBoundary>
+          <Script
+            dangerouslySetInnerHTML={{
+              __html: `
+                <!-- Hotjar Tracking Code -->
+                  <script>
+                    (function(h,o,t,j,a,r){
+                        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                        h._hjSettings={hjid:${Number(
+                          process.env.NEXT_PUBLIC_HOTJAR_ID
+                        )},hjsv:6};
+                        a=o.getElementsByTagName('head')[0];
+                        r=o.createElement('script');r.async=1;
+                        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                        a.appendChild(r);
+                    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+                  </script>
+                `,
+            }}
+          />
           <OrganizationContextProvider organization={organization}>
             <StyledComponentsRegistry>
               <GlobalThemeWrapper>
