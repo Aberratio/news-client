@@ -12,7 +12,6 @@ interface StatisticBarProps {
   dislikes: number;
   isReadOnly: boolean;
   likes: number;
-  revalidateCommentReactionsTag?: any;
 }
 
 export const StatisticCommentBar = ({

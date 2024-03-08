@@ -20,7 +20,7 @@ export const AllComments = ({ comments }: AllCommentsProps) => {
       <Typography variant="h3" space={{ marginTop: 32 }}>
         Wszystkie komentarze
       </Typography>
-      {comments.map((comment: CommentItem, index: number) => {
+      {comments.map((comment: CommentItem) => {
         return (
           comment && (
             <Comment
@@ -28,7 +28,7 @@ export const AllComments = ({ comments }: AllCommentsProps) => {
               commentId={comment.id}
               date={comment.date}
               dislikes={comment.dislikes}
-              key={index}
+              key={`${comment.id}-${comment.likes}-${comment.dislikes}`}
               likes={comment.likes}
               text={comment.text}
             />

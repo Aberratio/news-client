@@ -1,7 +1,6 @@
 "use server";
 
 import Typography from "components/atoms/Typography";
-import { revalidateCommentReactionsTag } from "components/organisms/CommentsSection/revalidateCommentReactionsTag";
 
 import MetadataBar from "../MetadataBar";
 
@@ -30,13 +29,14 @@ const Comment = ({
     <div>
       <MetadataBar name={author} date={date} />
       <Typography space={{ marginY: "4px" }}>{text}</Typography>
-      <StatisticCommentBar
-        commentId={commentId}
-        dislikes={dislikes}
-        isReadOnly={isReadOnly}
-        likes={likes}
-        revalidateCommentReactionsTag={revalidateCommentReactionsTag}
-      />
+      {!isReadOnly && (
+        <StatisticCommentBar
+          commentId={commentId}
+          dislikes={dislikes}
+          isReadOnly={isReadOnly}
+          likes={likes}
+        />
+      )}
     </div>
   );
 };
