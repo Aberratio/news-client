@@ -19,7 +19,7 @@ const HomePage = async () => {
   return (
     <HomePageTemplate>
       <ArticlesOverviewBox
-        items={articles.slice(1)}
+        items={articles}
         dataTestId={`articles-overview-box-latest`}
       />
     </HomePageTemplate>
