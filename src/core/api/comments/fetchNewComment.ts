@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
+
 import { sanityClient } from "../sanityClient";
 
 interface FetchNewCommentProps {
@@ -28,6 +30,10 @@ export const fetchNewComment = ({
       likes: 0,
       dislikes: 0,
     });
+
+    setTimeout(() => {
+      revalidateTag("comments");
+    }, 1000);
   } catch (error) {
     console.error("Error adding comment to Sanity:", error);
   }

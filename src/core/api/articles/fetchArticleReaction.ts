@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
+
 import { sanityClient } from "../sanityClient";
 
 interface FetchArticleReactionProps {
@@ -22,6 +24,10 @@ export const fetchArticleReaction = ({
       .patch(articleId)
       .inc({ likes: like, dislikes: dislike })
       .commit();
+
+    setTimeout(() => {
+      revalidateTag("article-reactions");
+    }, 1000);
   } catch (error) {
     console.error("Error adding reaction on article:", error);
   }

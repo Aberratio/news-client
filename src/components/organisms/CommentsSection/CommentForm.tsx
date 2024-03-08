@@ -2,6 +2,7 @@
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
+import { useRouter } from "next/navigation";
 import { styled } from "styled-components";
 
 import Button from "components/atoms/Button";
@@ -15,19 +16,16 @@ export interface FormFields {
 interface CommentFormProps {
   _id: string;
   sendComment: any;
-  revalidateCommentsTag: any;
 }
 
-export const CommentForm = ({
-  _id,
-  revalidateCommentsTag,
-}: CommentFormProps) => {
+export const CommentForm = ({ _id }: CommentFormProps) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     fetchNewComment({
@@ -38,7 +36,7 @@ export const CommentForm = ({
     });
     setTimeout(() => {
       reset();
-      revalidateCommentsTag();
+      router.refresh();
     }, 1000);
   };
 

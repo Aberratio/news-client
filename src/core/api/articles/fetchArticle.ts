@@ -6,7 +6,9 @@ import { sanityClient } from "../sanityClient";
 export const fetchArticle = async (slug: string): Promise<ArticleItem> => {
   try {
     const articles = await sanityClient.fetch(
-      `*[_type == "post" && slug.current == "${slug}" && !(_id in path('drafts.**'))][0]{ _id, _rev, "comments": count(*[_type == "comment" && references(^._id)]), likes, dislikes, views, title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`
+      `*[_type == "post" && slug.current == "${slug}" && !(_id in path('drafts.**'))][0]{ _id, _rev, "comments": count(*[_type == "comment" && references(^._id)]), likes, dislikes, views, title, category->{ title, slug, tab->{title, slug }}, author->{name, slug}, lead, publishedAt, body, mainImage, slug, images}`,
+      undefined,
+      { next: { tags: ["article-comments", "article-reactions"] } }
     );
 
     sanityClient.patch(articles._id).inc({ views: 1 }).commit();

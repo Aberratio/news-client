@@ -8,7 +8,6 @@ import Hr from "components/atoms/Hr";
 import { AllComments } from "./AllComments";
 import { CommentForm } from "./CommentForm";
 import { EmptyCommentsSection } from "./EmptyCommentsSection";
-import { revalidateCommentsTag } from "./revalidateCommentsTag";
 
 interface CommentsSectionProps {
   articleId: string;
@@ -19,11 +18,7 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
   return (
     <div id="comments" key={comments.length}>
       <Hr margin="0 0 48px 0" />
-      <CommentForm
-        _id={articleId}
-        sendComment={fetchNewComment}
-        revalidateCommentsTag={revalidateCommentsTag}
-      />
+      <CommentForm _id={articleId} sendComment={fetchNewComment} />
       {comments.length === 0 ? (
         <EmptyCommentsSection />
       ) : (
