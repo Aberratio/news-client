@@ -25,7 +25,7 @@ export const NavigationItemSubmenu = ({
             <Typography
               key={category.slug}
               isCapitalized
-              data-testid={`navigation-item-sub-menu-item-${category.slug}`}
+              dataTestId={`navigation-item-sub-menu-item-${category.slug}`}
             >
               <StyledLink
                 href={`${buildCategoryPath(category.slug)}`}
