@@ -21,11 +21,15 @@ export const BreadCrumbsContent = ({ breadcrumbs }: BreadCrumbsProps) => {
     <Wrapper data-testid="breadcrumbs">
       <Container>
         <Row>
-          {breadcrumbs.slice(0, length).map((item) => {
+          {breadcrumbs.slice(0, length).map((item, index) => {
             return (
               <Fragment key={item.name}>
                 <Path href={item.path}>
-                  <Typography variant="small" isCapitalized>
+                  <Typography
+                    dataTestId={`breadcrumb-${index}`}
+                    isCapitalized
+                    variant="small"
+                  >
                     {item.name}
                   </Typography>
                 </Path>
@@ -35,7 +39,9 @@ export const BreadCrumbsContent = ({ breadcrumbs }: BreadCrumbsProps) => {
           })}
 
           <Current>
-            <Typography variant="small">{breadcrumbs[length]?.name}</Typography>
+            <Typography dataTestId="breadcrumb-current" variant="small">
+              {breadcrumbs[length]?.name}
+            </Typography>
           </Current>
         </Row>
       </Container>

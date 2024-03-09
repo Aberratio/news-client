@@ -4,6 +4,7 @@ export const Arrow = ({ color, direction, size }: IconCustomizationProps) => (
   <Icon
     size={size ?? { width: "1rem", height: "1rem" }}
     viewBox="0 0 20 20"
+    dataTestId="arrow-icon"
     direction={direction}
     color={color}
     title="arrow"
