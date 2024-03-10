@@ -41,6 +41,6 @@ export const mapToCommentItem = (data: SanityCommentItem[]): CommentItem[] => {
       id: item._id,
       likes: item.likes,
       text: item.text,
-    } as CommentSummaryItem;
+    } as CommentItem;
   });
 };

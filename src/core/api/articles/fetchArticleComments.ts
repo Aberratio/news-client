@@ -1,7 +1,7 @@
 "use server";
 
 import {
-  mapToCommentSummaryItem,
+  mapToCommentItem,
   SanityCommentItem,
 } from "../sanity-types/SanityCommentItem";
 import { sanityClient } from "../sanityClient";
@@ -18,6 +18,6 @@ export const fetchArticleComments = async (_id: string) => {
       }
     );
 
-    return mapToCommentSummaryItem(responseComments);
+    return mapToCommentItem(responseComments);
   }
 };
