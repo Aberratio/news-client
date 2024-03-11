@@ -58,7 +58,7 @@ const LargeArticleBox = ({
               color="black"
               dataTestId={`${dataTestId}-description`}
               variant="article"
-              space={{ marginBottom: 30 }}
+              space={{ marginBottom: 12 }}
               textAlign={{ textAlign: "left" }}
             >
               {cutText(description, 250)}
@@ -103,11 +103,15 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: 300px 370px;
+  grid-template-rows: 300px 450px;
   gap: 12px;
   margin: auto;
   width: 100%;
   max-width: 1080px;
+
+  @media screen and (min-width: 568px) {
+    grid-template-rows: 300px 350px;
+  }
 
   @media screen and (min-width: 768px) {
     grid-template-rows: 500px 300px;
@@ -141,11 +145,11 @@ const ImageBackground = styled(Image)`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-start;
 
   height: 100%;
-  padding: 0 24px;
+  padding: 0 24px 12px 24px;
 
   @media screen and (min-width: 1300px) {
     padding: 0 12px;
