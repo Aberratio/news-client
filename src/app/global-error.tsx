@@ -1,5 +1,9 @@
 "use client";
 
+import Box from "components/atoms/Box";
+import Button from "components/atoms/Button";
+import Typography from "components/atoms/Typography";
+
 export default function GlobalError({
   error,
   reset,
@@ -11,8 +15,14 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <h2>Błąd strony!</h2>
-        <button onClick={() => reset()}>Spróbuj ponownie</button>
+        <Box margin="120px auto" marginM="40px auto">
+          <Typography variant="h2" space={{ marginBottom: "30px" }}>
+            Błąd strony!
+          </Typography>
+          <Button onClick={() => reset()} variant="secondary">
+            Spróbuj ponownie
+          </Button>
+        </Box>
       </body>
     </html>
   );
