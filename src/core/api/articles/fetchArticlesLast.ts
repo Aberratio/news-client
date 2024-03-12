@@ -22,7 +22,7 @@ export const fetchArticlesLast = async ({
   const end = start + limit - 1;
 
   const articles = await sanityClient.fetch(
-    `*[_type == "post" && !(_id in path('drafts.**')) ${
+    `*[_type == "post" && !(_id in path('drafts.**')) && (publishedAt <= now()) ${
       categorySlug ? `&& category->slug.current == "${categorySlug}"` : ""
     } ${tabSlug ? `&& category->tab->slug.current == "${tabSlug}"` : ""} ${
       ignorePinnedPost ? `&& !(_id in *[_type=="pinnedPost"].post._ref)` : ""
