@@ -16,7 +16,7 @@ interface CommentsSectionProps {
 
 const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
   return (
-    <div id="comments" key={comments.length}>
+    <section id="comments" key={comments.length}>
       <Hr margin="0 0 48px 0" />
       <CommentForm _id={articleId} sendComment={fetchNewComment} />
       {comments.length === 0 ? (
@@ -24,7 +24,7 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
       ) : (
         <AllComments comments={comments} />
       )}
-    </div>
+    </section>
   );
 };
 

@@ -1,4 +1,3 @@
-import { buildImageUrl } from "core/builders/buildImageUrl";
 import {
   buildArticlePath,
   buildCategoryPath,

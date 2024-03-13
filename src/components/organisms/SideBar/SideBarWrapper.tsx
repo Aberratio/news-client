@@ -19,7 +19,7 @@ export const SideBarWrapper = ({ children }: SideBarWrapperProps) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.aside`
   width: 100%;
 `;
 

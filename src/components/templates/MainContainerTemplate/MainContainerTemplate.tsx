@@ -16,7 +16,7 @@ export const MainContainerTemplate = ({
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   display: block;
   padding: 12px;
 

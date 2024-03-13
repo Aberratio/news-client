@@ -62,7 +62,7 @@ const Wrapper = styled.div`
   padding: 0 12px;
 `;
 
-const Container = styled.div`
+const Container = styled.article`
   display: flex;
   flex-direction: column;
 `;
