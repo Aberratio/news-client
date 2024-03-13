@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import styled from "styled-components";
 import { PhotoItem } from "types/PhotoItem";
 
-import Typography from "components/atoms/Typography";
+import { ArticleImage } from "components/molecules/ArticleImage/ArticleImage";
 import { Arrow } from "components/molecules/Icons/Arrow";
 
 interface SliderProps {
@@ -45,71 +44,22 @@ const Slider = ({ images }: SliderProps) => {
   };
 
   return (
-    <>
-      <SliderContainer>
-        <StyledImage
-          src={image.path}
-          fill
-          style={{ objectFit: "cover" }}
-          alt={image.description ?? ""}
-          $hasDescription={hasDescription}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-        {isSlideable && (
-          <>
-            <SliderArrow onClick={prevItem}>
-              <Arrow color="white" />
-            </SliderArrow>
-            <SliderArrow $isRight onClick={nextItem}>
-              <Arrow color="white" direction="right" />
-            </SliderArrow>
-          </>
-        )}
-      </SliderContainer>
-      {hasDescription && (
-        <Description>
-          <Typography
-            variant="small"
-            color="white"
-            textAlign={{ textAlign: "left" }}
-          >
-            {image.description}
-          </Typography>
-        </Description>
+    <ArticleImage image={image} hasDescription={hasDescription}>
+      {isSlideable && (
+        <>
+          <SliderArrow onClick={prevItem}>
+            <Arrow color="white" />
+          </SliderArrow>
+          <SliderArrow $isRight onClick={nextItem}>
+            <Arrow color="white" direction="right" />
+          </SliderArrow>
+        </>
       )}
-    </>
+    </ArticleImage>
   );
 };
 
 export default Slider;
-
-const Description = styled.div`
-  padding: 16px;
-  border-radius: 0 0 8px 8px;
-  background-color: #222;
-`;
-
-const SliderContainer = styled.div`
-  position: relative;
-  display: block;
-  height: 250px;
-  width: 100%;
-
-  @media screen and (min-width: 768px) {
-    height: 600px;
-  }
-`;
-
-const StyledImage = styled(Image)<{ $hasDescription: boolean }>`
-  ${({ $hasDescription }) => `
-    vertical-align: middle;
-    border-style: none;
-    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"};
-
-    object-fit: cover;
-    object-position: 50% 50%;
-  `}
-`;
 
 const SliderArrow = styled.div<{ $isRight?: boolean }>`
   ${({ $isRight }) => `

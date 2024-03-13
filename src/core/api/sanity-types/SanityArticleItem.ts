@@ -1,4 +1,3 @@
-import { buildImageUrl } from "core/builders/buildImageUrl";
 import {
   buildArticlePath,
   buildAuthorPath,
@@ -7,6 +6,8 @@ import {
 } from "core/builders/buildPath";
 import { formatDateToString } from "core/formaters/formatDateToString";
 import { ArticleItem } from "types/ArticleItem";
+
+import { mapToPhotoItem } from "./SanityPhotoItem";
 
 export interface SanityArticleItem {
   _id: string;
@@ -83,16 +84,8 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
     views: post.views + 1,
     path: buildArticlePath(post.slug.current),
     photos: [
-      {
-        path: buildImageUrl(post.mainImage.asset._ref),
-        description: post.mainImage.description || "",
-        alt: post.mainImage.alt,
-      },
-      ...(post.images?.map((image) => ({
-        path: buildImageUrl(image.asset._ref),
-        description: image.description || "",
-        alt: image.alt,
-      })) || []),
+      mapToPhotoItem(post.mainImage),
+      ...(post.images?.map((image) => mapToPhotoItem(image)) || []),
     ],
     title: post.title,
   };

@@ -7,6 +7,8 @@ import {
 import { formatDateToString } from "core/formaters/formatDateToString";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
+import { mapToPhotoItem } from "./SanityPhotoItem";
+
 export interface SanityArticleSummaryItem {
   author: {
     name: string;
@@ -78,11 +80,7 @@ export const mapDataToArticleSummaryItems = (
         likes: 0,
         views: 0,
       },
-      photo: {
-        path: buildImageUrl(post.mainImage.asset._ref),
-        description: post.mainImage.description,
-        alt: post.mainImage.alt,
-      },
+      photo: mapToPhotoItem(post.mainImage),
       title: post.title,
     };
   });

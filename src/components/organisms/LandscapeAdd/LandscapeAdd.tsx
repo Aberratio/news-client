@@ -14,10 +14,7 @@ const LandscapeAdd = ({ mainAdd }: LandscapeAddProps) => {
     <AddBackground data-testid="landscape-add-bar">
       <ImageWrapper>
         <SanityImage
-          _ref={mainAdd.image._ref}
-          alt={mainAdd.image.alt}
-          width={1200}
-          height={300}
+          image={mainAdd.image}
           sizes="(max-width: 768px) 100vw, 1200px"
         />
       </ImageWrapper>

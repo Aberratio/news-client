@@ -18,7 +18,6 @@ export const ArticleBoxImage = ({ path, photo }: ArticleBoxImageProps) => {
     <ImageLink href={path} data-testid="article-box-image">
       <StyledImage
         src={photo.path}
-        fill
         alt={photo.alt}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
@@ -35,11 +34,13 @@ const ImageLink = styled(Link)`
   height: 180px;
 `;
 
-const StyledImage = styled(Image)`
-  vertical-align: middle;
-  border-style: none;
+const StyledImage = styled.img`
   border-radius: 8px;
-
   object-fit: cover;
   object-position: 50% 50%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0px;
+  color: transparent;
 `;

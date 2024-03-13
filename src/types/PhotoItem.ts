@@ -7,4 +7,5 @@ export interface PhotoItem {
   id?: number;
   isMain?: boolean;
   path: string;
+  _ref: string;
 }

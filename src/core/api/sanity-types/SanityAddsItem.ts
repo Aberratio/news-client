@@ -1,5 +1,6 @@
-import { buildImageUrl } from "core/builders/buildImageUrl";
 import { AddsItem } from "types/AddsItem";
+
+import { mapToPhotoItem } from "./SanityPhotoItem";
 
 export interface SanityAddsItem {
   mainAdd: {
@@ -23,19 +24,11 @@ export interface SanityAddsItem {
 export const mapDataToAddsItem = (data: SanityAddsItem): AddsItem => {
   return {
     mainAdd: {
-      image: {
-        alt: data.mainAdd.image.alt,
-        path: buildImageUrl(data.mainAdd.image.asset._ref),
-        _ref: data.mainAdd.image.asset._ref,
-      },
+      image: mapToPhotoItem(data.mainAdd.image),
     },
     boxAdds: data.boxAdds?.map((add) => {
       return {
-        image: {
-          alt: add.image.alt,
-          path: buildImageUrl(add.image.asset._ref),
-          _ref: data.mainAdd.image.asset._ref,
-        },
+        image: mapToPhotoItem(add.image),
       };
     }),
   };

@@ -2,32 +2,25 @@
 
 import urlFor from "core/builders/sanityImageUrlFor";
 import Image from "next/image";
+import { PhotoItem } from "types/PhotoItem";
 
 interface SanityImageProps {
-  _ref: string;
-  alt: string;
-  width: number;
-  height: number;
   sizes: string;
+  image: PhotoItem;
 }
 
-const SanityImage = ({ alt, _ref, width, height, sizes }: SanityImageProps) => {
-  const imageUrl = urlFor(_ref)
-    .width(width)
-    .height(height)
-    .dpr(2)
-    .quality(80)
-    .url();
-  const blurUrl = urlFor(_ref).width(20).quality(20).url();
+const SanityImage = ({ image, sizes }: SanityImageProps) => {
+  const imageUrl = urlFor(image._ref).dpr(2).quality(80).url();
+  const blurUrl = urlFor(image._ref).width(20).quality(20).url();
 
   return (
     <Image
       src={imageUrl}
-      alt={alt}
+      alt={image.alt}
       fill
       sizes={sizes}
       placeholder="blur"
-      objectFit="cover"
+      style={{ objectFit: "cover" }}
       priority
       blurDataURL={blurUrl}
     />

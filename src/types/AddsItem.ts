@@ -1,9 +1,7 @@
+import { PhotoItem } from "./PhotoItem";
+
 export interface AddItem {
-  image: {
-    alt: string;
-    path: string;
-    _ref: string;
-  };
+  image: PhotoItem;
 }
 
 export type MainAddItem = AddItem;

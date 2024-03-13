@@ -1,24 +1,15 @@
 import { PortableText } from "@portabletext/react";
-import { buildImageUrl } from "core/builders/buildImageUrl";
+import { mapToPhotoItem } from "core/api/sanity-types/SanityPhotoItem";
 import Link from "next/link";
 import { styled } from "styled-components";
 
 import Typography from "components/atoms/Typography";
+import { ArticleImage } from "components/molecules/ArticleImage/ArticleImage";
 
 const SampleImageComponent = ({ value }: any) => {
-  return (
-    <>
-      <img
-        src={buildImageUrl(value.asset._ref)}
-        alt={value.alt || " "}
-        loading="lazy"
-        style={{
-          margin: "16px auto",
-        }}
-      />
-      {/* <Typography variant="small">{value.alt}</Typography> */}
-    </>
-  );
+  const image = mapToPhotoItem(value);
+
+  return <ArticleImage image={image} />;
 };
 
 const components = {
@@ -63,7 +54,7 @@ const components = {
     },
   },
   types: {
-    image: SampleImageComponent,
+    seoImage: SampleImageComponent,
   },
 };
 
