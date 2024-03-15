@@ -2,7 +2,6 @@
 
 import { Suspense } from "react";
 import { fetchLastComments } from "core/api/comments/fetchLastComments";
-import { fetchVisits } from "core/api/fetchVisits";
 import { BoxAddItem } from "types/AddsItem";
 
 import AddsBar from "./adds-bar/AddsBar";
@@ -10,13 +9,11 @@ import { FirstSite } from "./first-site/FirstSite";
 import { LastCommentsWidget } from "./last-comments/LastCommentsWidget";
 import { VisitCounterWidget } from "./visit-counter/VisitCounterWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
-
 interface SideBarProps {
   boxAdds?: BoxAddItem[];
 }
 
 export const SideBar = async ({ boxAdds }: SideBarProps) => {
-  const visits = await fetchVisits();
   const comments = await fetchLastComments();
 
   return (
@@ -28,7 +25,7 @@ export const SideBar = async ({ boxAdds }: SideBarProps) => {
         <LastCommentsWidget comments={comments} />
       </Suspense>
       <Suspense>
-        <VisitCounterWidget visits={visits} />
+        <VisitCounterWidget />
       </Suspense>
       <Suspense>{boxAdds && <AddsBar boxAdds={boxAdds} />}</Suspense>
     </SideBarWrapper>

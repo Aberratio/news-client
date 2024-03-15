@@ -30,7 +30,7 @@ export const ArticleImage = ({
       <Container data-testid={dataTestid}>
         <StyledImage
           image={image}
-          $hasDescription={showDescription}
+          $showDescription={showDescription}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {children}
@@ -62,11 +62,11 @@ const Container = styled.div`
   }
 `;
 
-const StyledImage = styled(SanityImage)<{ $hasDescription: boolean }>`
-  ${({ $hasDescription }) => `
+const StyledImage = styled(SanityImage)<{ $showDescription: boolean }>`
+  ${({ $showDescription }) => `
     vertical-align: middle;
     border-style: none;
-    border-radius: ${$hasDescription ? "8px 8px 0 0" : "8px"};
+    border-radius: ${$showDescription ? "8px 8px 0 0" : "8px"};
 
     object-fit: cover;
     object-position: 50% 50%;

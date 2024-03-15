@@ -6,13 +6,13 @@ interface SanityVisitsItem {
   visits: number;
 }
 
-export const fetchVisits = async (): Promise<number> => {
+export const fetchVisits = async (isNew: boolean): Promise<number> => {
   try {
     const response: SanityVisitsItem[] = await sanityClient.fetch(
       `*[_type == "visitCounter" && !(_id in path('drafts.**'))]`
     );
 
-    // isNew && sanityClient.patch("visitCounter").inc({ visits: 1 }).commit();
+    isNew && sanityClient.patch("visitCounter").inc({ visits: 1 }).commit();
 
     return response[0].visits + 1;
   } catch (error) {

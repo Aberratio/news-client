@@ -1,27 +1,23 @@
 "use client";
 
-import styled from "styled-components";
+import { fetchVisits } from "core/api/fetchVisits";
 
+import Box from "components/atoms/Box";
 import Typography from "components/atoms/Typography";
 import Widget from "components/molecules/Widget";
 
 interface VisitCounterProps {
-  visits: number;
+  isNew?: boolean;
 }
 
-export const VisitCounter = ({ visits }: VisitCounterProps) => {
+export const VisitCounter = async ({ isNew = false }: VisitCounterProps) => {
+  const visits = await fetchVisits(isNew);
+
   return (
     <Widget dataTestId="visit-counter" title="Licznik odwiedzin">
-      <Container>
-        <Typography>{`${visits} czytelników!`}</Typography>
-      </Container>
+      <Box margin="12px auto">
+        <Typography>{`${visits} odwiedzin`}</Typography>
+      </Box>
     </Widget>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 12px auto;
-`;

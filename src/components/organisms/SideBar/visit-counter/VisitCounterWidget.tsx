@@ -1,11 +1,17 @@
-"use server";
+"use client";
+
+import { memo } from "react";
 
 import { VisitCounter } from "./VisitCounter";
 
-interface VisitCounterWidgetProps {
-  visits: number;
-}
+export const VisitCounterWidget = memo(() => {
+  let isNew = true;
 
-export const VisitCounterWidget = ({ visits }: VisitCounterWidgetProps) => {
-  return <VisitCounter visits={visits} />;
-};
+  if (localStorage.getItem("firstVisit")) {
+    isNew = false;
+  } else {
+    localStorage.setItem("firstVisit", "false");
+  }
+
+  return <VisitCounter isNew={isNew ?? false} />;
+});

@@ -25,7 +25,7 @@ const spectral = Spectral({
   weight: ["400", "500"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const generalSeo = await sanityClient.fetch(
     `*[_type == "generalSeo" && !(_id in path("drafts.**"))][0]`
   );
@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [imagePath],
     },
   };
-}
+};
 
 const RootLayout = async ({
   children,
