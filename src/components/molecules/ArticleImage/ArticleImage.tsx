@@ -6,12 +6,14 @@ import SanityImage from "../../atoms/SanityImage/SanityImage";
 import Typography from "../../atoms/Typography";
 
 interface ArticleImageProps {
+  dataTestid?: string;
   hasDescription?: boolean;
   image: PhotoItem;
   children?: React.ReactNode;
 }
 
 export const ArticleImage = ({
+  dataTestid,
   hasDescription = false,
   image,
   children,
@@ -25,7 +27,7 @@ export const ArticleImage = ({
 
   return (
     <>
-      <Container>
+      <Container data-testid={dataTestid}>
         <StyledImage
           image={image}
           $hasDescription={showDescription}
@@ -36,6 +38,7 @@ export const ArticleImage = ({
       {showDescription && (
         <Description>
           <Typography
+            dataTestId="image-description"
             variant="small"
             color="white"
             textAlign={{ textAlign: "left" }}

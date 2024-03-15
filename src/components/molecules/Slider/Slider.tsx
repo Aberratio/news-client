@@ -44,13 +44,17 @@ const Slider = ({ images }: SliderProps) => {
   };
 
   return (
-    <ArticleImage image={image} hasDescription={hasDescription}>
+    <ArticleImage
+      image={image}
+      hasDescription={hasDescription}
+      dataTestid={`article-image-${index}`}
+    >
       {isSlideable && (
         <>
-          <SliderArrow onClick={prevItem}>
+          <SliderArrow onClick={prevItem} data-testid="arrow-prev">
             <Arrow color="white" />
           </SliderArrow>
-          <SliderArrow $isRight onClick={nextItem}>
+          <SliderArrow $isRight onClick={nextItem} data-testid="arrow-next">
             <Arrow color="white" direction="right" />
           </SliderArrow>
         </>

@@ -40,12 +40,14 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
           </Suspense>
         </InfoWrapper>
         <LeadWrapper>
-          <Typography variant="article">{article.lead}</Typography>
+          <Typography variant="article" dataTestId="lead">
+            {article.lead}
+          </Typography>
         </LeadWrapper>
         <Suspense fallback={<Skeleton />}>
           <Slider images={article.photos} />
         </Suspense>
-        <BodyWrapper>
+        <BodyWrapper data-testid="body">
           <Suspense fallback={<Skeleton />}>
             <Body value={article.body} />
           </Suspense>

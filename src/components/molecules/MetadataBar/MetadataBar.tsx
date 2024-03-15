@@ -12,7 +12,7 @@ interface MetadataBarProps {
 
 const MetadataBar = ({ name, date }: MetadataBarProps) => {
   return (
-    <Bar dataTestId={`metadata-bar`}>
+    <Bar dataTestId="metadata-bar">
       <Link href="#">
         <Typography color="black" variant="small" dataTestId="metadata-name">
           <strong>{name}</strong>

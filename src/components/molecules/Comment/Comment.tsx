@@ -26,9 +26,11 @@ const Comment = ({
   dislikes,
 }: CommentProps) => {
   return (
-    <div>
+    <div data-testid="comment">
       <MetadataBar name={author} date={date} />
-      <Typography space={{ marginY: "4px" }}>{text}</Typography>
+      <Typography space={{ marginY: "4px" }} dataTestId="comment-text">
+        {text}
+      </Typography>
       {!isReadOnly && (
         <StatisticCommentBar
           commentId={commentId}

@@ -16,7 +16,7 @@ export const AllComments = ({ comments }: AllCommentsProps) => {
   if (comments.length === 0) return null;
 
   return (
-    <AllCommentsWrapper key={comments.length}>
+    <AllCommentsWrapper key={comments.length} data-testid="comments-container">
       <Typography variant="h3" space={{ marginTop: 32 }}>
         Wszystkie komentarze
       </Typography>

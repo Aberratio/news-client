@@ -16,13 +16,9 @@ const ArticlesOverviewBox = ({
 }: ArticlesOverviewBoxProps) => {
   return (
     <OverviewGrid dataTestId={dataTestId}>
-      {items.map((item: ArticleSummaryItem, index: number) => {
+      {items.map((item: ArticleSummaryItem) => {
         return (
-          <ArticleBox
-            key={item.id}
-            dataTestId={`article-box-${index}`}
-            item={item}
-          />
+          <ArticleBox key={item.id} dataTestId="article-box" item={item} />
         );
       })}
     </OverviewGrid>
