@@ -1,17 +1,15 @@
 "use client";
 
-import { memo } from "react";
-
 import { VisitCounter } from "./VisitCounter";
 
-export const VisitCounterWidget = memo(() => {
-  let isNew = true;
+export const VisitCounterWidget = () => {
+  let isNewVisit = true;
 
-  if (localStorage.getItem("firstVisit")) {
-    isNew = false;
+  if (localStorage.getItem("isNewVisit")) {
+    isNewVisit = false;
   } else {
-    localStorage.setItem("firstVisit", "false");
+    localStorage.setItem("isNewVisit", "false");
   }
 
-  return <VisitCounter isNew={isNew ?? false} />;
-});
+  return <VisitCounter isNewVisit={isNewVisit} />;
+};
