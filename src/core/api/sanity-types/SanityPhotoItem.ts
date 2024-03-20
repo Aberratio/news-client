@@ -14,6 +14,6 @@ export const mapToPhotoItem = (photo: SanityPhotoItem): PhotoItem => {
     path: buildImageUrl(photo.asset._ref),
     _ref: photo.asset._ref,
     description: photo.description || "",
-    alt: photo.alt,
+    alt: photo.alt || photo.description || "photo",
   };
 };

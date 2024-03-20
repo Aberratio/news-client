@@ -1,6 +1,6 @@
+import { PhotoItem } from "./PhotoItem";
+
 export interface FirstSiteItem {
-  image: {
-    path: string;
-  };
+  image: PhotoItem;
   releaseDate: string;
 }

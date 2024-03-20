@@ -36,7 +36,7 @@ export const IconButton = styled(
     >
       {children}
     </ButtonBase>
-  ),
+  )
 )<IconButtonProps>(
   ({ disabledHover }) => css`
     display: flex;
@@ -45,17 +45,7 @@ export const IconButton = styled(
     justify-content: center;
 
     min-width: 1rem;
-    background-color: #5069a7;
-
-    &:hover {
-      background-color: ${() => {
-        if (disabledHover) {
-          return css`none`;
-        }
-
-        return css`#323f71;`;
-      }};
-    }
+    background-color: white;
 
     &:disabled {
       opacity: 0.32;
@@ -74,5 +64,5 @@ export const IconButton = styled(
     @media all and (max-width: 999px) {
       border: unset;
     }
-  `,
+  `
 );

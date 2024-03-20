@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import { Spectral } from "next/font/google";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
+import { ModalProvider } from "providers/modal-provider/ModalProvider";
 
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
@@ -73,15 +74,17 @@ const RootLayout = async ({
           <OrganizationContextProvider organization={organization}>
             <StyledComponentsRegistry>
               <GlobalThemeWrapper>
-                <Menu />
-                <Navigation />
-                {adds?.mainAdd && <LandscapeAdd mainAdd={adds?.mainAdd} />}
-                <MainColumn>
-                  {children}
-                  <SideBar boxAdds={adds?.boxAdds} />
-                </MainColumn>
-                <Footer />
-                <ScrollToTopButton />
+                <ModalProvider>
+                  <Menu />
+                  <Navigation />
+                  {adds?.mainAdd && <LandscapeAdd mainAdd={adds?.mainAdd} />}
+                  <MainColumn>
+                    {children}
+                    <SideBar boxAdds={adds?.boxAdds} />
+                  </MainColumn>
+                  <Footer />
+                  <ScrollToTopButton />
+                </ModalProvider>
               </GlobalThemeWrapper>
             </StyledComponentsRegistry>
           </OrganizationContextProvider>
