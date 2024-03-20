@@ -5,7 +5,6 @@ import { ButtonBase } from "./ButtonBase";
 
 export interface IconButtonProps {
   disabled?: boolean;
-  disabledHover?: boolean;
   id?: string;
   shape?: "rect" | "circle" | "square";
   tabIndex?: number;
@@ -38,7 +37,7 @@ export const IconButton = styled(
     </ButtonBase>
   )
 )<IconButtonProps>(
-  ({ disabledHover }) => css`
+  () => css`
     display: flex;
     align-content: center;
     align-items: center;

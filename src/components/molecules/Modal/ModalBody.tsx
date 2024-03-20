@@ -1,4 +1,4 @@
-import { ForwardedRef,forwardRef, ReactElement, ReactNode } from "react";
+import { forwardRef, ReactElement, ReactNode } from "react";
 import styled from "styled-components";
 
 import { IconButton } from "components/atoms/Button/IconButton";
@@ -18,10 +18,12 @@ interface ModalBodyProps {
   children: ReactNode;
 }
 
-const ModalBody = (
-  { size, title, onClose, children }: ModalBodyProps,
-  ref: ForwardedRef<HTMLElement>
-): ReactElement => {
+const ModalBody = ({
+  size,
+  title,
+  onClose,
+  children,
+}: ModalBodyProps): ReactElement => {
   const { getModalVariant } = useModalVariant();
 
   return (
@@ -49,7 +51,7 @@ const ModalBody = (
 export default forwardRef(ModalBody);
 
 const StyledBox = styled.div<{ $size: ModalSize }>`
-  ${({ $size, theme }) => `
+  ${({ $size }) => `
         position: relative;
         display: flex;
         flex-direction: column;

@@ -3,13 +3,18 @@ import { mapToPhotoItem } from "core/api/sanity-types/SanityPhotoItem";
 import Link from "next/link";
 import { styled } from "styled-components";
 
+import Box from "components/atoms/Box";
 import Typography from "components/atoms/Typography";
 import { ArticleImage } from "components/molecules/ArticleImage/ArticleImage";
 
 const SampleImageComponent = ({ value }: any) => {
   const image = mapToPhotoItem(value);
 
-  return <ArticleImage image={image} />;
+  return (
+    <Box margin="24px 0">
+      <ArticleImage image={image} />
+    </Box>
+  );
 };
 
 const components = {

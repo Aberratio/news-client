@@ -22,9 +22,7 @@ export const ModalHeader = ({ title }: ModalHeaderProps) => {
 };
 
 const ModalTitle = styled(Typography)`
-  ${({ theme }) => `
-        color: black;
-    `}
+  color: black;
 `;
 
 const Wrapper = styled.div`
