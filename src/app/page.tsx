@@ -8,7 +8,7 @@ import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePage
 const HomePage = async () => {
   const articles = await fetchArticlesLast({
     limit: 60,
-    page: 0,
+    page: 1,
     ignorePinnedPost: true,
   });
 

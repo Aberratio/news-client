@@ -15,7 +15,7 @@ interface ArticlesOverviewProps {
 export const ArticlesOverview = async ({
   limit = 30,
   categorySlug,
-  page = 0,
+  page = 1,
   tabSlug,
 }: ArticlesOverviewProps) => {
   const articles = await fetchArticlesLast({
