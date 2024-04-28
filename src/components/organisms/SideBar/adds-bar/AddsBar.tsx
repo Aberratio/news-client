@@ -16,8 +16,9 @@ const AddsBar = ({ boxAdds }: AddsBarProps) => {
       {boxAdds.map((add: BoxAddItem) => (
         <AddBox
           key={add.image._ref}
-          path={add.image.path}
           alt={add.image.alt}
+          link={add.link || "#"}
+          path={add.image.path}
         />
       ))}
     </div>

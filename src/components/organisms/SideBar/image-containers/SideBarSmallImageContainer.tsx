@@ -4,19 +4,21 @@ import { styled } from "styled-components";
 
 interface SideBarSmallImageContainerProps {
   dataTestId?: string;
+  isWrappedByLink?: boolean;
   onClick?: () => void;
   children: React.ReactNode;
 }
 
 export const SideBarSmallImageContainer = ({
   dataTestId,
+  isWrappedByLink,
   onClick,
   children,
 }: SideBarSmallImageContainerProps) => {
   return (
     <Wrapper
       data-testid={dataTestId}
-      $isClickable={!!onClick}
+      $isClickable={!!onClick || isWrappedByLink}
       onClick={onClick}
     >
       {children}

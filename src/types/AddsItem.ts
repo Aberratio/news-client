@@ -2,6 +2,7 @@ import { PhotoItem } from "./PhotoItem";
 
 export interface AddItem {
   image: PhotoItem;
+  link?: string;
 }
 
 export type MainAddItem = AddItem;
