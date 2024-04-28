@@ -3,6 +3,8 @@ export const formatDateTimeToString = (date: Date): string => {
 
   if (!dateValue) return "";
 
+  dateValue.setHours(dateValue.getHours() + 2);
+
   const day = String(dateValue.getDate()).padStart(2, "0");
   const month = String(dateValue.getMonth() + 1).padStart(2, "0");
   const year = String(dateValue.getFullYear());
