@@ -43,9 +43,8 @@ export const mapDataToAddsItem = (data: SanityAddsItem): AddsItem => {
       return {
         image: mapToPhotoItem(add.image),
         link:
-          (data.mainAdd.slug
-            ? buildArticlePath(data.mainAdd.slug.current)
-            : undefined) || data.mainAdd.link,
+          (add.slug ? buildArticlePath(add.slug.current) : undefined) ||
+          add.link,
       };
     }),
   };
