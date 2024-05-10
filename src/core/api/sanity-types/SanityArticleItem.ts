@@ -67,14 +67,23 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
       path: buildAuthorPath(post.author.slug.current),
     },
     body: post.body,
-    category: {
-      slug: post.category.slug.current,
-      name: post.category.name,
-      path: buildCategoryPath(post.category.slug.current),
-      tabSlug: post.category.tab.slug.current,
-      tabName: post.category.tab.name,
-      tabPath: buildTabPath(post.category.tab.slug.current),
-    },
+    category: post.category
+      ? {
+          slug: post.category.slug.current,
+          name: post.category.name,
+          path: buildCategoryPath(post.category.slug.current),
+          tabSlug: post.category.tab.slug.current,
+          tabName: post.category.tab.name,
+          tabPath: buildTabPath(post.category.tab.slug.current),
+        }
+      : {
+          slug: "adds",
+          name: "adds",
+          path: "adds",
+          tabSlug: "adds",
+          tabName: "adds",
+          tabPath: "adds",
+        },
     createdOn: formatDateToString(post.publishedAt),
     comments: post.comments,
     slug: post.slug.current,
