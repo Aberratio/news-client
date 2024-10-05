@@ -2,16 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
 
 export const DesktopLogoBar = () => {
+  const { generalConfig } = useOrganizationInfo();
+
   return (
     <Wrapper data-testid="desktop-logo-bar">
       <Container>
         <StyledLink href="/">
           <StyledImage
-            src="/icons/logo.png"
-            alt="logo"
+            src={generalConfig.mainLogo.path}
+            alt={generalConfig.mainLogo.alt}
             width={1500}
             height={150}
           />

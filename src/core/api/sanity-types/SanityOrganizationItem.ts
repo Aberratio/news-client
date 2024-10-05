@@ -11,6 +11,14 @@ export interface SanityOrganizationItem {
     image?: SanityPhotoItem;
     releaseDate?: Date;
   };
+  generalConfig: {
+    name: string;
+    mobileLogo: SanityPhotoItem;
+    footerLogo: SanityPhotoItem;
+    mainLogo: SanityPhotoItem;
+    image: SanityPhotoItem;
+    seoDescription: string;
+  };
   mainTopic?: {
     show: boolean;
     topic?: string;
@@ -36,6 +44,14 @@ export const mapDataToOrganizationItem = (
             ),
           }
         : undefined,
+    generalConfig: {
+      footerLogo: mapToPhotoItem(data.generalConfig.footerLogo),
+      mainLogo: mapToPhotoItem(data.generalConfig.mainLogo),
+      mobileLogo: mapToPhotoItem(data.generalConfig.mobileLogo),
+      name: data.generalConfig.name,
+      seoDescription: data.generalConfig.seoDescription,
+      seoImage: mapToPhotoItem(data.generalConfig.image),
+    },
     mainTopic: hasMainTopic
       ? {
           topic: data.mainTopic?.topic ?? "",

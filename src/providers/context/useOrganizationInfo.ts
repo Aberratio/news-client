@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 import { CategoryItem } from "types/CategoryItem";
 import { FirstSiteItem } from "types/FirstSiteItem";
+import { GeneralConfigItem } from "types/GeneralConfigItem";
 import { MainTopicItem } from "types/MainTopicItem";
 import { TabItem } from "types/TabItem";
 
@@ -11,8 +12,9 @@ import { OrganizationContext } from "./OrganizationContext";
 
 interface OrganizationInfoProps {
   categories: CategoryItem[];
-  mainTopic?: MainTopicItem;
   firstSite?: FirstSiteItem;
+  generalConfig: GeneralConfigItem;
+  mainTopic?: MainTopicItem;
   tabs: TabItem[];
 }
 
@@ -39,8 +41,9 @@ export const useOrganizationInfo = (): OrganizationInfoProps => {
 
   return {
     categories,
-    mainTopic: organization.mainTopic,
     firstSite: organization.firstSite,
+    generalConfig: organization.generalConfig,
+    mainTopic: organization.mainTopic,
     tabs: organization.tabs,
   };
 };

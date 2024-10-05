@@ -2,15 +2,23 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
 
 import Typography from "components/atoms/Typography";
 
 export const DescriptionColumn = () => {
+  const { generalConfig } = useOrganizationInfo();
+
   return (
     <Container>
       <LogoWrapper href="/">
-        <Logo src="/icons/logo_footer.png" alt="logo" width={300} height={30} />
+        <Logo
+          src={generalConfig.footerLogo.path}
+          alt={generalConfig.footerLogo.alt}
+          width={300}
+          height={30}
+        />
       </LogoWrapper>
       <Description>
         <Typography color="white" wordBreak="break-word">

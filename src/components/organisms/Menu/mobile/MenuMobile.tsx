@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import { styled } from "styled-components";
 
 import { HamburgerButton } from "./HamburgerButton";
@@ -12,14 +13,16 @@ interface MenuMobileProps {
 }
 
 export const MenuMobile = ({ isOpen, handleClick }: MenuMobileProps) => {
+  const { generalConfig } = useOrganizationInfo();
+
   return (
     <>
       <Wrapper data-testid="menu-mobile">
         <LogoMobile data-testid="logo-mobile">
           <Link href="/">
             <Logo
-              src="/icons/logo_mobile.png"
-              alt="logo"
+              src={generalConfig.mobileLogo.path}
+              alt={generalConfig.mobileLogo.alt}
               width={300}
               height={40}
             />
