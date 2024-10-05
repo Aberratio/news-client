@@ -7,11 +7,10 @@ import { ArticleItem } from "types/ArticleItem";
 
 import Typography from "components/atoms/Typography";
 import MetadataBar from "components/molecules/MetadataBar";
+import { PortableText } from "components/molecules/PortableText/PortableText";
 
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
-
-import { Body } from "./Body";
 
 interface FullArticleProps {
   article: ArticleItem;
@@ -49,7 +48,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
         </Suspense>
         <BodyWrapper data-testid="body">
           <Suspense fallback={<Skeleton />}>
-            <Body value={article.body} />
+            <PortableText value={article.body} variant="article" />
           </Suspense>
         </BodyWrapper>
       </Container>

@@ -1,6 +1,7 @@
 import { PhotoItem } from "./PhotoItem";
 
 export interface GeneralConfigItem {
+  footerDescription: any;
   footerLogo: PhotoItem;
   mainLogo: PhotoItem;
   mobileLogo: PhotoItem;

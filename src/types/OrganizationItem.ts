@@ -5,7 +5,7 @@ import { TabItem } from "./TabItem";
 
 export interface OrganizationItem {
   firstSite?: FirstSiteItem;
-  generalConfig: GeneralConfigItem;
+  generalConfig?: GeneralConfigItem;
   mainTopic?: MainTopicItem;
   tabs: TabItem[];
 }

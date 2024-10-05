@@ -12,11 +12,12 @@ export interface SanityOrganizationItem {
     releaseDate?: Date;
   };
   generalConfig: {
-    name: string;
-    mobileLogo: SanityPhotoItem;
+    footerDescription: any;
     footerLogo: SanityPhotoItem;
-    mainLogo: SanityPhotoItem;
     image: SanityPhotoItem;
+    mobileLogo: SanityPhotoItem;
+    mainLogo: SanityPhotoItem;
+    name: string;
     seoDescription: string;
   };
   mainTopic?: {
@@ -44,14 +45,17 @@ export const mapDataToOrganizationItem = (
             ),
           }
         : undefined,
-    generalConfig: {
-      footerLogo: mapToPhotoItem(data.generalConfig.footerLogo),
-      mainLogo: mapToPhotoItem(data.generalConfig.mainLogo),
-      mobileLogo: mapToPhotoItem(data.generalConfig.mobileLogo),
-      name: data.generalConfig.name,
-      seoDescription: data.generalConfig.seoDescription,
-      seoImage: mapToPhotoItem(data.generalConfig.image),
-    },
+    generalConfig: data.generalConfig
+      ? {
+          footerDescription: data.generalConfig?.footerDescription,
+          footerLogo: mapToPhotoItem(data.generalConfig.footerLogo),
+          mainLogo: mapToPhotoItem(data.generalConfig.mainLogo),
+          mobileLogo: mapToPhotoItem(data.generalConfig.mobileLogo),
+          name: data.generalConfig.name,
+          seoDescription: data.generalConfig.seoDescription,
+          seoImage: mapToPhotoItem(data.generalConfig.image),
+        }
+      : undefined,
     mainTopic: hasMainTopic
       ? {
           topic: data.mainTopic?.topic ?? "",
