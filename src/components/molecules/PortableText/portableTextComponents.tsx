@@ -3,6 +3,7 @@ import Link from "next/link";
 import { styled } from "styled-components";
 
 import Box from "components/atoms/Box";
+import { CodeBlock } from "components/atoms/CodeBlock/CodeBlock";
 import Typography from "components/atoms/Typography";
 import { ArticleImage } from "components/molecules/ArticleImage/ArticleImage";
 
@@ -60,6 +61,9 @@ export const portableTextComponents = {
     },
     types: {
       seoImage: SampleImageComponent,
+      code: ({ value }: any) => {
+        return <CodeBlock value={value} />;
+      },
     },
   },
   "info-white": {
