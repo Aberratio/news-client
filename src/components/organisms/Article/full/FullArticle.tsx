@@ -4,11 +4,6 @@ import { Suspense } from "react";
 import { fetchArticleComments } from "core/api/articles/fetchArticleComments";
 import { ArticleItem } from "types/ArticleItem";
 
-import Box from "components/atoms/Box";
-import Hr from "components/atoms/Hr";
-import Typography from "components/atoms/Typography";
-import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
-
 import CommentSection from "../../CommentsSection";
 
 import { FullArticleContent } from "./FullArticleContent";
