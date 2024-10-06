@@ -13,7 +13,7 @@ import { OrganizationContext } from "./OrganizationContext";
 interface OrganizationInfoProps {
   categories: CategoryItem[];
   firstSite?: FirstSiteItem;
-  generalConfig: GeneralConfigItem;
+  generalConfig?: GeneralConfigItem;
   mainTopic?: MainTopicItem;
   tabs: TabItem[];
 }

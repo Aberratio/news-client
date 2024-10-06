@@ -10,6 +10,8 @@ import { PortableText } from "components/molecules/PortableText/PortableText";
 export const DescriptionColumn = () => {
   const { generalConfig } = useOrganizationInfo();
 
+  if (!generalConfig) return null;
+
   return (
     <Container>
       <LogoWrapper href="/">

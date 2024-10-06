@@ -15,6 +15,8 @@ interface MenuMobileProps {
 export const MenuMobile = ({ isOpen, handleClick }: MenuMobileProps) => {
   const { generalConfig } = useOrganizationInfo();
 
+  if (!generalConfig) return null;
+
   return (
     <>
       <Wrapper data-testid="menu-mobile">

@@ -8,6 +8,8 @@ import styled from "styled-components";
 export const DesktopLogoBar = () => {
   const { generalConfig } = useOrganizationInfo();
 
+  if (!generalConfig) return null;
+
   return (
     <Wrapper data-testid="desktop-logo-bar">
       <Container>
