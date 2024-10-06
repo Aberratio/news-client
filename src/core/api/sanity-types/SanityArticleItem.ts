@@ -72,6 +72,20 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
       path: buildAuthorPath(post.author.slug.current),
     },
     body: post.body,
+    bodyText:
+      post.lead +
+      " " +
+      ((post.body?.map((block: any) => {
+            return (
+              block?.children?.map((child: any) => {
+                  if (child._type === "span") {
+                    return child.text;
+                  }
+                  return "";
+                }).join(" ")
+            );
+          }).join(" ")) ||
+        ""),
     category: post.category
       ? {
           slug: post.category.slug.current,

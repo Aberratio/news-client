@@ -12,6 +12,8 @@ import { PortableText } from "components/molecules/PortableText/PortableText";
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
 
+import { TextReader } from "./TextReader";
+
 interface FullArticleProps {
   article: ArticleItem;
   children: React.ReactNode;
@@ -22,6 +24,7 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
     <Wrapper data-testid={`full-article`}>
       <Container>
         <Title>{article.title}</Title>
+        <TextReader text={article.bodyText} />
         <InfoWrapper>
           <Suspense fallback={<Skeleton />}>
             <MetadataBar name={article.author.name} date={article.createdOn} />
