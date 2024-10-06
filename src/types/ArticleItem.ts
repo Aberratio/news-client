@@ -1,3 +1,4 @@
+import { ArticleSummaryItem } from "./ArticleSummaryItem";
 import { AuthorItem } from "./AuthorItem";
 import { CategoryItem } from "./CategoryItem";
 import { PhotoItem } from "./PhotoItem";
@@ -16,6 +17,7 @@ export interface ArticleItem {
   views: number;
   path: string;
   photos: PhotoItem[];
+  recommendations: ArticleSummaryItem[];
   title: string;
   comments: number;
 }

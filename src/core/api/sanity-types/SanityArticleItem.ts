@@ -7,6 +7,10 @@ import {
 import { formatDateToString } from "core/formaters/formatDateToString";
 import { ArticleItem } from "types/ArticleItem";
 
+import {
+  mapDataToArticleSummaryItems,
+  SanityArticleSummaryItem,
+} from "./SanityArticleSummaryItem";
 import { mapToPhotoItem } from "./SanityPhotoItem";
 
 export interface SanityArticleItem {
@@ -47,6 +51,7 @@ export interface SanityArticleItem {
     description?: string;
   }[];
   publishedAt: Date;
+  recommendations: SanityArticleSummaryItem[];
   slug: {
     current: string;
   };
@@ -96,6 +101,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
       mapToPhotoItem(post.mainImage),
       ...(post.images?.map((image) => mapToPhotoItem(image)) || []),
     ],
+    recommendations: mapDataToArticleSummaryItems(post.recommendations),
     title: post.title,
   };
 };

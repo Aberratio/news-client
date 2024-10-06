@@ -22,8 +22,6 @@ export const useOrganizationInfo = (): OrganizationInfoProps => {
   const [categories, setCategories] = useState<CategoryItem[]>([]);
   const { organization } = useContext(OrganizationContext);
 
-  console.log(organization);
-
   useEffect(() => {
     setCategories(
       organization.tabs.flatMap((tab) => {

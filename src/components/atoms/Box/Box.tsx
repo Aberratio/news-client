@@ -5,6 +5,8 @@ import { css, styled } from "styled-components";
 interface BoxProps {
   dataTestId?: string;
   display?: string;
+  flexDirection?: "column" | "row";
+  gap?: number;
   margin?: string;
   marginM?: string;
   padding?: string;
@@ -15,6 +17,8 @@ interface BoxProps {
 const Box = ({
   dataTestId,
   display,
+  flexDirection,
+  gap,
   margin,
   marginM,
   padding,
@@ -25,6 +29,8 @@ const Box = ({
     <StyledDiv
       data-testid={dataTestId}
       $display={display}
+      $flexDirection={flexDirection}
+      $gap={gap}
       $margin={margin}
       $marginM={marginM}
       $padding={padding}
@@ -39,6 +45,8 @@ export default Box;
 
 const StyledDiv = styled.div<{
   $display?: string;
+  $flexDirection?: "column" | "row";
+  $gap?: number;
   $margin?: string;
   $marginM?: string;
   $padding?: string;
@@ -48,6 +56,18 @@ const StyledDiv = styled.div<{
     $display &&
     css`
       display: ${$display};
+    `};
+
+  ${({ $flexDirection }) =>
+    $flexDirection &&
+    css`
+      flex-direction: ${$flexDirection};
+    `};
+
+  ${({ $gap }) =>
+    $gap &&
+    css`
+      gap: ${$gap}px;
     `};
 
   ${({ $margin }) =>

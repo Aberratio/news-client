@@ -42,7 +42,7 @@ export const CommentForm = ({ _id }: CommentFormProps) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Typography variant="h3">Skomentuj</Typography>
+      <Typography variant="h2">Skomentuj</Typography>
       <FormElement>
         <label htmlFor="name">
           <Typography variant="small">Pseudonim</Typography>
