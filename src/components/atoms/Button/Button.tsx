@@ -20,7 +20,7 @@ interface ButtonProps {
   children?: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   ariaLabel = "button",
   disabled = false,
   elements,
@@ -35,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
   onKeyDown,
   $hideBorder = false,
   children,
-}) => {
+}: ButtonProps) => {
   return (
     <StyledButton
       aria-label={ariaLabel}

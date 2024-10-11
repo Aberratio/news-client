@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Box from "components/atoms/Box";
-import Button from "components/atoms/Button";
+import { IconButton } from "components/atoms/Button/IconButton";
 
 interface TextReaderProps {
   text: string;
@@ -66,11 +66,13 @@ export const TextReader = ({ text }: TextReaderProps) => {
   };
 
   return (
-    <Box>
-      <Button onClick={handleSpeak}>Start</Button>
-      <Button onClick={handlePause}>Pauza</Button>
-      <Button onClick={handleResume}>Resume</Button>
-      <Button onClick={handleStop}>Stop</Button>
+    <Box flexDirection="row" gap={8}>
+      <IconButton shape="circle" onClick={handleSpeak}>
+        Start
+      </IconButton>
+      <IconButton onClick={handlePause}>Pauza</IconButton>
+      <IconButton onClick={handleResume}>Resume</IconButton>
+      <IconButton onClick={handleStop}>Stop</IconButton>
     </Box>
   );
 };

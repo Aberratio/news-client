@@ -3,35 +3,35 @@ import styled, { css } from "styled-components";
 
 import { ButtonBase } from "./ButtonBase";
 
-export interface IconButtonProps {
+interface IconButtonProps {
   disabled?: boolean;
   id?: string;
   shape?: "rect" | "circle" | "square";
   tabIndex?: number;
   title?: string;
   type?: "button" | "submit" | "reset";
-  onMouseDown?: (event: SyntheticEvent) => void;
   onClick?: (event: SyntheticEvent) => void;
+  onMouseDown?: (event: SyntheticEvent) => void;
   children?: ReactNode;
 }
 
 export const IconButton = styled(
   ({
-    disabled,
+    disabled = false,
+    id,
     tabIndex,
     type = "button",
     onClick,
     onMouseDown,
     children,
-    ...rest
   }: IconButtonProps) => (
     <ButtonBase
       disabled={disabled}
+      id={id}
       tabIndex={tabIndex}
       type={type}
       onClick={onClick}
       onMouseDown={onMouseDown}
-      {...rest}
     >
       {children}
     </ButtonBase>
@@ -51,7 +51,7 @@ export const IconButton = styled(
     }
 
     p {
-      color: "white";
+      color: white;
     }
 
     svg {

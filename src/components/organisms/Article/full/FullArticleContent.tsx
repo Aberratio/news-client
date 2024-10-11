@@ -5,6 +5,7 @@ import { Skeleton } from "@nextui-org/react";
 import styled from "styled-components";
 import { ArticleItem } from "types/ArticleItem";
 
+import Box from "components/atoms/Box";
 import Typography from "components/atoms/Typography";
 import MetadataBar from "components/molecules/MetadataBar";
 import { PortableText } from "components/molecules/PortableText/PortableText";
@@ -24,7 +25,6 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
     <Wrapper data-testid={`full-article`}>
       <Container>
         <Title>{article.title}</Title>
-        <TextReader text={article.bodyText} />
         <InfoWrapper>
           <Suspense fallback={<Skeleton />}>
             <MetadataBar name={article.author.name} date={article.createdOn} />
@@ -39,6 +39,9 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
                 views: article.views,
               }}
             />
+            <Box>
+              <TextReader text={article.bodyText} />
+            </Box>
           </Suspense>
         </InfoWrapper>
         <LeadWrapper>
