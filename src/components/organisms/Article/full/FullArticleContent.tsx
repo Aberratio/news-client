@@ -5,7 +5,6 @@ import { Skeleton } from "@nextui-org/react";
 import styled from "styled-components";
 import { ArticleItem } from "types/ArticleItem";
 
-import Box from "components/atoms/Box";
 import Typography from "components/atoms/Typography";
 import MetadataBar from "components/molecules/MetadataBar";
 import { PortableText } from "components/molecules/PortableText/PortableText";
