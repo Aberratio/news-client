@@ -7,6 +7,8 @@ interface ButtonProps {
   ariaLabel?: string;
   disabled?: boolean;
   elements?: ButtonElements;
+  iconName?: string;
+  iconPosition?: "start" | "end" | "icon-only";
   innerRef?: RefObject<HTMLButtonElement>;
   shape?: ButtonShape;
   size?: ButtonSize;
@@ -24,6 +26,8 @@ const Button = ({
   ariaLabel = "button",
   disabled = false,
   elements,
+  iconName,
+  iconPosition = "start",
   innerRef,
   shape,
   size,
@@ -51,8 +55,11 @@ const Button = ({
       onClick={onClick}
       onKeyDown={onKeyDown}
       $hideBorder={$hideBorder}
+      iconPosition={iconPosition}
     >
-      {children}
+      {iconName && iconPosition === "start" && <Icon className={iconName} />}
+      {children && <span>{children}</span>}
+      {iconName && iconPosition === "end" && <Icon className={iconName} />}
     </StyledButton>
   );
 };
@@ -69,6 +76,7 @@ const StyledButton = styled(ButtonBase).attrs(
     tabIndex,
     variant,
     width,
+    iconPosition,
   }: ButtonProps) => ({
     disabled,
     elements,
@@ -78,10 +86,13 @@ const StyledButton = styled(ButtonBase).attrs(
     tabIndex,
     variant: variant ?? "primary",
     width,
+    iconPosition,
   })
 )<ButtonProps>`
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: ${({ iconPosition }) => (iconPosition === "icon-only" ? "0" : "0.5rem")};
 
   ${({ theme, variant, disabled }) => styleVariants(theme, variant, disabled)}
   ${({ theme, size }) => sizeVariants(theme, size)};
@@ -89,6 +100,15 @@ const StyledButton = styled(ButtonBase).attrs(
   ${({ shape }) => shape && shapeVariants(shape)};
   ${({ elements }) => elements && elementsVariants(elements)};
   ${({ $hideBorder }) => $hideBorder && `border: none;`};
+
+  span {
+    display: ${({ iconPosition }) =>
+      iconPosition === "icon-only" ? "none" : "inline-block"};
+  }
+`;
+
+const Icon = styled.i`
+  font-size: 1.2em;
 `;
 
 export type ButtonVariants = "primary" | "secondary" | "tertiary" | "link";
@@ -102,7 +122,6 @@ export type ButtonSize =
 export type ButtonWidth = "small" | "large" | "fullWidth";
 export type ButtonShape = "rounded";
 export type ButtonElements = "manyInRow";
-
 const styleVariants = (theme: any, variant = "primary", disabled = false) =>
   ({
     primary: `
@@ -214,7 +233,7 @@ const styleVariants = (theme: any, variant = "primary", disabled = false) =>
     `,
   })[variant];
 
-const sizeVariants = (theme: any, variant = "extraSmall") =>
+const sizeVariants = (theme: any, size = "small") =>
   ({
     extraSmall: css`
       height: 2rem;
@@ -236,13 +255,11 @@ const sizeVariants = (theme: any, variant = "extraSmall") =>
       padding: 1rem 1.6rem;
     `,
     fullHeight: css`
-      min-width: 3.5rem;
       height: 100%;
-      padding: 0.5rem 1.5rem;
     `,
-  })[variant];
+  })[size];
 
-const widthVariants = (variant = "small") =>
+const widthVariants = (width = "small") =>
   ({
     small: css`
       min-width: 7rem;
@@ -253,20 +270,20 @@ const widthVariants = (variant = "small") =>
     fullWidth: css`
       width: 100%;
     `,
-  })[variant];
+  })[width];
 
-const shapeVariants = (variant = "rounded") =>
+const shapeVariants = (shape = "rounded") =>
   ({
     rounded: css`
       border-radius: 30px;
     `,
-  })[variant];
+  })[shape];
 
-const elementsVariants = (variant = "manyInRow") =>
+const elementsVariants = (elements = "manyInRow") =>
   ({
     manyInRow: css`
       display: flex;
       gap: 10px;
       justify-content: center;
     `,
-  })[variant];
+  })[elements];

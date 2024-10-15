@@ -13,8 +13,6 @@ import { PortableText } from "components/molecules/PortableText/PortableText";
 import Slider from "../../../molecules/Slider";
 import { StatisticArticleBar } from "../StatisticArticleBar";
 
-import { TextReader } from "./TextReader";
-
 interface FullArticleProps {
   article: ArticleItem;
   children: React.ReactNode;
@@ -39,9 +37,6 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
                 views: article.views,
               }}
             />
-            <Box>
-              <TextReader text={article.bodyText} />
-            </Box>
           </Suspense>
         </InfoWrapper>
         <LeadWrapper>

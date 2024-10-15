@@ -3,18 +3,18 @@
 import { useEffect, useState } from "react";
 
 import Box from "components/atoms/Box";
-import { IconButton } from "components/atoms/Button/IconButton";
+import Button from "components/atoms/Button";
 
 interface TextReaderProps {
   text: string;
 }
 
 export const TextReader = ({ text }: TextReaderProps) => {
-  console.log({ text });
   let utterance: SpeechSynthesisUtterance | null = null;
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoice, setSelectedVoice] =
     useState<SpeechSynthesisVoice | null>(null);
+  console.log({ voices });
 
   useEffect(() => {
     const loadVoices = () => {
@@ -66,13 +66,11 @@ export const TextReader = ({ text }: TextReaderProps) => {
   };
 
   return (
-    <Box flexDirection="row" gap={8}>
-      <IconButton shape="circle" onClick={handleSpeak}>
-        Start
-      </IconButton>
-      <IconButton onClick={handlePause}>Pauza</IconButton>
-      <IconButton onClick={handleResume}>Resume</IconButton>
-      <IconButton onClick={handleStop}>Stop</IconButton>
+    <Box display="flex" flexDirection="row" gap={8}>
+      <Button onClick={handleSpeak}>Start</Button>
+      <Button onClick={handlePause}>Pauza</Button>
+      <Button onClick={handleResume}>Resume</Button>
+      <Button onClick={handleStop}>Stop</Button>
     </Box>
   );
 };

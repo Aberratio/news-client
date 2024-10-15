@@ -1,7 +1,7 @@
 import { forwardRef, ReactElement, ReactNode } from "react";
 import styled from "styled-components";
 
-import { IconButton } from "components/atoms/Button/IconButton";
+import Button from "components/atoms/Button/Button";
 import { Close } from "components/molecules/Icons/Close";
 
 import { ModalHeader } from "./ModalHeader";
@@ -39,7 +39,9 @@ const ModalBody = ({
       <StyledIconButton
         data-testid="modal-exit-button"
         tabIndex={0}
-        onMouseDown={onClose}
+        size="small"
+        width="small"
+        onKeyDown={onClose}
       >
         <Close size={{ width: "1.25rem", height: "1.25rem" }} color="black" />
       </StyledIconButton>
@@ -88,7 +90,7 @@ const ModalBodyInnerContainer = styled.div`
   }
 `;
 
-const StyledIconButton = styled(IconButton)`
+const StyledIconButton = styled(Button)`
   position: absolute;
   top: 1rem;
   right: 1rem;
