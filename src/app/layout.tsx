@@ -21,6 +21,8 @@ import { SideBar } from "components/organisms/SideBar/SideBar";
 import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
 import StyledComponentsRegistry from "../lib/register";
 
+export const revalidate = 3600;
+
 const spectral = Spectral({
   subsets: ["latin"],
   weight: ["400", "500"],

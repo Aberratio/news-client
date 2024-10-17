@@ -5,6 +5,8 @@ import { fetchArticlesLast } from "core/api/articles/fetchArticlesLast";
 import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
 
+export const revalidate = 3600;
+
 const HomePage = async () => {
   const articles = await fetchArticlesLast({
     limit: 60,
