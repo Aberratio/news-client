@@ -10,6 +10,8 @@ import { SimplePageTemplate } from "components/templates/SimplePageTemplate/Simp
 
 import { fetchArticle } from "../../../core/api/articles/fetchArticle";
 
+export const revalidate = 60;
+
 interface Props {
   params: { slug: string };
 }

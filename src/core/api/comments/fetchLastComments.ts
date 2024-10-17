@@ -12,6 +12,7 @@ export const fetchLastComments = async (): Promise<CommentSummaryItem[]> => {
     undefined,
     {
       next: {
+        revalidate: 60,
         tags: ["comments", "comment-reactions"],
       },
     }

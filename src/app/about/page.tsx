@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { SectionContainer } from "components/organisms/SectionContainer/SectionContainer";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "O nas",
 };

@@ -7,6 +7,8 @@ import { Metadata, ResolvingMetadata } from "next";
 import { ArticlesOverview } from "components/organisms/Article/ArticlesOverview";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
 
+export const revalidate = 60;
+
 interface Props {
   params: { slug: string };
 }
