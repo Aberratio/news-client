@@ -22,6 +22,7 @@ import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
 import StyledComponentsRegistry from "../lib/register";
 
 export const revalidate = 60;
+export const fetchCache = "force-no-store";
 
 const spectral = Spectral({
   subsets: ["latin"],

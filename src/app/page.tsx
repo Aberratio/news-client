@@ -6,6 +6,7 @@ import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
 import { HomePageTemplate } from "components/templates/HomePageTemplate/HomePageTemplate";
 
 export const revalidate = 60;
+export const fetchCache = "force-no-store";
 
 const HomePage = async () => {
   const articles = await fetchArticlesLast({
