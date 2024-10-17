@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { ButtonBase } from "./ButtonBase";
 
 export interface IconButtonProps {
+  ariaLabel?: string;
   disabled?: boolean;
   id?: string;
   shape?: "rect" | "circle" | "square";
@@ -17,6 +18,7 @@ export interface IconButtonProps {
 
 export const IconButton = styled(
   ({
+    ariaLabel,
     disabled,
     tabIndex,
     type = "button",
@@ -26,6 +28,7 @@ export const IconButton = styled(
     ...rest
   }: IconButtonProps) => (
     <ButtonBase
+      aria-label={ariaLabel}
       disabled={disabled}
       tabIndex={tabIndex}
       type={type}
