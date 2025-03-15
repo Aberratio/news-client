@@ -3,7 +3,8 @@ export const dynamic = "force-dynamic";
 import { Suspense } from "react";
 import { sanityClient } from "core/api/sanityClient";
 import { buildImageUrl } from "core/builders/buildImageUrl";
-import type { Metadata, ResolvingMetadata } from "next";
+// import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 import { FullArticle } from "components/organisms/Article/full/FullArticle";
 import { SimplePageTemplate } from "components/templates/SimplePageTemplate/SimplePageTemplate";
@@ -15,8 +16,9 @@ export const revalidate = 60;
 type Props = Promise<{ slug: string }>;
 
 export async function generateMetadata(
-  { params }: { params: Props },
-  parent: ResolvingMetadata
+  { params }: { params: Props }
+  // ,
+  // parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { slug } = await params;
 
