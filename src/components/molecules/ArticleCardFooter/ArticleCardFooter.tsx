@@ -35,10 +35,12 @@ export const ArticleCardFooter = ({
     e.stopPropagation();
     console.log("share");
     //share on facebook
-    window.open(
-      `https://www.facebook.com/sharer/sharer.php?u=${item.path}`,
-      "_blank"
-    );
+
+    const linkToShare = `https://www.facebook.com/sharer/sharer.php?u=https://glosmilicza.pl/article/${item.id}`;
+
+    console.log(item.id);
+    console.log({ linkToShare });
+    window.open(linkToShare, "_blank");
   };
 
   return (

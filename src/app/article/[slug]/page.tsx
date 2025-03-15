@@ -12,7 +12,7 @@ import { fetchArticle } from "../../../core/api/articles/fetchArticle";
 
 export const revalidate = 60;
 
-type Props = Promise<{ slug: string }>
+type Props = Promise<{ slug: string }>;
 
 export async function generateMetadata(
   { params }: { params: Props },
@@ -26,27 +26,26 @@ export async function generateMetadata(
 
   const imagePath = buildImageUrl(articleMeta.mainImage.asset._ref);
   const previousImages = (await parent).openGraph?.images || [];
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/article/${slug}`;
 
   return {
+    metadataBase: new URL(url),
     title: articleMeta.title,
     description: articleMeta.lead,
     openGraph: {
       title: articleMeta.title,
-      url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/article/${slug}`,
+      url,
       locale: "pl_PL",
       type: "article",
       description: articleMeta.lead,
-      images: [imagePath, ...previousImages],
+      images: [{ url: imagePath, secureUrl: imagePath }, ...previousImages],
     },
   };
 }
 
+type ArticlePageProps = Promise<{ slug: string }>;
 
-type ArticlePageProps = Promise<{ slug: string }>
-
-const ArticlePage = async (props: {
-  params: ArticlePageProps
-}) => {
+const ArticlePage = async (props: { params: ArticlePageProps }) => {
   const { slug } = await props.params;
 
   if (!slug) {
