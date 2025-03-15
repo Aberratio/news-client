@@ -9,15 +9,13 @@ import { SimplePageTemplate } from "components/templates/SimplePageTemplate/Simp
 
 export const revalidate = 60;
 
-interface Props {
-  params: { slug: string };
-}
+type Props = Promise<{ slug: string }>
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: { params: Props },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
+  const { slug } = await params;
 
   const categoryMeta = await sanityClient.fetch(
     `*[_type == "tab" && slug.current == "${slug}" && !(_id in path('drafts.**'))][0]{ name, description, image}`
@@ -40,18 +38,20 @@ export async function generateMetadata(
   };
 }
 
-interface TabPageProps {
-  params: { slug: string };
-}
+type TabPageProps = Promise<{ slug: string }>
 
-const TabPage = ({ params }: TabPageProps) => {
+const TabPage = async (props: {
+  params: TabPageProps
+}) => {
+  const { slug } = await props.params;
+
   return (
     <SimplePageTemplate
       breadCrubmsInfo={{
-        tabSlug: params.slug,
+        tabSlug: slug,
       }}
     >
-      <ArticlesOverview tabSlug={params.slug} />
+      <ArticlesOverview tabSlug={slug} />
     </SimplePageTemplate>
   );
 };

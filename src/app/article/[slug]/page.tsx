@@ -12,15 +12,13 @@ import { fetchArticle } from "../../../core/api/articles/fetchArticle";
 
 export const revalidate = 60;
 
-interface Props {
-  params: { slug: string };
-}
+type Props = Promise<{ slug: string }>
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: { params: Props },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const slug = params.slug;
+  const { slug } = await params;
 
   const articleMeta = await sanityClient.fetch(
     `*[_type == "post" && slug.current == "${slug}" && !(_id in path('drafts.**'))][0]{ title, lead, mainImage}`
@@ -43,16 +41,19 @@ export async function generateMetadata(
   };
 }
 
-interface ArticlePageProps {
-  params: { slug: string };
-}
 
-const ArticlePage = async ({ params }: ArticlePageProps) => {
-  if (!params.slug) {
+type ArticlePageProps = Promise<{ slug: string }>
+
+const ArticlePage = async (props: {
+  params: ArticlePageProps
+}) => {
+  const { slug } = await props.params;
+
+  if (!slug) {
     return null;
   }
 
-  const article = await fetchArticle(params.slug)
+  const article = await fetchArticle(slug)
     .then((res) => res)
     .catch((error) => {
       console.error(error);
