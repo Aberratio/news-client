@@ -3,7 +3,6 @@ export const dynamic = "force-dynamic";
 import { Suspense } from "react";
 import { sanityClient } from "core/api/sanityClient";
 import { buildImageUrl } from "core/builders/buildImageUrl";
-// import type { Metadata, ResolvingMetadata } from "next";
 import type { Metadata } from "next";
 
 import { FullArticle } from "components/organisms/Article/full/FullArticle";
@@ -15,24 +14,19 @@ export const revalidate = 60;
 
 type Props = Promise<{ slug: string }>;
 
-export async function generateMetadata(
-  { params }: { params: Props }
-  // ,
-  // parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Props;
+}): Promise<Metadata> {
   const { slug } = await params;
 
   const articleMeta = await sanityClient.fetch(
     `*[_type == "post" && slug.current == "${slug}" && !(_id in path('drafts.**'))][0]{ title, lead, mainImage}`
   );
 
-  console.log({ articleMeta });
-  console.log(articleMeta.mainImage.asset._ref);
-
   const imagePath = buildImageUrl(articleMeta.mainImage.asset._ref);
-  console.log({ imagePath });
-  // const previousImages = (await parent).openGraph?.images || [];
-  const url = `https://www.kokot.it/article/${slug}`;
+  const url = `https://www.glosmilicza.pl/article/${slug}`;
 
   return {
     metadataBase: new URL(url),
