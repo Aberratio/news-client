@@ -24,8 +24,12 @@ export async function generateMetadata(
     `*[_type == "post" && slug.current == "${slug}" && !(_id in path('drafts.**'))][0]{ title, lead, mainImage}`
   );
 
+  console.log({ articleMeta });
+  console.log(articleMeta.mainImage.asset._ref);
+
   const imagePath = buildImageUrl(articleMeta.mainImage.asset._ref);
-  const previousImages = (await parent).openGraph?.images || [];
+  console.log({ imagePath });
+  // const previousImages = (await parent).openGraph?.images || [];
   const url = `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/article/${slug}`;
 
   return {
@@ -38,7 +42,7 @@ export async function generateMetadata(
       locale: "pl_PL",
       type: "article",
       description: articleMeta.lead,
-      images: [{ url: imagePath, secureUrl: imagePath }, ...previousImages],
+      images: [{ url: imagePath, secureUrl: imagePath }],
     },
   };
 }
