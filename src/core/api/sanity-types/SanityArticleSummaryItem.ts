@@ -50,6 +50,8 @@ export interface SanityArticleSummaryItem {
 export const mapDataToArticleSummaryItems = (
   data: SanityArticleSummaryItem[]
 ): ArticleSummaryItem[] => {
+  console.log(data);
+
   return data.map((post) => {
     return {
       author: {

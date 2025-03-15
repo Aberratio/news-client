@@ -1,3 +1,8 @@
+import {
+  ColorSchemeScript,
+  mantineHtmlProps,
+  MantineProvider,
+} from "@mantine/core";
 import { Hotjar } from "core/analytics/Hotjar";
 import { fetchTabs } from "core/api/navigation/fetchTabs";
 import { sanityClient } from "core/api/sanityClient";
@@ -20,6 +25,8 @@ import { SideBar } from "components/organisms/SideBar/SideBar";
 
 import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
 import StyledComponentsRegistry from "../lib/register";
+
+import "@mantine/core/styles.css";
 
 export const revalidate = 60;
 export const fetchCache = "force-no-store";
@@ -71,25 +78,30 @@ const RootLayout = async ({
   }
 
   return (
-    <html lang="pl">
+    <html lang="pl" {...mantineHtmlProps}>
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={spectral.className}>
         <ErrorBoundary>
           <OrganizationContextProvider organization={organization}>
-            <StyledComponentsRegistry>
-              <GlobalThemeWrapper>
-                <ModalProvider>
-                  <Menu />
-                  <Navigation />
-                  {adds?.mainAdd && <LandscapeAdd mainAdd={adds?.mainAdd} />}
-                  <MainColumn>
-                    {children}
-                    <SideBar boxAdds={adds?.boxAdds} />
-                  </MainColumn>
-                  <Footer />
-                  <ScrollToTopButton />
-                </ModalProvider>
-              </GlobalThemeWrapper>
-            </StyledComponentsRegistry>
+            <MantineProvider forceColorScheme="light">
+              <StyledComponentsRegistry>
+                <GlobalThemeWrapper>
+                  <ModalProvider>
+                    <Menu />
+                    <Navigation />
+                    {adds?.mainAdd && <LandscapeAdd mainAdd={adds?.mainAdd} />}
+                    <MainColumn>
+                      {children}
+                      <SideBar boxAdds={adds?.boxAdds} />
+                    </MainColumn>
+                    <Footer />
+                    <ScrollToTopButton />
+                  </ModalProvider>
+                </GlobalThemeWrapper>
+              </StyledComponentsRegistry>
+            </MantineProvider>
           </OrganizationContextProvider>
           <Hotjar />
         </ErrorBoundary>
