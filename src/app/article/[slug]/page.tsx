@@ -32,7 +32,7 @@ export async function generateMetadata(
   const imagePath = buildImageUrl(articleMeta.mainImage.asset._ref);
   console.log({ imagePath });
   // const previousImages = (await parent).openGraph?.images || [];
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/article/${slug}`;
+  const url = `https://www.kokot.it/article/${slug}`;
 
   return {
     metadataBase: new URL(url),
