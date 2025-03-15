@@ -1,6 +1,5 @@
 import {
   ActionIcon,
-  Avatar,
   Badge,
   Card,
   Group,
@@ -8,7 +7,7 @@ import {
   Text,
   useMantineTheme,
 } from "@mantine/core";
-import { IconBookmark, IconHeart, IconShare } from "@tabler/icons-react";
+import { IconShare } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
