@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { buildArticlePath } from "core/builders/buildPath";
 import Link from "next/link";

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { Suspense } from "react";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";

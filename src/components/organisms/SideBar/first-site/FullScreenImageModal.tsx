@@ -13,12 +13,7 @@ export const FullScreenImageModal = ({ image }: FullScreenImageProps) => {
   const { closeModal } = useModal("fullScreenImage");
 
   return (
-    <Modal
-      name="fullScreenImage"
-      onClose={closeModal}
-      size="vertical"
-      title="Najnowszy numer"
-    >
+    <Modal name="fullScreenImage" onClose={closeModal} title="Najnowszy numer">
       <ImageWrapper>
         <Image
           src={image.path}

@@ -10,17 +10,17 @@ interface FetchCommentReactionProps {
   dislike: number;
 }
 
-export const fetchCommentReaction = ({
+export const fetchCommentReaction = async ({
   commentId,
   like,
   dislike,
-}: FetchCommentReactionProps): void => {
+}: FetchCommentReactionProps) => {
   try {
     if (like * dislike === 1) {
       console.error("Error adding reaction on comment");
     }
 
-    sanityClient
+    await sanityClient
       .patch(commentId)
       .inc({ likes: like, dislikes: dislike })
       .commit();

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
 import { CommentItem } from "types/CommentItem";

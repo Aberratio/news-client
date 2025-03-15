@@ -11,14 +11,14 @@ interface FetchNewCommentProps {
   date: Date;
 }
 
-export const fetchNewComment = ({
+export const fetchNewComment = async ({
   _id,
   author,
   text,
   date,
 }: FetchNewCommentProps) => {
   try {
-    sanityClient.create({
+    await sanityClient.create({
       _type: "comment",
       post: {
         _type: "reference",

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 

@@ -31,7 +31,9 @@ export const useHttp = () => {
         }
 
         const contentType = response.headers.get("content-type");
-        return contentType && contentType.indexOf("application/json") !== -1
+
+        //eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+        return contentType && contentType.includes("application/json")
           ? response.json()
           : response.text();
       })

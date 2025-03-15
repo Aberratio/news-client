@@ -32,9 +32,9 @@ const nextConfig = {
     deviceSizes: [750, 1920],
   },
   reactStrictMode: false,
-  swcMinify: true,
+  // swcMinify: true,
   trailingSlash: true,
   output: "standalone",
 };
 
-module.exports = nextConfig;
+export default nextConfig;

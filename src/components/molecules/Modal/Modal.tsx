@@ -16,13 +16,7 @@ interface ModalProps {
   children: ReactNode;
 }
 
-export const Modal = ({
-  name,
-  size = "medium",
-  title,
-  onClose,
-  children,
-}: ModalProps) => {
+export const Modal = ({ name, title, onClose, children }: ModalProps) => {
   const { modalNode, type } = useModalContext();
   const modalBodyRef = useRef(null);
 
@@ -44,12 +38,7 @@ export const Modal = ({
     return createPortal(
       <BaseModalBackground data-testid="modal" onClick={onClose}>
         <ModalWrapper data-testid="modal-wrapper">
-          <ModalBody
-            onClose={onClose}
-            ref={modalBodyRef}
-            size={size}
-            title={title}
-          >
+          <ModalBody onClose={onClose} ref={modalBodyRef} title={title}>
             {children}
           </ModalBody>
         </ModalWrapper>

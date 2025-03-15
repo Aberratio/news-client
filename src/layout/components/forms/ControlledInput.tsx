@@ -1,11 +1,11 @@
 import { ChangeEvent, RefObject } from "react";
 import { Control, Controller } from "react-hook-form";
 
-import { BasicInput,BasicInputProps } from "./common/BasicInput";
+import { BasicInput, BasicInputProps } from "./common/BasicInput";
 
-interface InputProps extends Omit<BasicInputProps, "value" | "ref"> {
-  control: Control<any>;
-  innerRef?: RefObject<HTMLInputElement>;
+interface InputProps extends Omit {
+  control: Control;
+  innerRef?: RefObject;
 }
 
 export const Input = ({
@@ -39,9 +39,12 @@ export const Input = ({
           required={required}
           value={value}
           onBlur={onBlur}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          onChange={(e: ChangeEvent) => {
             onFieldChange(e);
-            onChange && onChange(e);
+
+            if (onChange) {
+              onChange(e);
+            }
           }}
         />
       )}

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import OverviewGrid from "components/atoms/OverviewGrid";
 import { ArticleBox } from "components/molecules/ArticleBox/ArticleBox";

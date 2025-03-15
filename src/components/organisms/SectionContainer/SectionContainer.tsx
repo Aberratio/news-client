@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { Section } from "components/molecules/Section/Section";
 

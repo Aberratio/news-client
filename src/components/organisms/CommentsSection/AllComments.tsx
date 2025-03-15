@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { CommentItem } from "types/CommentItem";
 

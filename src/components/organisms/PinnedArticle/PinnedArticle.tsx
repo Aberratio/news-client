@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { cutText } from "core/tools/cutText";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
