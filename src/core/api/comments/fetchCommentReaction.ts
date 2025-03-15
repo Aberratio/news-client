@@ -1,7 +1,5 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
-
 import { sanityClient } from "../sanityClient";
 
 interface FetchCommentReactionProps {
@@ -24,10 +22,6 @@ export const fetchCommentReaction = async ({
       .patch(commentId)
       .inc({ likes: like, dislikes: dislike })
       .commit();
-
-    setTimeout(() => {
-      revalidateTag("comment-reactions");
-    }, 1000);
   } catch (error) {
     console.error("Error adding reaction on comment:", error);
   }

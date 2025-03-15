@@ -37,4 +37,5 @@ const nextConfig = {
   output: "standalone",
 };
 
-export default nextConfig;
+// eslint-disable-next-line no-undef
+module.exports = nextConfig;

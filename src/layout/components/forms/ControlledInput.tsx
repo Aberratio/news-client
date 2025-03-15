@@ -3,9 +3,10 @@ import { Control, Controller } from "react-hook-form";
 
 import { BasicInput, BasicInputProps } from "./common/BasicInput";
 
-interface InputProps extends Omit {
+interface InputProps extends Omit<BasicInputProps, "onChange"> {
   control: Control;
-  innerRef?: RefObject;
+  innerRef?: RefObject<HTMLInputElement>;
+  onChange?: (event: ChangeEvent) => void;
 }
 
 export const Input = ({

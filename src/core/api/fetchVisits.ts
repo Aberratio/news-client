@@ -12,8 +12,9 @@ export const fetchVisits = async (isNewVisit: boolean): Promise<number> => {
       `*[_type == "visitCounter" && !(_id in path('drafts.**'))][0]`
     );
 
-    isNewVisit &&
+    if (isNewVisit) {
       sanityClient.patch("visitCounter").inc({ visits: 1 }).commit();
+    }
 
     return response.visits;
   } catch (error) {

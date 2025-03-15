@@ -33,7 +33,7 @@ export interface SanityOrganizationItem {
 export const mapDataToOrganizationItem = (
   data: SanityOrganizationItem
 ): OrganizationItem => {
-  const hasMainTopic = data.mainTopic && data.mainTopic.show ? true : false;
+  const hasMainTopic = data.mainTopic?.show ? true : false;
 
   return {
     firstSite:
