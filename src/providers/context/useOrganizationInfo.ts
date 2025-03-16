@@ -33,6 +33,7 @@ export const useOrganizationInfo = (): OrganizationInfoProps => {
             tabSlug: category.tabSlug,
             tabName: category.tabName,
             tabPath: buildTabPath(category.tabSlug),
+            color: category.color ?? "#2e6896",
           };
         });
       })

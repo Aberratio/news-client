@@ -27,7 +27,7 @@ export const fetchArticlesLast = async ({
     } ${tabSlug ? `&& category->tab->slug.current == "${tabSlug}"` : ""} ${
       ignorePinnedPost ? `&& !(_id in *[_type=="pinnedPost"].post._ref)` : ""
     }
-  ]{ _id, title, isAdd, likes, dislikes, "comments": count(*[_type == "comment" && references(^._id)]), views, category->{ title, name, slug, tab->{title, slug }}, author->{name, slug},  lead, publishedAt, body, mainImage, slug} | order(publishedAt desc) [${start}..${end}]`,
+  ]{ _id, title, isAdd, likes, dislikes, "comments": count(*[_type == "comment" && references(^._id)]), views, category->{ title, name, slug, tab->{title, slug }, color}, author->{name, slug}, lead, publishedAt, body, mainImage, slug} | order(publishedAt desc) [${start}..${end}]`,
     undefined,
     { next: { tags: ["article-comments", "article-reactions"] } }
   );

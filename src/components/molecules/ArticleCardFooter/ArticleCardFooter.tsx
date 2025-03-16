@@ -11,6 +11,8 @@ import { IconShare } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
+import StatisticBar from "../StatisticBar/StatisticBar";
+
 import classes from "./ArticleCardFooter.module.css";
 
 interface ArticleCardFooterProps {
@@ -33,13 +35,9 @@ export const ArticleCardFooter = ({
   const handleShare = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("share");
-    //share on facebook
 
-    const linkToShare = `https://www.facebook.com/sharer/sharer.php?u=https://glosmilicza.pl/article/${item.id}`;
+    const linkToShare = `https://www.facebook.com/sharer/sharer.php?u=https://www.kokot.it/article/${item.id}`;
 
-    console.log(item.id);
-    console.log({ linkToShare });
     window.open(linkToShare, "_blank");
   };
 
@@ -56,7 +54,7 @@ export const ArticleCardFooter = ({
         <Image src={item.photo.path} alt={item.photo.alt} height={180} />
       </Card.Section>
 
-      <Badge w="fit-content" variant="light">
+      <Badge w="fit-content" variant="light" color={item.category.color}>
         {item.category.name}
       </Badge>
 
@@ -79,9 +77,15 @@ export const ArticleCardFooter = ({
 
       <Card.Section className={classes.footer}>
         <Group justify="space-between">
-          <Text fz="xs" c="dimmed">
+          {/* <Text fz="xs" c="dimmed">
             {item.views} wyświetleń
-          </Text>
+          </Text> */}
+          <StatisticBar
+            comments={item.comments}
+            likes={item.likes}
+            dislikes={item.dislikes}
+            views={item.views}
+          />
           <Group gap={0}>
             {/* <ActionIcon variant="subtle" color="gray">
               <IconHeart size={20} color={theme.colors.red[6]} stroke={1.5} />
@@ -93,6 +97,7 @@ export const ArticleCardFooter = ({
                 stroke={1.5}
               />
             </ActionIcon> */}
+
             <ActionIcon variant="subtle" color="gray" onClick={handleShare}>
               <IconShare size={20} color={theme.colors.blue[6]} stroke={1.5} />
             </ActionIcon>

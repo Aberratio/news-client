@@ -26,6 +26,9 @@ export interface SanityArticleSummaryItem {
       slug: {
         current: string;
       };
+      color?: {
+        hex: string;
+      };
     };
   };
   lead: string;
@@ -50,8 +53,6 @@ export interface SanityArticleSummaryItem {
 export const mapDataToArticleSummaryItems = (
   data: SanityArticleSummaryItem[]
 ): ArticleSummaryItem[] => {
-  console.log(data);
-
   return data.map((post) => {
     return {
       author: {
@@ -66,6 +67,7 @@ export const mapDataToArticleSummaryItems = (
         tabSlug: post.category.tab.slug.current,
         tabName: post.category.tab.name,
         tabPath: buildTabPath(post.category.tab.slug.current),
+        color: post.category.tab.color?.hex ?? "#2e6896",
       },
       createdOn: formatDateToString(post.publishedAt),
       id: post.slug.current,

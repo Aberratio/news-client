@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@mantine/core": "^7.17.2",
+    "@mantine/hooks": "^7.17.2",
     "@nextui-org/react": "^2.6.11",
     "@portabletext/react": "^3.2.1",
     "@tabler/icons-react": "^3.31.0",

@@ -18,7 +18,7 @@ export const DesktopLogoBar = () => {
             src={generalConfig.mainLogo.path}
             alt={generalConfig.mainLogo.alt}
             width={1500}
-            height={150}
+            height={120}
           />
         </StyledLink>
       </Container>
@@ -27,30 +27,24 @@ export const DesktopLogoBar = () => {
 };
 
 const Wrapper = styled.div`
-  ${({ theme }) => `
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    width: 100%;
-    max-width: 1080px;
-    height: 100px;
+  width: 100%;
+  max-width: 1080px;
+  height: 100px;
 
-    margin: auto;
-    padding: ${theme.spaces.lg} 0 ${theme.spaces.sm} 0;
-  `}
+  margin: auto;
 `;
 
 const Container = styled.div`
-  ${({ theme }) => `
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 100%;
-    height: 100%;
-    padding-bottom: ${theme.spaces.md};
-  `}
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledLink = styled(Link)`

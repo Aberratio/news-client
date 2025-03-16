@@ -4,7 +4,6 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { Hotjar } from "core/analytics/Hotjar";
-import { fetchTabs } from "core/api/navigation/fetchTabs";
 import { sanityClient } from "core/api/sanityClient";
 import { fetchAdds } from "core/api/settings/fetchAdds";
 import { fetchOrganization } from "core/api/settings/fetchOrganization";
@@ -16,11 +15,10 @@ import { OrganizationContextProvider } from "providers/context/OrganizationConte
 import { ModalProvider } from "providers/modal-provider/ModalProvider";
 
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
+import { MobileNavbar } from "components/molecules/MobileNavbar/MobileNavbar";
 import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
 import Footer from "components/organisms/Footer";
 import LandscapeAdd from "components/organisms/LandscapeAdd/LandscapeAdd";
-import Menu from "components/organisms/Menu";
-import Navigation from "components/organisms/Navigation";
 import { SideBar } from "components/organisms/SideBar/SideBar";
 
 import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
@@ -69,11 +67,12 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const tabs = await fetchTabs();
   const organization = await fetchOrganization();
   const adds = await fetchAdds();
 
-  if (!tabs) {
+  console.log(organization);
+
+  if (!organization.tabs) {
     return null;
   }
 
@@ -89,15 +88,17 @@ const RootLayout = async ({
               <StyledComponentsRegistry>
                 <GlobalThemeWrapper>
                   <ModalProvider>
-                    <Menu />
-                    <Navigation />
-                    {adds?.mainAdd && <LandscapeAdd mainAdd={adds?.mainAdd} />}
-                    <MainColumn>
-                      {children}
-                      <SideBar boxAdds={adds?.boxAdds} />
-                    </MainColumn>
-                    <Footer />
-                    <ScrollToTopButton />
+                    <MobileNavbar>
+                      {adds?.mainAdd && (
+                        <LandscapeAdd mainAdd={adds?.mainAdd} />
+                      )}
+                      <MainColumn>
+                        {children}
+                        <SideBar boxAdds={adds?.boxAdds} />
+                      </MainColumn>
+                      <Footer />
+                      <ScrollToTopButton />
+                    </MobileNavbar>
                   </ModalProvider>
                 </GlobalThemeWrapper>
               </StyledComponentsRegistry>

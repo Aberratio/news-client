@@ -1,3 +1,5 @@
+import { PhotoItem } from "./PhotoItem";
+
 export interface CategoryItem {
   slug: string;
   name: string;
@@ -5,4 +7,7 @@ export interface CategoryItem {
   tabSlug: string;
   tabName: string;
   tabPath: string;
+  color: string;
+  description?: string;
+  image?: PhotoItem;
 }

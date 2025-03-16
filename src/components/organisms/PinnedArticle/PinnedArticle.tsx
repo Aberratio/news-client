@@ -1,9 +1,8 @@
 "use client";
 
-import { cutText } from "core/tools/cutText";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
-import LargeArticleBox from "components/molecules/LargeArticleBox";
+import { ImageCard } from "components/molecules/ImageCard/ImageCard";
 
 interface PinnedArticleProps {
   article: ArticleSummaryItem;
@@ -15,16 +14,16 @@ const PinnedArticle = ({ article }: PinnedArticleProps) => {
   }
 
   return (
-    <LargeArticleBox
-      buttonText="Wyświetl artykuł"
-      dataTestId="pinned-article-box"
-      description={cutText(article.lead, 300)}
-      link={`article/${article.id}`}
+    <ImageCard
+      link={`/article/${article.id}`}
       title={article.title}
       photo={{
         path: article.photo.path,
         alt: "article.photo.description",
       }}
+      author={article.author}
+      views={article.views}
+      comments={article.comments}
     />
   );
 };
