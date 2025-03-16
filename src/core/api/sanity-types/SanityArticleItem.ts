@@ -33,6 +33,9 @@ export interface SanityArticleItem {
       slug: {
         current: string;
       };
+      color?: {
+        hex: string;
+      };
     };
   };
   lead: string;
@@ -80,6 +83,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
           tabSlug: post.category.tab.slug.current,
           tabName: post.category.tab.name,
           tabPath: buildTabPath(post.category.tab.slug.current),
+          color: post.category.tab.color?.hex ?? "#2e6896",
         }
       : {
           slug: "adds",
@@ -88,6 +92,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
           tabSlug: "adds",
           tabName: "adds",
           tabPath: "adds",
+          color: "#2e6896",
         },
     createdOn: formatDateToString(post.publishedAt),
     comments: post.comments,
