@@ -16,7 +16,7 @@ import { ModalProvider } from "providers/modal-provider/ModalProvider";
 
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 import { MobileNavbar } from "components/molecules/MobileNavbar/MobileNavbar";
-import ScrollToTopButton from "components/molecules/ScrollToTopButton/ScrollToTopButton";
+import { ScrollToTopButton } from "components/molecules/ScrollToTopButton/ScrollToTopButton";
 import Footer from "components/organisms/Footer";
 import LandscapeAdd from "components/organisms/LandscapeAdd/LandscapeAdd";
 import { SideBar } from "components/organisms/SideBar/SideBar";

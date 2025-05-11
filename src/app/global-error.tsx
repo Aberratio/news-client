@@ -1,7 +1,8 @@
 "use client";
 
+import { Button } from "@mantine/core";
+
 import Box from "components/atoms/Box";
-import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
 
 export default function GlobalError({

@@ -1,10 +1,10 @@
 "use client";
 export const dynamic = "force-dynamic";
 
+import { Button } from "@mantine/core";
 import Link from "next/link";
 
 import Box from "components/atoms/Box";
-import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
 
 export default function NotFound() {
