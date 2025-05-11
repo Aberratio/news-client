@@ -35,7 +35,7 @@ export const ArticleCardFooter = ({
     e.preventDefault();
     e.stopPropagation();
 
-    const linkToShare = `https://www.facebook.com/sharer/sharer.php?u=https://www.kokot.it/article/${item.id}`;
+    const linkToShare = `https://www.facebook.com/sharer/sharer.php?u=https://www.glosmilicza.pl/article/${item.id}`;
 
     window.open(linkToShare, "_blank");
   };
