@@ -33,7 +33,7 @@ export const MobileNavbar = ({ children }: MobileNavbarProps) => {
         breakpoint: "sm",
         collapsed: { desktop: true, mobile: !opened },
       }}
-      padding="md"
+      padding="0"
     >
       <AppShell.Header mih={60}>
         <Group h="100%">

@@ -1,3 +1,4 @@
+import { Title } from "@mantine/core";
 import { mapToPhotoItem } from "core/api/sanity-types/SanityPhotoItem";
 import Link from "next/link";
 import { styled } from "styled-components";
@@ -6,6 +7,8 @@ import Box from "components/atoms/Box";
 import { CodeBlock } from "components/atoms/CodeBlock/CodeBlock";
 import Typography from "components/atoms/Typography";
 import { ArticleImage } from "components/molecules/ArticleImage/ArticleImage";
+
+import classes from "./portableTextComponents.module.css";
 
 const SampleImageComponent = ({ value }: any) => {
   const image = mapToPhotoItem(value);
@@ -29,6 +32,11 @@ export const portableTextComponents = {
         <Typography variant="article" isBlockquote>
           {children}
         </Typography>
+      ),
+      h3: ({ children }: any) => (
+        <Title className={classes.title} order={3} mb={0} mt={4}>
+          {children}
+        </Title>
       ),
     },
     list: {
