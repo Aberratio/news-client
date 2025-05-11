@@ -15,7 +15,13 @@ export const HomePageTemplate = async ({ children }: HomePageTemplateProps) => {
   const pinnedArticle = await fetchPinnedArticle();
 
   return (
-    <Flex direction="column" gap="md" p="md" mt="md">
+    <Flex
+      direction="column"
+      gap="md"
+      p="md"
+      mt="md"
+      style={{ overflow: "visible" }}
+    >
       {pinnedArticle && <PinnedArticle article={pinnedArticle} />}
       <MainContainerTemplate>{children}</MainContainerTemplate>
     </Flex>

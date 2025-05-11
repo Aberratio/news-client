@@ -1,6 +1,5 @@
 import {
   ActionIcon,
-  Badge,
   Card,
   Group,
   Image,
@@ -44,42 +43,28 @@ export const ArticleCardFooter = ({
   return (
     <Card
       withBorder
-      padding="lg"
       radius="md"
       className={classes.card}
       data-testid={dataTestId}
       onClick={handleClick}
     >
-      <Card.Section mb="sm">
+      <Card.Section>
         <Image src={item.photo.path} alt={item.photo.alt} height={180} />
+        <Text className={classes.title} m="sm">
+          {item.title}
+        </Text>
       </Card.Section>
 
-      <Badge w="fit-content" variant="light" color={item.category.color}>
-        {item.category.name}
-      </Badge>
-
-      <Text fw={700} className={classes.title} mt="xs">
-        {item.title}
-      </Text>
-
-      <Group mt="lg">
-        {/* <Avatar
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-7.png"
-          radius="sm"
-        /> */}
-        <div>
-          <Text fw={500}>{item.author.name}</Text>
-          <Text fz="xs" c="dimmed">
+      <Card.Section className={classes.footer}>
+        <Group mb="xs">
+          <Text className={classes.text} fz="sm" fw={700}>
+            <strong>{item.author.name}</strong>
+          </Text>
+          <Text className={classes.text} fz="sm" c="dimmed">
             {item.createdOn}
           </Text>
-        </div>
-      </Group>
-
-      <Card.Section className={classes.footer}>
-        <Group justify="space-between">
-          {/* <Text fz="xs" c="dimmed">
-            {item.views} wyświetleń
-          </Text> */}
+        </Group>
+        <Group justify="space-between" gap={0}>
           <StatisticBar
             comments={item.comments}
             likes={item.likes}
@@ -87,17 +72,6 @@ export const ArticleCardFooter = ({
             views={item.views}
           />
           <Group gap={0}>
-            {/* <ActionIcon variant="subtle" color="gray">
-              <IconHeart size={20} color={theme.colors.red[6]} stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon variant="subtle" color="gray">
-              <IconBookmark
-                size={20}
-                color={theme.colors.yellow[6]}
-                stroke={1.5}
-              />
-            </ActionIcon> */}
-
             <ActionIcon variant="subtle" color="gray" onClick={handleShare}>
               <IconShare size={20} color={theme.colors.blue[6]} stroke={1.5} />
             </ActionIcon>

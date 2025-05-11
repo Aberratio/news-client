@@ -29,7 +29,7 @@ const StatisticBar = ({
   onDislikeClick,
 }: StatisticBarProps) => {
   return (
-    <Bar dataTestId="statistic-bar">
+    <Bar dataTestId="statistic-bar" gap={0}>
       <Box>
         <CounterItem count={views} type="views" />
       </Box>

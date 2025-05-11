@@ -50,7 +50,7 @@ export const ImageCard = ({
 
         <div className={classes.content}>
           <div>
-            <Title order={2} className={classes.title} fw={500}>
+            <Title order={2} className={classes.title} fw={500} size={32}>
               {title}
             </Title>
 
