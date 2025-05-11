@@ -1,11 +1,11 @@
 "use client";
 
 import { SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "@mantine/core";
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
 import { useRouter } from "next/navigation";
 import { styled } from "styled-components";
 
-import Button from "components/atoms/Button";
 import Typography from "components/atoms/Typography";
 
 export interface FormFields {
@@ -91,12 +91,7 @@ export const CommentForm = ({ _id }: CommentFormProps) => {
           </Typography>
         )}
       </FormElement>
-      <Button
-        variant="secondary"
-        size="large"
-        disabled={isSubmitting}
-        type="submit"
-      >
+      <Button disabled={isSubmitting} type="submit" color="#2e6896">
         <Typography>{isSubmitting ? "Wysyłanie..." : "Skomentuj"}</Typography>
       </Button>
     </Form>
