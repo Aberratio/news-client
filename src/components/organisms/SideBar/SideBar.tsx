@@ -21,13 +21,13 @@ export const SideBar = async ({ boxAdds }: SideBarProps) => {
       <Suspense>
         <FirstSite />
       </Suspense>
+      <Suspense>{boxAdds && <AddsBar boxAdds={boxAdds} />}</Suspense>
       <Suspense>
         <LastCommentsWidget comments={comments} />
       </Suspense>
       <Suspense>
         <VisitCounterWidget />
       </Suspense>
-      <Suspense>{boxAdds && <AddsBar boxAdds={boxAdds} />}</Suspense>
     </SideBarWrapper>
   );
 };
