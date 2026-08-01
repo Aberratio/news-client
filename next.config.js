@@ -1,3 +1,5 @@
+const sanityProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "f0jcovsk";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
@@ -24,7 +26,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "cdn.sanity.io",
+        pathname: `/images/${sanityProjectId}/production/**`,
       },
     ],
     minimumCacheTTL: 86400,
