@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
 interface LinkProps {
   to: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const LinkButton = ({ to, children }: LinkProps) => {

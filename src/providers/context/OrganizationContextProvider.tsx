@@ -1,6 +1,7 @@
 "use client";
 
-import React, { ReactNode, useEffect, useState } from "react";
+import type { FC, ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { OrganizationItem } from "types/OrganizationItem";
 
 import { OrganizationContext } from "./OrganizationContext";
@@ -10,9 +11,10 @@ interface OrganizationContextProviderProps {
   children: ReactNode;
 }
 
-export const OrganizationContextProvider: React.FC<
-  OrganizationContextProviderProps
-> = ({ organization, children }) => {
+export const OrganizationContextProvider: FC<OrganizationContextProviderProps> = ({
+  organization,
+  children,
+}) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   useEffect(() => {

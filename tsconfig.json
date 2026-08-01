@@ -15,7 +15,7 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -34,7 +34,12 @@
     "noEmit": true
   },
   "include": [
-    "src/**/*.ts", "src/**/*.tsx",".next/types/**/*.ts", "styled.d.ts"],
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts",
+    "styled.d.ts",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     "build"

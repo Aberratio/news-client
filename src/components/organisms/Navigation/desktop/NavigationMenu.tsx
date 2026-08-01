@@ -8,7 +8,7 @@ import { NavigationItem } from "./NavigationItem";
 export const NavigationMenu = () => {
   const [activeNavigationItemIndex, setActiveNavigationItemIndex] =
     useState<number>(-1);
-  const mainMenuRef = useRef(null);
+  const mainMenuRef = useRef<HTMLUListElement>(null);
   const { tabs } = useOrganizationInfo();
 
   useOutsideClick([mainMenuRef], () => setActiveNavigationItemIndex(-1));
