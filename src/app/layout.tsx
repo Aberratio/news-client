@@ -9,10 +9,11 @@ import { fetchAdds } from "core/api/settings/fetchAdds";
 import { fetchOrganization } from "core/api/settings/fetchOrganization";
 import { buildImageUrl } from "core/builders/buildImageUrl";
 import type { Metadata } from "next";
-import { Spectral } from "next/font/google";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
 import { ModalProvider } from "providers/modal-provider/ModalProvider";
+import type { AddsItem } from "types/AddsItem";
+import type { OrganizationItem } from "types/OrganizationItem";
 
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
 import { MobileNavbar } from "components/molecules/MobileNavbar/MobileNavbar";
@@ -29,35 +30,87 @@ import "@mantine/core/styles.css";
 export const revalidate = 60;
 export const fetchCache = "force-no-store";
 
-const spectral = Spectral({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
+const fontClassName = "font-spectral";
+const defaultSiteName = "Głos Milicza";
+const defaultDescription = "Głos Milicza";
 
-export const generateMetadata = async (): Promise<Metadata> => {
-  const generalSeo = await sanityClient.fetch(
-    `*[_type == "generalSeo" && !(_id in path("drafts.**"))][0]`
-  );
+interface GeneralSeoData {
+  description?: string;
+  image?: {
+    asset?: {
+      _ref?: string;
+    };
+  };
+  name?: string;
+}
 
-  const imagePath = buildImageUrl(generalSeo?.image?.asset?._ref || "");
+const getMetadataBase = (): URL | undefined => {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  if (!baseUrl) {
+    return undefined;
+  }
+
+  try {
+    return new URL(baseUrl);
+  } catch {
+    return undefined;
+  }
+};
+
+const fetchGeneralSeo = async (): Promise<GeneralSeoData | null> => {
+  try {
+    return await sanityClient.fetch<GeneralSeoData | null>(
+      `*[_type == "generalSeo" && !(_id in path("drafts.**"))][0]`,
+    );
+  } catch {
+    return null;
+  }
+};
+
+const fetchLayoutData = async (): Promise<{
+  adds: AddsItem | null;
+  organization: OrganizationItem | null;
+}> => {
+  const [organizationResult, addsResult] = await Promise.allSettled([
+    fetchOrganization(),
+    fetchAdds(),
+  ]);
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || ""),
+    organization:
+      organizationResult.status === "fulfilled"
+        ? organizationResult.value
+        : null,
+    adds: addsResult.status === "fulfilled" ? addsResult.value : null,
+  };
+};
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const generalSeo = await fetchGeneralSeo();
+
+  const siteName = generalSeo?.name ?? defaultSiteName;
+  const description = generalSeo?.description ?? defaultDescription;
+  const imageRef = generalSeo?.image?.asset?._ref;
+  const imagePath = imageRef ? buildImageUrl(imageRef) : undefined;
+
+  return {
+    metadataBase: getMetadataBase(),
     title: {
-      default: generalSeo.name,
-      template: `%s | ${generalSeo.name}`,
+      default: siteName,
+      template: `%s | ${siteName}`,
     },
-    description: generalSeo.description,
+    description,
     openGraph: {
       title: {
-        default: generalSeo.name,
-        template: `%s | ${generalSeo.name}`,
+        default: siteName,
+        template: `%s | ${siteName}`,
       },
       url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}`,
       locale: "pl_PL",
       type: "website",
-      description: generalSeo.description,
-      images: [imagePath],
+      description,
+      images: imagePath ? [imagePath] : undefined,
     },
   };
 };
@@ -67,13 +120,26 @@ const RootLayout = async ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const organization = await fetchOrganization();
-  const adds = await fetchAdds();
+  const { organization, adds } = await fetchLayoutData();
 
-  console.log(organization);
-
-  if (!organization.tabs) {
-    return null;
+  if (!organization?.tabs?.length) {
+    return (
+      <html lang="pl" {...mantineHtmlProps}>
+        <head>
+          <ColorSchemeScript />
+        </head>
+        <body className={fontClassName}>
+          <ErrorBoundary>
+            <MantineProvider forceColorScheme="light">
+              <StyledComponentsRegistry>
+                <GlobalThemeWrapper>{children}</GlobalThemeWrapper>
+              </StyledComponentsRegistry>
+            </MantineProvider>
+            <Hotjar />
+          </ErrorBoundary>
+        </body>
+      </html>
+    );
   }
 
   return (
@@ -81,7 +147,7 @@ const RootLayout = async ({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={spectral.className}>
+      <body className={fontClassName}>
         <ErrorBoundary>
           <OrganizationContextProvider organization={organization}>
             <MantineProvider forceColorScheme="light">

@@ -45,13 +45,17 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
       line-height: 1.5;
-      
+
       background: #fafafa;
       background: -webkit-linear-gradient(to right, #FFFFFF, #fafafa);
       background: linear-gradient(to right, #FFFFFF, #fafafa);
-   
-   
 
+
+
+    }
+
+    .font-spectral {
+      font-family: 'Spectral', Georgia, 'Times New Roman', serif;
     }
 
     html {
@@ -61,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
     ol, ul {
       list-style: none;
     }
-    
+
     table {
       border-collapse: separate;
       border-spacing: 0;

@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import { Skeleton } from "@nextui-org/react";
+import { Font } from "core/styles/types/CustomFonts";
 import styled from "styled-components";
 import { ArticleItem } from "types/ArticleItem";
 
@@ -87,10 +88,17 @@ const BodyWrapper = styled.div`
   flex-direction: column;
 `;
 
+const fontStyles = ({ fontFamily, fontSize, fontWeight, lineHeight }: Font) => `
+  font-family: ${fontFamily};
+  ${fontSize ? `font-size: ${fontSize};` : ""}
+  ${fontWeight ? `font-weight: ${fontWeight};` : ""}
+  ${lineHeight ? `line-height: ${lineHeight};` : ""}
+`;
+
 const Title = styled.h1`
-  ${({ theme }) => theme.customFonts.titleM};
+  ${({ theme }) => fontStyles(theme.customFonts.titleM)};
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tabletS}) {
-    ${({ theme }) => theme.customFonts.title};
+    ${({ theme }) => fontStyles(theme.customFonts.title)};
   }
 `;

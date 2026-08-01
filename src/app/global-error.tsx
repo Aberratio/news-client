@@ -6,13 +6,11 @@ import Box from "components/atoms/Box";
 import Typography from "components/atoms/Typography";
 
 export default function GlobalError({
-  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  console.log(error);
   return (
     <html>
       <body>
