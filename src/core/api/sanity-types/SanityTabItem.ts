@@ -29,8 +29,6 @@ export interface SanityTabItem {
 }
 
 export const mapToTabItem = (data: SanityTabItem[]): TabItem[] => {
-  console.log(data);
-
   return data.map((tab) => {
     return {
       tabSlug: tab.slug.current,

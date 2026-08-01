@@ -14,7 +14,7 @@ export interface SanityCommentItem {
 }
 
 export const mapToCommentSummaryItem = (
-  data: SanityCommentItem[]
+  data: SanityCommentItem[],
 ): CommentSummaryItem[] => {
   return data.map((item: SanityCommentItem) => {
     return {
@@ -26,7 +26,7 @@ export const mapToCommentSummaryItem = (
       id: item._id,
       likes: item.likes,
       text: cutText(item.text, 100),
-    } as CommentSummaryItem;
+    };
   });
 };
 
