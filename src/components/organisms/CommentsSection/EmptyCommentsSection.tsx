@@ -15,5 +15,14 @@ export const EmptyCommentsSection = () => {
 };
 
 const Container = styled.div`
-  margin: 92px 0;
+  margin: 32px 0 64px;
+  padding: 18px;
+  border: 1px dashed #d7dce0;
+  border-radius: 8px;
+  background: #fafafa;
+
+  @media screen and (max-width: 567px) {
+    margin-bottom: 48px;
+    padding: 14px;
+  }
 `;

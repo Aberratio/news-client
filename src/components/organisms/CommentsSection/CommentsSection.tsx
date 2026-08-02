@@ -1,6 +1,7 @@
 "use client";
 
 import { fetchNewComment } from "core/api/comments/fetchNewComment";
+import { styled } from "styled-components";
 import { CommentItem } from "types/CommentItem";
 
 import Hr from "components/atoms/Hr";
@@ -16,7 +17,7 @@ interface CommentsSectionProps {
 
 const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
   return (
-    <section id="comments" key={comments.length}>
+    <Section id="comments" key={comments.length}>
       <Hr margin="0 0 48px 0" />
       <CommentForm _id={articleId} sendComment={fetchNewComment} />
       {comments.length === 0 ? (
@@ -24,8 +25,19 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
       ) : (
         <AllComments comments={comments} />
       )}
-    </section>
+    </Section>
   );
 };
+
+const Section = styled.section`
+  width: 100%;
+  min-width: 0;
+  scroll-margin-top: 72px;
+
+  @media screen and (max-width: 767px) {
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+`;
 
 export default CommentsSection;

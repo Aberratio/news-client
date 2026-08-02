@@ -30,5 +30,6 @@ export const fetchNewComment = async ({
     });
   } catch (error) {
     console.error("Error adding comment to Sanity:", error);
+    throw new Error("Error adding comment to Sanity");
   }
 };
