@@ -20,10 +20,12 @@ export const ArticleBoxWraper = ({
 
 const Wrapper = styled.div`
   width: 100%;
+  min-width: 0;
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
+  min-width: 0;
 `;

@@ -98,14 +98,21 @@ export const TypographyWrapper = styled.p<TypographyWrapperProps>`
   ${({ $wrap }) =>
     $wrap &&
     css`
-      white-space: wrap;
+      white-space: normal;
+      overflow-wrap: anywhere;
     `};
 
   ${({ theme }) => css`
     a {
       color: ${theme.customTheme.general.primaryColor};
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
       cursor: pointer;
+
+      &:hover {
+        color: ${theme.customTheme.general.secondaryColor};
+      }
     }
   `};
 `;

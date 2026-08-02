@@ -18,28 +18,27 @@ const OverviewGrid = ({ dataTestId, children }: OverviewGridProps) => {
 export default OverviewGrid;
 
 const Wrapper = styled.div`
-  padding-bottom: 25px;
+  padding-bottom: 32px;
   overflow: visible;
 `;
 
 const Container = styled.div`
   ${({ theme }) => `
     display: grid;
-    column-gap: 24px;
-    row-gap: 32px;
-    
-    padding-bottom: 20px;
-
-    @media screen and (min-width: 420px) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-template-columns: 1fr;
+    gap: 28px 20px;
+    padding-bottom: 24px;
 
     @media screen and (min-width: ${theme.breakpoints.tabletS}) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 24px;
     }
-      
+
+    @media screen and (min-width: ${theme.breakpoints.desktopS}) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px 28px;
+    }
+
     overflow: visible;
   `}
 `;

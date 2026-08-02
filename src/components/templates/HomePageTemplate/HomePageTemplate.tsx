@@ -17,9 +17,10 @@ export const HomePageTemplate = async ({ children }: HomePageTemplateProps) => {
   return (
     <Flex
       direction="column"
-      gap="md"
-      p="md"
-      mt="md"
+      gap={{ base: "md", sm: "lg" }}
+      py={{ base: "md", sm: "lg" }}
+      px={0}
+      mt={{ base: "sm", sm: "md" }}
       style={{ overflow: "visible" }}
     >
       {pinnedArticle && <PinnedArticle article={pinnedArticle} />}

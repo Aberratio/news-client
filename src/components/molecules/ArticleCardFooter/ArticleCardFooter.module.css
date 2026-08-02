@@ -2,25 +2,54 @@
   background-color: var(--mantine-color-body);
   justify-content: space-between;
   cursor: pointer;
-  box-shadow: 2px 2px 22px 0px rgb(66 68 90 / 31%);
+  min-height: 100%;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgb(25 31 40 / 12%);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
-.card:hover .title {
+.card:hover,
+.card:focus-visible {
+  box-shadow: 0 14px 34px rgb(25 31 40 / 16%);
+  transform: translateY(-2px);
+}
+
+.card:hover .title,
+.card:focus-visible .title {
   color: #15a752;
+}
+
+.image {
+  height: 210px;
+  object-fit: cover;
 }
 
 .title {
   font-family:
     source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: 300;
+  min-height: 3.7em;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.22;
+  overflow-wrap: anywhere;
 }
 
 .text {
   font-family: Spectral, sans-serif;
+  line-height: 1.2;
 }
 
 .footer {
-  padding: var(--mantine-spacing-xs) var(--mantine-spacing-md);
+  padding: var(--mantine-spacing-sm) var(--mantine-spacing-md);
   border-top: 1px solid
     light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}
+
+@media (min-width: 768px) {
+  .image {
+    height: 190px;
+  }
 }

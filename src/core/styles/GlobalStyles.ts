@@ -19,9 +19,15 @@ export const GlobalStyle = createGlobalStyle`
         scroll-behavior: smooth !important;
     }
 
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
+    abbr, acronym, address, big, cite, code,
     del, dfn, em, font, img, ins, kbd, q, s, samp,
     small, strike, strong, sub, sup, tt, var,
     dl, dt, dd, ol, ul, li,
@@ -36,22 +42,21 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 100%;
         font-family: inherit;
         vertical-align: baseline;
-        overflow: hidden;
     }
 
-    :focus {
-      outline: 0;
+    :focus-visible {
+      outline: 3px solid ${({ theme }) => theme.customTheme.general.primaryColor};
+      outline-offset: 3px;
     }
 
     body {
       line-height: 1.5;
+      min-width: 320px;
+      min-height: 100vh;
 
       background: #fafafa;
       background: -webkit-linear-gradient(to right, #FFFFFF, #fafafa);
       background: linear-gradient(to right, #FFFFFF, #fafafa);
-
-
-
     }
 
     .font-spectral {
@@ -60,6 +65,22 @@ export const GlobalStyle = createGlobalStyle`
 
     html {
       overflow-y: scroll;
+    }
+
+    img,
+    picture,
+    svg,
+    video,
+    canvas {
+      display: block;
+      max-width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
     }
 
     ol, ul {
@@ -86,7 +107,9 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a {
-      text-decoration: none;
-      all: unset;
+      color: inherit;
+      text-decoration-thickness: 0.08em;
+      text-underline-offset: 0.18em;
+      cursor: pointer;
     }
 `;

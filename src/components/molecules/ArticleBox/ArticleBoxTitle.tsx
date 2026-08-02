@@ -26,19 +26,22 @@ export const ArticleBoxTitle = ({ title, path }: ArticleBoxTitleProps) => {
 };
 
 const StyledLink = styled(Link)`
+  display: block;
   text-decoration: none;
   background-color: transparent;
-  margin-top: 4px;
+  margin-top: 2px;
 
   touch-action: manipulation;
-  transition: all 0.3s;
+  transition: color 180ms ease;
   cursor: pointer;
 
-  &:hover {
-    color: #17b978;
+  &:hover,
+  &:focus-visible {
+    color: ${({ theme }) => theme.customTheme.general.secondaryColor};
   }
 
   p {
-    line-height: 1.25;
+    line-height: 1.28;
+    overflow-wrap: anywhere;
   }
 `;

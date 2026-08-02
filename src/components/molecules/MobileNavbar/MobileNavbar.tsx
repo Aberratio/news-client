@@ -1,8 +1,7 @@
 "use client";
 
-import { AppShell, Flex, Group, NavLink } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import { useHeadroom } from "@mantine/hooks";
+import { ActionIcon, AppShell, Flex, Group, NavLink } from "@mantine/core";
+import { useDisclosure, useHeadroom } from "@mantine/hooks";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 import Image from "next/image";
@@ -20,7 +19,7 @@ interface MobileNavbarProps {
 }
 
 export const MobileNavbar = ({ children }: MobileNavbarProps) => {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { close, toggle }] = useDisclosure();
   const pinned = useHeadroom({ fixedAt: 120 });
   const { generalConfig, tabs } = useOrganizationInfo();
 
@@ -35,8 +34,8 @@ export const MobileNavbar = ({ children }: MobileNavbarProps) => {
       }}
       padding="0"
     >
-      <AppShell.Header mih={60}>
-        <Group h="100%">
+      <AppShell.Header mih={60} withBorder>
+        <Group h="100%" gap={0}>
           <Flex
             direction="row"
             justify="space-between"
@@ -45,13 +44,15 @@ export const MobileNavbar = ({ children }: MobileNavbarProps) => {
             w="100%"
             hiddenFrom="sm"
           >
-            <Flex w={30}>
-              {opened ? (
-                <IconX onClick={toggle} size="xs" />
-              ) : (
-                <IconMenu2 onClick={toggle} size="xs" />
-              )}
-            </Flex>
+            <ActionIcon
+              aria-label={opened ? "Zamknij menu" : "Otworz menu"}
+              onClick={toggle}
+              size="lg"
+              variant="subtle"
+              color="dark"
+            >
+              {opened ? <IconX size={22} /> : <IconMenu2 size={22} />}
+            </ActionIcon>
             <LogoWrapper href="/">
               <Logo
                 src={generalConfig.footerLogo.path}
@@ -110,7 +111,7 @@ export const MobileNavbar = ({ children }: MobileNavbarProps) => {
         </Group>
       </AppShell.Header>
 
-      <AppShell.Navbar hiddenFrom="sm" py="md" px={4} mt={60}>
+      <MobileOnlyNavbar hiddenFrom="sm" py="md" px="xs" mt={60}>
         {tabs.map((tab) => {
           const hasSubmenu = tab.categories.length > 1;
 
@@ -120,7 +121,10 @@ export const MobileNavbar = ({ children }: MobileNavbarProps) => {
               href={buildTabPath(tab.tabSlug)}
               label={tab.name}
               childrenOffset={28}
-              w="96%"
+              onClick={() => {
+                if (!hasSubmenu) close();
+              }}
+              w="100%"
             >
               {hasSubmenu &&
                 tab.categories.map((category) => {
@@ -129,15 +133,16 @@ export const MobileNavbar = ({ children }: MobileNavbarProps) => {
                       key={category.slug}
                       href={`${buildCategoryPath(category.slug)}`}
                       label={category.name}
+                      onClick={close}
                     />
                   );
                 })}
             </NavLink>
           );
         })}
-      </AppShell.Navbar>
+      </MobileOnlyNavbar>
 
-      <AppShell.Main pt={{ base: 0, sm: 250 }}>{children}</AppShell.Main>
+      <AppShell.Main pt={{ base: 60, sm: 250 }}>{children}</AppShell.Main>
     </AppShell>
   );
 };
@@ -147,10 +152,22 @@ const LogoWrapper = styled(Link)`
   justify-content: flex-start;
   align-items: center;
   height: 65px;
+  min-width: 0;
 `;
 
 const Logo = styled(Image)`
   vertical-align: middle;
   border-style: none;
   height: auto;
+  max-height: 36px;
+  width: min(220px, 58vw);
+  object-fit: contain;
+`;
+
+const MobileOnlyNavbar = styled(AppShell.Navbar)`
+  ${({ theme }) => `
+    @media screen and (min-width: ${theme.breakpoints.tabletS}) {
+      display: none;
+    }
+  `}
 `;

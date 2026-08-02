@@ -19,8 +19,6 @@ import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
 import { TabItem } from "types/TabItem";
 
-import { NavigationMenu } from "./NavigationMenu";
-
 import classes from "./NavigationDesktop.module.css";
 
 export const NavigationDesktop = () => {
@@ -140,8 +138,6 @@ export const NavigationDesktop = () => {
               );
             })}
           </Group>
-
-          <NavigationMenu />
         </Navigation>
       </Container>
     </Wrapper>

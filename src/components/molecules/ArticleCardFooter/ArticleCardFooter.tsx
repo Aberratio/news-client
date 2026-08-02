@@ -31,6 +31,13 @@ export const ArticleCardFooter = ({
     router.push(item.path);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
   const handleShare = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
@@ -46,10 +53,18 @@ export const ArticleCardFooter = ({
       radius="md"
       className={classes.card}
       data-testid={dataTestId}
+      role="link"
+      tabIndex={0}
+      aria-label={item.title}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
     >
       <Card.Section>
-        <Image src={item.photo.path} alt={item.photo.alt} height={180} />
+        <Image
+          src={item.photo.path}
+          alt={item.photo.alt}
+          className={classes.image}
+        />
         <Text className={classes.title} m="sm">
           {item.title}
         </Text>

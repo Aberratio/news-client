@@ -13,15 +13,19 @@ export const MainColumn = ({ children }: MainColumnProps) => {
 const Wrapper = styled.div`
   ${({ theme }) => `
     display: flex;
+    flex-direction: column;
     max-width: 1380px;
-    padding: 0;
+    width: 100%;
+    padding: 0 12px;
     margin: auto;
+    overflow: visible;
 
     @media screen and (min-width: ${theme.breakpoints.tabletL}) {
         display: grid;
         grid-template-columns: 1fr 300px;
-        gap: 16px;
-        padding: 0 12px;
+        align-items: start;
+        gap: 28px;
+        padding: 0 20px;
     }
   `}
 `;

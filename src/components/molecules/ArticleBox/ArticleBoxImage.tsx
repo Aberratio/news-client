@@ -25,16 +25,30 @@ export const ArticleBoxImage = ({ path, photo }: ArticleBoxImageProps) => {
 };
 
 const ImageLink = styled(Link)`
+  display: block;
   position: relative;
-
-  cursor: pointer;
   width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 190px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f0f1f3;
+  cursor: pointer;
 
-  height: 180px;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tabletS}) {
+    min-height: 170px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktopS}) {
+    min-height: 180px;
+  }
+
+  &:focus-visible {
+    outline-offset: 4px;
+  }
 `;
 
 const StyledImage = styled.img`
-  border-radius: 8px;
   object-fit: cover;
   object-position: 50% 50%;
   position: absolute;
@@ -42,4 +56,10 @@ const StyledImage = styled.img`
   width: 100%;
   inset: 0px;
   color: transparent;
+  transition: transform 220ms ease;
+
+  ${ImageLink}:hover &,
+  ${ImageLink}:focus-visible & {
+    transform: scale(1.025);
+  }
 `;
