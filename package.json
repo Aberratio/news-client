@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "node .next/standalone/server.js",
+    "typecheck": "tsc --noEmit --pretty false",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
+    "smoke": "node --test scripts/smoke/*.test.cjs",
+    "quality": "npm run typecheck && npm run lint && npm run smoke && npm run build",
     "format": "prettier . --write",
     "prepare": "husky && node scripts/patch-husky-shell.cjs"
   },

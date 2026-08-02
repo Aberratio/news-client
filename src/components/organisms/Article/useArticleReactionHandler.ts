@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { fetchArticleReaction } from "core/api/articles/fetchArticleReaction";
+import {
+  getReactionUpdate,
+  StoredReaction,
+} from "core/reactions/getReactionUpdate";
 
 export const useArticleReactionHandler = (articleId: string) => {
-  const [sessionReaction, setSessionReaction] = useState<string>("");
+  const [sessionReaction, setSessionReaction] = useState<StoredReaction>("");
 
   const reload = () => {
-    const storedReaction = sessionStorage.getItem(`article-${articleId}`);
-    if (["like", "dislike", ""].includes(storedReaction ?? "")) {
-      setSessionReaction(storedReaction ?? "");
+    const storedReaction = sessionStorage.getItem(`article-${articleId}`) ?? "";
+    if (["like", "dislike", ""].includes(storedReaction)) {
+      setSessionReaction(storedReaction as StoredReaction);
     }
   };
 
@@ -16,31 +20,15 @@ export const useArticleReactionHandler = (articleId: string) => {
   }, [articleId]);
 
   const handleReaction = (reaction: "like" | "dislike") => {
-    if (sessionReaction === "") {
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`article-${articleId}`, reaction);
-      fetchArticleReaction({
-        articleId,
-        like: reaction === "like" ? 1 : 0,
-        dislike: reaction === "dislike" ? 1 : 0,
-      });
-    } else if (sessionReaction !== reaction) {
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`article-${articleId}`, reaction);
-      fetchArticleReaction({
-        articleId,
-        like: reaction === "like" ? 1 : -1,
-        dislike: reaction === "dislike" ? 1 : -1,
-      });
-    } else {
-      setSessionReaction("");
-      sessionStorage.setItem(`article-${articleId}`, "");
-      fetchArticleReaction({
-        articleId,
-        like: reaction === "like" ? -1 : 0,
-        dislike: reaction === "dislike" ? -1 : 0,
-      });
-    }
+    const reactionUpdate = getReactionUpdate(sessionReaction, reaction);
+
+    setSessionReaction(reactionUpdate.nextReaction);
+    sessionStorage.setItem(`article-${articleId}`, reactionUpdate.nextReaction);
+    fetchArticleReaction({
+      articleId,
+      like: reactionUpdate.like,
+      dislike: reactionUpdate.dislike,
+    });
   };
 
   return { sessionReaction, handleReaction, reload };

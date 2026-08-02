@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { fetchCommentReaction } from "core/api/comments/fetchCommentReaction";
+import {
+  getReactionUpdate,
+  StoredReaction,
+} from "core/reactions/getReactionUpdate";
 
 export const useCommentReactionHandler = (commentId: string) => {
-  const [sessionReaction, setSessionReaction] = useState<string>("");
+  const [sessionReaction, setSessionReaction] = useState<StoredReaction>("");
 
   const reload = () => {
-    const storedReaction = sessionStorage.getItem(`comment-${commentId}`);
-    if (["like", "dislike", ""].includes(storedReaction ?? "")) {
-      setSessionReaction(storedReaction ?? "");
+    const storedReaction = sessionStorage.getItem(`comment-${commentId}`) ?? "";
+    if (["like", "dislike", ""].includes(storedReaction)) {
+      setSessionReaction(storedReaction as StoredReaction);
     }
   };
 
@@ -16,31 +20,15 @@ export const useCommentReactionHandler = (commentId: string) => {
   }, [commentId]);
 
   const handleReaction = (reaction: "like" | "dislike") => {
-    if (sessionReaction === "") {
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${commentId}`, reaction);
-      fetchCommentReaction({
-        commentId,
-        like: reaction === "like" ? 1 : 0,
-        dislike: reaction === "dislike" ? 1 : 0,
-      });
-    } else if (sessionReaction !== reaction) {
-      setSessionReaction(reaction);
-      sessionStorage.setItem(`comment-${commentId}`, reaction);
-      fetchCommentReaction({
-        commentId,
-        like: reaction === "like" ? 1 : -1,
-        dislike: reaction === "dislike" ? 1 : -1,
-      });
-    } else {
-      setSessionReaction("");
-      sessionStorage.setItem(`comment-${commentId}`, "");
-      fetchCommentReaction({
-        commentId,
-        like: reaction === "like" ? -1 : 0,
-        dislike: reaction === "dislike" ? -1 : 0,
-      });
-    }
+    const reactionUpdate = getReactionUpdate(sessionReaction, reaction);
+
+    setSessionReaction(reactionUpdate.nextReaction);
+    sessionStorage.setItem(`comment-${commentId}`, reactionUpdate.nextReaction);
+    fetchCommentReaction({
+      commentId,
+      like: reactionUpdate.like,
+      dislike: reactionUpdate.dislike,
+    });
   };
 
   return { sessionReaction, handleReaction, reload };
