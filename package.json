@@ -8,7 +8,7 @@
     "start": "node .next/standalone/server.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
     "format": "prettier . --write",
-    "prepare": "husky install"
+    "prepare": "husky && node scripts/patch-husky-shell.cjs"
   },
   "dependencies": {
     "@mantine/core": "^7.17.8",
