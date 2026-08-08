@@ -69,6 +69,26 @@ test("publication settings resolver lets publicationSettings override generalCon
   assert.equal(settings.footerLogo.alt, "Footer logo");
 });
 
+test("publication settings resolver tolerates partial publicationSettings documents", () => {
+  const settings = resolvePublicationSettings(
+    {
+      footer: {},
+      logos: {
+        mainLogo: image("image-configured-main-png", "Configured main logo"),
+      },
+      seo: {},
+    },
+    generalConfig
+  );
+
+  assert.equal(settings.name, "Legacy Publication");
+  assert.equal(settings.seoDescription, "Legacy SEO description");
+  assert.equal(settings.mainLogo.alt, "Configured main logo");
+  assert.equal(settings.mobileLogo.alt, "Mobile logo");
+  assert.equal(settings.footerLogo.alt, "Footer logo");
+  assert.equal(settings.footerDescription, footerDescription);
+});
+
 test("publication settings resolver maps explicit policy values", () => {
   const settings = resolvePublicationSettings({
     commentsPolicy: {
