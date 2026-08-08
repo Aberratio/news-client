@@ -7,7 +7,8 @@ export interface ArticleItem {
   _id: string;
   _rev: string;
   author: AuthorItem;
-  body: string;
+  body: any;
+  bodyText: string;
   category: CategoryItem;
   createdOn: string;
   slug: string;
