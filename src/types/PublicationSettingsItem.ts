@@ -67,6 +67,31 @@ export interface ArticleRecommendationsSettingsItem {
   title?: string;
 }
 
+export type HomepageSectionKey =
+  | "lead"
+  | "latest"
+  | "discussed"
+  | "categories"
+  | "popular"
+  | "latestIssue";
+
+export interface HomepageLayoutSettingsItem {
+  categorySectionArticleLimit?: number;
+  discussedLabel?: string;
+  discussedLimit?: number;
+  latestIssueLabel?: string;
+  latestLabel?: string;
+  latestLimit?: number;
+  leadLabel?: string;
+  popularLabel?: string;
+  popularLimit?: number;
+  sectionOrder?: HomepageSectionKey[];
+  showCategorySections?: boolean;
+  showDiscussedSection?: boolean;
+  showLatestIssue?: boolean;
+  showPopularSection?: boolean;
+}
+
 export type PublicationThemePreset = "classic" | "modern" | "civic" | "magazine";
 export type PublicationCardStyle = "flat" | "bordered" | "elevated" | "editorial";
 export type PublicationHeaderStyle = "masthead" | "compact" | "centeredLogo";
@@ -91,6 +116,7 @@ export interface PublicationSettingsItem {
   footerColumns: PublicationFooterColumnItem[];
   footerDescription: GeneralConfigItem["footerDescription"];
   footerLogo: PhotoItem;
+  homepageLayout: HomepageLayoutSettingsItem;
   latestIssue: LatestIssueTextItem;
   mainLogo: PhotoItem;
   mobileLogo: PhotoItem;

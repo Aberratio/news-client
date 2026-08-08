@@ -52,6 +52,7 @@ export interface SanityPublicationSettingsItem {
     publisher?: string;
   };
   latestIssue?: Partial<PublicationSettingsItem["latestIssue"]>;
+  homepageLayout?: Partial<PublicationSettingsItem["homepageLayout"]>;
   visualStyle?: Partial<PublicationSettingsItem["visualStyle"]>;
   logos?: {
     footerLogo?: SanityPhotoItem;
@@ -102,11 +103,49 @@ const visualStyleOptions = {
   themePreset: ["classic", "modern", "civic", "magazine"],
 } as const;
 
+const homepageSectionOptions = [
+  "lead",
+  "latest",
+  "discussed",
+  "categories",
+  "popular",
+  "latestIssue",
+] as const;
+
 const mapVisualStyleOption = <T extends readonly string[]>(
   value: string | undefined,
   options: T,
 ): T[number] | undefined => {
   return value && options.includes(value) ? value : undefined;
+};
+
+const mapHomepageSectionOrder = (
+  value?: string[],
+): PublicationSettingsItem["homepageLayout"]["sectionOrder"] | undefined => {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const uniqueSections = value.filter(
+    (section, index): section is (typeof homepageSectionOptions)[number] =>
+      homepageSectionOptions.includes(
+        section as (typeof homepageSectionOptions)[number],
+      ) && value.indexOf(section) === index,
+  );
+
+  return uniqueSections.length > 0 ? uniqueSections : undefined;
+};
+
+const mapBoundedInteger = (
+  value: number | undefined,
+  min: number,
+  max: number,
+) => {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return undefined;
+  }
+
+  return Math.min(Math.max(Math.round(value), min), max);
 };
 
 const mapCornerRadius = (value?: number) => {
@@ -290,6 +329,34 @@ export const mapPublicationSettingsItem = (
           latestIssue: {
             ...publicationSettingsFallback.latestIssue,
             ...data.latestIssue,
+          },
+        }
+      : {}),
+    ...(data.homepageLayout
+      ? {
+          homepageLayout: {
+            ...publicationSettingsFallback.homepageLayout,
+            ...data.homepageLayout,
+            categorySectionArticleLimit:
+              mapBoundedInteger(
+                data.homepageLayout.categorySectionArticleLimit,
+                1,
+                8,
+              ) ??
+              publicationSettingsFallback.homepageLayout
+                .categorySectionArticleLimit,
+            discussedLimit:
+              mapBoundedInteger(data.homepageLayout.discussedLimit, 1, 8) ??
+              publicationSettingsFallback.homepageLayout.discussedLimit,
+            latestLimit:
+              mapBoundedInteger(data.homepageLayout.latestLimit, 4, 24) ??
+              publicationSettingsFallback.homepageLayout.latestLimit,
+            popularLimit:
+              mapBoundedInteger(data.homepageLayout.popularLimit, 1, 8) ??
+              publicationSettingsFallback.homepageLayout.popularLimit,
+            sectionOrder:
+              mapHomepageSectionOrder(data.homepageLayout.sectionOrder) ??
+              publicationSettingsFallback.homepageLayout.sectionOrder,
           },
         }
       : {}),
