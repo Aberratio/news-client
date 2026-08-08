@@ -1,6 +1,6 @@
 import { CustomTheme, OppositeColor } from "../types/CustomTheme";
 
-//  GM color
+// Default publication colors
 const BLUE = "#2e6896"; //rgb(46,104,150)";
 const GREEN = "#15a752";
 const RED = "#b80000"; //rgb(184,0,0)";
