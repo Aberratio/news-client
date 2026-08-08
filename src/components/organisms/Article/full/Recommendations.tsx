@@ -9,15 +9,19 @@ import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
 
 interface RecommendationsProps {
   recommendations: ArticleSummaryItem[];
+  title?: string;
 }
 
-export const Recommendations = ({ recommendations }: RecommendationsProps) => {
+export const Recommendations = ({
+  recommendations,
+  title = "Przeczytaj również",
+}: RecommendationsProps) => {
   if (recommendations.length === 0) return null;
 
   return (
     <Box display="flex" flexDirection="column" gap={16}>
       <Hr margin="0 0 48px 0" />
-      <Typography variant="h2">Przeczytaj również</Typography>
+      <Typography variant="h2">{title}</Typography>
       <ArticlesOverviewBox
         dataTestId="recommendations"
         items={recommendations}

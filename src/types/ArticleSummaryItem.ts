@@ -4,6 +4,7 @@ import { PhotoItem } from "./PhotoItem";
 import { StatisticsItem } from "./StatisticsItem";
 
 export interface ArticleSummaryItem {
+  _id?: string;
   author: AuthorItem;
   category: CategoryItem;
   createdOn: string;

@@ -10,6 +10,7 @@ import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 import { mapToPhotoItem } from "./SanityPhotoItem";
 
 export interface SanityArticleSummaryItem {
+  _id: string;
   author: {
     name: string;
     slug: {
@@ -58,6 +59,7 @@ export const mapDataToArticleSummaryItems = (
 ): ArticleSummaryItem[] => {
   return data.map((post) => {
     return {
+      _id: post._id,
       author: {
         id: post.author.slug.current,
         name: post.author.name,

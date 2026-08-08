@@ -59,9 +59,11 @@ export interface SanityPublicationSettingsItem {
     mobileLogo?: SanityPhotoItem;
   };
   commentsPolicy?: PublicationSettingsItem["commentsPolicy"];
+  articleRecommendations?: Partial<
+    PublicationSettingsItem["articleRecommendations"]
+  >;
   publicationName?: string;
   publicationShortName?: string;
-  articleRecommendations?: Partial<PublicationSettingsItem["articleRecommendations"]>;
   reactionsPolicy?: PublicationSettingsItem["reactionsPolicy"];
   recentComments?: Partial<PublicationSettingsItem["recentComments"]>;
   seo?: {
