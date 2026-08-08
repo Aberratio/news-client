@@ -4,10 +4,13 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { Hotjar } from "core/analytics/Hotjar";
+import {
+  resolvePublicationSettings,
+  SanityOrganizationItem,
+} from "core/api/sanity-types/SanityOrganizationItem";
 import { sanityClient } from "core/api/sanityClient";
 import { fetchAdds } from "core/api/settings/fetchAdds";
 import { fetchOrganization } from "core/api/settings/fetchOrganization";
-import { buildImageUrl } from "core/builders/buildImageUrl";
 import type { Metadata } from "next";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
@@ -31,18 +34,6 @@ export const revalidate = 60;
 export const fetchCache = "force-no-store";
 
 const fontClassName = "font-spectral";
-const defaultSiteName = "Głos Milicza";
-const defaultDescription = "Głos Milicza";
-
-interface GeneralSeoData {
-  description?: string;
-  image?: {
-    asset?: {
-      _ref?: string;
-    };
-  };
-  name?: string;
-}
 
 const getMetadataBase = (): URL | undefined => {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -58,13 +49,23 @@ const getMetadataBase = (): URL | undefined => {
   }
 };
 
-const fetchGeneralSeo = async (): Promise<GeneralSeoData | null> => {
+const fetchPublicationMetadataSettings = async () => {
   try {
-    return await sanityClient.fetch<GeneralSeoData | null>(
-      `*[_type == "generalSeo" && !(_id in path("drafts.**"))][0]`,
+    const data = await sanityClient.fetch<
+      Pick<SanityOrganizationItem, "generalConfig" | "publicationSettings">
+    >(
+      `{
+        'publicationSettings': *[(_type == "publicationSettings" && !(_id in path("drafts.**")))][0],
+        'generalConfig': *[(_type == "generalConfig" && !(_id in path("drafts.**")))][0]
+      }`,
+    );
+
+    return resolvePublicationSettings(
+      data.publicationSettings,
+      data.generalConfig
     );
   } catch {
-    return null;
+    return resolvePublicationSettings();
   }
 };
 
@@ -87,12 +88,11 @@ const fetchLayoutData = async (): Promise<{
 };
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const generalSeo = await fetchGeneralSeo();
+  const publicationSettings = await fetchPublicationMetadataSettings();
 
-  const siteName = generalSeo?.name ?? defaultSiteName;
-  const description = generalSeo?.description ?? defaultDescription;
-  const imageRef = generalSeo?.image?.asset?._ref;
-  const imagePath = imageRef ? buildImageUrl(imageRef) : undefined;
+  const siteName = publicationSettings.name;
+  const description = publicationSettings.seoDescription;
+  const imagePath = publicationSettings.seoImage.path || undefined;
 
   return {
     metadataBase: getMetadataBase(),
