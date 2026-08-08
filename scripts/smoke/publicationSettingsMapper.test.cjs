@@ -33,13 +33,13 @@ const generalConfig = {
   image: image("image-seo-jpg", "SEO image"),
   mainLogo: image("image-main-png", "Main logo"),
   mobileLogo: image("image-mobile-png", "Mobile logo"),
-  name: "Legacy GM",
+  name: "Legacy Publication",
 };
 
 test("publication settings resolver preserves generalConfig when publicationSettings is missing", () => {
   const settings = resolvePublicationSettings(undefined, generalConfig);
 
-  assert.equal(settings.name, "Legacy GM");
+  assert.equal(settings.name, "Legacy Publication");
   assert.equal(settings.commentsPolicy.enabled, true);
   assert.equal(settings.reactionsPolicy.enabled, true);
   assert.equal(settings.seoDescription, "Legacy SEO description");
@@ -53,7 +53,7 @@ test("publication settings resolver preserves generalConfig when publicationSett
 test("publication settings resolver lets publicationSettings override generalConfig per field", () => {
   const settings = resolvePublicationSettings(
     {
-      publicationName: "Publication GM",
+      publicationName: "Configured Publication",
       seo: {
         defaultDescription: "Publication SEO description",
       },
@@ -61,7 +61,7 @@ test("publication settings resolver lets publicationSettings override generalCon
     generalConfig
   );
 
-  assert.equal(settings.name, "Publication GM");
+  assert.equal(settings.name, "Configured Publication");
   assert.equal(settings.commentsPolicy.enabled, true);
   assert.equal(settings.reactionsPolicy.enabled, true);
   assert.equal(settings.seoDescription, "Publication SEO description");
