@@ -3,6 +3,14 @@ import { PublicationSettingsItem } from "types/PublicationSettingsItem";
 const fallbackAlt = "Glos Milicza";
 
 export const publicationSettingsFallback: PublicationSettingsItem = {
+  articleRecommendations: {
+    enabled: true,
+    fallbackStrategy: "categoryTabRecent",
+    limit: 4,
+    minimumManualItems: 1,
+    mixManualAndAutomatic: true,
+    title: "Przeczytaj rowniez",
+  },
   commentsPolicy: {
     enabled: true,
   },

@@ -45,7 +45,22 @@ export interface LatestIssueTextItem {
   title: string;
 }
 
+export type ArticleRecommendationsFallbackStrategy =
+  | "categoryTabRecent"
+  | "categoryTabPopular"
+  | "categoryTabCommented";
+
+export interface ArticleRecommendationsSettingsItem {
+  enabled?: boolean;
+  fallbackStrategy?: ArticleRecommendationsFallbackStrategy;
+  limit?: number;
+  minimumManualItems?: number;
+  mixManualAndAutomatic?: boolean;
+  title?: string;
+}
+
 export interface PublicationSettingsItem {
+  articleRecommendations: ArticleRecommendationsSettingsItem;
   brandColors?: BrandColorItem;
   commentsPolicy: CommentsPolicyItem;
   footerColumns: PublicationFooterColumnItem[];

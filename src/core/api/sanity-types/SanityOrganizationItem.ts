@@ -58,6 +58,9 @@ export interface SanityPublicationSettingsItem {
     mobileLogo?: SanityPhotoItem;
   };
   commentsPolicy?: PublicationSettingsItem["commentsPolicy"];
+  articleRecommendations?: Partial<
+    PublicationSettingsItem["articleRecommendations"]
+  >;
   publicationName?: string;
   publicationShortName?: string;
   reactionsPolicy?: PublicationSettingsItem["reactionsPolicy"];
@@ -241,6 +244,14 @@ export const mapPublicationSettingsItem = (
     ...(data.seo?.titlePattern ? { titlePattern: data.seo.titlePattern } : {}),
     ...(data.commentsPolicy ? { commentsPolicy: data.commentsPolicy } : {}),
     ...(data.reactionsPolicy ? { reactionsPolicy: data.reactionsPolicy } : {}),
+    ...(data.articleRecommendations
+      ? {
+          articleRecommendations: {
+            ...publicationSettingsFallback.articleRecommendations,
+            ...data.articleRecommendations,
+          },
+        }
+      : {}),
     ...(brandColors ? { brandColors } : {}),
   };
 };

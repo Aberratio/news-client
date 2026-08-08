@@ -42,6 +42,11 @@ test("publication settings resolver preserves generalConfig when publicationSett
   assert.equal(settings.name, "Legacy Publication");
   assert.equal(settings.commentsPolicy.enabled, true);
   assert.equal(settings.reactionsPolicy.enabled, true);
+  assert.equal(settings.articleRecommendations.enabled, true);
+  assert.equal(settings.articleRecommendations.limit, 4);
+  assert.equal(settings.articleRecommendations.minimumManualItems, 1);
+  assert.equal(settings.articleRecommendations.fallbackStrategy, "categoryTabRecent");
+  assert.equal(settings.articleRecommendations.mixManualAndAutomatic, true);
   assert.equal(
     settings.tagline,
     "Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz"
@@ -151,6 +156,13 @@ test("publication settings resolver maps publication content settings", () => {
       modalDescription: "Opis z Sanity",
       title: "Aktualne wydanie",
     },
+    articleRecommendations: {
+      fallbackStrategy: "categoryTabPopular",
+      limit: 6,
+      minimumManualItems: 3,
+      mixManualAndAutomatic: false,
+      title: "Polecane lokalnie",
+    },
     tagline: "Hasło z Sanity",
   });
 
@@ -162,5 +174,11 @@ test("publication settings resolver maps publication content settings", () => {
   assert.equal(settings.footerColumns[1].textItems[1].text, "00-000 Testowo");
   assert.equal(settings.latestIssue.title, "Aktualne wydanie");
   assert.equal(settings.latestIssue.modalDescription, "Opis z Sanity");
+  assert.equal(settings.articleRecommendations.enabled, true);
+  assert.equal(settings.articleRecommendations.limit, 6);
+  assert.equal(settings.articleRecommendations.minimumManualItems, 3);
+  assert.equal(settings.articleRecommendations.fallbackStrategy, "categoryTabPopular");
+  assert.equal(settings.articleRecommendations.mixManualAndAutomatic, false);
+  assert.equal(settings.articleRecommendations.title, "Polecane lokalnie");
   assert.equal(settings.latestIssue.downloadButtonLabel, "Pobierz pierwszą stronę");
 });
