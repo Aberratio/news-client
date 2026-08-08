@@ -87,14 +87,19 @@ const ReactionButton = styled.button<{ $isActive: boolean }>`
   min-width: 48px;
   min-height: 36px;
   padding: 6px 10px;
-  border: 1px solid ${({ $isActive }) => ($isActive ? "#2e6896" : "#d7dce0")};
-  border-radius: 8px;
-  background: ${({ $isActive }) => ($isActive ? "#eef6fc" : "#ffffff")};
+  border: 1px solid
+    ${({ $isActive, theme }) =>
+      $isActive
+        ? theme.customTheme.general.primaryColor
+        : theme.customTheme.publicationVisual.mutedBorderColor};
+  border-radius: ${({ theme }) => theme.customTheme.publicationVisual.cornerRadius};
+  background: ${({ $isActive, theme }) =>
+    $isActive ? theme.customTheme.buttons.tertiary.backgroundColor : "#ffffff"};
   color: black;
   cursor: pointer;
 
   &:focus-visible {
-    outline: 3px solid rgba(46, 104, 150, 0.22);
+    outline: 3px solid ${({ theme }) => theme.customTheme.general.primaryColor};
     outline-offset: 2px;
   }
 

@@ -30,7 +30,8 @@ export default FooterColumns;
 const Wrapper = styled.div`
   padding-top: 40px;
   padding-bottom: 25px;
-  background-color: #222;
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.footerBackgroundColor};
 `;
 
 const Container = styled.div`

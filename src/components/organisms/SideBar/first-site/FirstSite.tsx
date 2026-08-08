@@ -58,7 +58,7 @@ export const FirstSite = () => {
         <Button
           rightSection={<IconDownload size={14} />}
           onClick={downloadImage}
-          color="#2e6896"
+          color="var(--publication-primary)"
           my="md"
         >
           {latestIssue?.downloadButtonLabel}

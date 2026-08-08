@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { colors } from "core/styles/colors";
 
 import { Icon, IconCustomizationProps } from "../../atoms/Icon/Icon";
 
@@ -21,7 +20,9 @@ export const Thumb = ({
 
   const calculateColor = () => {
     if (isThumbActive) {
-      return direction === "right" ? colors.red : colors.green;
+      return direction === "right"
+        ? "var(--publication-danger)"
+        : "var(--publication-accent)";
     }
 
     return color;

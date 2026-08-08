@@ -14,7 +14,6 @@ import {
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
-import { theme } from "core/styles/theme";
 import Link from "next/link";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
@@ -51,8 +50,8 @@ export const NavigationDesktop = () => {
                           </Box>
                           <IconChevronDown
                             size={16}
-                            color={theme.colors.blue[6]}
-                            fill={theme.colors.blue[6]}
+                            color="var(--publication-primary)"
+                            fill="var(--publication-primary)"
                           />
                         </Center>
                       </a>

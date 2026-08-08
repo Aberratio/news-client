@@ -16,7 +16,7 @@ export const InfoColumn = ({ items }: InfoColumnProps) => {
   return (
     <Container>
       <Header>
-        <Typography variant="h3" color="rgb(46,104,150)">
+        <Typography variant="h3" color="var(--publication-primary)">
           {header}
         </Typography>
       </Header>

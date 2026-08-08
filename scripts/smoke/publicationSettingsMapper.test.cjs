@@ -42,6 +42,17 @@ test("publication settings resolver preserves generalConfig when publicationSett
   assert.equal(settings.name, "Legacy Publication");
   assert.equal(settings.commentsPolicy.enabled, true);
   assert.equal(settings.reactionsPolicy.enabled, true);
+  assert.equal(settings.articleRecommendations.enabled, true);
+  assert.equal(settings.articleRecommendations.limit, 4);
+  assert.equal(settings.articleRecommendations.minimumManualItems, 1);
+  assert.equal(settings.articleRecommendations.fallbackStrategy, "categoryTabRecent");
+  assert.equal(settings.articleRecommendations.mixManualAndAutomatic, true);
+  assert.equal(settings.recentComments.enabled, true);
+  assert.equal(settings.recentComments.limit, 6);
+  assert.equal(settings.recentComments.mobileTitle, "Dyskutowane teraz");
+  assert.equal(settings.visualStyle.themePreset, "classic");
+  assert.equal(settings.visualStyle.cardStyle, "elevated");
+  assert.equal(settings.visualStyle.cornerRadius, 8);
   assert.equal(
     settings.tagline,
     "Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz"
@@ -151,10 +162,31 @@ test("publication settings resolver maps publication content settings", () => {
       modalDescription: "Opis z Sanity",
       title: "Aktualne wydanie",
     },
-    tagline: "Hasło z Sanity",
+    recentComments: {
+      limit: 4,
+      mobilePlacement: "hidden",
+      mobileTitle: "Rozmowy czytelnikow",
+    },
+    articleRecommendations: {
+      fallbackStrategy: "categoryTabPopular",
+      limit: 6,
+      minimumManualItems: 3,
+      mixManualAndAutomatic: false,
+      title: "Polecane lokalnie",
+    },
+    visualStyle: {
+      cardStyle: "bordered",
+      cornerRadius: 12,
+      density: "compact",
+      headerStyle: "compact",
+      headlineStyle: "sans",
+      sectionHeaderStyle: "filled",
+      themePreset: "modern",
+    },
+    tagline: "HasĹ‚o z Sanity",
   });
 
-  assert.equal(settings.tagline, "Hasło z Sanity");
+  assert.equal(settings.tagline, "HasĹ‚o z Sanity");
   assert.equal(settings.footerColumns[0].header, "Prawo");
   assert.equal(settings.footerColumns[0].links[0].href, "/rules");
   assert.equal(settings.footerColumns[1].header, "Kontakt");
@@ -162,5 +194,23 @@ test("publication settings resolver maps publication content settings", () => {
   assert.equal(settings.footerColumns[1].textItems[1].text, "00-000 Testowo");
   assert.equal(settings.latestIssue.title, "Aktualne wydanie");
   assert.equal(settings.latestIssue.modalDescription, "Opis z Sanity");
+  assert.equal(settings.recentComments.enabled, true);
+  assert.equal(settings.recentComments.limit, 4);
+  assert.equal(settings.recentComments.mobilePlacement, "hidden");
+  assert.equal(settings.recentComments.mobileTitle, "Rozmowy czytelnikow");
+  assert.equal(settings.recentComments.title, "Ostatnie komentarze");
+  assert.equal(settings.articleRecommendations.enabled, true);
+  assert.equal(settings.articleRecommendations.limit, 6);
+  assert.equal(settings.articleRecommendations.minimumManualItems, 3);
+  assert.equal(settings.articleRecommendations.fallbackStrategy, "categoryTabPopular");
+  assert.equal(settings.articleRecommendations.mixManualAndAutomatic, false);
+  assert.equal(settings.articleRecommendations.title, "Polecane lokalnie");
+  assert.equal(settings.visualStyle.themePreset, "modern");
+  assert.equal(settings.visualStyle.cardStyle, "bordered");
+  assert.equal(settings.visualStyle.cornerRadius, 12);
+  assert.equal(settings.visualStyle.density, "compact");
+  assert.equal(settings.visualStyle.headerStyle, "compact");
+  assert.equal(settings.visualStyle.headlineStyle, "sans");
+  assert.equal(settings.visualStyle.sectionHeaderStyle, "filled");
   assert.equal(settings.latestIssue.downloadButtonLabel, "Pobierz pierwszą stronę");
 });

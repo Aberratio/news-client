@@ -85,7 +85,7 @@ const Row = styled.div`
 const Current = styled.span`
   float: left;
   display: flex;
-  color: rgb(184, 0, 0);
+  color: ${({ theme }) => theme.customTheme.publicationVisual.headerAccentColor};
 `;
 
 const Path = styled(Link)`

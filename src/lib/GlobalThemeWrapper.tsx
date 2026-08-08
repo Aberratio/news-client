@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
-import { mapPublicationBrandColorsToTheme } from "core/styles/customization/publicationTheme";
+import { mapPublicationSettingsToTheme } from "core/styles/customization/publicationTheme";
 import { GlobalStyle } from "core/styles/GlobalStyles";
 import { theme } from "core/styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -15,9 +15,7 @@ export default function GlobalThemeWrapper({
   children,
   publicationSettings,
 }: GlobalThemeWrapperProps) {
-  const customTheme = mapPublicationBrandColorsToTheme(
-    publicationSettings?.brandColors
-  );
+  const customTheme = mapPublicationSettingsToTheme(publicationSettings);
 
   return (
     <ThemeProvider

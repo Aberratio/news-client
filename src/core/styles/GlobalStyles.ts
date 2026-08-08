@@ -17,6 +17,17 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-text-size-adjust: 100%;
 
         scroll-behavior: smooth !important;
+
+        --publication-primary: ${({ theme }) => theme.customTheme.general.primaryColor};
+        --publication-on-primary: ${({ theme }) => theme.customTheme.general.primaryOppositeColor};
+        --publication-accent: ${({ theme }) => theme.customTheme.general.secondaryColor};
+        --publication-danger: ${({ theme }) => theme.customTheme.general.tertiaryColor};
+        --publication-radius: ${({ theme }) => theme.customTheme.publicationVisual.cornerRadius};
+        --publication-card-border-color: ${({ theme }) => theme.customTheme.publicationVisual.cardBorderColor};
+        --publication-card-border-width: ${({ theme }) => theme.customTheme.publicationVisual.cardBorderWidth};
+        --publication-card-hover-color: ${({ theme }) => theme.customTheme.publicationVisual.cardHoverColor};
+        --publication-card-shadow: ${({ theme }) => theme.customTheme.publicationVisual.cardShadow};
+        --publication-card-shadow-hover: ${({ theme }) => theme.customTheme.publicationVisual.cardShadowHover};
     }
 
     *,
@@ -54,9 +65,7 @@ export const GlobalStyle = createGlobalStyle`
       min-width: 320px;
       min-height: 100vh;
 
-      background: #fafafa;
-      background: -webkit-linear-gradient(to right, #FFFFFF, #fafafa);
-      background: linear-gradient(to right, #FFFFFF, #fafafa);
+      background: ${({ theme }) => theme.customTheme.buttons.primary.backgroundColor};
     }
 
     .font-spectral {

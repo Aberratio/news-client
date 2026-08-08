@@ -3,6 +3,21 @@ import { PublicationSettingsItem } from "types/PublicationSettingsItem";
 const fallbackAlt = "Glos Milicza";
 
 export const publicationSettingsFallback: PublicationSettingsItem = {
+  articleRecommendations: {
+    enabled: true,
+    fallbackStrategy: "categoryTabRecent",
+    limit: 4,
+    minimumManualItems: 1,
+    mixManualAndAutomatic: true,
+    title: "Przeczytaj rowniez",
+  },
+  brandColors: {
+    accent: "#15a752",
+    background: "#ffffff",
+    onPrimary: "#ffffff",
+    primary: "#2e6896",
+    text: "#111111",
+  },
   commentsPolicy: {
     enabled: true,
   },
@@ -104,6 +119,13 @@ export const publicationSettingsFallback: PublicationSettingsItem = {
   reactionsPolicy: {
     enabled: true,
   },
+  recentComments: {
+    enabled: true,
+    limit: 6,
+    mobilePlacement: "afterContent",
+    mobileTitle: "Dyskutowane teraz",
+    title: "Ostatnie komentarze",
+  },
   seoDescription: "Glos Milicza",
   seoImage: {
     _ref: "",
@@ -112,4 +134,13 @@ export const publicationSettingsFallback: PublicationSettingsItem = {
     path: "/icons/logo.png",
   },
   tagline: "Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz",
+  visualStyle: {
+    cardStyle: "elevated",
+    cornerRadius: 8,
+    density: "comfortable",
+    headerStyle: "masthead",
+    headlineStyle: "serif",
+    sectionHeaderStyle: "underline",
+    themePreset: "classic",
+  },
 };

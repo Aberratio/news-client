@@ -1,3 +1,4 @@
+import { publicationSettingsFallback } from "core/api/settings/publicationSettingsFallback";
 import { TabItem } from "types/TabItem";
 
 import { mapToPhotoItem, SanityPhotoItem } from "./SanityPhotoItem";
@@ -41,7 +42,9 @@ export const mapToTabItem = (data: SanityTabItem[]): TabItem[] => {
           tabName: tab.name,
           tabPath: `/tab/${tab.name}`,
           description: category.description,
-          color: category.color?.hex ?? "#2e6896",
+          color:
+            category.color?.hex ??
+            publicationSettingsFallback.brandColors!.primary!,
           image: category.image ? mapToPhotoItem(category.image) : undefined,
         };
       }),

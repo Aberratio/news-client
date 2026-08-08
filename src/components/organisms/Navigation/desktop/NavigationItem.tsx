@@ -57,7 +57,7 @@ const Container = styled.li<{ $isActive: boolean }>`
 
   &:hover {
     p {
-      color: rgb(46, 104, 150);
+      color: ${({ theme }) => theme.customTheme.general.primaryColor};
     }
   }
 `;

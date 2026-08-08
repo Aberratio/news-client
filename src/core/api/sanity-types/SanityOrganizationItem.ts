@@ -52,6 +52,7 @@ export interface SanityPublicationSettingsItem {
     publisher?: string;
   };
   latestIssue?: Partial<PublicationSettingsItem["latestIssue"]>;
+  visualStyle?: Partial<PublicationSettingsItem["visualStyle"]>;
   logos?: {
     footerLogo?: SanityPhotoItem;
     mainLogo?: SanityPhotoItem;
@@ -60,7 +61,9 @@ export interface SanityPublicationSettingsItem {
   commentsPolicy?: PublicationSettingsItem["commentsPolicy"];
   publicationName?: string;
   publicationShortName?: string;
+  articleRecommendations?: Partial<PublicationSettingsItem["articleRecommendations"]>;
   reactionsPolicy?: PublicationSettingsItem["reactionsPolicy"];
+  recentComments?: Partial<PublicationSettingsItem["recentComments"]>;
   seo?: {
     defaultDescription?: string;
     defaultTitle?: string;
@@ -87,6 +90,30 @@ interface SanityFooterLinkItem {
   label: string;
   url?: string;
 }
+
+const visualStyleOptions = {
+  cardStyle: ["flat", "bordered", "elevated", "editorial"],
+  density: ["compact", "comfortable"],
+  headerStyle: ["masthead", "compact", "centeredLogo"],
+  headlineStyle: ["serif", "sans", "condensed"],
+  sectionHeaderStyle: ["underline", "filled", "accentBar"],
+  themePreset: ["classic", "modern", "civic", "magazine"],
+} as const;
+
+const mapVisualStyleOption = <T extends readonly string[]>(
+  value: string | undefined,
+  options: T,
+): T[number] | undefined => {
+  return value && options.includes(value) ? value : undefined;
+};
+
+const mapCornerRadius = (value?: number) => {
+  if (typeof value !== "number" || !Number.isFinite(value)) {
+    return undefined;
+  }
+
+  return Math.min(Math.max(Math.round(value), 0), 24);
+};
 
 const mapOptionalPhotoItem = (photo?: SanityPhotoItem) => {
   return photo ? mapToPhotoItem(photo) : undefined;
@@ -212,6 +239,44 @@ export const mapPublicationSettingsItem = (
   const seoImage = mapOptionalPhotoItem(data.seo?.socialSharingImage);
   const brandColors = mapBrandColors(data.brandColors);
   const footerColumns = mapFooterColumns(data.footer);
+  const visualStyle = data.visualStyle
+    ? {
+        ...publicationSettingsFallback.visualStyle,
+        cardStyle:
+          mapVisualStyleOption(
+            data.visualStyle.cardStyle,
+            visualStyleOptions.cardStyle,
+          ) ?? publicationSettingsFallback.visualStyle.cardStyle,
+        cornerRadius:
+          mapCornerRadius(data.visualStyle.cornerRadius) ??
+          publicationSettingsFallback.visualStyle.cornerRadius,
+        density:
+          mapVisualStyleOption(
+            data.visualStyle.density,
+            visualStyleOptions.density,
+          ) ?? publicationSettingsFallback.visualStyle.density,
+        headerStyle:
+          mapVisualStyleOption(
+            data.visualStyle.headerStyle,
+            visualStyleOptions.headerStyle,
+          ) ?? publicationSettingsFallback.visualStyle.headerStyle,
+        headlineStyle:
+          mapVisualStyleOption(
+            data.visualStyle.headlineStyle,
+            visualStyleOptions.headlineStyle,
+          ) ?? publicationSettingsFallback.visualStyle.headlineStyle,
+        sectionHeaderStyle:
+          mapVisualStyleOption(
+            data.visualStyle.sectionHeaderStyle,
+            visualStyleOptions.sectionHeaderStyle,
+          ) ?? publicationSettingsFallback.visualStyle.sectionHeaderStyle,
+        themePreset:
+          mapVisualStyleOption(
+            data.visualStyle.themePreset,
+            visualStyleOptions.themePreset,
+          ) ?? publicationSettingsFallback.visualStyle.themePreset,
+      }
+    : undefined;
 
   return {
     ...(footerColumns ? { footerColumns } : {}),
@@ -241,7 +306,24 @@ export const mapPublicationSettingsItem = (
     ...(data.seo?.titlePattern ? { titlePattern: data.seo.titlePattern } : {}),
     ...(data.commentsPolicy ? { commentsPolicy: data.commentsPolicy } : {}),
     ...(data.reactionsPolicy ? { reactionsPolicy: data.reactionsPolicy } : {}),
+    ...(data.articleRecommendations
+      ? {
+          articleRecommendations: {
+            ...publicationSettingsFallback.articleRecommendations,
+            ...data.articleRecommendations,
+          },
+        }
+      : {}),
+    ...(data.recentComments
+      ? {
+          recentComments: {
+            ...publicationSettingsFallback.recentComments,
+            ...data.recentComments,
+          },
+        }
+      : {}),
     ...(brandColors ? { brandColors } : {}),
+    ...(visualStyle ? { visualStyle } : {}),
   };
 };
 

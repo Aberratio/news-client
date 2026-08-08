@@ -4,6 +4,7 @@ import {
   MantineProvider,
 } from "@mantine/core";
 import { Hotjar } from "core/analytics/Hotjar";
+import { fetchLastComments } from "core/api/comments/fetchLastComments";
 import {
   resolvePublicationSettings,
   SanityOrganizationItem,
@@ -11,11 +12,13 @@ import {
 import { sanityClient } from "core/api/sanityClient";
 import { fetchAdds } from "core/api/settings/fetchAdds";
 import { fetchOrganization } from "core/api/settings/fetchOrganization";
+import { isCommentsPolicyEnabled } from "core/policies/publicationPolicies";
 import type { Metadata } from "next";
 import ErrorBoundary from "providers/context/ErrorBoundary";
 import { OrganizationContextProvider } from "providers/context/OrganizationContextProvider";
 import { ModalProvider } from "providers/modal-provider/ModalProvider";
 import type { AddsItem } from "types/AddsItem";
+import type { CommentSummaryItem } from "types/CommentSummaryItem";
 import type { OrganizationItem } from "types/OrganizationItem";
 
 import { MainColumn } from "components/atoms/MainColumn/MainColumn";
@@ -23,6 +26,7 @@ import { MobileNavbar } from "components/molecules/MobileNavbar/MobileNavbar";
 import { ScrollToTopButton } from "components/molecules/ScrollToTopButton/ScrollToTopButton";
 import Footer from "components/organisms/Footer";
 import LandscapeAdd from "components/organisms/LandscapeAdd/LandscapeAdd";
+import { MobileRecentCommentsSection } from "components/organisms/RecentComments";
 import { SideBar } from "components/organisms/SideBar/SideBar";
 
 import GlobalThemeWrapper from "../lib/GlobalThemeWrapper";
@@ -62,7 +66,7 @@ const fetchPublicationMetadataSettings = async () => {
 
     return resolvePublicationSettings(
       data.publicationSettings,
-      data.generalConfig
+      data.generalConfig,
     );
   } catch {
     return resolvePublicationSettings();
@@ -142,6 +146,15 @@ const RootLayout = async ({
     );
   }
 
+  const publicationSettings = organization.publicationSettings;
+  const recentCommentsSettings = publicationSettings?.recentComments;
+  const commentsEnabled =
+    isCommentsPolicyEnabled(publicationSettings) &&
+    recentCommentsSettings?.enabled !== false;
+  const recentComments: CommentSummaryItem[] = commentsEnabled
+    ? await fetchLastComments(recentCommentsSettings?.limit)
+    : [];
+
   return (
     <html lang="pl" {...mantineHtmlProps}>
       <head>
@@ -162,9 +175,22 @@ const RootLayout = async ({
                       )}
                       <MainColumn>
                         {children}
+                        {commentsEnabled &&
+                          recentCommentsSettings?.mobilePlacement !==
+                            "hidden" && (
+                            <MobileRecentCommentsSection
+                              comments={recentComments}
+                              title={
+                                recentCommentsSettings?.mobileTitle ??
+                                recentCommentsSettings?.title ??
+                                "Dyskutowane teraz"
+                              }
+                            />
+                          )}
                         <SideBar
                           boxAdds={adds?.boxAdds}
-                          publicationSettings={organization.publicationSettings}
+                          comments={recentComments}
+                          publicationSettings={publicationSettings}
                         />
                       </MainColumn>
                       <Footer />

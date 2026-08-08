@@ -9,6 +9,28 @@ export interface CustomTheme {
     tertiaryColor: string;
     tertiaryOppositeColor: OppositeColor;
   };
+  publicationVisual: {
+    cardBorderColor: string;
+    cardBorderWidth: string;
+    cardHoverColor: string;
+    cardShadow: string;
+    cardShadowHover: string;
+    cornerRadius: string;
+    density: "compact" | "comfortable";
+    footerAccentColor: string;
+    footerBackgroundColor: string;
+    footerCopyrightBackgroundColor: string;
+    formFocusShadow: string;
+    headerAccentColor: string;
+    headerBackgroundColor: string;
+    mobileNavigationBackgroundColor: string;
+    mutedBorderColor: string;
+    sectionHeaderBackgroundColor: string;
+    sectionHeaderBorderColor: string;
+    sectionHeaderColor: string;
+    submenuActiveBackgroundColor: string;
+    themePreset: "classic" | "modern" | "civic" | "magazine";
+  };
   buttons: {
     primary: {
       backgroundColor: string;

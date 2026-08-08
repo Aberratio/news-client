@@ -4,7 +4,10 @@
   cursor: pointer;
   min-height: 100%;
   overflow: hidden;
-  box-shadow: 0 10px 28px rgb(25 31 40 / 12%);
+  border-color: var(--publication-card-border-color);
+  border-width: var(--publication-card-border-width);
+  border-radius: var(--publication-radius);
+  box-shadow: var(--publication-card-shadow);
   transition:
     border-color 180ms ease,
     box-shadow 180ms ease,
@@ -13,13 +16,13 @@
 
 .card:hover,
 .card:focus-visible {
-  box-shadow: 0 14px 34px rgb(25 31 40 / 16%);
+  box-shadow: var(--publication-card-shadow-hover);
   transform: translateY(-2px);
 }
 
 .card:hover .title,
 .card:focus-visible .title {
-  color: #15a752;
+  color: var(--publication-card-hover-color);
 }
 
 .image {

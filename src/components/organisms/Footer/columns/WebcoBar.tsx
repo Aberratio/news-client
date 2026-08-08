@@ -20,7 +20,8 @@ export const WebcoBar = () => {
 };
 
 const Wrapper = styled.div`
-  background-color: #151515;
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.footerCopyrightBackgroundColor};
 `;
 
 const Container = styled.div`
@@ -46,6 +47,6 @@ const Container = styled.div`
 
 const StyledLink = styled(Link)`
   margin: 0 8px;
-  color: #15a752;
+  color: ${({ theme }) => theme.customTheme.publicationVisual.footerAccentColor};
   cursor: pointer;
 `;

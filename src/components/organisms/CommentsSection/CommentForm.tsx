@@ -112,7 +112,7 @@ export const CommentForm = ({ _id, sendComment }: CommentFormProps) => {
         <Button
           disabled={isSubmitting}
           type="submit"
-          color="#2e6896"
+          color="var(--publication-primary)"
           leftSection={<Send size={{ width: "1rem", height: "1rem" }} />}
         >
           {isSubmitting ? "Wysyłanie..." : "Skomentuj"}
@@ -138,7 +138,7 @@ const Form = styled.form`
   margin: 0 0 28px;
   box-sizing: border-box;
   border: 1px solid #e6e8eb;
-  border-radius: 8px;
+  border-radius: ${({ theme }) => theme.customTheme.publicationVisual.cornerRadius};
   background: #fafafa;
 
   @media screen and (max-width: 767px) {
@@ -165,8 +165,9 @@ const Input = styled.input`
   min-width: 0;
   height: 56px;
   padding: 0 16px;
-  border: 1px solid #d7dce0;
-  border-radius: 8px;
+  border: 1px solid
+    ${({ theme }) => theme.customTheme.publicationVisual.mutedBorderColor};
+  border-radius: ${({ theme }) => theme.customTheme.publicationVisual.cornerRadius};
   box-sizing: border-box;
   background-color: white;
   color: black;
@@ -177,8 +178,9 @@ const Input = styled.input`
   outline: none;
 
   &:focus {
-    border-color: #2e6896;
-    box-shadow: 0 0 0 3px rgba(46, 104, 150, 0.16);
+    border-color: ${({ theme }) => theme.customTheme.general.primaryColor};
+    box-shadow: ${({ theme }) =>
+      theme.customTheme.publicationVisual.formFocusShadow};
   }
 
   @media screen and (min-width: 768px) {
@@ -192,8 +194,9 @@ const Textarea = styled.textarea`
   min-width: 0;
   height: 140px;
   padding: 16px;
-  border: 1px solid #d7dce0;
-  border-radius: 8px;
+  border: 1px solid
+    ${({ theme }) => theme.customTheme.publicationVisual.mutedBorderColor};
+  border-radius: ${({ theme }) => theme.customTheme.publicationVisual.cornerRadius};
   box-sizing: border-box;
   background-color: white;
   color: black;
@@ -205,8 +208,9 @@ const Textarea = styled.textarea`
   resize: vertical;
 
   &:focus {
-    border-color: #2e6896;
-    box-shadow: 0 0 0 3px rgba(46, 104, 150, 0.16);
+    border-color: ${({ theme }) => theme.customTheme.general.primaryColor};
+    box-shadow: ${({ theme }) =>
+      theme.customTheme.publicationVisual.formFocusShadow};
   }
 
   @media screen and (min-width: 768px) {
@@ -216,7 +220,7 @@ const Textarea = styled.textarea`
 
 const FieldMessage = styled.div`
   margin: 0;
-  color: #b80000;
+  color: ${({ theme }) => theme.customTheme.general.tertiaryColor};
   font-family: ${({ theme }) => theme.customFonts.smallM.fontFamily};
   font-size: ${({ theme }) => theme.customFonts.smallM.fontSize};
   font-weight: ${({ theme }) => theme.customFonts.smallM.fontWeight};
