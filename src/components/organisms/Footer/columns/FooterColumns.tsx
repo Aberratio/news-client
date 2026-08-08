@@ -1,12 +1,13 @@
 "use client";
 
 import styled from "styled-components";
+import { PublicationFooterColumnItem } from "types/PublicationSettingsItem";
 
 import { DescriptionColumn } from "./DescriptionColumn";
-import { InfoColumn, InfoColumnItem } from "./InfoColumn";
+import { InfoColumn } from "./InfoColumn";
 
 export interface FooterColumnsProps {
-  columns: InfoColumnItem[];
+  columns: PublicationFooterColumnItem[];
 }
 
 const FooterColumns = ({ columns }: FooterColumnsProps) => {

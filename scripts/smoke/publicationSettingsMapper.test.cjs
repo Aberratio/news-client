@@ -42,6 +42,14 @@ test("publication settings resolver preserves generalConfig when publicationSett
   assert.equal(settings.name, "Legacy Publication");
   assert.equal(settings.commentsPolicy.enabled, true);
   assert.equal(settings.reactionsPolicy.enabled, true);
+  assert.equal(
+    settings.tagline,
+    "Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz"
+  );
+  assert.equal(settings.footerColumns[0].header, "Ważne informacje");
+  assert.equal(settings.footerColumns[1].links[0].label, "71-3830-021");
+  assert.equal(settings.latestIssue.title, "Najnowszy numer");
+  assert.equal(settings.latestIssue.releaseDatePrefix, "W sprzedaży od");
   assert.equal(settings.seoDescription, "Legacy SEO description");
   assert.equal(settings.footerDescription, footerDescription);
   assert.equal(settings.mainLogo.path, "https://cdn.sanity.io/images/project/production/main.png");
@@ -87,6 +95,8 @@ test("publication settings resolver tolerates partial publicationSettings docume
   assert.equal(settings.mobileLogo.alt, "Mobile logo");
   assert.equal(settings.footerLogo.alt, "Footer logo");
   assert.equal(settings.footerDescription, footerDescription);
+  assert.equal(settings.footerColumns[0].header, "Ważne informacje");
+  assert.equal(settings.footerColumns[1].links[0].label, "71-3830-021");
 });
 
 test("publication settings resolver maps explicit policy values", () => {
@@ -116,4 +126,41 @@ test("publication settings resolver maps optional brand colors without requiring
 
   assert.equal(settings.brandColors.primary, "#123456");
   assert.equal(settings.brandColors.accent, undefined);
+});
+
+test("publication settings resolver maps publication content settings", () => {
+  const settings = resolvePublicationSettings({
+    footer: {
+      contactHeader: "Kontakt",
+      contactItems: [
+        {
+          href: "mailto:kontakt@example.pl",
+          label: "kontakt@example.pl",
+        },
+      ],
+      editorialOffice: "ul. Testowa 1\n00-000 Testowo",
+      legalHeader: "Prawo",
+      legalLinks: [
+        {
+          href: "/rules",
+          label: "Regulamin",
+        },
+      ],
+    },
+    latestIssue: {
+      modalDescription: "Opis z Sanity",
+      title: "Aktualne wydanie",
+    },
+    tagline: "Hasło z Sanity",
+  });
+
+  assert.equal(settings.tagline, "Hasło z Sanity");
+  assert.equal(settings.footerColumns[0].header, "Prawo");
+  assert.equal(settings.footerColumns[0].links[0].href, "/rules");
+  assert.equal(settings.footerColumns[1].header, "Kontakt");
+  assert.equal(settings.footerColumns[1].links[0].label, "kontakt@example.pl");
+  assert.equal(settings.footerColumns[1].textItems[1].text, "00-000 Testowo");
+  assert.equal(settings.latestIssue.title, "Aktualne wydanie");
+  assert.equal(settings.latestIssue.modalDescription, "Opis z Sanity");
+  assert.equal(settings.latestIssue.downloadButtonLabel, "Pobierz pierwszą stronę");
 });
