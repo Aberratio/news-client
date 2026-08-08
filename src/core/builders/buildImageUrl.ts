@@ -1,7 +1,7 @@
+import { sanityProjectId } from "core/api/sanityProject";
+
 export const buildImageUrl = (ref: string) => {
-  return `https://cdn.sanity.io/images/${
-    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-  }/production/${ref
+  return `https://cdn.sanity.io/images/${sanityProjectId}/production/${ref
     .slice(6)
     .replace("-webp", ".webp")
     .replace("-jpeg", ".jpeg")
