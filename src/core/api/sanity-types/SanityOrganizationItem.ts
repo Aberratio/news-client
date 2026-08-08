@@ -43,8 +43,10 @@ export interface SanityPublicationSettingsItem {
     mainLogo?: SanityPhotoItem;
     mobileLogo?: SanityPhotoItem;
   };
+  commentsPolicy?: PublicationSettingsItem["commentsPolicy"];
   publicationName?: string;
   publicationShortName?: string;
+  reactionsPolicy?: PublicationSettingsItem["reactionsPolicy"];
   seo?: {
     defaultDescription?: string;
     defaultTitle?: string;
@@ -114,6 +116,8 @@ export const mapPublicationSettingsItem = (
       : {}),
     ...(data.tagline ? { tagline: data.tagline } : {}),
     ...(data.seo?.titlePattern ? { titlePattern: data.seo.titlePattern } : {}),
+    ...(data.commentsPolicy ? { commentsPolicy: data.commentsPolicy } : {}),
+    ...(data.reactionsPolicy ? { reactionsPolicy: data.reactionsPolicy } : {}),
   };
 };
 

@@ -11,6 +11,7 @@ export interface ArticleItem {
   bodyText: string;
   category: CategoryItem;
   createdOn: string;
+  commentsDisabled: boolean;
   slug: string;
   lead: string;
   likes: number;
@@ -19,6 +20,7 @@ export interface ArticleItem {
   path: string;
   photos: PhotoItem[];
   recommendations: ArticleSummaryItem[];
+  reactionsDisabled: boolean;
   title: string;
   comments: number;
 }

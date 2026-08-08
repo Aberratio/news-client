@@ -40,6 +40,8 @@ test("publication settings resolver preserves generalConfig when publicationSett
   const settings = resolvePublicationSettings(undefined, generalConfig);
 
   assert.equal(settings.name, "Legacy GM");
+  assert.equal(settings.commentsPolicy.enabled, true);
+  assert.equal(settings.reactionsPolicy.enabled, true);
   assert.equal(settings.seoDescription, "Legacy SEO description");
   assert.equal(settings.footerDescription, footerDescription);
   assert.equal(settings.mainLogo.path, "https://cdn.sanity.io/images/project/production/main.png");
@@ -60,7 +62,25 @@ test("publication settings resolver lets publicationSettings override generalCon
   );
 
   assert.equal(settings.name, "Publication GM");
+  assert.equal(settings.commentsPolicy.enabled, true);
+  assert.equal(settings.reactionsPolicy.enabled, true);
   assert.equal(settings.seoDescription, "Publication SEO description");
   assert.equal(settings.mainLogo.alt, "Main logo");
   assert.equal(settings.footerLogo.alt, "Footer logo");
+});
+
+test("publication settings resolver maps explicit policy values", () => {
+  const settings = resolvePublicationSettings({
+    commentsPolicy: {
+      enabled: false,
+      moderationRequired: true,
+    },
+    reactionsPolicy: {
+      enabled: false,
+    },
+  });
+
+  assert.equal(settings.commentsPolicy.enabled, false);
+  assert.equal(settings.commentsPolicy.moderationRequired, true);
+  assert.equal(settings.reactionsPolicy.enabled, false);
 });

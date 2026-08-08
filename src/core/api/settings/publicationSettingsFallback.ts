@@ -3,6 +3,9 @@ import { PublicationSettingsItem } from "types/PublicationSettingsItem";
 const fallbackAlt = "Glos Milicza";
 
 export const publicationSettingsFallback: PublicationSettingsItem = {
+  commentsPolicy: {
+    enabled: true,
+  },
   footerDescription: [
     {
       _key: "publication-settings-fallback-description",
@@ -38,6 +41,9 @@ export const publicationSettingsFallback: PublicationSettingsItem = {
     path: "/icons/logo_mobile.png",
   },
   name: "Glos Milicza",
+  reactionsPolicy: {
+    enabled: true,
+  },
   seoDescription: "Glos Milicza",
   seoImage: {
     _ref: "",

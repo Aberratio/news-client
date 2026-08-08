@@ -30,6 +30,8 @@ export const FullArticleContent = ({ article, children }: FullArticleProps) => {
           <Suspense fallback={<Skeleton />}>
             <StatisticArticleBar
               articleId={article._id}
+              commentsDisabled={article.commentsDisabled}
+              reactionsDisabled={article.reactionsDisabled}
               statistics={{
                 comments: article.comments,
                 dislikes: article.dislikes,

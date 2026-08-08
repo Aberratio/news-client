@@ -1,5 +1,7 @@
 "use server";
 
+import { assertCanCommentOnPost } from "core/api/policies/fetchInteractionPolicy";
+
 import { sanityClient } from "../sanityClient";
 
 interface FetchNewCommentProps {
@@ -16,6 +18,8 @@ export const fetchNewComment = async ({
   date,
 }: FetchNewCommentProps) => {
   try {
+    await assertCanCommentOnPost(_id);
+
     await sanityClient.create({
       _type: "comment",
       post: {

@@ -35,6 +35,7 @@ export interface SanityArticleSummaryItem {
   likes: number;
   dislikes: number;
   comments: number;
+  commentsDisabled?: boolean;
   views: number;
   mainImage: {
     asset: {
@@ -48,6 +49,7 @@ export interface SanityArticleSummaryItem {
     current: string;
   };
   title: string;
+  reactionsDisabled?: boolean;
 }
 
 export const mapDataToArticleSummaryItems = (
@@ -74,6 +76,7 @@ export const mapDataToArticleSummaryItems = (
       lead: post.lead,
       likes: post.likes,
       comments: post.comments,
+      commentsDisabled: post.commentsDisabled ?? false,
       dislikes: post.dislikes,
       views: post.views,
       path: buildArticlePath(post.slug.current),
@@ -84,6 +87,7 @@ export const mapDataToArticleSummaryItems = (
         views: 0,
       },
       photo: mapToPhotoItem(post.mainImage),
+      reactionsDisabled: post.reactionsDisabled ?? false,
       title: post.title,
     };
   });

@@ -1,5 +1,7 @@
 "use server";
 
+import { assertCanReactToPost } from "core/api/policies/fetchInteractionPolicy";
+
 import { sanityClient } from "../sanityClient";
 
 interface FetchArticleReactionProps {
@@ -18,11 +20,14 @@ export const fetchArticleReaction = async ({
       console.error("An error occurred adding reaction on article");
     }
 
+    await assertCanReactToPost(articleId);
+
     await sanityClient
       .patch(articleId)
       .inc({ likes: like, dislikes: dislike })
       .commit();
   } catch (error) {
     console.error("Error adding reaction on article:", error);
+    throw new Error("Error adding reaction on article");
   }
 };

@@ -11,9 +11,10 @@ import { AllCommentsWrapper } from "./AllCommentsWrapper";
 
 interface AllCommentsProps {
   comments: CommentItem[];
+  reactionsEnabled: boolean;
 }
 
-export const AllComments = ({ comments }: AllCommentsProps) => {
+export const AllComments = ({ comments, reactionsEnabled }: AllCommentsProps) => {
   if (comments.length === 0) return null;
 
   return (
@@ -34,6 +35,7 @@ export const AllComments = ({ comments }: AllCommentsProps) => {
               dislikes={comment.dislikes}
               key={`${comment.id}-${comment.likes}-${comment.dislikes}`}
               likes={comment.likes}
+              showReactions={reactionsEnabled}
               text={comment.text}
             />
           )

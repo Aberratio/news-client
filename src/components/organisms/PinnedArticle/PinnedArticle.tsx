@@ -24,6 +24,7 @@ const PinnedArticle = ({ article }: PinnedArticleProps) => {
       author={article.author}
       views={article.views}
       comments={article.comments}
+      commentsDisabled={article.commentsDisabled}
     />
   );
 };
