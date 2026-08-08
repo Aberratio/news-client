@@ -84,3 +84,16 @@ test("publication settings resolver maps explicit policy values", () => {
   assert.equal(settings.commentsPolicy.moderationRequired, true);
   assert.equal(settings.reactionsPolicy.enabled, false);
 });
+
+test("publication settings resolver maps optional brand colors without requiring every color", () => {
+  const settings = resolvePublicationSettings({
+    brandColors: {
+      primary: {
+        hex: "#123456",
+      },
+    },
+  });
+
+  assert.equal(settings.brandColors.primary, "#123456");
+  assert.equal(settings.brandColors.accent, undefined);
+});

@@ -2,7 +2,10 @@ import { publicationSettingsFallback } from "core/api/settings/publicationSettin
 import { buildArticlePath } from "core/builders/buildPath";
 import { formatDateToString } from "core/formaters/formatDateToString";
 import { OrganizationItem } from "types/OrganizationItem";
-import { PublicationSettingsItem } from "types/PublicationSettingsItem";
+import {
+  BrandColorItem,
+  PublicationSettingsItem,
+} from "types/PublicationSettingsItem";
 
 import { mapToPhotoItem, SanityPhotoItem } from "./SanityPhotoItem";
 import { mapToTabItem, SanityTabItem } from "./SanityTabItem";
@@ -35,6 +38,7 @@ export interface SanityOrganizationItem {
 }
 
 export interface SanityPublicationSettingsItem {
+  brandColors?: SanityBrandColorsItem;
   footer?: {
     description?: PublicationSettingsItem["footerDescription"];
   };
@@ -56,8 +60,42 @@ export interface SanityPublicationSettingsItem {
   tagline?: string;
 }
 
+interface SanityColorInputItem {
+  hex?: string;
+}
+
+interface SanityBrandColorsItem {
+  accent?: SanityColorInputItem;
+  background?: SanityColorInputItem;
+  onPrimary?: SanityColorInputItem;
+  primary?: SanityColorInputItem;
+  text?: SanityColorInputItem;
+}
+
 const mapOptionalPhotoItem = (photo?: SanityPhotoItem) => {
   return photo ? mapToPhotoItem(photo) : undefined;
+};
+
+const mapOptionalBrandColor = (color?: SanityColorInputItem) => {
+  return color?.hex;
+};
+
+const mapBrandColors = (
+  brandColors?: SanityBrandColorsItem
+): BrandColorItem | undefined => {
+  if (!brandColors) {
+    return undefined;
+  }
+
+  const colors: BrandColorItem = {
+    accent: mapOptionalBrandColor(brandColors.accent),
+    background: mapOptionalBrandColor(brandColors.background),
+    onPrimary: mapOptionalBrandColor(brandColors.onPrimary),
+    primary: mapOptionalBrandColor(brandColors.primary),
+    text: mapOptionalBrandColor(brandColors.text),
+  };
+
+  return Object.values(colors).some(Boolean) ? colors : undefined;
 };
 
 export const mapGeneralConfigToPublicationSettings = (
@@ -98,6 +136,7 @@ export const mapPublicationSettingsItem = (
   const mainLogo = mapOptionalPhotoItem(data.logos?.mainLogo);
   const mobileLogo = mapOptionalPhotoItem(data.logos?.mobileLogo);
   const seoImage = mapOptionalPhotoItem(data.seo?.socialSharingImage);
+  const brandColors = mapBrandColors(data.brandColors);
 
   return {
     ...(data.footer?.description
@@ -118,6 +157,7 @@ export const mapPublicationSettingsItem = (
     ...(data.seo?.titlePattern ? { titlePattern: data.seo.titlePattern } : {}),
     ...(data.commentsPolicy ? { commentsPolicy: data.commentsPolicy } : {}),
     ...(data.reactionsPolicy ? { reactionsPolicy: data.reactionsPolicy } : {}),
+    ...(brandColors ? { brandColors } : {}),
   };
 };
 

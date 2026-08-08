@@ -1,6 +1,14 @@
 import { GeneralConfigItem } from "./GeneralConfigItem";
 import { PhotoItem } from "./PhotoItem";
 
+export interface BrandColorItem {
+  accent?: string;
+  background?: string;
+  onPrimary?: string;
+  primary?: string;
+  text?: string;
+}
+
 export interface CommentsPolicyItem {
   enabled?: boolean;
   moderationRequired?: boolean;
@@ -14,6 +22,7 @@ export interface ReactionsPolicyItem {
 }
 
 export interface PublicationSettingsItem {
+  brandColors?: BrandColorItem;
   commentsPolicy: CommentsPolicyItem;
   footerDescription: GeneralConfigItem["footerDescription"];
   footerLogo: PhotoItem;

@@ -152,7 +152,9 @@ const RootLayout = async ({
           <OrganizationContextProvider organization={organization}>
             <MantineProvider forceColorScheme="light">
               <StyledComponentsRegistry>
-                <GlobalThemeWrapper>
+                <GlobalThemeWrapper
+                  publicationSettings={organization.publicationSettings}
+                >
                   <ModalProvider>
                     <MobileNavbar>
                       {adds?.mainAdd && (
