@@ -38,6 +38,7 @@ export interface SanityOrganizationItem {
 }
 
 export interface SanityPublicationSettingsItem {
+  advertisingLabels?: Partial<PublicationSettingsItem["advertisingLabels"]>;
   brandColors?: SanityBrandColorsItem;
   footer?: {
     contactEmail?: string;
@@ -320,6 +321,14 @@ export const mapPublicationSettingsItem = (
     : undefined;
 
   return {
+    ...(data.advertisingLabels
+      ? {
+          advertisingLabels: {
+            ...publicationSettingsFallback.advertisingLabels,
+            ...data.advertisingLabels,
+          },
+        }
+      : {}),
     ...(footerColumns ? { footerColumns } : {}),
     ...(data.footer?.description
       ? { footerDescription: data.footer.description }

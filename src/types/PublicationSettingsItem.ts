@@ -67,6 +67,11 @@ export interface ArticleRecommendationsSettingsItem {
   title?: string;
 }
 
+export interface AdvertisingLabelsItem {
+  advertisement?: string;
+  sponsoredContent?: string;
+}
+
 export type HomepageSectionKey =
   | "lead"
   | "latest"
@@ -110,6 +115,7 @@ export interface PublicationVisualStyleItem {
 }
 
 export interface PublicationSettingsItem {
+  advertisingLabels: AdvertisingLabelsItem;
   articleRecommendations: ArticleRecommendationsSettingsItem;
   brandColors?: BrandColorItem;
   commentsPolicy: CommentsPolicyItem;

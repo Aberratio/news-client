@@ -30,12 +30,12 @@ const Container = styled.div`
     padding-bottom: 24px;
 
     @media screen and (min-width: ${theme.breakpoints.tabletS}) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 32px 24px;
     }
 
     @media screen and (min-width: ${theme.breakpoints.desktopS}) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 36px 28px;
     }
 

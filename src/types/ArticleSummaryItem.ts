@@ -14,6 +14,7 @@ export interface ArticleSummaryItem {
   lead: string;
   likes: number;
   dislikes: number;
+  isSponsored?: boolean;
   views: number;
   path: string;
   photo: PhotoItem;

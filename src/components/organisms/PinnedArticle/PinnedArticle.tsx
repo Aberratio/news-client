@@ -2,7 +2,7 @@
 
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
-import { ImageCard } from "components/molecules/ImageCard/ImageCard";
+import { ArticleCardFooter } from "components/molecules/ArticleCardFooter/ArticleCardFooter";
 
 interface PinnedArticleProps {
   article: ArticleSummaryItem;
@@ -14,17 +14,10 @@ const PinnedArticle = ({ article }: PinnedArticleProps) => {
   }
 
   return (
-    <ImageCard
-      link={`/article/${article.id}`}
-      title={article.title}
-      photo={{
-        path: article.photo.path,
-        alt: "article.photo.description",
-      }}
-      author={article.author}
-      views={article.views}
-      comments={article.comments}
-      commentsDisabled={article.commentsDisabled}
+    <ArticleCardFooter
+      dataTestId="pinned-article-card"
+      item={article}
+      variant="featured"
     />
   );
 };

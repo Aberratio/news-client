@@ -25,6 +25,7 @@ export interface SanityArticleSummaryItem {
     };
     tab: {
       name: string;
+      title?: string;
       slug: {
         current: string;
       };
@@ -36,6 +37,7 @@ export interface SanityArticleSummaryItem {
   lead: string;
   likes: number;
   dislikes: number;
+  isAdd?: boolean;
   comments: number;
   commentsDisabled?: boolean;
   views: number;
@@ -70,7 +72,7 @@ export const mapDataToArticleSummaryItems = (
         name: post.category.name,
         path: buildCategoryPath(post.category.slug.current),
         tabSlug: post.category.tab.slug.current,
-        tabName: post.category.tab.name,
+        tabName: post.category.tab.name ?? post.category.tab.title ?? "",
         tabPath: buildTabPath(post.category.tab.slug.current),
         color:
           post.category.tab.color?.hex ??
@@ -79,6 +81,7 @@ export const mapDataToArticleSummaryItems = (
       createdOn: formatDateToString(post.publishedAt),
       id: post.slug.current,
       lead: post.lead,
+      isSponsored: post.isAdd ?? false,
       likes: post.likes,
       comments: post.comments,
       commentsDisabled: post.commentsDisabled ?? false,

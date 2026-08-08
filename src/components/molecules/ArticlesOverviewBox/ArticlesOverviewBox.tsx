@@ -3,14 +3,19 @@
 import OverviewGrid from "components/atoms/OverviewGrid";
 
 import { ArticleSummaryItem } from "../../../types/ArticleSummaryItem";
-import { ArticleCardFooter } from "../ArticleCardFooter/ArticleCardFooter";
+import {
+  ArticleCardFooter,
+  ArticleCardVariant,
+} from "../ArticleCardFooter/ArticleCardFooter";
 
 interface ArticlesOverviewBoxProps {
+  cardVariant?: ArticleCardVariant;
   dataTestId: string;
   items: ArticleSummaryItem[];
 }
 
 const ArticlesOverviewBox = ({
+  cardVariant = "standard",
   dataTestId,
   items,
 }: ArticlesOverviewBoxProps) => {
@@ -22,6 +27,7 @@ const ArticlesOverviewBox = ({
             key={item.id}
             dataTestId="article-box"
             item={item}
+            variant={cardVariant}
           />
         );
       })}

@@ -1,7 +1,7 @@
 "use client";
 
 import { Anchor, Image, Text } from "@mantine/core";
-import { buildArticlePath, buildTabPath } from "core/builders/buildPath";
+import { buildTabPath } from "core/builders/buildPath";
 import Link from "next/link";
 import styled from "styled-components";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
@@ -74,7 +74,14 @@ export const HomeEditorialLayout = ({
                   <RailTitle>{settings.latestLabel ?? "Najnowsze"}</RailTitle>
                   <CompactList>
                     {leadRailArticles.map((article) => (
-                      <CompactArticleLink article={article} key={article.id} />
+                      <ArticleCardFooter
+                        key={article.id}
+                        dataTestId="homepage-rail-article"
+                        item={article}
+                        showLead={false}
+                        showShare={false}
+                        variant="horizontal"
+                      />
                     ))}
                   </CompactList>
                 </Rail>
@@ -111,7 +118,14 @@ export const HomeEditorialLayout = ({
                   <PanelTitle>Najwięcej komentarzy</PanelTitle>
                   <CompactList>
                     {discussedArticles.map((article) => (
-                      <CompactArticleLink article={article} key={article.id} />
+                      <ArticleCardFooter
+                        key={article.id}
+                        dataTestId="homepage-discussed-article"
+                        item={article}
+                        showLead={false}
+                        showShare={false}
+                        variant="horizontal"
+                      />
                     ))}
                   </CompactList>
                 </Panel>
@@ -143,6 +157,7 @@ export const HomeEditorialLayout = ({
                         key={article.id}
                         dataTestId="homepage-category-article"
                         item={article}
+                        variant="compact"
                       />
                     ))}
                   </CategoryGrid>
@@ -160,7 +175,14 @@ export const HomeEditorialLayout = ({
             />
             <PopularGrid>
               {popularArticles.map((article) => (
-                <CompactArticleLink article={article} key={article.id} />
+                <ArticleCardFooter
+                  key={article.id}
+                  dataTestId="homepage-popular-article"
+                  item={article}
+                  showLead={false}
+                  showShare={false}
+                  variant="horizontal"
+                />
               ))}
             </PopularGrid>
           </EditorialSection>
@@ -209,21 +231,6 @@ const SectionHeader = ({ href, title }: SectionHeaderProps) => (
       </Anchor>
     )}
   </HeaderRow>
-);
-
-interface CompactArticleLinkProps {
-  article: ArticleSummaryItem;
-}
-
-const CompactArticleLink = ({ article }: CompactArticleLinkProps) => (
-  <CompactItem href={buildArticlePath(article.id)}>
-    <CompactMeta>{article.category.name}</CompactMeta>
-    <CompactTitle>{article.title}</CompactTitle>
-    <CompactFooter>
-      <span>{article.createdOn}</span>
-      {!article.commentsDisabled && <span>{article.comments} komentarzy</span>}
-    </CompactFooter>
-  </CompactItem>
 );
 
 const HomeStack = styled.div`
@@ -284,57 +291,7 @@ const RailTitle = styled.h2`
 const CompactList = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const CompactItem = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 14px 0;
-  border-top: 1px solid #e6e8eb;
-  color: inherit;
-  text-decoration: none;
-
-  &:hover h3,
-  &:focus-visible h3 {
-    color: ${({ theme }) => theme.general.primaryColor};
-  }
-`;
-
-const CompactMeta = styled.span`
-  color: ${({ theme }) => theme.general.primaryColor};
-  font-family: ${({ theme }) => theme.customFonts.bodyM.fontFamily};
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
-  text-transform: uppercase;
-`;
-
-const CompactTitle = styled.h3`
-  display: -webkit-box;
-  margin: 0;
-  color: #111827;
-  font-family:
-    source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.18;
-  overflow: hidden;
-  overflow-wrap: anywhere;
-  transition: color 160ms ease;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-`;
-
-const CompactFooter = styled.p`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 10px;
-  margin: 0;
-  color: #667085;
-  font-family: ${({ theme }) => theme.customFonts.bodyM.fontFamily};
-  font-size: 13px;
-  line-height: 1.25;
+  gap: 12px;
 `;
 
 const EditorialSection = styled.section`

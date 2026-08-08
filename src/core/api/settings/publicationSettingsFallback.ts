@@ -3,6 +3,10 @@ import { PublicationSettingsItem } from "types/PublicationSettingsItem";
 const fallbackAlt = "Glos Milicza";
 
 export const publicationSettingsFallback: PublicationSettingsItem = {
+  advertisingLabels: {
+    advertisement: "Reklama",
+    sponsoredContent: "Materiał sponsorowany",
+  },
   articleRecommendations: {
     enabled: true,
     fallbackStrategy: "categoryTabRecent",
