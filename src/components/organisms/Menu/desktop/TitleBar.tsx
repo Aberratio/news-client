@@ -27,7 +27,8 @@ export const TitleBar = () => {
 };
 
 const Wrapper = styled.div<{ $isActive: boolean }>`
-  background-color: rgb(184, 0, 0);
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.headerAccentColor};
   cursor: ${({ $isActive }) => ($isActive ? "pointer" : "default")};
 `;
 

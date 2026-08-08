@@ -1,3 +1,4 @@
+import { publicationSettingsFallback } from "core/api/settings/publicationSettingsFallback";
 import {
   buildArticlePath,
   buildCategoryPath,
@@ -69,7 +70,9 @@ export const mapDataToArticleSummaryItems = (
         tabSlug: post.category.tab.slug.current,
         tabName: post.category.tab.name,
         tabPath: buildTabPath(post.category.tab.slug.current),
-        color: post.category.tab.color?.hex ?? "#2e6896",
+        color:
+          post.category.tab.color?.hex ??
+          publicationSettingsFallback.brandColors!.primary!,
       },
       createdOn: formatDateToString(post.publishedAt),
       id: post.slug.current,

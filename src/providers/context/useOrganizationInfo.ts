@@ -1,6 +1,7 @@
 "use client";
 
 import { useContext, useEffect, useState } from "react";
+import { publicationSettingsFallback } from "core/api/settings/publicationSettingsFallback";
 import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 import { CategoryItem } from "types/CategoryItem";
 import { FirstSiteItem } from "types/FirstSiteItem";
@@ -35,7 +36,8 @@ export const useOrganizationInfo = (): OrganizationInfoProps => {
             tabSlug: category.tabSlug,
             tabName: category.tabName,
             tabPath: buildTabPath(category.tabSlug),
-            color: category.color ?? "#2e6896",
+            color:
+              category.color ?? publicationSettingsFallback.brandColors!.primary!,
           };
         });
       })

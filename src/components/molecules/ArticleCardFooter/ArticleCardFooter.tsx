@@ -4,7 +4,6 @@ import {
   Group,
   Image,
   Text,
-  useMantineTheme,
 } from "@mantine/core";
 import { IconShare } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
@@ -23,8 +22,6 @@ export const ArticleCardFooter = ({
   dataTestId,
   item,
 }: ArticleCardFooterProps) => {
-  const theme = useMantineTheme();
-
   const router = useRouter();
 
   const handleClick = () => {
@@ -90,7 +87,11 @@ export const ArticleCardFooter = ({
           />
           <Group gap={0}>
             <ActionIcon variant="subtle" color="gray" onClick={handleShare}>
-              <IconShare size={20} color={theme.colors.blue[6]} stroke={1.5} />
+              <IconShare
+                size={20}
+                color="var(--publication-primary)"
+                stroke={1.5}
+              />
             </ActionIcon>
           </Group>
         </Group>

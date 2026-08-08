@@ -52,9 +52,9 @@ export const NavigationMobile = () => {
 };
 
 const Container = styled.div<{ $isOpen: boolean }>`
-  ${({ $isOpen }) => `
+  ${({ $isOpen, theme }) => `
     display: block;
-    background-color: #17b978;
+    background-color: ${theme.customTheme.publicationVisual.mobileNavigationBackgroundColor};
     z-index: 200;
     cursor: pointer;
 
@@ -77,7 +77,8 @@ const TopBar = styled.div`
   display: flex;
   justify-content: flex-start;
   margin: 0;
-  background-color: #222;
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.footerBackgroundColor};
 `;
 
 const NavigationMenu = styled.ul`
@@ -85,7 +86,8 @@ const NavigationMenu = styled.ul`
   flex-direction: column;
   margin-top: 100px;
   margin: 100px 50px 0 50px;
-  background-color: #17b978;
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.mobileNavigationBackgroundColor};
 `;
 
 const NavigtionItem = styled.li`
@@ -101,6 +103,8 @@ const NavigtionItem = styled.li`
 
   cursor: pointer;
 
-  background-color: #17b978;
-  border-bottom: 1px solid #ccc;
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.mobileNavigationBackgroundColor};
+  border-bottom: 1px solid
+    ${({ theme }) => theme.customTheme.publicationVisual.mutedBorderColor};
 `;

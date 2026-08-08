@@ -21,18 +21,86 @@ export interface ReactionsPolicyItem {
   likeLabel?: string;
 }
 
+export interface PublicationFooterLinkItem {
+  href?: string;
+  label: string;
+}
+
+export interface PublicationFooterTextItem {
+  label?: string;
+  text: string;
+}
+
+export interface PublicationFooterColumnItem {
+  header: string;
+  links?: PublicationFooterLinkItem[];
+  textItems?: PublicationFooterTextItem[];
+}
+
+export interface LatestIssueTextItem {
+  downloadButtonLabel: string;
+  imageAlt: string;
+  modalDescription: string;
+  releaseDatePrefix: string;
+  title: string;
+}
+
+export interface RecentCommentsSettingsItem {
+  enabled?: boolean;
+  limit?: number;
+  mobilePlacement?: "afterContent" | "hidden";
+  mobileTitle?: string;
+  title?: string;
+}
+
+export type ArticleRecommendationsFallbackStrategy =
+  | "categoryTabRecent"
+  | "categoryTabPopular"
+  | "categoryTabCommented";
+
+export interface ArticleRecommendationsSettingsItem {
+  enabled?: boolean;
+  fallbackStrategy?: ArticleRecommendationsFallbackStrategy;
+  limit?: number;
+  minimumManualItems?: number;
+  mixManualAndAutomatic?: boolean;
+  title?: string;
+}
+
+export type PublicationThemePreset = "classic" | "modern" | "civic" | "magazine";
+export type PublicationCardStyle = "flat" | "bordered" | "elevated" | "editorial";
+export type PublicationHeaderStyle = "masthead" | "compact" | "centeredLogo";
+export type PublicationSectionHeaderStyle = "underline" | "filled" | "accentBar";
+export type PublicationDensity = "compact" | "comfortable";
+export type PublicationHeadlineStyle = "serif" | "sans" | "condensed";
+
+export interface PublicationVisualStyleItem {
+  cardStyle: PublicationCardStyle;
+  cornerRadius: number;
+  density: PublicationDensity;
+  headerStyle: PublicationHeaderStyle;
+  headlineStyle: PublicationHeadlineStyle;
+  sectionHeaderStyle: PublicationSectionHeaderStyle;
+  themePreset: PublicationThemePreset;
+}
+
 export interface PublicationSettingsItem {
+  articleRecommendations: ArticleRecommendationsSettingsItem;
   brandColors?: BrandColorItem;
   commentsPolicy: CommentsPolicyItem;
+  footerColumns: PublicationFooterColumnItem[];
   footerDescription: GeneralConfigItem["footerDescription"];
   footerLogo: PhotoItem;
+  latestIssue: LatestIssueTextItem;
   mainLogo: PhotoItem;
   mobileLogo: PhotoItem;
   name: string;
   reactionsPolicy: ReactionsPolicyItem;
+  recentComments: RecentCommentsSettingsItem;
   seoDescription: string;
   seoImage: PhotoItem;
   shortName?: string;
   tagline?: string;
   titlePattern?: string;
+  visualStyle: PublicationVisualStyleItem;
 }

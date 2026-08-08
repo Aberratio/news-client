@@ -23,7 +23,7 @@ export const CommentSummarization = ({
   return (
     <CommentContainer data-testid={`comment-summarization-${iterator}`}>
       <Link href={buildArticlePath(comment.articleSlug)}>
-        <Typography variant="article" color="#15a752">
+        <Typography variant="article" color="var(--publication-accent)">
           {comment.articleTitle}
         </Typography>
       </Link>

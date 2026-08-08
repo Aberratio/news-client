@@ -3,6 +3,7 @@
 import { Button, Modal, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconDownload } from "@tabler/icons-react";
+import { publicationSettingsFallback } from "core/api/settings/publicationSettingsFallback";
 import Image from "next/image";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import { styled } from "styled-components";
@@ -13,8 +14,10 @@ import Widget from "components/molecules/Widget";
 import { SideBarSmallImageContainer } from "../image-containers/SideBarSmallImageContainer";
 
 export const FirstSite = () => {
-  const { firstSite } = useOrganizationInfo();
+  const { firstSite, publicationSettings } = useOrganizationInfo();
   const [opened, { open, close }] = useDisclosure(false);
+  const latestIssue =
+    publicationSettings?.latestIssue ?? publicationSettingsFallback.latestIssue;
 
   const downloadImage = () => {
     if (firstSite) {
@@ -32,14 +35,14 @@ export const FirstSite = () => {
   }
 
   return (
-    <Widget dataTestId="first-site" title="Najnowszy numer">
+    <Widget dataTestId="first-site" title={latestIssue?.title}>
       <Typography flexbox={{ flexDirection: "row" }}>
-        W sprzedaży od <Date>{firstSite.releaseDate}</Date>
+        {latestIssue?.releaseDatePrefix} <Date>{firstSite.releaseDate}</Date>
       </Typography>
       <SideBarSmallImageContainer onClick={open}>
         <Image
           src={firstSite.image.path}
-          alt="Najnowszy numer"
+          alt={latestIssue?.imageAlt ?? ""}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
@@ -47,21 +50,18 @@ export const FirstSite = () => {
       <Modal
         opened={opened}
         onClose={close}
-        title="Najnowszy numer"
+        title={latestIssue?.title}
         transitionProps={{ transition: "fade", duration: 200 }}
         centered
       >
-        <Text my={8}>
-          Najonowszy numer Głosu Milicza możesz kupić w kioskach i punktach
-          sprzedaży na terenie gminy Milicz, Cieszków i Krośnice.
-        </Text>
+        <Text my={8}>{latestIssue?.modalDescription}</Text>
         <Button
           rightSection={<IconDownload size={14} />}
           onClick={downloadImage}
-          color="#2e6896"
+          color="var(--publication-primary)"
           my="md"
         >
-          Pobierz pierwszą stronę
+          {latestIssue?.downloadButtonLabel}
         </Button>
       </Modal>
     </Widget>

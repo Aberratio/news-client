@@ -15,7 +15,7 @@ export const ScrollToTopButton = () => {
             leftSection={<IconArrowUp size={16} />}
             style={transitionStyles}
             onClick={() => scrollTo({ y: 0 })}
-            color="#2e6896"
+            color="var(--publication-primary)"
           >
             Do góry
           </Button>

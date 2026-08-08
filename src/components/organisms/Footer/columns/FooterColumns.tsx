@@ -1,12 +1,13 @@
 "use client";
 
 import styled from "styled-components";
+import { PublicationFooterColumnItem } from "types/PublicationSettingsItem";
 
 import { DescriptionColumn } from "./DescriptionColumn";
-import { InfoColumn, InfoColumnItem } from "./InfoColumn";
+import { InfoColumn } from "./InfoColumn";
 
 export interface FooterColumnsProps {
-  columns: InfoColumnItem[];
+  columns: PublicationFooterColumnItem[];
 }
 
 const FooterColumns = ({ columns }: FooterColumnsProps) => {
@@ -29,7 +30,8 @@ export default FooterColumns;
 const Wrapper = styled.div`
   padding-top: 40px;
   padding-bottom: 25px;
-  background-color: #222;
+  background-color: ${({ theme }) =>
+    theme.customTheme.publicationVisual.footerBackgroundColor};
 `;
 
 const Container = styled.div`

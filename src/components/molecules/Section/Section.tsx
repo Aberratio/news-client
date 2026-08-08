@@ -29,7 +29,9 @@ export const Section = ({ header, links }: SectionProps) => {
             <Typography key={link.name}>
               <strong>{link.name}</strong>
               <StyledLink href={`${link.href}`}>
-                <Typography color="#0056b3">{link.link}</Typography>
+                <Typography color={customTheme.general.primaryColor}>
+                  {link.link}
+                </Typography>
               </StyledLink>
             </Typography>
           );

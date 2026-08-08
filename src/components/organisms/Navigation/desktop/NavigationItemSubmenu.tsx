@@ -74,11 +74,14 @@ const StyledLink = styled(Link)<{ $isActive: boolean }>`
   border-radius: 0;
   padding: 8px 20px 8px 33px;
   color: ${({ $isActive }) => ($isActive ? "#fff" : "#000")} !important;
-  background-color: ${({ $isActive }) =>
-    $isActive ? "rgb(46, 104, 150)" : "white"};
+  background-color: ${({ $isActive, theme }) =>
+    $isActive
+      ? theme.customTheme.publicationVisual.submenuActiveBackgroundColor
+      : "white"};
 
   &:hover {
-    background-color: rgb(46, 104, 150);
+    background-color: ${({ theme }) =>
+      theme.customTheme.publicationVisual.submenuActiveBackgroundColor};
     color: #fff !important;
   }
 `;

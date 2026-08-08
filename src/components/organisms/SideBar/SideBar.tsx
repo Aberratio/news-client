@@ -1,9 +1,7 @@
-"use server";
-
 import { Suspense } from "react";
-import { fetchLastComments } from "core/api/comments/fetchLastComments";
 import { isCommentsPolicyEnabled } from "core/policies/publicationPolicies";
 import { BoxAddItem } from "types/AddsItem";
+import { CommentSummaryItem } from "types/CommentSummaryItem";
 import { PublicationSettingsItem } from "types/PublicationSettingsItem";
 
 import AddsBar from "./adds-bar/AddsBar";
@@ -13,12 +11,16 @@ import { VisitCounterWidget } from "./visit-counter/VisitCounterWidget";
 import { SideBarWrapper } from "./SideBarWrapper";
 interface SideBarProps {
   boxAdds?: BoxAddItem[];
+  comments?: CommentSummaryItem[];
   publicationSettings?: PublicationSettingsItem;
 }
 
-export const SideBar = async ({ boxAdds, publicationSettings }: SideBarProps) => {
+export const SideBar = ({
+  boxAdds,
+  comments = [],
+  publicationSettings,
+}: SideBarProps) => {
   const commentsEnabled = isCommentsPolicyEnabled(publicationSettings);
-  const comments = commentsEnabled ? await fetchLastComments() : [];
 
   return (
     <SideBarWrapper>
@@ -28,7 +30,10 @@ export const SideBar = async ({ boxAdds, publicationSettings }: SideBarProps) =>
       <Suspense>{boxAdds && <AddsBar boxAdds={boxAdds} />}</Suspense>
       {commentsEnabled && (
         <Suspense>
-          <LastCommentsWidget comments={comments} />
+          <LastCommentsWidget
+            comments={comments}
+            title={publicationSettings?.recentComments.title}
+          />
         </Suspense>
       )}
       <Suspense>

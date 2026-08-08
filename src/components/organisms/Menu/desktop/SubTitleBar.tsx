@@ -1,12 +1,14 @@
 "use cleint";
 
 import { useStyles } from "core/styles/customization/useStyles";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
 
 import Typography from "components/atoms/Typography";
 
 export const SubTitleBar = () => {
   const { customTheme } = useStyles();
+  const { publicationSettings } = useOrganizationInfo();
 
   return (
     <Wrapper data-testid="subtitle-bar">
@@ -14,7 +16,7 @@ export const SubTitleBar = () => {
         variant="small"
         color={customTheme.general.primaryOppositeColor}
       >
-        Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz
+        {publicationSettings?.tagline}
       </Typography>
     </Wrapper>
   );

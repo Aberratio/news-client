@@ -31,8 +31,11 @@ const Header = styled.div`
   align-items: center;
   padding: 16px;
 
-  border-radius: 8px 8px 0 0;
-  border-bottom: 1px solid rgb(46, 104, 150);
+  border-radius: ${({ theme }) =>
+      theme.customTheme.publicationVisual.cornerRadius}
+    ${({ theme }) => theme.customTheme.publicationVisual.cornerRadius} 0 0;
+  border-bottom: 1px solid
+    ${({ theme }) => theme.customTheme.publicationVisual.sectionHeaderBorderColor};
 
   p {
     letter-spacing: 1px;

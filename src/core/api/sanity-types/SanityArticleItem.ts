@@ -1,3 +1,4 @@
+import { publicationSettingsFallback } from "core/api/settings/publicationSettingsFallback";
 import {
   buildArticlePath,
   buildAuthorPath,
@@ -99,7 +100,9 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
           tabSlug: post.category.tab.slug.current,
           tabName: post.category.tab.name,
           tabPath: buildTabPath(post.category.tab.slug.current),
-          color: post.category.tab.color?.hex ?? "#2e6896",
+          color:
+            post.category.tab.color?.hex ??
+            publicationSettingsFallback.brandColors!.primary!,
         }
       : {
           slug: "adds",
@@ -108,7 +111,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
           tabSlug: "adds",
           tabName: "adds",
           tabPath: "adds",
-          color: "#2e6896",
+          color: publicationSettingsFallback.brandColors!.primary!,
         },
     createdOn: formatDateToString(post.publishedAt),
     comments: post.comments,
