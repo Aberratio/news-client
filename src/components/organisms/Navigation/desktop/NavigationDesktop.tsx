@@ -13,8 +13,9 @@ import {
   UnstyledButton,
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
-import { buildTabPath } from "core/builders/buildPath";
+import { buildCategoryPath, buildTabPath } from "core/builders/buildPath";
 import { theme } from "core/styles/theme";
+import Link from "next/link";
 import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 import styled from "styled-components";
 import { TabItem } from "types/TabItem";
@@ -71,6 +72,8 @@ export const NavigationDesktop = () => {
                         <SimpleGrid cols={2} spacing={0}>
                           {tab.categories.map((category) => (
                             <UnstyledButton
+                              component={Link}
+                              href={buildCategoryPath(category.slug)}
                               className={classes.subLink}
                               key={category.slug}
                             >

@@ -108,6 +108,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
       color: inherit;
+      text-decoration: none;
       text-decoration-thickness: 0.08em;
       text-underline-offset: 0.18em;
       cursor: pointer;
