@@ -1,27 +1,37 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import styled from "styled-components";
 import { PhotoItem } from "types/PhotoItem";
 
 import { ArticleImage } from "components/molecules/ArticleImage/ArticleImage";
-import { Arrow } from "components/molecules/Icons/Arrow";
 
 interface SliderProps {
   images: PhotoItem[];
 }
 
 const Slider = ({ images }: SliderProps) => {
-  const [image, setImage] = useState<PhotoItem>(images[0]);
+  const firstImage = images[0];
+  const [image, setImage] = useState<PhotoItem | undefined>(firstImage);
   const [index, setIndex] = useState<number>(0);
   const [hasDescription, setHasDescription] = useState<boolean>(
-    images[0].description.trim() !== ""
+    firstImage?.description.trim() !== ""
   );
   const isSlideable = images.length > 1;
 
   useEffect(() => {
-    setHasDescription(image.description.trim() !== "");
+    setHasDescription(image?.description.trim() !== "");
   }, [image]);
+
+  useEffect(() => {
+    setImage(firstImage);
+    setIndex(0);
+  }, [firstImage]);
+
+  if (!image) {
+    return null;
+  }
 
   const nextItem = () => {
     if (index < images.length - 1) {
@@ -48,14 +58,27 @@ const Slider = ({ images }: SliderProps) => {
       image={image}
       hasDescription={hasDescription}
       dataTestid={`article-image-${index}`}
+      imageIndex={index + 1}
+      imagesCount={images.length}
     >
       {isSlideable && (
         <>
-          <SliderArrow onClick={prevItem} data-testid="arrow-prev">
-            <Arrow color="white" />
+          <SliderArrow
+            aria-label="Poprzednie zdjęcie"
+            onClick={prevItem}
+            data-testid="arrow-prev"
+            type="button"
+          >
+            <IconChevronLeft size={26} stroke={1.7} />
           </SliderArrow>
-          <SliderArrow $isRight onClick={nextItem} data-testid="arrow-next">
-            <Arrow color="white" direction="right" />
+          <SliderArrow
+            $isRight
+            aria-label="Następne zdjęcie"
+            onClick={nextItem}
+            data-testid="arrow-next"
+            type="button"
+          >
+            <IconChevronRight size={26} stroke={1.7} />
           </SliderArrow>
         </>
       )}
@@ -65,24 +88,36 @@ const Slider = ({ images }: SliderProps) => {
 
 export default Slider;
 
-const SliderArrow = styled.div<{ $isRight?: boolean }>`
+const SliderArrow = styled.button<{ $isRight?: boolean }>`
   ${({ $isRight }) => `
     position: absolute;
     top: 50%;
-    ${$isRight && `right: 0`};
-  
-    width: auto;
-    padding: 8px;
-    margin-top: -50px;
-    border-radius: 3px 0 0 3px;
-    
+    ${$isRight ? "right: 12px" : "left: 12px"};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgb(255 255 255 / 36%);
+    border-radius: 999px;
+    color: #fff;
     cursor: pointer;
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.8);
-
+    background-color: rgb(0 0 0 / 54%);
+    transform: translateY(-50%);
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease;
     
+    &:hover,
+    &:focus-visible {
+      border-color: rgb(255 255 255 / 70%);
+      background-color: rgb(0 0 0 / 72%);
+    }
+
   @media screen and (min-width: 768px) {
-    padding: 16px;
+    width: 48px;
+    height: 48px;
+    ${$isRight ? "right: 18px" : "left: 18px"};
   }
   `}
 `;

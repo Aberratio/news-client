@@ -31,6 +31,12 @@ export const FullArticle = async ({ article }: FullArticleProps) => {
 
   return (
     <FullArticleContent article={article}>
+      <Suspense>
+        <Recommendations
+          recommendations={article.recommendations}
+          title={publicationSettings.articleRecommendations.title}
+        />
+      </Suspense>
       {commentsEnabled && (
         <Suspense>
           <CommentSection
@@ -40,12 +46,6 @@ export const FullArticle = async ({ article }: FullArticleProps) => {
           />
         </Suspense>
       )}
-      <Suspense>
-        <Recommendations
-          recommendations={article.recommendations}
-          title={publicationSettings.articleRecommendations.title}
-        />
-      </Suspense>
     </FullArticleContent>
   );
 };

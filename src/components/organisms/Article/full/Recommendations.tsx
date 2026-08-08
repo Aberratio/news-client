@@ -1,9 +1,8 @@
 "use client";
 
+import styled from "styled-components";
 import { ArticleSummaryItem } from "types/ArticleSummaryItem";
 
-import Box from "components/atoms/Box";
-import Hr from "components/atoms/Hr";
 import Typography from "components/atoms/Typography";
 import ArticlesOverviewBox from "components/molecules/ArticlesOverviewBox";
 
@@ -19,13 +18,29 @@ export const Recommendations = ({
   if (recommendations.length === 0) return null;
 
   return (
-    <Box display="flex" flexDirection="column" gap={16}>
-      <Hr margin="0 0 48px 0" />
-      <Typography variant="h2">{title}</Typography>
+    <Section aria-label={title}>
+      <Header>
+        <Typography variant="h2">{title}</Typography>
+      </Header>
       <ArticlesOverviewBox
         dataTestId="recommendations"
         items={recommendations}
       />
-    </Box>
+    </Section>
   );
 };
+
+const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 8px 0 56px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--publication-primary) 24%, transparent);
+`;

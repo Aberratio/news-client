@@ -9,6 +9,8 @@ interface ArticleImageProps {
   dataTestid?: string;
   hasDescription?: boolean;
   image: PhotoItem;
+  imageIndex?: number;
+  imagesCount?: number;
   children?: React.ReactNode;
 }
 
@@ -16,6 +18,8 @@ export const ArticleImage = ({
   dataTestid,
   hasDescription = false,
   image,
+  imageIndex,
+  imagesCount,
   children,
 }: ArticleImageProps) => {
   const [showDescription, setShowDescription] =
@@ -27,12 +31,17 @@ export const ArticleImage = ({
 
   return (
     <>
-      <Container data-testid={dataTestid}>
+      <Container $showDescription={showDescription} data-testid={dataTestid}>
         <StyledImage
           image={image}
           $showDescription={showDescription}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
+        {!!imageIndex && !!imagesCount && imagesCount > 1 && (
+          <ImageCounter>
+            {imageIndex}/{imagesCount}
+          </ImageCounter>
+        )}
         {children}
       </Container>
       {showDescription && (
@@ -51,14 +60,18 @@ export const ArticleImage = ({
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ $showDescription: boolean }>`
   position: relative;
   display: block;
-  height: 250px;
+  height: clamp(260px, 58vw, 420px);
   width: 100%;
+  overflow: hidden;
+  border-radius: ${({ $showDescription }) =>
+    $showDescription ? "8px 8px 0 0" : "8px"};
+  background: #f3f3f3;
 
   @media screen and (min-width: 768px) {
-    height: 600px;
+    height: clamp(420px, 52vw, 620px);
   }
 `;
 
@@ -74,7 +87,26 @@ const StyledImage = styled(SanityImage)<{ $showDescription: boolean }>`
 `;
 
 const Description = styled.div`
-  padding: 16px;
+  padding: 12px 16px 14px;
   border-radius: 0 0 8px 8px;
-  background-color: #222;
+  background-color: #1f1f1f;
+
+  p {
+    color: #f4f4f4;
+    line-height: 1.45;
+  }
+`;
+
+const ImageCounter = styled.div`
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: rgb(0 0 0 / 58%);
+  font-family: Spectral, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1;
 `;

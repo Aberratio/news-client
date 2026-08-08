@@ -24,17 +24,21 @@ export const portableTextComponents = {
   article: {
     block: {
       normal: ({ children }: any) => (
-        <Typography variant="article" isInline space={{ marginY: "4px" }}>
-          {children}
-        </Typography>
+        <ArticleParagraph>
+          <Typography variant="article" space={{ marginY: "0" }}>
+            {children}
+          </Typography>
+        </ArticleParagraph>
       ),
       blockquote: ({ children }: any) => (
-        <Typography variant="article" isBlockquote>
-          {children}
-        </Typography>
+        <ArticleQuote>
+          <Typography variant="article" isBlockquote>
+            {children}
+          </Typography>
+        </ArticleQuote>
       ),
       h3: ({ children }: any) => (
-        <Title className={classes.title} order={3} mb={0} mt={4}>
+        <Title className={classes.title} order={3} mb={0} mt={28}>
           {children}
         </Title>
       ),
@@ -125,26 +129,51 @@ const StyledLink = styled(Link)`
   display: inline-flex;
 `;
 
+const ArticleParagraph = styled.div`
+  max-width: 100%;
+  margin: 0 0 18px;
+
+  p {
+    color: #202020;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
+  }
+`;
+
+const ArticleQuote = styled.div`
+  margin: 28px 0;
+  padding: 4px 0 4px 18px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--publication-primary) 8%, transparent),
+    transparent 72%
+  );
+
+  p {
+    color: #303030;
+  }
+`;
+
 const UList = styled.ul`
-  margin: 16px 0 16px 48px;
+  margin: 18px 0 24px 28px;
   list-style-type: outside;
   overflow: unset;
   list-style: disc;
 `;
 
 const OList = styled.ol`
-  margin: 16px 0 16px 48px;
+  margin: 18px 0 24px 28px;
   list-style-type: outside;
   overflow: unset;
 `;
 
 const ListItem = styled.li`
-  margin: 8px 0;
+  margin: 10px 0;
   overflow: unset;
 
   &:marker {
-    color: orange;
-    content: "▪";
-    margin: -24px;
+    color: var(--publication-primary);
   }
 `;
