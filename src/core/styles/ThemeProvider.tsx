@@ -15,6 +15,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     <StyledThemeProvider
       theme={{
         ...theme,
+        customTheme,
         ...customTheme,
       }}
     >
