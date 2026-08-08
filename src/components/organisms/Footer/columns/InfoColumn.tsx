@@ -2,56 +2,16 @@
 
 import Link from "next/link";
 import styled from "styled-components";
+import { PublicationFooterColumnItem } from "types/PublicationSettingsItem";
 
 import Typography from "components/atoms/Typography";
 
-import { ElementType } from "../Footer";
-
-export interface LinkItem {
-  bolded?: string;
-  text: string;
-  link?: string;
-}
-
-export interface ElementItem {
-  id: number | string;
-  type: ElementType;
-  content: LinkItem[];
-}
-
-export interface InfoColumnItem {
-  header: string;
-  elements: ElementItem[];
-}
-
 interface InfoColumnProps {
-  items: InfoColumnItem;
+  items: PublicationFooterColumnItem;
 }
 
 export const InfoColumn = ({ items }: InfoColumnProps) => {
-  const { header, elements } = items;
-  const renderListElement = (element: ElementItem) => (
-    <ListElement key={element.id}>
-      {element.content.map((content) => {
-        switch (element.type) {
-          case ElementType.Link:
-            return (
-              <StyledLink key={content.text} href={content.link ?? ""}>
-                <Typography>{content.text}</Typography>
-              </StyledLink>
-            );
-          case ElementType.Text:
-            return <Typography key={content.text}>{content.text}</Typography>;
-          default:
-            return (
-              <Typography key={content.text} flexbox={{ flexDirection: "row" }}>
-                <strong>{content.bolded}</strong>: {content.text}
-              </Typography>
-            );
-        }
-      })}
-    </ListElement>
-  );
+  const { header, links, textItems } = items;
 
   return (
     <Container>
@@ -60,7 +20,35 @@ export const InfoColumn = ({ items }: InfoColumnProps) => {
           {header}
         </Typography>
       </Header>
-      <Content>{elements.map(renderListElement)}</Content>
+      <Content>
+        {links && links.length > 0 && (
+          <ListElement>
+            {links.map((link) => (
+              <StyledLink
+                key={`${link.href}-${link.label}`}
+                href={link.href ?? ""}
+              >
+                <Typography>{link.label}</Typography>
+              </StyledLink>
+            ))}
+          </ListElement>
+        )}
+        {textItems?.map((item) => (
+          <ListElement key={`${item.label}-${item.text}`}>
+            <Typography
+              flexbox={item.label ? { flexDirection: "row" } : undefined}
+            >
+              {item.label ? (
+                <>
+                  <strong>{item.label}</strong>: {item.text}
+                </>
+              ) : (
+                item.text
+              )}
+            </Typography>
+          </ListElement>
+        ))}
+      </Content>
     </Container>
   );
 };

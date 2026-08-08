@@ -40,8 +40,18 @@ export interface SanityOrganizationItem {
 export interface SanityPublicationSettingsItem {
   brandColors?: SanityBrandColorsItem;
   footer?: {
+    contactEmail?: string;
+    contactHeader?: string;
+    contactItems?: SanityFooterLinkItem[];
+    contactPhone?: string;
     description?: PublicationSettingsItem["footerDescription"];
+    editorialOffice?: string;
+    legalEntity?: string;
+    legalHeader?: string;
+    legalLinks?: SanityFooterLinkItem[];
+    publisher?: string;
   };
+  latestIssue?: Partial<PublicationSettingsItem["latestIssue"]>;
   logos?: {
     footerLogo?: SanityPhotoItem;
     mainLogo?: SanityPhotoItem;
@@ -72,6 +82,12 @@ interface SanityBrandColorsItem {
   text?: SanityColorInputItem;
 }
 
+interface SanityFooterLinkItem {
+  href?: string;
+  label: string;
+  url?: string;
+}
+
 const mapOptionalPhotoItem = (photo?: SanityPhotoItem) => {
   return photo ? mapToPhotoItem(photo) : undefined;
 };
@@ -81,7 +97,7 @@ const mapOptionalBrandColor = (color?: SanityColorInputItem) => {
 };
 
 const mapBrandColors = (
-  brandColors?: SanityBrandColorsItem
+  brandColors?: SanityBrandColorsItem,
 ): BrandColorItem | undefined => {
   if (!brandColors) {
     return undefined;
@@ -98,8 +114,66 @@ const mapBrandColors = (
   return Object.values(colors).some(Boolean) ? colors : undefined;
 };
 
+const splitTextLines = (text?: string) => {
+  return text
+    ?.split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+};
+
+const mapFooterColumns = (
+  footer?: SanityPublicationSettingsItem["footer"],
+): PublicationSettingsItem["footerColumns"] | undefined => {
+  if (!footer) {
+    return undefined;
+  }
+
+  const [fallbackLegalColumn, fallbackContactColumn] =
+    publicationSettingsFallback.footerColumns;
+
+  const mapLinks = (links?: SanityFooterLinkItem[]) =>
+    links
+      ?.filter((link) => link.label)
+      .map((link) => ({
+        href: link.href ?? link.url,
+        label: link.label,
+      })) ?? [];
+
+  const legalLinks = mapLinks(footer.legalLinks);
+  const contactLinks = [
+    ...mapLinks(footer.contactItems),
+    ...(footer.contactPhone
+      ? [{ href: `tel:${footer.contactPhone}`, label: footer.contactPhone }]
+      : []),
+    ...(footer.contactEmail
+      ? [{ href: `mailto:${footer.contactEmail}`, label: footer.contactEmail }]
+      : []),
+  ];
+  const textItems = [
+    ...(splitTextLines(footer.editorialOffice)?.map((text) => ({ text })) ??
+      []),
+    ...(splitTextLines(footer.publisher)?.map((text) => ({ text })) ?? []),
+    ...(splitTextLines(footer.legalEntity)?.map((text) => ({ text })) ?? []),
+  ];
+
+  return [
+    {
+      header: footer.legalHeader ?? fallbackLegalColumn.header,
+      links: legalLinks.length > 0 ? legalLinks : fallbackLegalColumn.links,
+      textItems: fallbackLegalColumn.textItems,
+    },
+    {
+      header: footer.contactHeader ?? fallbackContactColumn.header,
+      links:
+        contactLinks.length > 0 ? contactLinks : fallbackContactColumn.links,
+      textItems:
+        textItems.length > 0 ? textItems : fallbackContactColumn.textItems,
+    },
+  ];
+};
+
 export const mapGeneralConfigToPublicationSettings = (
-  data?: SanityOrganizationItem["generalConfig"]
+  data?: SanityOrganizationItem["generalConfig"],
 ): Partial<PublicationSettingsItem> | undefined => {
   if (!data) {
     return undefined;
@@ -126,7 +200,7 @@ export const mapGeneralConfigToPublicationSettings = (
 };
 
 export const mapPublicationSettingsItem = (
-  data?: SanityPublicationSettingsItem
+  data?: SanityPublicationSettingsItem,
 ): Partial<PublicationSettingsItem> | undefined => {
   if (!data) {
     return undefined;
@@ -137,10 +211,20 @@ export const mapPublicationSettingsItem = (
   const mobileLogo = mapOptionalPhotoItem(data.logos?.mobileLogo);
   const seoImage = mapOptionalPhotoItem(data.seo?.socialSharingImage);
   const brandColors = mapBrandColors(data.brandColors);
+  const footerColumns = mapFooterColumns(data.footer);
 
   return {
+    ...(footerColumns ? { footerColumns } : {}),
     ...(data.footer?.description
       ? { footerDescription: data.footer.description }
+      : {}),
+    ...(data.latestIssue
+      ? {
+          latestIssue: {
+            ...publicationSettingsFallback.latestIssue,
+            ...data.latestIssue,
+          },
+        }
       : {}),
     ...(footerLogo ? { footerLogo } : {}),
     ...(mainLogo ? { mainLogo } : {}),
@@ -163,7 +247,7 @@ export const mapPublicationSettingsItem = (
 
 export const resolvePublicationSettings = (
   publicationSettings?: SanityPublicationSettingsItem,
-  generalConfig?: SanityOrganizationItem["generalConfig"]
+  generalConfig?: SanityOrganizationItem["generalConfig"],
 ): PublicationSettingsItem => {
   return {
     ...publicationSettingsFallback,
@@ -173,12 +257,12 @@ export const resolvePublicationSettings = (
 };
 
 export const mapDataToOrganizationItem = (
-  data: SanityOrganizationItem
+  data: SanityOrganizationItem,
 ): OrganizationItem => {
   const hasMainTopic = data.mainTopic?.show ? true : false;
   const publicationSettings = resolvePublicationSettings(
     data.publicationSettings,
-    data.generalConfig
+    data.generalConfig,
   );
 
   return {
@@ -187,7 +271,7 @@ export const mapDataToOrganizationItem = (
         ? {
             image: mapToPhotoItem(data.firstSite.image),
             releaseDate: formatDateToString(
-              data.firstSite?.releaseDate ?? new Date()
+              data.firstSite?.releaseDate ?? new Date(),
             ),
           }
         : undefined,
