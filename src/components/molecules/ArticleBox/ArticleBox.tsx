@@ -30,8 +30,10 @@ export const ArticleBox = ({ dataTestId, item }: ArticleBoxProps) => {
       <Suspense>
         <StatisticBar
           comments={item.comments}
+          commentsDisabled={item.commentsDisabled}
           likes={item.likes}
           dislikes={item.dislikes}
+          reactionsDisabled={item.reactionsDisabled}
           views={item.views}
         />
       </Suspense>

@@ -1,12 +1,26 @@
 import { GeneralConfigItem } from "./GeneralConfigItem";
 import { PhotoItem } from "./PhotoItem";
 
+export interface CommentsPolicyItem {
+  enabled?: boolean;
+  moderationRequired?: boolean;
+  policyNote?: string;
+}
+
+export interface ReactionsPolicyItem {
+  enabled?: boolean;
+  dislikeLabel?: string;
+  likeLabel?: string;
+}
+
 export interface PublicationSettingsItem {
+  commentsPolicy: CommentsPolicyItem;
   footerDescription: GeneralConfigItem["footerDescription"];
   footerLogo: PhotoItem;
   mainLogo: PhotoItem;
   mobileLogo: PhotoItem;
   name: string;
+  reactionsPolicy: ReactionsPolicyItem;
   seoDescription: string;
   seoImage: PhotoItem;
   shortName?: string;

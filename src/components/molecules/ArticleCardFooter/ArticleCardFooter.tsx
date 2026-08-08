@@ -82,8 +82,10 @@ export const ArticleCardFooter = ({
         <Group justify="space-between" gap={0}>
           <StatisticBar
             comments={item.comments}
+            commentsDisabled={item.commentsDisabled}
             likes={item.likes}
             dislikes={item.dislikes}
+            reactionsDisabled={item.reactionsDisabled}
             views={item.views}
           />
           <Group gap={0}>

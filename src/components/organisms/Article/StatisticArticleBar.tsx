@@ -9,11 +9,15 @@ import { useArticleReactionHandler } from "./useArticleReactionHandler";
 
 interface StatisticArticleBarProps {
   articleId: string;
+  commentsDisabled: boolean;
+  reactionsDisabled: boolean;
   statistics: StatisticsItem;
 }
 
 export const StatisticArticleBar = ({
   articleId,
+  commentsDisabled,
+  reactionsDisabled,
   statistics,
 }: StatisticArticleBarProps) => {
   const { comments, dislikes, likes, views } = statistics;
@@ -37,10 +41,12 @@ export const StatisticArticleBar = ({
     <StatisticBar
       commentsPath="#comments"
       comments={comments}
+      commentsDisabled={commentsDisabled}
       dislikes={dislikes + (selectedReaction === "dislike" ? 1 : 0)}
       isLikeActive={selectedReaction === "like"}
       isDislikeActive={selectedReaction === "dislike"}
       likes={likes + (sessionReaction === "like" ? 1 : 0)}
+      reactionsDisabled={reactionsDisabled}
       views={views}
       onLikeClick={() => handleClicked("like")}
       onDislikeClick={() => handleClicked("dislike")}

@@ -7,7 +7,9 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { IconEye, IconMessageCircle } from "@tabler/icons-react";
+import { canCommentOnPost } from "core/policies/publicationPolicies";
 import Link from "next/link";
+import { useOrganizationInfo } from "providers/context/useOrganizationInfo";
 
 import classes from "./ImageCard.module.css";
 
@@ -23,6 +25,7 @@ interface ImageCardProps {
   };
   views: number;
   comments: number;
+  commentsDisabled?: boolean;
 }
 
 export const ImageCard = ({
@@ -32,8 +35,14 @@ export const ImageCard = ({
   author,
   views,
   comments,
+  commentsDisabled,
 }: ImageCardProps) => {
   const theme = useMantineTheme();
+  const { publicationSettings } = useOrganizationInfo();
+  const showComments = canCommentOnPost(
+    { commentsDisabled },
+    publicationSettings
+  );
 
   return (
     <Link href={link}>
@@ -70,16 +79,18 @@ export const ImageCard = ({
                     {views}
                   </Text>
                 </Center>
-                <Center>
-                  <IconMessageCircle
-                    size={16}
-                    stroke={1.5}
-                    color={theme.colors.dark[1]}
-                  />
-                  <Text size="sm" className={classes.bodyText}>
-                    {comments}
-                  </Text>
-                </Center>
+                {showComments && (
+                  <Center>
+                    <IconMessageCircle
+                      size={16}
+                      stroke={1.5}
+                      color={theme.colors.dark[1]}
+                    />
+                    <Text size="sm" className={classes.bodyText}>
+                      {comments}
+                    </Text>
+                  </Center>
+                )}
               </Group>
             </Group>
           </div>

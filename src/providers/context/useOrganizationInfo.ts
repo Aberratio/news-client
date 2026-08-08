@@ -6,6 +6,7 @@ import { CategoryItem } from "types/CategoryItem";
 import { FirstSiteItem } from "types/FirstSiteItem";
 import { GeneralConfigItem } from "types/GeneralConfigItem";
 import { MainTopicItem } from "types/MainTopicItem";
+import { PublicationSettingsItem } from "types/PublicationSettingsItem";
 import { TabItem } from "types/TabItem";
 
 import { OrganizationContext } from "./OrganizationContext";
@@ -15,6 +16,7 @@ interface OrganizationInfoProps {
   firstSite?: FirstSiteItem;
   generalConfig?: GeneralConfigItem;
   mainTopic?: MainTopicItem;
+  publicationSettings?: PublicationSettingsItem;
   tabs: TabItem[];
 }
 
@@ -45,6 +47,7 @@ export const useOrganizationInfo = (): OrganizationInfoProps => {
     firstSite: organization.firstSite,
     generalConfig: organization.generalConfig,
     mainTopic: organization.mainTopic,
+    publicationSettings: organization.publicationSettings,
     tabs: organization.tabs,
   };
 };

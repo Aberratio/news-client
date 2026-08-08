@@ -59,9 +59,11 @@ export interface SanityArticleItem {
     current: string;
   };
   comments: number;
+  commentsDisabled?: boolean;
   title: string;
   likes: number;
   dislikes: number;
+  reactionsDisabled?: boolean;
   views: number;
 }
 
@@ -110,6 +112,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
         },
     createdOn: formatDateToString(post.publishedAt),
     comments: post.comments,
+    commentsDisabled: post.commentsDisabled ?? false,
     slug: post.slug.current,
     lead: post.lead,
     likes: post.likes,
@@ -121,6 +124,7 @@ export const mapToArticleItem = (post: SanityArticleItem): ArticleItem => {
       ...(post.images?.map((image) => mapToPhotoItem(image)) || []),
     ],
     recommendations: mapDataToArticleSummaryItems(post.recommendations),
+    reactionsDisabled: post.reactionsDisabled ?? false,
     title: post.title,
   };
 };

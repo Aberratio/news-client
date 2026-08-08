@@ -8,6 +8,7 @@ export interface ArticleSummaryItem {
   category: CategoryItem;
   createdOn: string;
   comments: number;
+  commentsDisabled: boolean;
   id: string;
   lead: string;
   likes: number;
@@ -16,5 +17,6 @@ export interface ArticleSummaryItem {
   path: string;
   photo: PhotoItem;
   statistics: StatisticsItem;
+  reactionsDisabled: boolean;
   title: string;
 }

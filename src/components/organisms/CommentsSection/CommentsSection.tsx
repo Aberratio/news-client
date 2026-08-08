@@ -13,9 +13,14 @@ import { EmptyCommentsSection } from "./EmptyCommentsSection";
 interface CommentsSectionProps {
   articleId: string;
   comments: CommentItem[];
+  reactionsEnabled: boolean;
 }
 
-const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
+const CommentsSection = ({
+  articleId,
+  comments,
+  reactionsEnabled,
+}: CommentsSectionProps) => {
   return (
     <Section id="comments" key={comments.length}>
       <Hr margin="0 0 48px 0" />
@@ -23,7 +28,7 @@ const CommentsSection = ({ articleId, comments }: CommentsSectionProps) => {
       {comments.length === 0 ? (
         <EmptyCommentsSection />
       ) : (
-        <AllComments comments={comments} />
+        <AllComments comments={comments} reactionsEnabled={reactionsEnabled} />
       )}
     </Section>
   );

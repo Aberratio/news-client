@@ -160,7 +160,10 @@ const RootLayout = async ({
                       )}
                       <MainColumn>
                         {children}
-                        <SideBar boxAdds={adds?.boxAdds} />
+                        <SideBar
+                          boxAdds={adds?.boxAdds}
+                          publicationSettings={organization.publicationSettings}
+                        />
                       </MainColumn>
                       <Footer />
                       <ScrollToTopButton />

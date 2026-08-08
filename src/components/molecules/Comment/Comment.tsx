@@ -11,6 +11,7 @@ interface CommentProps {
   commentId: string;
   date: string;
   isReadOnly?: boolean;
+  showReactions?: boolean;
   text: string;
   likes: number;
   dislikes: number;
@@ -21,6 +22,7 @@ const Comment = ({
   commentId,
   date,
   isReadOnly = false,
+  showReactions = true,
   text,
   likes,
   dislikes,
@@ -40,7 +42,7 @@ const Comment = ({
         </PublishedDate>
       </Header>
       <CommentText data-testid="comment-text">{text}</CommentText>
-      {!isReadOnly && (
+      {!isReadOnly && showReactions && (
         <StatisticCommentBar
           commentId={commentId}
           dislikes={dislikes}
