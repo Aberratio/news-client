@@ -5,6 +5,7 @@ import { OrganizationItem } from "types/OrganizationItem";
 import {
   BrandColorItem,
   PublicationSettingsItem,
+  publicationVisualStylePresets,
 } from "types/PublicationSettingsItem";
 
 import { mapToPhotoItem, SanityPhotoItem } from "./SanityPhotoItem";
@@ -157,6 +158,51 @@ const mapCornerRadius = (value?: number) => {
   return Math.min(Math.max(Math.round(value), 0), 24);
 };
 
+const mapPublicationVisualStyle = (
+  visualStyle?: SanityPublicationSettingsItem["visualStyle"],
+): PublicationSettingsItem["visualStyle"] | undefined => {
+  if (!visualStyle) {
+    return undefined;
+  }
+
+  const themePreset =
+    mapVisualStyleOption(
+      visualStyle.themePreset,
+      visualStyleOptions.themePreset,
+    ) ?? publicationSettingsFallback.visualStyle.themePreset;
+  const presetDefaults = publicationVisualStylePresets[themePreset];
+
+  return {
+    ...presetDefaults,
+    cardStyle:
+      mapVisualStyleOption(
+        visualStyle.cardStyle,
+        visualStyleOptions.cardStyle,
+      ) ?? presetDefaults.cardStyle,
+    cornerRadius:
+      mapCornerRadius(visualStyle.cornerRadius) ?? presetDefaults.cornerRadius,
+    density:
+      mapVisualStyleOption(visualStyle.density, visualStyleOptions.density) ??
+      presetDefaults.density,
+    headerStyle:
+      mapVisualStyleOption(
+        visualStyle.headerStyle,
+        visualStyleOptions.headerStyle,
+      ) ?? presetDefaults.headerStyle,
+    headlineStyle:
+      mapVisualStyleOption(
+        visualStyle.headlineStyle,
+        visualStyleOptions.headlineStyle,
+      ) ?? presetDefaults.headlineStyle,
+    sectionHeaderStyle:
+      mapVisualStyleOption(
+        visualStyle.sectionHeaderStyle,
+        visualStyleOptions.sectionHeaderStyle,
+      ) ?? presetDefaults.sectionHeaderStyle,
+    themePreset,
+  };
+};
+
 const mapOptionalPhotoItem = (photo?: SanityPhotoItem) => {
   return photo ? mapToPhotoItem(photo) : undefined;
 };
@@ -281,44 +327,7 @@ export const mapPublicationSettingsItem = (
   const seoImage = mapOptionalPhotoItem(data.seo?.socialSharingImage);
   const brandColors = mapBrandColors(data.brandColors);
   const footerColumns = mapFooterColumns(data.footer);
-  const visualStyle = data.visualStyle
-    ? {
-        ...publicationSettingsFallback.visualStyle,
-        cardStyle:
-          mapVisualStyleOption(
-            data.visualStyle.cardStyle,
-            visualStyleOptions.cardStyle,
-          ) ?? publicationSettingsFallback.visualStyle.cardStyle,
-        cornerRadius:
-          mapCornerRadius(data.visualStyle.cornerRadius) ??
-          publicationSettingsFallback.visualStyle.cornerRadius,
-        density:
-          mapVisualStyleOption(
-            data.visualStyle.density,
-            visualStyleOptions.density,
-          ) ?? publicationSettingsFallback.visualStyle.density,
-        headerStyle:
-          mapVisualStyleOption(
-            data.visualStyle.headerStyle,
-            visualStyleOptions.headerStyle,
-          ) ?? publicationSettingsFallback.visualStyle.headerStyle,
-        headlineStyle:
-          mapVisualStyleOption(
-            data.visualStyle.headlineStyle,
-            visualStyleOptions.headlineStyle,
-          ) ?? publicationSettingsFallback.visualStyle.headlineStyle,
-        sectionHeaderStyle:
-          mapVisualStyleOption(
-            data.visualStyle.sectionHeaderStyle,
-            visualStyleOptions.sectionHeaderStyle,
-          ) ?? publicationSettingsFallback.visualStyle.sectionHeaderStyle,
-        themePreset:
-          mapVisualStyleOption(
-            data.visualStyle.themePreset,
-            visualStyleOptions.themePreset,
-          ) ?? publicationSettingsFallback.visualStyle.themePreset,
-      }
-    : undefined;
+  const visualStyle = mapPublicationVisualStyle(data.visualStyle);
 
   return {
     ...(data.advertisingLabels

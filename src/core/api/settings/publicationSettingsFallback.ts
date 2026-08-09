@@ -1,4 +1,7 @@
-import { PublicationSettingsItem } from "types/PublicationSettingsItem";
+import {
+  PublicationSettingsItem,
+  publicationVisualStylePresets,
+} from "types/PublicationSettingsItem";
 
 const fallbackAlt = "Glos Milicza";
 
@@ -161,13 +164,5 @@ export const publicationSettingsFallback: PublicationSettingsItem = {
     path: "/icons/logo.png",
   },
   tagline: "Niezależny tygodnik powiatowy gmin: Cieszków, Krośnice, Milicz",
-  visualStyle: {
-    cardStyle: "elevated",
-    cornerRadius: 8,
-    density: "comfortable",
-    headerStyle: "masthead",
-    headlineStyle: "serif",
-    sectionHeaderStyle: "underline",
-    themePreset: "classic",
-  },
+  visualStyle: publicationVisualStylePresets.classic,
 };

@@ -244,3 +244,19 @@ test("publication settings resolver maps publication content settings", () => {
     publicationSettingsFallback.latestIssue.downloadButtonLabel,
   );
 });
+
+test("publication settings resolver applies visual preset defaults before editor overrides", () => {
+  const settings = resolvePublicationSettings({
+    visualStyle: {
+      themePreset: "magazine",
+    },
+  });
+
+  assert.equal(settings.visualStyle.themePreset, "magazine");
+  assert.equal(settings.visualStyle.cardStyle, "editorial");
+  assert.equal(settings.visualStyle.cornerRadius, 10);
+  assert.equal(settings.visualStyle.density, "comfortable");
+  assert.equal(settings.visualStyle.headerStyle, "centeredLogo");
+  assert.equal(settings.visualStyle.headlineStyle, "serif");
+  assert.equal(settings.visualStyle.sectionHeaderStyle, "underline");
+});

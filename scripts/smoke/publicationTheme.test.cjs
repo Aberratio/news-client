@@ -6,6 +6,7 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 
 const {
+  mapPublicationSettingsToTheme,
   mapPublicationBrandColorsToTheme,
 } = require("../../src/core/styles/customization/publicationTheme.ts");
 const {
@@ -40,4 +41,25 @@ test("publication theme adapter ignores invalid editor color values", () => {
 
   assert.equal(customTheme.general.primaryColor, "#123456");
   assert.equal(customTheme.general.secondaryColor, lightTheme.general.secondaryColor);
+});
+
+test("publication theme adapter replaces unreadable editor onPrimary colors", () => {
+  const customTheme = mapPublicationSettingsToTheme({
+    brandColors: {
+      onPrimary: "#ffffff",
+      primary: "#ffffff",
+    },
+    visualStyle: {
+      cardStyle: "flat",
+      cornerRadius: 4,
+      density: "compact",
+      headerStyle: "masthead",
+      headlineStyle: "sans",
+      sectionHeaderStyle: "filled",
+      themePreset: "civic",
+    },
+  });
+
+  assert.equal(customTheme.general.primaryOppositeColor, "black");
+  assert.equal(customTheme.publicationVisual.sectionHeaderColor, "black");
 });

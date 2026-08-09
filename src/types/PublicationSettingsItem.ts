@@ -54,9 +54,7 @@ export interface RecentCommentsSettingsItem {
 }
 
 export type ArticleRecommendationsFallbackStrategy =
-  | "categoryTabRecent"
-  | "categoryTabPopular"
-  | "categoryTabCommented";
+  "categoryTabRecent" | "categoryTabPopular" | "categoryTabCommented";
 
 export interface ArticleRecommendationsSettingsItem {
   enabled?: boolean;
@@ -73,12 +71,7 @@ export interface AdvertisingLabelsItem {
 }
 
 export type HomepageSectionKey =
-  | "lead"
-  | "latest"
-  | "discussed"
-  | "categories"
-  | "popular"
-  | "latestIssue";
+  "lead" | "latest" | "discussed" | "categories" | "popular" | "latestIssue";
 
 export interface HomepageLayoutSettingsItem {
   categorySectionArticleLimit?: number;
@@ -97,10 +90,13 @@ export interface HomepageLayoutSettingsItem {
   showPopularSection?: boolean;
 }
 
-export type PublicationThemePreset = "classic" | "modern" | "civic" | "magazine";
-export type PublicationCardStyle = "flat" | "bordered" | "elevated" | "editorial";
+export type PublicationThemePreset =
+  "classic" | "modern" | "civic" | "magazine";
+export type PublicationCardStyle =
+  "flat" | "bordered" | "elevated" | "editorial";
 export type PublicationHeaderStyle = "masthead" | "compact" | "centeredLogo";
-export type PublicationSectionHeaderStyle = "underline" | "filled" | "accentBar";
+export type PublicationSectionHeaderStyle =
+  "underline" | "filled" | "accentBar";
 export type PublicationDensity = "compact" | "comfortable";
 export type PublicationHeadlineStyle = "serif" | "sans" | "condensed";
 
@@ -113,6 +109,48 @@ export interface PublicationVisualStyleItem {
   sectionHeaderStyle: PublicationSectionHeaderStyle;
   themePreset: PublicationThemePreset;
 }
+
+export const publicationVisualStylePresets: Record<
+  PublicationThemePreset,
+  PublicationVisualStyleItem
+> = {
+  classic: {
+    cardStyle: "elevated",
+    cornerRadius: 8,
+    density: "comfortable",
+    headerStyle: "masthead",
+    headlineStyle: "serif",
+    sectionHeaderStyle: "underline",
+    themePreset: "classic",
+  },
+  modern: {
+    cardStyle: "bordered",
+    cornerRadius: 6,
+    density: "comfortable",
+    headerStyle: "compact",
+    headlineStyle: "sans",
+    sectionHeaderStyle: "accentBar",
+    themePreset: "modern",
+  },
+  civic: {
+    cardStyle: "flat",
+    cornerRadius: 4,
+    density: "compact",
+    headerStyle: "masthead",
+    headlineStyle: "sans",
+    sectionHeaderStyle: "filled",
+    themePreset: "civic",
+  },
+  magazine: {
+    cardStyle: "editorial",
+    cornerRadius: 10,
+    density: "comfortable",
+    headerStyle: "centeredLogo",
+    headlineStyle: "serif",
+    sectionHeaderStyle: "underline",
+    themePreset: "magazine",
+  },
+};
 
 export interface PublicationSettingsItem {
   advertisingLabels: AdvertisingLabelsItem;

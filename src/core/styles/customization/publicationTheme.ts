@@ -3,6 +3,7 @@ import type {
   PublicationSettingsItem,
   PublicationVisualStyleItem,
 } from "types/PublicationSettingsItem";
+import { publicationVisualStylePresets } from "types/PublicationSettingsItem";
 
 import { CustomTheme, OppositeColor } from "../types/CustomTheme";
 
@@ -33,52 +34,39 @@ const expandShortHex = (hex: string): string => {
     .join("");
 };
 
-const getReadableOppositeColor = (hexColor?: string): OppositeColor => {
-  const normalizedColor = normalizeHexColor(hexColor);
-
-  if (!normalizedColor) {
-    return lightTheme.general.primaryOppositeColor;
-  }
-
-  const hex = expandShortHex(normalizedColor);
-  const red = parseInt(hex.slice(0, 2), 16);
-  const green = parseInt(hex.slice(2, 4), 16);
-  const blue = parseInt(hex.slice(4, 6), 16);
-  const luminance = (0.299 * red + 0.587 * green + 0.114 * blue) / 255;
-
-  return luminance > 0.6 ? "black" : "white";
-};
-
 const toOppositeColor = (
   color?: string,
   fallbackColor?: string,
 ): OppositeColor => {
   const normalizedColor = normalizeHexColor(color);
+  const normalizedFallbackColor = normalizeHexColor(fallbackColor);
 
   if (!normalizedColor) {
-    return getReadableOppositeColor(fallbackColor);
+    return getReadableOppositeColorForBackground(fallbackColor);
   }
 
   const hex = expandShortHex(normalizedColor).toLowerCase();
+  const colorName =
+    hex === "ffffff" ? "white" : hex === "000000" ? "black" : undefined;
 
-  if (hex === "ffffff") {
-    return "white";
+  if (
+    colorName &&
+    normalizedFallbackColor &&
+    hasReadableContrast(colorName, normalizedFallbackColor)
+  ) {
+    return colorName;
   }
 
-  if (hex === "000000") {
-    return "black";
-  }
-
-  return getReadableOppositeColor(fallbackColor);
+  return getReadableOppositeColorForBackground(fallbackColor);
 };
 
 const hasBrandColors = (brandColors?: BrandColorItem): boolean => {
   return Boolean(
     normalizeHexColor(brandColors?.primary) ||
-      normalizeHexColor(brandColors?.onPrimary) ||
-      normalizeHexColor(brandColors?.accent) ||
-      normalizeHexColor(brandColors?.background) ||
-      normalizeHexColor(brandColors?.text)
+    normalizeHexColor(brandColors?.onPrimary) ||
+    normalizeHexColor(brandColors?.accent) ||
+    normalizeHexColor(brandColors?.background) ||
+    normalizeHexColor(brandColors?.text),
   );
 };
 
@@ -91,6 +79,64 @@ const hexToRgb = (color: string): string => {
   )} ${parseInt(hex.slice(4, 6), 16)}`;
 };
 
+const getRelativeLuminance = (hexColor: string): number => {
+  const hex = expandShortHex(hexColor);
+  const channels = [hex.slice(0, 2), hex.slice(2, 4), hex.slice(4, 6)].map(
+    (channel) => {
+      const value = parseInt(channel, 16) / 255;
+
+      return value <= 0.03928
+        ? value / 12.92
+        : ((value + 0.055) / 1.055) ** 2.4;
+    },
+  );
+
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+};
+
+const getContrastRatio = (firstColor: string, secondColor: string): number => {
+  const firstLuminance = getRelativeLuminance(firstColor);
+  const secondLuminance = getRelativeLuminance(secondColor);
+  const lightest = Math.max(firstLuminance, secondLuminance);
+  const darkest = Math.min(firstLuminance, secondLuminance);
+
+  return (lightest + 0.05) / (darkest + 0.05);
+};
+
+const getReadableOppositeColorByContrast = (
+  backgroundColor: string,
+): OppositeColor => {
+  const whiteContrast = getContrastRatio(backgroundColor, "#ffffff");
+  const blackContrast = getContrastRatio(backgroundColor, "#000000");
+
+  return whiteContrast >= blackContrast ? "white" : "black";
+};
+
+const getOppositeColorHex = (oppositeColor: OppositeColor) =>
+  oppositeColor === "white" ? "#ffffff" : "#000000";
+
+const hasReadableContrast = (
+  foregroundColor: OppositeColor,
+  backgroundColor: string,
+) => {
+  return (
+    getContrastRatio(getOppositeColorHex(foregroundColor), backgroundColor) >=
+    4.5
+  );
+};
+
+const getReadableOppositeColorForBackground = (
+  backgroundColor?: string,
+): OppositeColor => {
+  const normalizedColor = normalizeHexColor(backgroundColor);
+
+  if (!normalizedColor) {
+    return lightTheme.general.primaryOppositeColor;
+  }
+
+  return getReadableOppositeColorByContrast(normalizedColor);
+};
+
 const mapVisualTokens = (
   visualStyle: PublicationVisualStyleItem | undefined,
   colors: {
@@ -99,19 +145,13 @@ const mapVisualTokens = (
     tertiaryColor: string;
   },
 ): CustomTheme["publicationVisual"] => {
-  const style = visualStyle ?? {
-    cardStyle: "elevated",
-    cornerRadius: 8,
-    density: "comfortable",
-    headerStyle: "masthead",
-    headlineStyle: "serif",
-    sectionHeaderStyle: "underline",
-    themePreset: "classic",
-  };
+  const style = visualStyle ?? publicationVisualStylePresets.classic;
   const radius = `${Math.min(Math.max(style.cornerRadius, 0), 24)}px`;
   const primaryRgb = hexToRgb(colors.primaryColor);
   const cardBorderColor =
-    style.cardStyle === "flat" ? "transparent" : lightTheme.publicationVisual.cardBorderColor;
+    style.cardStyle === "flat"
+      ? "transparent"
+      : lightTheme.publicationVisual.cardBorderColor;
   const cardShadow =
     style.cardStyle === "elevated"
       ? `0 10px 28px rgb(${primaryRgb} / 12%)`
@@ -128,6 +168,10 @@ const mapVisualTokens = (
       : style.themePreset === "magazine"
         ? colors.accentColor
         : colors.primaryColor;
+  const mobileNavigationBackgroundColor =
+    style.themePreset === "classic" ? colors.accentColor : colors.primaryColor;
+  const sectionHeaderBackgroundColor =
+    style.sectionHeaderStyle === "filled" ? colors.primaryColor : "transparent";
 
   return {
     ...lightTheme.publicationVisual,
@@ -142,14 +186,12 @@ const mapVisualTokens = (
     formFocusShadow: `0 0 0 3px rgb(${primaryRgb} / 18%)`,
     headerAccentColor: presetHeaderAccent,
     headerBackgroundColor: colors.primaryColor,
-    mobileNavigationBackgroundColor:
-      style.themePreset === "classic" ? colors.accentColor : colors.primaryColor,
-    sectionHeaderBackgroundColor:
-      style.sectionHeaderStyle === "filled" ? colors.primaryColor : "transparent",
+    mobileNavigationBackgroundColor,
+    sectionHeaderBackgroundColor,
     sectionHeaderBorderColor: colors.primaryColor,
     sectionHeaderColor:
       style.sectionHeaderStyle === "filled"
-        ? getReadableOppositeColor(colors.primaryColor)
+        ? getReadableOppositeColorForBackground(colors.primaryColor)
         : colors.primaryColor,
     submenuActiveBackgroundColor: colors.primaryColor,
     themePreset: style.themePreset,
@@ -158,10 +200,7 @@ const mapVisualTokens = (
 
 export const mapPublicationSettingsToTheme = (
   publicationSettings?: Partial<
-    Pick<
-    PublicationSettingsItem,
-    "brandColors" | "visualStyle"
-    >
+    Pick<PublicationSettingsItem, "brandColors" | "visualStyle">
   >,
 ): CustomTheme => {
   const brandColors = publicationSettings?.brandColors;
@@ -185,7 +224,8 @@ export const mapPublicationSettingsToTheme = (
     brandColors?.onPrimary,
     primaryColor,
   );
-  const accentOppositeColor = getReadableOppositeColor(accentColor);
+  const accentOppositeColor =
+    getReadableOppositeColorForBackground(accentColor);
   const visualTokens = mapVisualTokens(publicationSettings?.visualStyle, {
     accentColor,
     primaryColor,
@@ -206,7 +246,8 @@ export const mapPublicationSettingsToTheme = (
       primary: {
         ...lightTheme.buttons.primary,
         backgroundColor,
-        backgroundOppositeColor: getReadableOppositeColor(backgroundColor),
+        backgroundOppositeColor:
+          getReadableOppositeColorForBackground(backgroundColor),
         borderColor: textColor,
         onHoverBackgroundColor: primaryColor,
         onHoverBackgroundOppositeColor: primaryOppositeColor,
@@ -221,7 +262,8 @@ export const mapPublicationSettingsToTheme = (
       tertiary: {
         ...lightTheme.buttons.tertiary,
         backgroundColor,
-        backgroundOppositeColor: getReadableOppositeColor(backgroundColor),
+        backgroundOppositeColor:
+          getReadableOppositeColorForBackground(backgroundColor),
         borderColor: accentColor,
       },
       link: {
