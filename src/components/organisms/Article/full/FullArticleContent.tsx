@@ -1,7 +1,7 @@
 "use client";
 
 import { MouseEvent, Suspense } from "react";
-import { Skeleton } from "@nextui-org/react";
+import { Skeleton } from "@heroui/react";
 import {
   IconBrandFacebook,
   IconLink,

@@ -1,4 +1,4 @@
-"use server";
+"use client";
 
 import { Flex } from "@mantine/core";
 
