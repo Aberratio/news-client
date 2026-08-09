@@ -38,11 +38,6 @@ const AddBackground = styled.div<{ $isClickable: boolean }>`
 
   ${$isClickable && "cursor: pointer;"}
 
-  margin-top: 65px;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
-  }
   `}
 `;
 
