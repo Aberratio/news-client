@@ -40,6 +40,10 @@ const Section = styled.section`
   scroll-margin-top: 72px;
 
   @media screen and (max-width: 767px) {
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-right: -12px;
+    margin-left: -12px;
     padding: 0;
     box-sizing: border-box;
   }
